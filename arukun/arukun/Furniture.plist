@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Furniture1</key>
+	<dict>
+		<key>kind</key>
+		<integer>1</integer>
+		<key>name</key>
+		<string>花の壁紙</string>
+		<key>point</key>
+		<integer>100</integer>
+		<key>image</key>
+		<string>hana.jpg</string>
+		<key>haved</key>
+		<false/>
+	</dict>
+	<key>Furniture2</key>
+	<dict>
+		<key>kind</key>
+		<integer>2</integer>
+		<key>name</key>
+		<string>木のタンス</string>
+		<key>point</key>
+		<integer>50</integer>
+		<key>image</key>
+		<string>tree.jpg</string>
+		<key>haved</key>
+		<false/>
+	</dict>
+</dict>
+</plist>
