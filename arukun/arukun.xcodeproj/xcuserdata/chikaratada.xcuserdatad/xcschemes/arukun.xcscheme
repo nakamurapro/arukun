@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1D5C1C001B1F2391007AE19C"
+               BlueprintIdentifier = "1D60AA4D1B27EF5D000D4D5A"
                BuildableName = "arukun.app"
                BlueprintName = "arukun"
                ReferencedContainer = "container:arukun.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1D5C1C191B1F2391007AE19C"
+               BlueprintIdentifier = "1D60AA661B27EF5D000D4D5A"
                BuildableName = "arukunTests.xctest"
                BlueprintName = "arukunTests"
                ReferencedContainer = "container:arukun.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1D5C1C191B1F2391007AE19C"
+               BlueprintIdentifier = "1D60AA661B27EF5D000D4D5A"
                BuildableName = "arukunTests.xctest"
                BlueprintName = "arukunTests"
                ReferencedContainer = "container:arukun.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D5C1C001B1F2391007AE19C"
+            BlueprintIdentifier = "1D60AA4D1B27EF5D000D4D5A"
             BuildableName = "arukun.app"
             BlueprintName = "arukun"
             ReferencedContainer = "container:arukun.xcodeproj">
@@ -76,7 +76,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D5C1C001B1F2391007AE19C"
+            BlueprintIdentifier = "1D60AA4D1B27EF5D000D4D5A"
             BuildableName = "arukun.app"
             BlueprintName = "arukun"
             ReferencedContainer = "container:arukun.xcodeproj">
@@ -95,7 +95,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D5C1C001B1F2391007AE19C"
+            BlueprintIdentifier = "1D60AA4D1B27EF5D000D4D5A"
             BuildableName = "arukun.app"
             BlueprintName = "arukun"
             ReferencedContainer = "container:arukun.xcodeproj">

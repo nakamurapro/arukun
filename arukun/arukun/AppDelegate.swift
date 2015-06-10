@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  arukun
 //
-//  Created by chikaratada on H27/06/03.
+//  Created by chikaratada on H27/06/10.
 //  Copyright (c) 平成27年 chikaratada. All rights reserved.
 //
 
