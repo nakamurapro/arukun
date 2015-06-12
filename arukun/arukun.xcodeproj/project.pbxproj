@@ -419,6 +419,7 @@
 				1D60AA731B27EF5D000D4D5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D60AA741B27EF5D000D4D5A /* Build configuration list for PBXNativeTarget "arukunTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +428,7 @@
 				1D60AA761B27EF5D000D4D5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
