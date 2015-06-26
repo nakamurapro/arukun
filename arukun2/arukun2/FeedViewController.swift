@@ -1,38 +1,22 @@
 //
-//  GameViewController.swift
+//  FeedViewController.swift
 //  arukun
 //
-//  Created by chikaratada on H27/06/10.
-//  Copyright (c) 平成27年 chikaratada. All rights reserved.
+//  Created by 坂本一 on 2015/06/22.
+//  Copyright (c) 2015年 chikaratada. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
 
-extension SKNode {
-    class func unarchiveFromFile(file : String) -> SKNode? {
-      if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
-            var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
-            var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
 
-            archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
-            archiver.finishDecoding()
-            return scene
-        } else {
-            return nil
-        }
-   }
-}
-
-class GameViewController: UIViewController {
-
+class FeedViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+        
+        if let scene = FeedScene.unarchiveFromFile("GameScene") as? FeedScene {
             // Configure the view.
-            
             let skView = self.view as! SKView
             skView.showsFPS = true
             skView.showsNodeCount = true
@@ -46,11 +30,11 @@ class GameViewController: UIViewController {
             skView.presentScene(scene)
         }
     }
-
+    
     override func shouldAutorotate() -> Bool {
         return true
     }
-
+    
     override func supportedInterfaceOrientations() -> Int {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
@@ -58,12 +42,12 @@ class GameViewController: UIViewController {
             return Int(UIInterfaceOrientationMask.All.rawValue)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }

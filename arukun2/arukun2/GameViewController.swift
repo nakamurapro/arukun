@@ -1,9 +1,9 @@
 //
 //  GameViewController.swift
-//  arukun
+//  arukun2
 //
-//  Created by chikaratada on H27/06/10.
-//  Copyright (c) 平成27年 chikaratada. All rights reserved.
+//  Created by 坂本一 on 2015/06/26.
+//  Copyright (c) 2015年 Hajime Sakamoto. All rights reserved.
 //
 
 import UIKit
@@ -11,18 +11,18 @@ import SpriteKit
 
 extension SKNode {
     class func unarchiveFromFile(file : String) -> SKNode? {
-      if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
+        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
             var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
-
+            
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
+            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
             archiver.finishDecoding()
             return scene
         } else {
             return nil
         }
-   }
+    }
 }
 
 class GameViewController: UIViewController {
@@ -32,7 +32,6 @@ class GameViewController: UIViewController {
 
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
             // Configure the view.
-            
             let skView = self.view as! SKView
             skView.showsFPS = true
             skView.showsNodeCount = true
