@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j3o-3f-oeB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j3o-3f-oeB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--ゲーム-->
@@ -26,12 +26,12 @@
         <!--エサ-->
         <scene sceneID="1GZ-Nn-QD1">
             <objects>
-                <viewController id="Xsq-bd-vs4" sceneMemberID="viewController">
+                <viewController id="Xsq-bd-vs4" customClass="FeedViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qYx-5b-lD3"/>
                         <viewControllerLayoutGuide type="bottom" id="0kk-i5-jsm"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lpE-4Q-xaT">
+                    <view key="view" contentMode="scaleToFill" id="lpE-4Q-xaT" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -45,12 +45,12 @@
         <!--記録-->
         <scene sceneID="1fo-mA-gvF">
             <objects>
-                <viewController id="6Jv-dl-my9" sceneMemberID="viewController">
+                <viewController id="6Jv-dl-my9" customClass="RecViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="daz-rI-sKs"/>
                         <viewControllerLayoutGuide type="bottom" id="s2F-wy-4Rb"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yqf-IJ-EyS">
+                    <view key="view" contentMode="scaleToFill" id="yqf-IJ-EyS" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,12 +64,12 @@
         <!--日記-->
         <scene sceneID="7B3-vT-Qd7">
             <objects>
-                <viewController id="wmF-2A-4ZQ" sceneMemberID="viewController">
+                <viewController id="wmF-2A-4ZQ" customClass="DiaryViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eAK-jT-S01"/>
                         <viewControllerLayoutGuide type="bottom" id="sZG-9d-QfK"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="t7M-6X-bNo">
+                    <view key="view" contentMode="scaleToFill" id="t7M-6X-bNo" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
