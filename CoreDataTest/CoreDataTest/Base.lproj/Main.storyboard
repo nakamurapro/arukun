@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoreDataTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bed-cq-bwc">
+                                <rect key="frame" x="277" y="230" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnLoad:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XXp-R1-Vsx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9X-i9-tIE">
+                                <rect key="frame" x="277" y="350" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDelete:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Fm-cB-NeU"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1X-F8-4Uz">
+                                <rect key="frame" x="250" y="170" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="2V9-Yf-pUU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l6Y-L8-mH8">
+                                <rect key="frame" x="250" y="50" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="6pg-AK-D8P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOd-t0-nwH">
+                                <rect key="frame" x="277" y="110" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnSave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="65L-8A-rXJ"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ubb-rt-8kf">
+                                <rect key="frame" x="250" y="292" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Q0E-kA-M9T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="L9X-i9-tIE" secondAttribute="centerX" id="2Ue-tH-CeF"/>
+                            <constraint firstItem="l6Y-L8-mH8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="4n7-39-WqV"/>
+                            <constraint firstAttribute="centerX" secondItem="bed-cq-bwc" secondAttribute="centerX" id="Rvk-Nt-eV4"/>
+                            <constraint firstItem="pOd-t0-nwH" firstAttribute="top" secondItem="l6Y-L8-mH8" secondAttribute="bottom" constant="30" id="Tu2-GK-4bL"/>
+                            <constraint firstAttribute="centerX" secondItem="Ubb-rt-8kf" secondAttribute="centerX" id="USR-Od-c8q"/>
+                            <constraint firstItem="Ubb-rt-8kf" firstAttribute="top" secondItem="bed-cq-bwc" secondAttribute="bottom" constant="32" id="WXH-aY-YxX"/>
+                            <constraint firstAttribute="centerX" secondItem="u1X-F8-4Uz" secondAttribute="centerX" id="WiK-Qv-njH"/>
+                            <constraint firstAttribute="centerX" secondItem="l6Y-L8-mH8" secondAttribute="centerX" id="j1s-xf-NsJ"/>
+                            <constraint firstItem="L9X-i9-tIE" firstAttribute="top" secondItem="Ubb-rt-8kf" secondAttribute="bottom" constant="28" id="jpP-rT-1Q3"/>
+                            <constraint firstAttribute="centerX" secondItem="pOd-t0-nwH" secondAttribute="centerX" id="kYq-H7-Aca"/>
+                            <constraint firstItem="bed-cq-bwc" firstAttribute="top" secondItem="u1X-F8-4Uz" secondAttribute="bottom" constant="30" id="pot-9R-SgV"/>
+                            <constraint firstItem="u1X-F8-4Uz" firstAttribute="top" secondItem="pOd-t0-nwH" secondAttribute="bottom" constant="30" id="wNU-Iz-MMy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnLoad" destination="bed-cq-bwc" id="cdw-Qe-369"/>
+                        <outlet property="tfMemoCreate" destination="l6Y-L8-mH8" id="qT0-8c-r05"/>
+                        <outlet property="tfMemoRead" destination="u1X-F8-4Uz" id="mpk-Va-J4Q"/>
+                        <outlet property="tfMemoUpdate" destination="Ubb-rt-8kf" id="Phm-mQ-kqK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
