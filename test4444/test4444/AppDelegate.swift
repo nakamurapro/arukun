@@ -1,20 +1,18 @@
 //
 //  AppDelegate.swift
-//  arukun
+//  test4444
 //
-//  Created by chikaratada on H27/06/10.
-//  Copyright (c) 平成27年 chikaratada. All rights reserved.
+//  Created by 坂本一 on 2015/07/03.
+//  Copyright (c) 2015年 Hajime Sakamoto. All rights reserved.
 //
 
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var data:String!
 
     var window: UIWindow?
 
-    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
