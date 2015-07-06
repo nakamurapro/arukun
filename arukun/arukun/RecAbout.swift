@@ -41,7 +41,7 @@ class RecAbout: SKScene {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
             if touchedNode.name == "goback" {
-                let tr = SKTransition.fadeWithColor(UIColor.whiteColor(), duration: 1.0)
+                let tr = SKTransition.fadeWithColor(UIColor.blackColor(), duration: 1.0)
                 let newScene = RecScene(size: self.scene!.size)
                 newScene.scaleMode = SKSceneScaleMode.AspectFill
                 self.scene!.view!.presentScene(newScene, transition: tr)

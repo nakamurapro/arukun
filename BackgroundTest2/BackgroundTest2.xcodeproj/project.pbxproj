@@ -13,6 +13,7 @@
 		7B74AD991B4565C10077C212 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B74AD981B4565C10077C212 /* Images.xcassets */; };
 		7B74AD9C1B4565C10077C212 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B74AD9A1B4565C10077C212 /* LaunchScreen.xib */; };
 		7B74ADA81B4565C10077C212 /* BackgroundTest2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74ADA71B4565C10077C212 /* BackgroundTest2Tests.swift */; };
+		7B74ADB21B4566B20077C212 /* ViewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74ADB11B4566B20077C212 /* ViewScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		7B74ADA11B4565C10077C212 /* BackgroundTest2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundTest2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B74ADA61B4565C10077C212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B74ADA71B4565C10077C212 /* BackgroundTest2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTest2Tests.swift; sourceTree = "<group>"; };
+		7B74ADB11B4566B20077C212 /* ViewScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				7B74AD911B4565C10077C212 /* AppDelegate.swift */,
 				7B74AD931B4565C10077C212 /* ViewController.swift */,
+				7B74ADB11B4566B20077C212 /* ViewScene.swift */,
 				7B74AD951B4565C10077C212 /* Main.storyboard */,
 				7B74AD981B4565C10077C212 /* Images.xcassets */,
 				7B74AD9A1B4565C10077C212 /* LaunchScreen.xib */,
@@ -161,6 +164,11 @@
 				TargetAttributes = {
 					7B74AD8B1B4565C10077C212 = {
 						CreatedOnToolsVersion = 6.3.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					7B74ADA01B4565C10077C212 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -213,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B74AD941B4565C10077C212 /* ViewController.swift in Sources */,
+				7B74ADB21B4566B20077C212 /* ViewScene.swift in Sources */,
 				7B74AD921B4565C10077C212 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

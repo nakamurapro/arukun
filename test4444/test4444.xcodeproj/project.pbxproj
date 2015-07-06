@@ -40,6 +40,7 @@
 		7BA9B3771B4635D20025D59B /* test4444Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = test4444Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA9B37C1B4635D20025D59B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BA9B37D1B4635D20025D59B /* test4444Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test4444Tests.swift; sourceTree = "<group>"; };
+		7BA9B3891B46360F0025D59B /* test4444.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test4444.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 		7BA9B3601B4635D20025D59B /* test4444 */ = {
 			isa = PBXGroup;
 			children = (
+				7BA9B3891B46360F0025D59B /* test4444.entitlements */,
 				7BA9B3631B4635D20025D59B /* AppDelegate.swift */,
 				7BA9B3651B4635D20025D59B /* GameScene.sks */,
 				7BA9B3671B4635D20025D59B /* GameScene.swift */,
@@ -167,6 +169,27 @@
 				TargetAttributes = {
 					7BA9B35D1B4635D20025D59B = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = V234C4FQ67;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
+							com.apple.HomeKit = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					7BA9B3761B4635D20025D59B = {
 						CreatedOnToolsVersion = 6.4;
@@ -348,7 +371,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = test4444/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -358,7 +383,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = test4444/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -417,6 +444,7 @@
 				7BA9B3831B4635D20025D59B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7BA9B3841B4635D20025D59B /* Build configuration list for PBXNativeTarget "test4444Tests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +453,7 @@
 				7BA9B3861B4635D20025D59B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

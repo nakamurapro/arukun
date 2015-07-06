@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import CoreMotion
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var myMotionManager: CMMotionManager!
     var window: UIWindow?
-
+    var X:Double! = 1.0
+    var Y:Double! = 1.0
+    var Z:Double! = 1.0
+    var Counter:Int! = 0
+    var x:Double!
+    var y:Double!
+    var z:Double!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -25,8 +32,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        myMotionManager = CMMotionManager()
+        
+        // 更新周期を設定.
+        myMotionManager.accelerometerUpdateInterval = 1/5
+        
+        // 加速度の取得を開始.
+        myMotionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {(accelerometerData:CMAccelerometerData!, error:NSError!) -> Void in
+            
+            self.x = accelerometerData.acceleration.x
+            self.y = accelerometerData.acceleration.y
+            self.z = accelerometerData.acceleration.z
+            var CheckX = self.X - self.x
+            var CheckY = self.Y - self.y
+            var CheckZ = self.Z - self.z
+            
+            if(CheckX > 0.7 || CheckY > 0.7 || CheckZ > 0.7){
+                self.Counter = self.Counter + 1
+            }
+            self.X = self.x; self.Y = self.y; self.Z = self.z
+            
+        })
+
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

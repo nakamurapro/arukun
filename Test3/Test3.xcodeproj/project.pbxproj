@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		7BED80551B4626F7001878A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED80541B4626F7001878A5 /* AppDelegate.swift */; };
 		7BED80571B4626F7001878A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED80561B4626F7001878A5 /* ViewController.swift */; };
-		7BED805A1B4626F7001878A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BED80581B4626F7001878A5 /* Main.storyboard */; };
 		7BED805C1B4626F7001878A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BED805B1B4626F7001878A5 /* Images.xcassets */; };
-		7BED805F1B4626F7001878A5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BED805D1B4626F7001878A5 /* LaunchScreen.xib */; };
 		7BED806B1B4626F7001878A5 /* Test3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED806A1B4626F7001878A5 /* Test3Tests.swift */; };
+		7BED807C1B462E33001878A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BED80581B4626F7001878A5 /* Main.storyboard */; };
+		7BED807D1B462E3F001878A5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BED805D1B4626F7001878A5 /* LaunchScreen.xib */; };
+		7BED807E1B462E3F001878A5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BED80691B4626F7001878A5 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		7BED80641B4626F7001878A5 /* Test3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BED80691B4626F7001878A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BED806A1B4626F7001878A5 /* Test3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test3Tests.swift; sourceTree = "<group>"; };
+		7BED80741B462A36001878A5 /* Test3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Test3.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		7BED80511B4626F7001878A5 /* Test3 */ = {
 			isa = PBXGroup;
 			children = (
+				7BED80741B462A36001878A5 /* Test3.entitlements */,
 				7BED80541B4626F7001878A5 /* AppDelegate.swift */,
 				7BED80561B4626F7001878A5 /* ViewController.swift */,
 				7BED80581B4626F7001878A5 /* Main.storyboard */,
@@ -161,6 +164,15 @@
 				TargetAttributes = {
 					7BED804E1B4626F7001878A5 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = V234C4FQ67;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
+						};
 					};
 					7BED80631B4626F7001878A5 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -192,8 +204,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BED805A1B4626F7001878A5 /* Main.storyboard in Resources */,
-				7BED805F1B4626F7001878A5 /* LaunchScreen.xib in Resources */,
+				7BED807D1B462E3F001878A5 /* LaunchScreen.xib in Resources */,
+				7BED807E1B462E3F001878A5 /* Info.plist in Resources */,
+				7BED807C1B462E33001878A5 /* Main.storyboard in Resources */,
 				7BED805C1B4626F7001878A5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,8 +353,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Test3/Test3.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Test3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -350,7 +367,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Test3/Test3.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Test3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
