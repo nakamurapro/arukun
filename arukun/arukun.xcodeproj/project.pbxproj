@@ -17,6 +17,7 @@
 		7B0E21BF1B3A4716006DD9EF /* RecAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */; };
 		7B36E03E1B39A61600A62CF3 /* RecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36E03D1B39A61600A62CF3 /* RecViewController.swift */; };
 		7B36E0401B39A64600A62CF3 /* RecScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36E03F1B39A64600A62CF3 /* RecScene.swift */; };
+		7B93CD1F1B4F68AB00A6E701 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B93CD1D1B4F68AB00A6E701 /* Model.xcdatamodeld */; };
 		7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D801B383EBF0056D886 /* FeedScene.swift */; };
 		7B9A6D831B3840290056D886 /* 1179.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D821B3840290056D886 /* 1179.png */; };
 		7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D841B3842460056D886 /* FeedViewController.swift */; };
@@ -50,6 +51,7 @@
 		7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAbout.swift; sourceTree = "<group>"; };
 		7B36E03D1B39A61600A62CF3 /* RecViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecViewController.swift; sourceTree = "<group>"; };
 		7B36E03F1B39A64600A62CF3 /* RecScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecScene.swift; sourceTree = "<group>"; };
+		7B93CD1E1B4F68AB00A6E701 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7B9A6D801B383EBF0056D886 /* FeedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedScene.swift; sourceTree = "<group>"; };
 		7B9A6D821B3840290056D886 /* 1179.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1179.png; sourceTree = "<group>"; };
 		7B9A6D841B3842460056D886 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				1D60AA5E1B27EF5D000D4D5A /* Images.xcassets */,
 				1D60AA601B27EF5D000D4D5A /* LaunchScreen.xib */,
 				1D60AA5B1B27EF5D000D4D5A /* Main.storyboard */,
+				7B93CD1D1B4F68AB00A6E701 /* Model.xcdatamodeld */,
 				1D60AA511B27EF5D000D4D5A /* Supporting Files */,
 			);
 			path = arukun;
@@ -285,6 +288,7 @@
 				1D60AA541B27EF5D000D4D5A /* AppDelegate.swift in Sources */,
 				7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */,
 				7B9A6D891B3847CD0056D886 /* DiaryViewController.swift in Sources */,
+				7B93CD1F1B4F68AB00A6E701 /* Model.xcdatamodeld in Sources */,
 				7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +499,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7B93CD1D1B4F68AB00A6E701 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7B93CD1E1B4F68AB00A6E701 /* Model.xcdatamodel */,
+			);
+			currentVersion = 7B93CD1E1B4F68AB00A6E701 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1D60AA461B27EF5C000D4D5A /* Project object */;
 }
