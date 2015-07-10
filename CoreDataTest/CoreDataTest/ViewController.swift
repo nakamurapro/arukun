@@ -29,7 +29,8 @@ class ViewController: UIViewController {
         var appDelegate : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         var context : NSManagedObjectContext = appDelegate.managedObjectContext!
         // 新しいオブジェクトを作成
-        var newTodo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: context) as NSManagedObjectnewTodo.setValue(tfMemoCreate!.text, forKey: "memo")
+        var newTodo = NSEntityDescription.insertNewObjectForEntityForName("ToDo", inManagedObjectContext: context)
+as NSManagedObjectnewTodo.setValue(tfMemoCreate!.text, forKey: "memo")
         // 作成したオブジェクトを保存
         var error: NSError? = nil
         if !context.save(&error) {
