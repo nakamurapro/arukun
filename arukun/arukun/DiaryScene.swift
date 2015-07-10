@@ -10,6 +10,7 @@ import Foundation
 import SpriteKit
 
 class DiaryScene: SKScene {
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.backgroundColor = UIColor(red: 0.7, green: 1.0, blue: 0.7, alpha: 1.0)
