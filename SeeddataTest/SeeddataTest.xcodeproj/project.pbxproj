@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B7BEF8C1B5DDC0B00DFD39C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7BEF8B1B5DDC0B00DFD39C /* Person.swift */; };
 		7BD1FF371B4F555700B77657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1FF361B4F555700B77657 /* AppDelegate.swift */; };
 		7BD1FF3A1B4F555700B77657 /* SeeddataTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1FF381B4F555700B77657 /* SeeddataTest.xcdatamodeld */; };
 		7BD1FF3C1B4F555700B77657 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1FF3B1B4F555700B77657 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B7BEF8B1B5DDC0B00DFD39C /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = ../Person.swift; sourceTree = "<group>"; };
 		7BD1FF311B4F555700B77657 /* SeeddataTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeddataTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD1FF351B4F555700B77657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BD1FF361B4F555700B77657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		7BD1FF331B4F555700B77657 /* SeeddataTest */ = {
 			isa = PBXGroup;
 			children = (
+				7B7BEF8B1B5DDC0B00DFD39C /* Person.swift */,
 				7BD1FF361B4F555700B77657 /* AppDelegate.swift */,
 				7BD1FF3B1B4F555700B77657 /* ViewController.swift */,
 				7BD1FF3D1B4F555700B77657 /* Main.storyboard */,
@@ -221,6 +224,7 @@
 			files = (
 				7BD1FF3C1B4F555700B77657 /* ViewController.swift in Sources */,
 				7BD1FF3A1B4F555700B77657 /* SeeddataTest.xcdatamodeld in Sources */,
+				7B7BEF8C1B5DDC0B00DFD39C /* Person.swift in Sources */,
 				7BD1FF371B4F555700B77657 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +421,7 @@
 				7BD1FF551B4F555700B77657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7BD1FF561B4F555700B77657 /* Build configuration list for PBXNativeTarget "SeeddataTestTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +430,7 @@
 				7BD1FF581B4F555700B77657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
