@@ -44,10 +44,10 @@ class ViewController: UIViewController {
     func initMasters() {
         println("initMasters ------------")
         
-        // plist の読み込み
+        // plist の読み込み開始
         let path:NSString = NSBundle.mainBundle().pathForResource("Seed", ofType: "plist")!
-        
         var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
+        //ここまで
         
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
@@ -73,11 +73,24 @@ class ViewController: UIViewController {
     }
     
     func putData(){
+        //SELECT * FROM...
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let PersonContext: NSManagedObjectContext = appDel.managedObjectContext!
         let PersonRequest: NSFetchRequest = NSFetchRequest(entityName: "Person")
         PersonRequest.returnsObjectsAsFaults = false
+        
+        //Where...
+        let predicate = NSPredicate(format: "%K < %d", "age", 21)
+        //let predicate = NSPredicate(format: "%K = %d", "makeat", "2015-05-20")
+        PersonRequest.predicate = predicate
+        
+        //検索！
         var results: NSArray! = PersonContext.executeFetchRequest(PersonRequest, error: nil)
+        
+        //デバッグ用
+        println("できたかな？")
+        println(results)
+        
         
         ages = []
         names = []
@@ -90,6 +103,7 @@ class ViewController: UIViewController {
         
         //配列に対してCoreDataのレコードを1つずつ入れていく
         //"~~.valueForKey("ATTRIBUTEの名前") as! 型"で1つのレコードに対する値が収録出来る
+        
         for data in results {
             names.append(data.valueForKey("name") as! String)
             ages.append(data.valueForKey("age") as! Int)
@@ -98,10 +112,12 @@ class ViewController: UIViewController {
             var day = dateFormatter.stringFromDate(data.valueForKey("makeat") as! NSDate)
             makeats.append(day)
         }
+        
         //3要素を取り出す
         println(names)
         println(ages)
         println(makeats)
+        
     }
     
 }
