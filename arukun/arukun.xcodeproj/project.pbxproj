@@ -15,6 +15,11 @@
 		1D60AA621B27EF5D000D4D5A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D60AA601B27EF5D000D4D5A /* LaunchScreen.xib */; };
 		1D60AA6E1B27EF5D000D4D5A /* arukunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60AA6D1B27EF5D000D4D5A /* arukunTests.swift */; };
 		7B0E21BF1B3A4716006DD9EF /* RecAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */; };
+		7B2B24D119D7E73600A75413 /* Room.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B24D019D7E73600A75413 /* Room.plist */; };
+		7B2D369B1BB4EE2100DCFF38 /* Charapicture.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */; };
+		7B2D369D1BB4EFAC00DCFF38 /* Furniture.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D369C1BB4EFAC00DCFF38 /* Furniture.plist */; };
+		7B2D36A31BB4F1AA00DCFF38 /* Word.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D36A21BB4F1AA00DCFF38 /* Word.plist */; };
+		7B2D36A51BB4F24100DCFF38 /* Charadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D36A41BB4F24100DCFF38 /* Charadata.plist */; };
 		7B36E03E1B39A61600A62CF3 /* RecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36E03D1B39A61600A62CF3 /* RecViewController.swift */; };
 		7B36E0401B39A64600A62CF3 /* RecScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36E03F1B39A64600A62CF3 /* RecScene.swift */; };
 		7B93CD1F1B4F68AB00A6E701 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B93CD1D1B4F68AB00A6E701 /* Model.xcdatamodeld */; };
@@ -49,6 +54,11 @@
 		1D60AA6C1B27EF5D000D4D5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D60AA6D1B27EF5D000D4D5A /* arukunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arukunTests.swift; sourceTree = "<group>"; };
 		7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAbout.swift; sourceTree = "<group>"; };
+		7B2B24D019D7E73600A75413 /* Room.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Room.plist; sourceTree = "<group>"; };
+		7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Charapicture.plist; sourceTree = "<group>"; };
+		7B2D369C1BB4EFAC00DCFF38 /* Furniture.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Furniture.plist; sourceTree = "<group>"; };
+		7B2D36A21BB4F1AA00DCFF38 /* Word.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Word.plist; sourceTree = "<group>"; };
+		7B2D36A41BB4F24100DCFF38 /* Charadata.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Charadata.plist; sourceTree = "<group>"; };
 		7B36E03D1B39A61600A62CF3 /* RecViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecViewController.swift; sourceTree = "<group>"; };
 		7B36E03F1B39A64600A62CF3 /* RecScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecScene.swift; sourceTree = "<group>"; };
 		7B93CD1E1B4F68AB00A6E701 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -118,6 +128,11 @@
 		1D60AA511B27EF5D000D4D5A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B2D369C1BB4EFAC00DCFF38 /* Furniture.plist */,
+				7B2D36A21BB4F1AA00DCFF38 /* Word.plist */,
+				7B2B24D019D7E73600A75413 /* Room.plist */,
+				7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */,
+				7B2D36A41BB4F24100DCFF38 /* Charadata.plist */,
 				1D60AA521B27EF5D000D4D5A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -257,11 +272,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B2D36A51BB4F24100DCFF38 /* Charadata.plist in Resources */,
+				7B2D36A31BB4F1AA00DCFF38 /* Word.plist in Resources */,
 				1D60AA621B27EF5D000D4D5A /* LaunchScreen.xib in Resources */,
 				7B9A6D8B1B38488E0056D886 /* GameScene.sks in Resources */,
 				1D60AA5F1B27EF5D000D4D5A /* Images.xcassets in Resources */,
+				7B2D369B1BB4EE2100DCFF38 /* Charapicture.plist in Resources */,
 				7B9A6D831B3840290056D886 /* 1179.png in Resources */,
 				1D60AA5D1B27EF5D000D4D5A /* Main.storyboard in Resources */,
+				7B2D369D1BB4EFAC00DCFF38 /* Furniture.plist in Resources */,
+				7B2B24D119D7E73600A75413 /* Room.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
