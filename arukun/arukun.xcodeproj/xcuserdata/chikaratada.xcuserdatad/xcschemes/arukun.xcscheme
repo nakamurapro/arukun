@@ -34,6 +34,34 @@
                ReferencedContainer = "container:arukun.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1D6764C61BBE251600FFB44A"
+               BuildableName = "JBChartTests.xctest"
+               BlueprintName = "JBChartTests"
+               ReferencedContainer = "container:arukun.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1D6764EB1BBE258A00FFB44A"
+               BuildableName = "JBChartTests.xctest"
+               BlueprintName = "JBChartTests"
+               ReferencedContainer = "container:arukun.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +77,26 @@
                BlueprintIdentifier = "1D60AA661B27EF5D000D4D5A"
                BuildableName = "arukunTests.xctest"
                BlueprintName = "arukunTests"
+               ReferencedContainer = "container:arukun.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1D6764C61BBE251600FFB44A"
+               BuildableName = "JBChartTests.xctest"
+               BlueprintName = "JBChartTests"
+               ReferencedContainer = "container:arukun.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1D6764EB1BBE258A00FFB44A"
+               BuildableName = "JBChartTests.xctest"
+               BlueprintName = "JBChartTests"
                ReferencedContainer = "container:arukun.xcodeproj">
             </BuildableReference>
          </TestableReference>
