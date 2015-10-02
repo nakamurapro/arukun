@@ -14,6 +14,22 @@
 		1D60AA5F1B27EF5D000D4D5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D60AA5E1B27EF5D000D4D5A /* Images.xcassets */; };
 		1D60AA621B27EF5D000D4D5A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D60AA601B27EF5D000D4D5A /* LaunchScreen.xib */; };
 		1D60AA6E1B27EF5D000D4D5A /* arukunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60AA6D1B27EF5D000D4D5A /* arukunTests.swift */; };
+		1D6764AA1BBE22D300FFB44A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6764A91BBE22D300FFB44A /* FirstViewController.swift */; };
+		1D6764B41BBE240D00FFB44A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D6764AC1BBE240D00FFB44A /* Info.plist */; };
+		1D6764B51BBE240D00FFB44A /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6764AE1BBE240D00FFB44A /* JBBarChartView.m */; };
+		1D6764B61BBE240D00FFB44A /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6764B11BBE240D00FFB44A /* JBChartView.m */; };
+		1D6764B71BBE240D00FFB44A /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6764B31BBE240D00FFB44A /* JBLineChartView.m */; };
+		1D6764E71BBE258A00FFB44A /* JBChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6764E61BBE258A00FFB44A /* JBChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D6764ED1BBE258A00FFB44A /* JBChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6764E21BBE258A00FFB44A /* JBChart.framework */; };
+		1D6764F61BBE258B00FFB44A /* JBChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6764F51BBE258B00FFB44A /* JBChartTests.m */; };
+		1D6764F91BBE258B00FFB44A /* JBChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6764E21BBE258A00FFB44A /* JBChart.framework */; };
+		1D6764FA1BBE258B00FFB44A /* JBChart.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6764E21BBE258A00FFB44A /* JBChart.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D6765081BBE263600FFB44A /* JBBarChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6765021BBE263500FFB44A /* JBBarChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D6765091BBE263600FFB44A /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6765031BBE263600FFB44A /* JBBarChartView.m */; };
+		1D67650A1BBE263600FFB44A /* JBChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6765041BBE263600FFB44A /* JBChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D67650B1BBE263600FFB44A /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6765051BBE263600FFB44A /* JBChartView.m */; };
+		1D67650C1BBE263600FFB44A /* JBLineChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6765061BBE263600FFB44A /* JBLineChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D67650D1BBE263600FFB44A /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6765071BBE263600FFB44A /* JBLineChartView.m */; };
 		7B0E21BF1B3A4716006DD9EF /* RecAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */; };
 		7B2B24D119D7E73600A75413 /* Room.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B24D019D7E73600A75413 /* Room.plist */; };
 		7B2D369B1BB4EE2100DCFF38 /* Charapicture.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */; };
@@ -39,7 +55,49 @@
 			remoteGlobalIDString = 1D60AA4D1B27EF5D000D4D5A;
 			remoteInfo = arukun;
 		};
+		1D6764CB1BBE251600FFB44A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D60AA461B27EF5C000D4D5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D60AA4D1B27EF5D000D4D5A;
+			remoteInfo = arukun;
+		};
+		1D6764EE1BBE258A00FFB44A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D60AA461B27EF5C000D4D5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6764E11BBE258A00FFB44A;
+			remoteInfo = JBChart;
+		};
+		1D6764F01BBE258A00FFB44A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D60AA461B27EF5C000D4D5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D60AA4D1B27EF5D000D4D5A;
+			remoteInfo = arukun;
+		};
+		1D6764F71BBE258B00FFB44A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D60AA461B27EF5C000D4D5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6764E11BBE258A00FFB44A;
+			remoteInfo = JBChart;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1D6764D91BBE251600FFB44A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1D6764FA1BBE258B00FFB44A /* JBChart.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D60AA4E1B27EF5D000D4D5A /* arukun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arukun.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +111,28 @@
 		1D60AA671B27EF5D000D4D5A /* arukunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = arukunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D60AA6C1B27EF5D000D4D5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D60AA6D1B27EF5D000D4D5A /* arukunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arukunTests.swift; sourceTree = "<group>"; };
+		1D6764A91BBE22D300FFB44A /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		1D6764AC1BBE240D00FFB44A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D6764AD1BBE240D00FFB44A /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		1D6764AE1BBE240D00FFB44A /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		1D6764AF1BBE240D00FFB44A /* JBChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChart.h; sourceTree = "<group>"; };
+		1D6764B01BBE240D00FFB44A /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		1D6764B11BBE240D00FFB44A /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		1D6764B21BBE240D00FFB44A /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		1D6764B31BBE240D00FFB44A /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
+		1D6764C71BBE251600FFB44A /* JBChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JBChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6764E21BBE258A00FFB44A /* JBChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JBChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6764E51BBE258A00FFB44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D6764E61BBE258A00FFB44A /* JBChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JBChart.h; sourceTree = "<group>"; };
+		1D6764EC1BBE258A00FFB44A /* JBChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JBChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6764F41BBE258B00FFB44A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D6764F51BBE258B00FFB44A /* JBChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JBChartTests.m; sourceTree = "<group>"; };
+		1D6765021BBE263500FFB44A /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		1D6765031BBE263600FFB44A /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		1D6765041BBE263600FFB44A /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		1D6765051BBE263600FFB44A /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		1D6765061BBE263600FFB44A /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		1D6765071BBE263600FFB44A /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
 		7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAbout.swift; sourceTree = "<group>"; };
 		7B2B24D019D7E73600A75413 /* Room.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Room.plist; sourceTree = "<group>"; };
 		7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Charapicture.plist; sourceTree = "<group>"; };
@@ -75,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D6764F91BBE258B00FFB44A /* JBChart.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,14 +166,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1D6764C41BBE251600FFB44A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D6764DE1BBE258A00FFB44A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D6764E91BBE258A00FFB44A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6764ED1BBE258A00FFB44A /* JBChart.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1D60AA451B27EF5C000D4D5A = {
 			isa = PBXGroup;
 			children = (
+				1D6764AB1BBE240D00FFB44A /* JBChart */,
 				1D60AA501B27EF5D000D4D5A /* arukun */,
 				1D60AA6A1B27EF5D000D4D5A /* arukunTests */,
+				1D6764E31BBE258A00FFB44A /* JBChart */,
+				1D6764F21BBE258A00FFB44A /* JBChartTests */,
 				1D60AA4F1B27EF5D000D4D5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +208,9 @@
 			children = (
 				1D60AA4E1B27EF5D000D4D5A /* arukun.app */,
 				1D60AA671B27EF5D000D4D5A /* arukunTests.xctest */,
+				1D6764C71BBE251600FFB44A /* JBChartTests.xctest */,
+				1D6764E21BBE258A00FFB44A /* JBChart.framework */,
+				1D6764EC1BBE258A00FFB44A /* JBChartTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +218,7 @@
 		1D60AA501B27EF5D000D4D5A /* arukun */ = {
 			isa = PBXGroup;
 			children = (
+				1D6764A91BBE22D300FFB44A /* FirstViewController.swift */,
 				1D60AA531B27EF5D000D4D5A /* AppDelegate.swift */,
 				7B9A6D8A1B38488E0056D886 /* GameScene.sks */,
 				7B9A6D861B3843990056D886 /* Game */,
@@ -155,6 +265,70 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1D6764AB1BBE240D00FFB44A /* JBChart */ = {
+			isa = PBXGroup;
+			children = (
+				1D6764AC1BBE240D00FFB44A /* Info.plist */,
+				1D6764AD1BBE240D00FFB44A /* JBBarChartView.h */,
+				1D6764AE1BBE240D00FFB44A /* JBBarChartView.m */,
+				1D6764AF1BBE240D00FFB44A /* JBChart.h */,
+				1D6764B01BBE240D00FFB44A /* JBChartView.h */,
+				1D6764B11BBE240D00FFB44A /* JBChartView.m */,
+				1D6764B21BBE240D00FFB44A /* JBLineChartView.h */,
+				1D6764B31BBE240D00FFB44A /* JBLineChartView.m */,
+			);
+			name = JBChart;
+			path = arukun/JBChart;
+			sourceTree = "<group>";
+		};
+		1D6764E31BBE258A00FFB44A /* JBChart */ = {
+			isa = PBXGroup;
+			children = (
+				1D6765011BBE261A00FFB44A /* Classes */,
+				1D6764E61BBE258A00FFB44A /* JBChart.h */,
+				1D6764E41BBE258A00FFB44A /* Supporting Files */,
+			);
+			path = JBChart;
+			sourceTree = "<group>";
+		};
+		1D6764E41BBE258A00FFB44A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D6764E51BBE258A00FFB44A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D6764F21BBE258A00FFB44A /* JBChartTests */ = {
+			isa = PBXGroup;
+			children = (
+				1D6764F51BBE258B00FFB44A /* JBChartTests.m */,
+				1D6764F31BBE258B00FFB44A /* Supporting Files */,
+			);
+			path = JBChartTests;
+			sourceTree = "<group>";
+		};
+		1D6764F31BBE258B00FFB44A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D6764F41BBE258B00FFB44A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D6765011BBE261A00FFB44A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D6765021BBE263500FFB44A /* JBBarChartView.h */,
+				1D6765031BBE263600FFB44A /* JBBarChartView.m */,
+				1D6765041BBE263600FFB44A /* JBChartView.h */,
+				1D6765051BBE263600FFB44A /* JBChartView.m */,
+				1D6765061BBE263600FFB44A /* JBLineChartView.h */,
+				1D6765071BBE263600FFB44A /* JBLineChartView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		7B36E0411B39A6D400A62CF3 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +368,20 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		1D6764DF1BBE258A00FFB44A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D67650C1BBE263600FFB44A /* JBLineChartView.h in Headers */,
+				1D6765081BBE263600FFB44A /* JBBarChartView.h in Headers */,
+				1D67650A1BBE263600FFB44A /* JBChartView.h in Headers */,
+				1D6764E71BBE258A00FFB44A /* JBChart.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		1D60AA4D1B27EF5D000D4D5A /* arukun */ = {
 			isa = PBXNativeTarget;
@@ -202,10 +390,12 @@
 				1D60AA4A1B27EF5D000D4D5A /* Sources */,
 				1D60AA4B1B27EF5D000D4D5A /* Frameworks */,
 				1D60AA4C1B27EF5D000D4D5A /* Resources */,
+				1D6764D91BBE251600FFB44A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1D6764F81BBE258B00FFB44A /* PBXTargetDependency */,
 			);
 			name = arukun;
 			productName = arukun;
@@ -230,6 +420,61 @@
 			productReference = 1D60AA671B27EF5D000D4D5A /* arukunTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		1D6764C61BBE251600FFB44A /* JBChartTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6764DA1BBE251600FFB44A /* Build configuration list for PBXNativeTarget "JBChartTests" */;
+			buildPhases = (
+				1D6764C31BBE251600FFB44A /* Sources */,
+				1D6764C41BBE251600FFB44A /* Frameworks */,
+				1D6764C51BBE251600FFB44A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D6764CC1BBE251600FFB44A /* PBXTargetDependency */,
+			);
+			name = JBChartTests;
+			productName = JBChartTests;
+			productReference = 1D6764C71BBE251600FFB44A /* JBChartTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1D6764E11BBE258A00FFB44A /* JBChart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6764FB1BBE258B00FFB44A /* Build configuration list for PBXNativeTarget "JBChart" */;
+			buildPhases = (
+				1D6764DD1BBE258A00FFB44A /* Sources */,
+				1D6764DE1BBE258A00FFB44A /* Frameworks */,
+				1D6764DF1BBE258A00FFB44A /* Headers */,
+				1D6764E01BBE258A00FFB44A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JBChart;
+			productName = JBChart;
+			productReference = 1D6764E21BBE258A00FFB44A /* JBChart.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		1D6764EB1BBE258A00FFB44A /* JBChartTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6764FE1BBE258B00FFB44A /* Build configuration list for PBXNativeTarget "JBChartTests" */;
+			buildPhases = (
+				1D6764E81BBE258A00FFB44A /* Sources */,
+				1D6764E91BBE258A00FFB44A /* Frameworks */,
+				1D6764EA1BBE258A00FFB44A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1D6764EF1BBE258A00FFB44A /* PBXTargetDependency */,
+				1D6764F11BBE258A00FFB44A /* PBXTargetDependency */,
+			);
+			name = JBChartTests;
+			productName = JBChartTests;
+			productReference = 1D6764EC1BBE258A00FFB44A /* JBChartTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -244,6 +489,17 @@
 					};
 					1D60AA661B27EF5D000D4D5A = {
 						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 1D60AA4D1B27EF5D000D4D5A;
+					};
+					1D6764C61BBE251600FFB44A = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 1D60AA4D1B27EF5D000D4D5A;
+					};
+					1D6764E11BBE258A00FFB44A = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					1D6764EB1BBE258A00FFB44A = {
+						CreatedOnToolsVersion = 6.4;
 						TestTargetID = 1D60AA4D1B27EF5D000D4D5A;
 					};
 				};
@@ -263,6 +519,9 @@
 			targets = (
 				1D60AA4D1B27EF5D000D4D5A /* arukun */,
 				1D60AA661B27EF5D000D4D5A /* arukunTests */,
+				1D6764C61BBE251600FFB44A /* JBChartTests */,
+				1D6764E11BBE258A00FFB44A /* JBChart */,
+				1D6764EB1BBE258A00FFB44A /* JBChartTests */,
 			);
 		};
 /* End PBXProject section */
@@ -280,12 +539,34 @@
 				7B2D369B1BB4EE2100DCFF38 /* Charapicture.plist in Resources */,
 				7B9A6D831B3840290056D886 /* 1179.png in Resources */,
 				1D60AA5D1B27EF5D000D4D5A /* Main.storyboard in Resources */,
+				1D6764B41BBE240D00FFB44A /* Info.plist in Resources */,
 				7B2D369D1BB4EFAC00DCFF38 /* Furniture.plist in Resources */,
 				7B2B24D119D7E73600A75413 /* Room.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1D60AA651B27EF5D000D4D5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D6764C51BBE251600FFB44A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D6764E01BBE258A00FFB44A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D6764EA1BBE258A00FFB44A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,10 +583,14 @@
 				7B0E21BF1B3A4716006DD9EF /* RecAbout.swift in Sources */,
 				1D60AA581B27EF5D000D4D5A /* GameScene.swift in Sources */,
 				1D60AA5A1B27EF5D000D4D5A /* GameViewController.swift in Sources */,
+				1D6764B61BBE240D00FFB44A /* JBChartView.m in Sources */,
+				1D6764AA1BBE22D300FFB44A /* FirstViewController.swift in Sources */,
 				7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */,
 				7B36E03E1B39A61600A62CF3 /* RecViewController.swift in Sources */,
+				1D6764B51BBE240D00FFB44A /* JBBarChartView.m in Sources */,
 				7B36E0401B39A64600A62CF3 /* RecScene.swift in Sources */,
 				1D60AA541B27EF5D000D4D5A /* AppDelegate.swift in Sources */,
+				1D6764B71BBE240D00FFB44A /* JBLineChartView.m in Sources */,
 				7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */,
 				7B9A6D891B3847CD0056D886 /* DiaryViewController.swift in Sources */,
 				7B93CD1F1B4F68AB00A6E701 /* Model.xcdatamodeld in Sources */,
@@ -321,6 +606,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1D6764C31BBE251600FFB44A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D6764DD1BBE258A00FFB44A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6765091BBE263600FFB44A /* JBBarChartView.m in Sources */,
+				1D67650D1BBE263600FFB44A /* JBLineChartView.m in Sources */,
+				1D67650B1BBE263600FFB44A /* JBChartView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D6764E81BBE258A00FFB44A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6764F61BBE258B00FFB44A /* JBChartTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -328,6 +638,26 @@
 			isa = PBXTargetDependency;
 			target = 1D60AA4D1B27EF5D000D4D5A /* arukun */;
 			targetProxy = 1D60AA681B27EF5D000D4D5A /* PBXContainerItemProxy */;
+		};
+		1D6764CC1BBE251600FFB44A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D60AA4D1B27EF5D000D4D5A /* arukun */;
+			targetProxy = 1D6764CB1BBE251600FFB44A /* PBXContainerItemProxy */;
+		};
+		1D6764EF1BBE258A00FFB44A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6764E11BBE258A00FFB44A /* JBChart */;
+			targetProxy = 1D6764EE1BBE258A00FFB44A /* PBXContainerItemProxy */;
+		};
+		1D6764F11BBE258A00FFB44A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D60AA4D1B27EF5D000D4D5A /* arukun */;
+			targetProxy = 1D6764F01BBE258A00FFB44A /* PBXContainerItemProxy */;
+		};
+		1D6764F81BBE258B00FFB44A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6764E11BBE258A00FFB44A /* JBChart */;
+			targetProxy = 1D6764F71BBE258B00FFB44A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -438,6 +768,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = arukun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -448,6 +779,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = arukun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,6 +820,118 @@
 			};
 			name = Release;
 		};
+		1D6764DB1BBE251600FFB44A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JBChartTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/arukun.app/arukun";
+			};
+			name = Debug;
+		};
+		1D6764DC1BBE251600FFB44A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JBChartTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/arukun.app/arukun";
+			};
+			name = Release;
+		};
+		1D6764FC1BBE258B00FFB44A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JBChart/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1D6764FD1BBE258B00FFB44A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = JBChart/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1D6764FF1BBE258B00FFB44A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JBChartTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/arukun.app/arukun";
+			};
+			name = Debug;
+		};
+		1D6765001BBE258B00FFB44A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JBChartTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/arukun.app/arukun";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -517,6 +961,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		1D6764DA1BBE251600FFB44A /* Build configuration list for PBXNativeTarget "JBChartTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6764DB1BBE251600FFB44A /* Debug */,
+				1D6764DC1BBE251600FFB44A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1D6764FB1BBE258B00FFB44A /* Build configuration list for PBXNativeTarget "JBChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6764FC1BBE258B00FFB44A /* Debug */,
+				1D6764FD1BBE258B00FFB44A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1D6764FE1BBE258B00FFB44A /* Build configuration list for PBXNativeTarget "JBChartTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6764FF1BBE258B00FFB44A /* Debug */,
+				1D6765001BBE258B00FFB44A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
