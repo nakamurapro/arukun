@@ -27,7 +27,7 @@ class RecAbout: SKScene {
         var backTexture = SKTexture(imageNamed: "1179")
         var backButton = SKSpriteNode(texture: backTexture)
         backButton.size = CGSize(width: backTexture.size().width*0.3, height: backTexture.size().height*0.3)
-        backButton.position = CGPointMake(self.size.width*0.3, self.size.height*0.3)
+        backButton.position = CGPointMake(self.size.width*0.4, self.size.height*0.3)
         backButton.name = "goback"
         
         self.addChild(backButton)

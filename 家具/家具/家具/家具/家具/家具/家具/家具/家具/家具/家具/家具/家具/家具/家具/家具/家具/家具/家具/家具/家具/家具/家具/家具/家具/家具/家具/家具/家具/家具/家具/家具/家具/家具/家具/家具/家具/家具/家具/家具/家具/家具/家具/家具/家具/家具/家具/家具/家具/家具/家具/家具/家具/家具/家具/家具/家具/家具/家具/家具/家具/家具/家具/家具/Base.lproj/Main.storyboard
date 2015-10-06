@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LVB-YS-i5n">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="CtS-rA-C9T">
+            <objects>
+                <viewController id="LVB-YS-i5n" customClass="GameViewController" customModule="家具" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PCf-gQ-wO7"/>
+                        <viewControllerLayoutGuide type="bottom" id="b3d-qh-BLL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bdc-N1-crn" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="CXN-8p-WMq">
+                                <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2l-pH-XqY">
+                                <rect key="frame" x="195" y="276" width="210" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="家具を購入する">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="YC3-7y-i0f" kind="showDetail" id="ccT-Ti-XEm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3g-HP-cbN">
+                                <rect key="frame" x="195" y="156" width="210" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="家具を配置する">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="lTl-9f-Fh7" kind="showDetail" id="Qj0-si-9Rb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="CXN-8p-WMq" secondAttribute="centerX" id="OaE-7D-0lQ"/>
+                            <constraint firstAttribute="centerX" secondItem="e3g-HP-cbN" secondAttribute="centerX" id="bzT-p2-wu9"/>
+                            <constraint firstAttribute="centerX" secondItem="a2l-pH-XqY" secondAttribute="centerX" id="iWu-gu-q4Z"/>
+                            <constraint firstAttribute="centerY" secondItem="CXN-8p-WMq" secondAttribute="centerY" id="uT4-nz-vxv"/>
+                            <constraint firstAttribute="centerY" secondItem="a2l-pH-XqY" secondAttribute="centerY" id="uWX-7v-92M"/>
+                            <constraint firstAttribute="centerY" secondItem="e3g-HP-cbN" secondAttribute="centerY" constant="120" id="yv5-dg-cds"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="BuyButton" destination="a2l-pH-XqY" id="Qu2-UE-CAP"/>
+                        <outlet property="SetButton" destination="e3g-HP-cbN" id="dNQ-4M-9xw"/>
+                        <outlet property="buyButton" destination="e3g-HP-cbN" id="c9j-OB-y6W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135" y="381"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="d2Q-Da-wYK">
+            <objects>
+                <viewController id="YC3-7y-i0f" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qhQ-qB-zGc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gu6-tz-rLO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aGQ-We-Ylr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="uNv-nG-O2l">
+                                <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家具を購入する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7i-SQ-6eI">
+                                <rect key="frame" x="195" y="82" width="210" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eT9-Br-XBX">
+                                <rect key="frame" x="48" y="164" width="536" height="416"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="E7i-SQ-6eI" secondAttribute="centerX" id="0FT-pE-0ky"/>
+                            <constraint firstItem="uNv-nG-O2l" firstAttribute="centerY" secondItem="aGQ-We-Ylr" secondAttribute="centerY" id="PsE-AQ-cMF"/>
+                            <constraint firstAttribute="centerX" secondItem="uNv-nG-O2l" secondAttribute="centerX" id="bii-qi-07n"/>
+                            <constraint firstAttribute="centerY" secondItem="E7i-SQ-6eI" secondAttribute="centerY" constant="200" id="d2z-Ss-dzx"/>
+                            <constraint firstItem="uNv-nG-O2l" firstAttribute="centerX" secondItem="aGQ-We-Ylr" secondAttribute="centerX" id="hcQ-FK-sXY"/>
+                            <constraint firstAttribute="centerY" secondItem="uNv-nG-O2l" secondAttribute="centerY" id="qQu-Wp-d9R"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ed-F3-lIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="262" y="1097"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Vga-Y4-qq7">
+            <objects>
+                <viewController id="lTl-9f-Fh7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5L2-K9-wPx"/>
+                        <viewControllerLayoutGuide type="bottom" id="dwZ-XB-5nG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oLY-G6-xgO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="FJc-iR-QUo">
+                                <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家具を配置する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qag-HI-EbX">
+                                <rect key="frame" x="195" y="82" width="210" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="FJc-iR-QUo" secondAttribute="centerX" id="2my-Ii-Iqg"/>
+                            <constraint firstAttribute="centerY" secondItem="qag-HI-EbX" secondAttribute="centerY" constant="200" id="Gs8-Eb-ufk"/>
+                            <constraint firstAttribute="centerY" secondItem="qag-HI-EbX" secondAttribute="centerY" constant="200" id="JWI-6S-9XZ"/>
+                            <constraint firstAttribute="centerY" secondItem="FJc-iR-QUo" secondAttribute="centerY" id="dB1-ub-lP6"/>
+                            <constraint firstAttribute="centerX" secondItem="qag-HI-EbX" secondAttribute="centerX" id="mKz-45-AXx"/>
+                            <constraint firstAttribute="centerX" secondItem="qag-HI-EbX" secondAttribute="centerX" id="x9P-7r-Yau"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z4d-ME-OcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="498"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="2048" height="2048"/>
+    </resources>
+</document>

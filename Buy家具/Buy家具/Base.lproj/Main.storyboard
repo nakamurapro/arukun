@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Buy家具" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BWf-NJ-JgE">
+                                <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHS-Ef-uiM">
+                                <rect key="frame" x="195" y="82" width="210" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="304" id="uVw-Bv-B18"/>
+                                </constraints>
+                                <string key="text" base64-UTF8="YES">
+COWutuWFt+OCkuizvOWFpeOBmeOCiw
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uVw-Bv-B18"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djn-dT-wKn">
+                                <rect key="frame" x="25" y="138" width="550" height="324"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.41000000000000003" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="BWf-NJ-JgE" secondAttribute="centerY" id="0MM-4N-1Tx"/>
+                            <constraint firstAttribute="centerY" secondItem="HHS-Ef-uiM" secondAttribute="centerY" constant="200" id="3y5-2l-Gfr"/>
+                            <constraint firstAttribute="centerX" secondItem="BWf-NJ-JgE" secondAttribute="centerX" id="6ar-94-5mF"/>
+                            <constraint firstItem="HHS-Ef-uiM" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="106" id="LG9-xJ-fIo"/>
+                            <constraint firstAttribute="centerX" secondItem="HHS-Ef-uiM" secondAttribute="centerX" id="LxM-Et-V20"/>
+                            <constraint firstItem="djn-dT-wKn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="9" id="ShD-Ee-VDJ"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="HHS-Ef-uiM" secondAttribute="bottom" constant="390" id="T2a-mq-1kT"/>
+                            <constraint firstItem="djn-dT-wKn" firstAttribute="top" secondItem="HHS-Ef-uiM" secondAttribute="bottom" constant="20" id="lRh-Ck-dkj"/>
+                            <constraint firstAttribute="centerY" secondItem="djn-dT-wKn" secondAttribute="centerY" id="rj9-zi-AFt"/>
+                            <constraint firstAttribute="centerX" secondItem="djn-dT-wKn" secondAttribute="centerX" id="tVm-kN-CH5"/>
+                            <constraint firstItem="HHS-Ef-uiM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="150" id="xiM-xo-DsP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LG9-xJ-fIo"/>
+                                <exclude reference="xiM-xo-DsP"/>
+                                <exclude reference="T2a-mq-1kT"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="Scroll" destination="djn-dT-wKn" id="nH6-E0-TMb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="2048" height="2048"/>
+    </resources>
+</document>

@@ -61,10 +61,10 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         barChart.minimumValue = 0
         barChart.maximumValue = 25000
         
+        
         barChart.reloadData()
         
         barChart.setState(.Collapsed, animated: false)
-        
         
         data.font = UIFont(name: "HiraKakuProN-W3", size: 16)
         data2.font = UIFont(name: "HiraKakuProN-W3", size: 16)

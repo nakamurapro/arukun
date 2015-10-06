@@ -26,17 +26,27 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     //値
     var chartData = [5002, 8031, 14543, 620, 20175, 7579, 10003]
     
+
+    func makeDays() -> Array<NSDate>{
+        var Days :Array<NSDate> = []
+        var today = NSDate()
+        Days.append(today)
+        
+        for i in 1...6{
+            var number: NSTimeInterval = NSTimeInterval(-i*60*60*24)
+            var day :NSDate! = NSDate(timeInterval: number ,sinceDate: today)
+            Days.append(day)
+        }
+        
+        return Days
+    }
     
     
     override func viewDidLoad() {
         //日付のやつ
-        let Day1 = NSDate()
-        let Day2: NSDate! = NSDate(timeInterval: -60*60*24*1 ,sinceDate: Day1)
-        let Day3: NSDate! = NSDate(timeInterval: -60*60*24*2 ,sinceDate: Day1)
-        let Day4: NSDate! = NSDate(timeInterval: -60*60*24*3 ,sinceDate: Day1)
-        let Day5: NSDate! = NSDate(timeInterval: -60*60*24*4 ,sinceDate: Day1)
-        let Day6: NSDate! = NSDate(timeInterval: -60*60*24*5 ,sinceDate: Day1)
-        let Day7: NSDate! = NSDate(timeInterval: -60*60*24*6 ,sinceDate: Day1)
+        
+        let Days :Array<NSDate> = makeDays()
+  
         let dateFormatter = NSDateFormatter()                                   // フォーマットの取得
         dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")  // JPロケール
         dateFormatter.dateFormat = "MM/dd"         // フォーマットの指定
@@ -69,10 +79,10 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         
         data2.text = "今日の歩数・・・\(chartData[0])歩"
         
-        data3.text = "\(dateFormatter.stringFromDate(Day7))〜\(dateFormatter.stringFromDate(Day1))の平均・・・\((chartData[0]+chartData[1]+chartData[2]+chartData[3]+chartData[4]+chartData[5]+chartData[6])/7)歩"
-        data4.text = "\(dateFormatter.stringFromDate(Day7))〜\(dateFormatter.stringFromDate(Day1))の燃焼カロリー・・・\((chartData[0]+chartData[1]+chartData[2]+chartData[3]+chartData[4]+chartData[5]+chartData[6])/55)kcal"
+        data3.text = "\(dateFormatter.stringFromDate(Days[6]))〜\(dateFormatter.stringFromDate(Days[0]))の平均・・・\((chartData[0]+chartData[1]+chartData[2]+chartData[3]+chartData[4]+chartData[5]+chartData[6])/7)歩"
+        data4.text = "\(dateFormatter.stringFromDate(Days[6]))〜\(dateFormatter.stringFromDate(Days[0]))の燃焼カロリー・・・\((chartData[0]+chartData[1]+chartData[2]+chartData[3]+chartData[4]+chartData[5]+chartData[6])/55)kcal"
         
-        }
+    }
     
     
     
@@ -82,13 +92,8 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     override func viewWillAppear(animated: Bool) {
         
         //日付のやつ
-        let Day1 = NSDate()
-        let Day2: NSDate! = NSDate(timeInterval: -60*60*24*1 ,sinceDate: Day1)
-        let Day3: NSDate! = NSDate(timeInterval: -60*60*24*2 ,sinceDate: Day1)
-        let Day4: NSDate! = NSDate(timeInterval: -60*60*24*3 ,sinceDate: Day1)
-        let Day5: NSDate! = NSDate(timeInterval: -60*60*24*4 ,sinceDate: Day1)
-        let Day6: NSDate! = NSDate(timeInterval: -60*60*24*5 ,sinceDate: Day1)
-        let Day7: NSDate! = NSDate(timeInterval: -60*60*24*6 ,sinceDate: Day1)
+        let Days :Array<NSDate> = makeDays()
+
         let dateFormatter = NSDateFormatter()                                   // フォーマットの取得
         dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")  // JPロケール
         dateFormatter.dateFormat = "MM/dd"         // フォーマットの指定
@@ -107,43 +112,43 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         var footer1 = UILabel(frame: CGRectMake(2, 0, barChart.frame.width/2 - 8, 16))
         footer1.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
         footer1.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer1.text = "\(dateFormatter.stringFromDate(Day7))"
+        footer1.text = "\(dateFormatter.stringFromDate(Days[6]))"
         //グラフの横軸の値右
         var footer2 = UILabel(frame: CGRectMake(barChart.frame.width/7 - 1, 0, barChart.frame.width/2 - 8, 16))
         footer2.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
         footer2.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer2.text = "\(dateFormatter.stringFromDate(Day6))"
+        footer2.text = "\(dateFormatter.stringFromDate(Days[5]))"
         footer2.textAlignment = NSTextAlignment.Left
         
         
         var footer3 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 2 - 0, 0, barChart.frame.width/2 - 8, 16))
         footer3.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
         footer3.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer3.text = "\(dateFormatter.stringFromDate(Day5))"
+        footer3.text = "\(dateFormatter.stringFromDate(Days[4]))"
         footer3.textAlignment = NSTextAlignment.Left
         
         var footer4 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 3 - 0, 0, barChart.frame.width/2 - 8, 16))
         footer4.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
         footer4.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer4.text = "\(dateFormatter.stringFromDate(Day4))"
+        footer4.text = "\(dateFormatter.stringFromDate(Days[3]))"
         footer4.textAlignment = NSTextAlignment.Left
         
         var footer5 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 4 - 0, 0, barChart.frame.width/2 - 8, 16))
         footer5.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
         footer5.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer5.text = "\(dateFormatter.stringFromDate(Day3))"
+        footer5.text = "\(dateFormatter.stringFromDate(Days[2]))"
         footer5.textAlignment = NSTextAlignment.Left
         
         var footer6 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 5 - 0, 0, barChart.frame.width/2 - 8, 16))
         footer6.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
         footer6.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer6.text = "\(dateFormatter.stringFromDate(Day2))"
+        footer6.text = "\(dateFormatter.stringFromDate(Days[1]))"
         footer6.textAlignment = NSTextAlignment.Left
         
         var footer7 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 6 - 0, 0, barChart.frame.width/2 - 8, 16))
         footer7.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
         footer7.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer7.text = "\(dateFormatter.stringFromDate(Day1))"
+        footer7.text = "\(dateFormatter.stringFromDate(Days[0]))"
         footer7.textAlignment = NSTextAlignment.Left
         
         
@@ -208,20 +213,16 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     
     func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt) {
         
+        let Days :Array<NSDate> = makeDays()
+
         //日付のやつ
-        let Day1 = NSDate()
-        let Day2: NSDate! = NSDate(timeInterval: -60*60*24*1 ,sinceDate: Day1)
-        let Day3: NSDate! = NSDate(timeInterval: -60*60*24*2 ,sinceDate: Day1)
-        let Day4: NSDate! = NSDate(timeInterval: -60*60*24*3 ,sinceDate: Day1)
-        let Day5: NSDate! = NSDate(timeInterval: -60*60*24*4 ,sinceDate: Day1)
-        let Day6: NSDate! = NSDate(timeInterval: -60*60*24*5 ,sinceDate: Day1)
-        let Day7: NSDate! = NSDate(timeInterval: -60*60*24*6 ,sinceDate: Day1)
+
         let dateFormatter = NSDateFormatter()                                   // フォーマットの取得
         dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")  // JPロケール
         dateFormatter.dateFormat = "MM/dd"         // フォーマットの指定
         //日付のやつ
-       
-        var onclick = ["\(dateFormatter.stringFromDate(Day7))", "\(dateFormatter.stringFromDate(Day6))", "\(dateFormatter.stringFromDate(Day5))", "\(dateFormatter.stringFromDate(Day4))", "\(dateFormatter.stringFromDate(Day3))", "\(dateFormatter.stringFromDate(Day2))", "\(dateFormatter.stringFromDate(Day1))"]
+        
+        var onclick = ["\(dateFormatter.stringFromDate(Days[6]))", "\(dateFormatter.stringFromDate(Days[5]))", "\(dateFormatter.stringFromDate(Days[4]))", "\(dateFormatter.stringFromDate(Days[3]))", "\(dateFormatter.stringFromDate(Days[2]))", "\(dateFormatter.stringFromDate(Days[1]))", "\(dateFormatter.stringFromDate(Days[0]))"]
         
         let data = chartData[Int(index)]
         let key = onclick[Int(index)]
