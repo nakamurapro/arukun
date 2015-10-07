@@ -14,11 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var data:String!
 
     var window: UIWindow?
+    var counter: Int! = 0
+
 
     
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        var i : NSTimeInterval = 180
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(i)
+        
         return true
     }
 
@@ -105,6 +110,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void){
+        let now = NSDate() // 現在日時の取得
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        
+        println(dateFormatter.stringFromDate(now))
+        completionHandler(UIBackgroundFetchResult.NewData)
+        
     }
 
 
