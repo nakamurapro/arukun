@@ -8,13 +8,18 @@
 
 import SpriteKit
 import Foundation
+import CoreMotion
 
 class GameScene: SKScene {
-    var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    //var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var pointLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
     var scoreSprite = SKSpriteNode(imageNamed: "score")
     var sprite = SKSpriteNode(imageNamed:"0")
-
+    var myMotionManager: CMMotionManager!
+    var X:Double! = 1.0
+    var Y:Double! = 1.0
+    var Z:Double! = 1.0
+    var Counter :Int = 0
     
     override func didMoveToView(view: SKView) {
 //        /* Setup your scene here */
@@ -30,6 +35,29 @@ class GameScene: SKScene {
         sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
         
         self.addChild(sprite)
+        
+        myMotionManager = CMMotionManager()
+        
+        // 更新周期を設定.
+        myMotionManager.accelerometerUpdateInterval = 1/5
+        
+        // 加速度の取得を開始.
+        myMotionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {(accelerometerData:CMAccelerometerData!, error:NSError!) -> Void in
+            
+            var x = accelerometerData.acceleration.x
+            var y = accelerometerData.acceleration.y
+            var z = accelerometerData.acceleration.z
+            var CheckX = self.X - x
+            var CheckY = self.Y - y
+            var CheckZ = self.Z - z
+            
+            if(CheckX > 0.7 || CheckY > 0.7 || CheckZ > 0.7){
+                self.Counter = self.Counter + 1
+            }
+            self.X = x; self.Y = y; self.Z = z
+            
+        })
+
     }
     
     func scoreLayout(){
@@ -47,7 +75,7 @@ class GameScene: SKScene {
         
     }
     override func update(currentTime: NSTimeInterval) {
-        pointLabel.text = toString(app.counter) + "歩"
+        pointLabel.text = toString(Counter) + "歩"
     }
     
     func layoutObject(){

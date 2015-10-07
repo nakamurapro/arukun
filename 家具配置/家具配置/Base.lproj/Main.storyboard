@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="家具配置" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="SQK-5v-d8s">
+                                <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFZ-BF-tyc">
+                                <rect key="frame" x="150" y="100" width="300" height="400"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="UPL-P9-aQr"/>
+                                    <constraint firstAttribute="height" constant="400" id="es1-dL-6cJ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="m8t-QS-lfU"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="nVZ-Yw-izk"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="UPL-P9-aQr"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家具を配置する" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqd-MX-KCt">
+                                <rect key="frame" x="195" y="28" width="210" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="gFZ-BF-tyc" secondAttribute="centerY" id="M7a-JQ-tJf"/>
+                            <constraint firstAttribute="centerX" secondItem="iqd-MX-KCt" secondAttribute="centerX" id="bfD-AW-kyx"/>
+                            <constraint firstAttribute="centerY" secondItem="SQK-5v-d8s" secondAttribute="centerY" id="erH-3u-B2E"/>
+                            <constraint firstAttribute="centerX" secondItem="gFZ-BF-tyc" secondAttribute="centerX" id="n87-PG-uRK"/>
+                            <constraint firstAttribute="centerX" secondItem="SQK-5v-d8s" secondAttribute="centerX" id="rSy-g3-ExL"/>
+                            <constraint firstAttribute="centerY" secondItem="iqd-MX-KCt" secondAttribute="centerY" constant="254" id="vYV-l1-rL1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="Scroll" destination="gFZ-BF-tyc" id="cbS-tp-eWU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="2048" height="2048"/>
+    </resources>
+</document>
