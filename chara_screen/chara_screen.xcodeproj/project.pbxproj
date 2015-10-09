@@ -15,6 +15,8 @@
 		1DEFE4941BC2795400CBD7B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DEFE4931BC2795400CBD7B6 /* Images.xcassets */; };
 		1DEFE4971BC2795400CBD7B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEFE4951BC2795400CBD7B6 /* LaunchScreen.xib */; };
 		1DEFE4A31BC2795400CBD7B6 /* chara_screenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEFE4A21BC2795400CBD7B6 /* chara_screenTests.swift */; };
+		7BD6657C1BC4C0DB00D768B4 /* bgm1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BD6657B1BC4C0DB00D768B4 /* bgm1.mp3 */; };
+		7BD665801BC4C5DA00D768B4 /* bgm2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BD6657F1BC4C5DA00D768B4 /* bgm2.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		1DEFE49C1BC2795400CBD7B6 /* chara_screenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chara_screenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEFE4A11BC2795400CBD7B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DEFE4A21BC2795400CBD7B6 /* chara_screenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chara_screenTests.swift; sourceTree = "<group>"; };
+		7BD6657B1BC4C0DB00D768B4 /* bgm1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm1.mp3; sourceTree = "<group>"; };
+		7BD6657F1BC4C5DA00D768B4 /* bgm2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 		1DEFE4861BC2795400CBD7B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7BD6657B1BC4C0DB00D768B4 /* bgm1.mp3 */,
+				7BD6657F1BC4C5DA00D768B4 /* bgm2.mp3 */,
 				1DEFE4871BC2795400CBD7B6 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -198,10 +204,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BD6657C1BC4C0DB00D768B4 /* bgm1.mp3 in Resources */,
 				1DEFE4971BC2795400CBD7B6 /* LaunchScreen.xib in Resources */,
 				1DEFE4941BC2795400CBD7B6 /* Images.xcassets in Resources */,
 				1DEFE48B1BC2795400CBD7B6 /* GameScene.sks in Resources */,
 				1DEFE4921BC2795400CBD7B6 /* Main.storyboard in Resources */,
+				7BD665801BC4C5DA00D768B4 /* bgm2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
