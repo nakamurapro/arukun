@@ -142,7 +142,7 @@ class ViewController: UIViewController {
                 self.view.addSubview(backView)
                 
                 //テキスト表示
-                TextFurniture.text = "\(name[SetNumber])をどこに配置しますか？"
+                TextFurniture.text = "どこに\(name[SetNumber])を配置しますか？"
                 self.view.addSubview(TextFurniture)
                 //戻るボタン配置
                 backButton.hidden = false
