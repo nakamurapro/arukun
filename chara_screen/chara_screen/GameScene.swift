@@ -14,7 +14,7 @@ class GameScene: SKScene {
     //var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var pointLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
     var scoreSprite = SKSpriteNode(imageNamed: "score")
-    var sprite = SKSpriteNode(imageNamed:"0")
+    var sprite = SKSpriteNode(imageNamed:"G")
     var myMotionManager: CMMotionManager!
     var X:Double! = 1.0
     var Y:Double! = 1.0
@@ -35,6 +35,17 @@ class GameScene: SKScene {
         sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
         
         self.addChild(sprite)
+        //キャラにアニメーションを
+        var anime1 = SKAction.scaleYTo(0.06, duration: 1.5)
+        var anime2 = SKAction.scaleYTo(0.05, duration: 1.5)
+        var anime3 = SKAction.waitForDuration(3.0)
+        var Anime = SKAction.sequence([anime1,anime2,anime3])
+        var RepeatAnime = SKAction.repeatActionForever(Anime)
+        sprite.runAction(RepeatAnime)
+        //曲を流す
+        var PlayMusic :SKAction = SKAction.playSoundFileNamed("bgm2.mp3", waitForCompletion: true)
+        var RepeatMusic = SKAction.repeatActionForever(PlayMusic)
+        self.runAction(RepeatMusic)
         
         myMotionManager = CMMotionManager()
         

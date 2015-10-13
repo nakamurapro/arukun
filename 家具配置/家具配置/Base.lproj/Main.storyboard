@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="SQK-5v-d8s">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="SQK-5v-d8s">
                                 <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFZ-BF-tyc">
@@ -43,11 +43,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SQK-5v-d8s" firstAttribute="centerY" secondItem="gFZ-BF-tyc" secondAttribute="centerY" id="BCI-U3-byM"/>
                             <constraint firstAttribute="centerY" secondItem="gFZ-BF-tyc" secondAttribute="centerY" id="M7a-JQ-tJf"/>
                             <constraint firstAttribute="centerX" secondItem="iqd-MX-KCt" secondAttribute="centerX" id="bfD-AW-kyx"/>
-                            <constraint firstAttribute="centerY" secondItem="SQK-5v-d8s" secondAttribute="centerY" id="erH-3u-B2E"/>
+                            <constraint firstItem="SQK-5v-d8s" firstAttribute="centerX" secondItem="gFZ-BF-tyc" secondAttribute="centerX" id="cSL-nZ-9c1"/>
                             <constraint firstAttribute="centerX" secondItem="gFZ-BF-tyc" secondAttribute="centerX" id="n87-PG-uRK"/>
-                            <constraint firstAttribute="centerX" secondItem="SQK-5v-d8s" secondAttribute="centerX" id="rSy-g3-ExL"/>
                             <constraint firstAttribute="centerY" secondItem="iqd-MX-KCt" secondAttribute="centerY" constant="254" id="vYV-l1-rL1"/>
                         </constraints>
                     </view>
