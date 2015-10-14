@@ -12,7 +12,7 @@ import SpriteKit
 class ViewController: UIViewController {
 
     @IBOutlet var Scroll: UIScrollView!
-    var phoneSize :CGSize = UIScreen.mainScreen().bounds.size
+    var phoneSize :CGSize = UIScreen.mainScreen().bounds.size //画面サイズ
     private var myWindow :UIWindow!
     var BuyButton :UIButton!
     var backButton :UIButton! //戻るボタン
@@ -20,15 +20,22 @@ class ViewController: UIViewController {
     var SetButtons :Array<UIButton> = []
     private var myTextView :UITextView! //家具の名前
     private var Text :UITextView! //テキスト
+    private var PointView :UITextView! //所持ポイント表示
     private var price :UITextView! //値段
     var imageView :UIImageView! //これは商品
+    var boughtImage = UIImage(named: "bought") //購入済み
+    var PlayerPoint :Int = 1000   //お金
+    var BuyFurniture :Dictionary<String,String>! //何を買おうとしてるのか
+    var selected: Int!  //選んだ番号
+    var bought :Array<UIImageView> = [] //買ったのどうなの
+    
     //家具
     var data = [
         ["name" :"木のイス", "point" :"100", "have" :"false", "pic" :"kagu1"],
         ["name" :"しゃれたイス", "point" :"150", "have" :"false", "pic" :"kagu2"],
         ["name" :"こさねぇ", "point" :"100" ,"have" :"true", "pic" :"kagu3"],
         ["name" :"観葉植物", "point" :"80" ,"have" :"false", "pic" :"kagu4"],
-        ["name" :"素朴な背景", "point" : "500", "have" :"false", "pic" :"back1"]
+        ["name" :"素朴な背景", "point" : "700", "have" :"false", "pic" :"back1"]
     ]    //場所
         
     override func viewDidLoad() {
@@ -81,11 +88,19 @@ class ViewController: UIViewController {
         Text.editable = false
         Text.center = CGPointMake(self.view.frame.width/2,100)
         
-        //購入済ボタン
-        var boughtImage = UIImage(named: "bought")
-        var bought = UIImageView(image: boughtImage)
-        bought.frame = CGRectMake(0, 0, 50, 50)
-        bought.center = CGPointMake(75, 75)
+        PointView = UITextView(frame: CGRectMake(0, 0, 300, 100))
+        PointView.userInteractionEnabled = true
+        PointView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        PointView.text = "所持ポイント：\(toString(PlayerPoint))P"
+        PointView.font = UIFont.systemFontOfSize(CGFloat(20))
+        PointView.textColor = UIColor.blackColor()
+        PointView.textAlignment = NSTextAlignment.Left
+        PointView.editable = false
+        PointView.center = CGPointMake(self.view.frame.width*0.5,self.view.frame.height*0.85)
+        self.view.addSubview(PointView)
+
+        
+
 
         for i in 0...4 { //メイン画面の用意
             var output = self.data[i]
@@ -134,14 +149,16 @@ class ViewController: UIViewController {
             price.center = CGPointMake(125,135)
             View.addSubview(price)
             
-            if(output["have"]! == "true"){
-                View.addSubview(bought)
+            bought.append(UIImageView(image: boughtImage))
+            bought[i].frame = CGRectMake(0, 0, 50, 50)
+            bought[i].center = CGPointMake(75, 75)
+            View.addSubview(bought[i])
+            bought[i].tag = i
+            if(output["have"]! == "false"){
+                bought[i].hidden = true
             }
             
             Scroll.addSubview(View)
-            
-            //部屋配置確認用
-            
         }
         
     }
@@ -156,18 +173,24 @@ class ViewController: UIViewController {
     }
     
     internal func BuyFurniture(sender: UIButton){ //買う
+        PlayerPoint = PlayerPoint - BuyFurniture["point"]!.toInt()!
         BuyButton.removeFromSuperview()
         myWindow.addSubview(backButton)
         Text.text = "購入しました！"
-        
+        BuyFurniture.updateValue("true", forKey: "have")
+        data[selected] = BuyFurniture
+        bought[selected].hidden = false
+        PointView.text = "所持ポイント：\(toString(PlayerPoint))P"
     }
 
     
     func makeWindow(recognizer: UIGestureRecognizer){ //ウィンドウ作成
         if let imageView = recognizer.view as? UIImageView {
-            var output = data[imageView.tag]
-            var Flg = (output["have"]!)
+            selected = imageView.tag
+            BuyFurniture = data[selected]
+            var Flg = ( BuyFurniture["have"]! )
             if(Flg == "false"){
+                //まずはウィンドウ作ろう
                 myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
                 myWindow.backgroundColor = UIColor.whiteColor()
                 myWindow.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height/2)
@@ -176,14 +199,19 @@ class ViewController: UIViewController {
                 myWindow.makeKeyWindow()
                 self.view.addSubview(myWindow)
                 self.myWindow.makeKeyAndVisible()
-                
-                
-                var name = output["name"]!
-                var point = output["point"]!
-                Text.text = "\(name)を購入しますか？\n必要ポイント：\(point)P\n所持ポイント：1000P"
-                myWindow.addSubview(Text)
-                myWindow.addSubview(BuyButton)
-                myWindow.addSubview(cancelButton)
+
+                var FurniturePoint = BuyFurniture["point"]!.toInt()!
+                if(PlayerPoint >= FurniturePoint){ //足りる！
+                    var name = BuyFurniture["name"]!
+                    Text.text = "\(name)を購入しますか？\n必要ポイント：\(FurniturePoint)P\n所持ポイント：\(PlayerPoint)P"
+                    myWindow.addSubview(Text)
+                    myWindow.addSubview(BuyButton)
+                    myWindow.addSubview(cancelButton)
+                }else { //足りない！
+                    Text.text = "ポイントが足りません！\n必要ポイント：\(FurniturePoint)P\n所持ポイント：\(PlayerPoint)P"
+                    myWindow.addSubview(Text)
+                    myWindow.addSubview(backButton)
+                }
             }
         }
     }

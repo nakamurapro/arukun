@@ -14,7 +14,9 @@ class GameScene: SKScene {
     //var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var pointLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
     var scoreSprite = SKSpriteNode(imageNamed: "score")
-    var sprite = SKSpriteNode(imageNamed:"G")
+    var images = ["G1","G2"]
+    var Animation = [SKTexture]()
+    var sprite = SKSpriteNode(imageNamed: "G1")
     var myMotionManager: CMMotionManager!
     var X:Double! = 1.0
     var Y:Double! = 1.0
@@ -25,7 +27,7 @@ class GameScene: SKScene {
 //        /* Setup your scene here */
         layoutObject()
         scoreLayout()
-//        self.physicsWorld.contactDelegate = self
+        //self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         sprite.physicsBody = SKPhysicsBody(circleOfRadius: 1000)
@@ -35,13 +37,25 @@ class GameScene: SKScene {
         sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
         
         self.addChild(sprite)
-        //キャラにアニメーションを
+        /*キャラにアニメーションを
+        まずは呼吸から*/
         var anime1 = SKAction.scaleYTo(0.06, duration: 1.5)
         var anime2 = SKAction.scaleYTo(0.05, duration: 1.5)
         var anime3 = SKAction.waitForDuration(3.0)
         var Anime = SKAction.sequence([anime1,anime2,anime3])
         var RepeatAnime = SKAction.repeatActionForever(Anime)
         sprite.runAction(RepeatAnime)
+        
+        /*続いてパラパラ*/
+        for image in images{
+            var texture = SKTexture(imageNamed: image)
+            texture.filteringMode = .Linear
+            Animation.append(texture)
+        }
+        let spriteAnimation = SKAction.animateWithTextures(Animation, timePerFrame: 2.0)
+        let repeatAnimation = SKAction.repeatActionForever(spriteAnimation)
+        sprite.runAction(repeatAnimation)
+
         //曲を流す
         var PlayMusic :SKAction = SKAction.playSoundFileNamed("bgm2.mp3", waitForCompletion: true)
         var RepeatMusic = SKAction.repeatActionForever(PlayMusic)
@@ -90,7 +104,7 @@ class GameScene: SKScene {
     }
     
     func layoutObject(){
-        let background = SKSpriteNode(imageNamed: "mgbace")
+        let background = SKSpriteNode(imageNamed: "background")
         background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
         background.size = self.size
         self.addChild(background)
