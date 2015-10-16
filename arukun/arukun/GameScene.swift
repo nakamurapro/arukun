@@ -79,7 +79,7 @@ class GameScene: SKScene {
     }
     
     func layoutObject(){
-        let background = SKSpriteNode(imageNamed: "mgbace")
+        let background = SKSpriteNode(imageNamed: "main")
         background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
         background.size = self.size
         self.addChild(background)
