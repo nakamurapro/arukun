@@ -10,165 +10,105 @@ import UIKit
 import JBChart
 
 class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
-    
-    
-    
-    
-    
+
     @IBOutlet weak var barChart: JBBarChartView!
-    @IBOutlet weak var informationLabel: UILabel!
-    @IBOutlet weak var data: UILabel!
-    @IBOutlet weak var data2: UILabel!
-    @IBOutlet weak var data3: UILabel!
-    @IBOutlet weak var data4: UILabel!
-    
+    var informationLabel: UILabel!
+    var data: Array<UILabel> = []
+    var day: UIButton!
+    var month: UIButton!
+    var total :Int = 0
     
     //値
-    var chartData = [5002, 8031, 14543, 620, 20175, 7579, 10003]
+    var PresetData = [5002, 8031, 14543, 620, 20175, 7579, 10003] //日付毎のデータです
+    var monthData = [40032, 37175, 50175, 38278, 10941, 34561, 44521] //週毎のデータです
+    var chartData = [5002, 8031, 14543, 620, 20175, 7579, 10003] //表示するためのデータです
     
-
-    func makeDays() -> Array<NSDate>{
-        var Days :Array<NSDate> = []
-        var today = NSDate()
-        Days.append(today)
-        
-        for i in 1...6{
-            var number: NSTimeInterval = NSTimeInterval(-i*60*60*24)
-            var day :NSDate! = NSDate(timeInterval: number ,sinceDate: today)
-            Days.append(day)
-        }
-        
-        return Days
-    }
-    
+    var Days :Array<NSDate> = [] //NSDate型の日付
+    var ShowDays :Array<String> = [] //ユーザーに見せる日付
+    var footers :Array<UILabel> = []
+    let dateFormatter = NSDateFormatter()
+    var texts :Array<String>!
+    var header :UILabel!
     
     override func viewDidLoad() {
         //日付のやつ
-        
-        let Days :Array<NSDate> = makeDays()
-  
-        let dateFormatter = NSDateFormatter()                                   // フォーマットの取得
         dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")  // JPロケール
         dateFormatter.dateFormat = "MM/dd"         // フォーマットの指定
-        //日付のやつ
-        
+        for i in 0...6 {
+            if i == 0{
+                Days.append(NSDate())
+            }else{
+                Days.append( NSDate(timeInterval: -60*60*24*NSTimeInterval(i) ,sinceDate: Days[0]) )
+            }
+            
+            ShowDays.append(dateFormatter.stringFromDate(Days[i]))
+        }
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //背景の色
-        view.backgroundColor = UIColor(red: 255.0/255, green: 241.0/255, blue: 210.0/255, alpha: 1.0)
+        view.backgroundColor = UIColor(red: 255.0/255, green: 230.0/255, blue: 210.0/255, alpha: 1.0)
         
         // bar chart setup
         barChart.backgroundColor = UIColor(red: 255.0/255, green: 241.0/255, blue: 210.0/255, alpha: 1.0)
         barChart.delegate = self
         barChart.dataSource = self
         barChart.minimumValue = 0
-        barChart.maximumValue = 25000
+        
+        var max :Int = PresetData[0]
+        
+        for i in 1...6{
+            if max < PresetData[i]{
+                max = PresetData[i]
+            }
+        }
+        barChart.maximumValue = CGFloat(max)
         
         barChart.reloadData()
         
         barChart.setState(.Collapsed, animated: false)
         
+        for Data in chartData{
+            total += Data
+        }
+        maketext(3)
+        for i in 0...3{
+            var y = CGFloat(i*40)
+            data.append(UILabel(frame: CGRectMake(barChart.frame.origin.x, self.view.frame.height*0.7+y, barChart.frame.width, 30)))
+            data[i].font = UIFont(name: "HiraKakuProN-W3", size: 15)
+            data[i].text = texts[i]
+            data[i].textAlignment = NSTextAlignment.Left
+            self.view.addSubview(data[i])
+        }
         
-        data.font = UIFont(name: "HiraKakuProN-W3", size: 16)
-        data2.font = UIFont(name: "HiraKakuProN-W3", size: 16)
-        data3.font = UIFont(name: "HiraKakuProN-W3", size: 16)
-        data4.font = UIFont(name: "HiraKakuProN-W3", size: 16)
-        
-        data.text = "今日の消費カロリー・・・\(chartData[0]/55)カロリー"
-        
-        data2.text = "今日の歩数・・・\(chartData[0])歩"
-        
-        data3.text = "\(dateFormatter.stringFromDate(Days[6]))〜\(dateFormatter.stringFromDate(Days[0]))の平均・・・\((chartData[0]+chartData[1]+chartData[2]+chartData[3]+chartData[4]+chartData[5]+chartData[6])/7)歩"
-        data4.text = "\(dateFormatter.stringFromDate(Days[6]))〜\(dateFormatter.stringFromDate(Days[0]))の燃焼カロリー・・・\((chartData[0]+chartData[1]+chartData[2]+chartData[3]+chartData[4]+chartData[5]+chartData[6])/55)kcal"
-        
+        makeButtons()
+        informationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: 60))
+        informationLabel.center = CGPointMake(self.view.frame.width*0.5, self.view.frame.height*0.65)
+        informationLabel.textAlignment = NSTextAlignment.Center
+        self.view.addSubview(informationLabel)
     }
     
-    
-    
-    
-    
-    
     override func viewWillAppear(animated: Bool) {
-        
-        //日付のやつ
-        let Days :Array<NSDate> = makeDays()
-
-        let dateFormatter = NSDateFormatter()                                   // フォーマットの取得
-        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")  // JPロケール
-        dateFormatter.dateFormat = "MM/dd"         // フォーマットの指定
-        //日付のやつ
-        
         super.viewWillAppear(animated)
-        
         var footerView = UIView(frame: CGRectMake(0, 0, barChart.frame.width, 16))
         
         //グラフの横幅を表示
         println("viewDidLoad: \(barChart.frame.width)")
         
-        
-        
         //グラフの横軸の値左
-        var footer1 = UILabel(frame: CGRectMake(2, 0, barChart.frame.width/2 - 8, 16))
-        footer1.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
-        footer1.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer1.text = "\(dateFormatter.stringFromDate(Days[6]))"
-        //グラフの横軸の値右
-        var footer2 = UILabel(frame: CGRectMake(barChart.frame.width/7 - 1, 0, barChart.frame.width/2 - 8, 16))
-        footer2.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
-        footer2.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer2.text = "\(dateFormatter.stringFromDate(Days[5]))"
-        footer2.textAlignment = NSTextAlignment.Left
-        
-        
-        var footer3 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 2 - 0, 0, barChart.frame.width/2 - 8, 16))
-        footer3.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
-        footer3.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer3.text = "\(dateFormatter.stringFromDate(Days[4]))"
-        footer3.textAlignment = NSTextAlignment.Left
-        
-        var footer4 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 3 - 0, 0, barChart.frame.width/2 - 8, 16))
-        footer4.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
-        footer4.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer4.text = "\(dateFormatter.stringFromDate(Days[3]))"
-        footer4.textAlignment = NSTextAlignment.Left
-        
-        var footer5 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 4 - 0, 0, barChart.frame.width/2 - 8, 16))
-        footer5.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
-        footer5.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer5.text = "\(dateFormatter.stringFromDate(Days[2]))"
-        footer5.textAlignment = NSTextAlignment.Left
-        
-        var footer6 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 5 - 0, 0, barChart.frame.width/2 - 8, 16))
-        footer6.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
-        footer6.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer6.text = "\(dateFormatter.stringFromDate(Days[1]))"
-        footer6.textAlignment = NSTextAlignment.Left
-        
-        var footer7 = UILabel(frame: CGRectMake(barChart.frame.width/7 * 6 - 0, 0, barChart.frame.width/2 - 8, 16))
-        footer7.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
-        footer7.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        footer7.text = "\(dateFormatter.stringFromDate(Days[0]))"
-        footer7.textAlignment = NSTextAlignment.Left
-        
-        
-        
-        
-        footerView.addSubview(footer1)
-        footerView.addSubview(footer2)
-        footerView.addSubview(footer3)
-        footerView.addSubview(footer4)
-        footerView.addSubview(footer5)
-        footerView.addSubview(footer6)
-        footerView.addSubview(footer7)
-        
-        
-        
-        var header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
+        for i in 0...6 {
+            var x = barChart.frame.width/7 * CGFloat(i)
+            footers.append(UILabel(frame: CGRectMake(x , 0, barChart.frame.width/2 - 8, 16)))
+            footers[i].textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
+            footers[i].font = UIFont(name: "HiraKakuProN-W3", size: 10)
+            footers[i].text = ShowDays[6-i]
+            footers[i].textAlignment = NSTextAlignment.Left
+            footerView.addSubview(footers[i])
+        }
+        header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
         header.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
-        header.font = UIFont.systemFontOfSize(24)
         header.font = UIFont(name: "HiraKakuProN-W3", size: 24)
-        header.text = "記録"
+        header.text = "日毎の記録"
         header.textAlignment = NSTextAlignment.Center
         
         barChart.footerView = footerView
@@ -213,17 +153,10 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     
     func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt) {
         
-        let Days :Array<NSDate> = makeDays()
-
-        //日付のやつ
-
-        let dateFormatter = NSDateFormatter()                                   // フォーマットの取得
-        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")  // JPロケール
-        dateFormatter.dateFormat = "MM/dd"         // フォーマットの指定
-        //日付のやつ
-        
-        var onclick = ["\(dateFormatter.stringFromDate(Days[6]))", "\(dateFormatter.stringFromDate(Days[5]))", "\(dateFormatter.stringFromDate(Days[4]))", "\(dateFormatter.stringFromDate(Days[3]))", "\(dateFormatter.stringFromDate(Days[2]))", "\(dateFormatter.stringFromDate(Days[1]))", "\(dateFormatter.stringFromDate(Days[0]))"]
-        
+        var onclick :Array<String> = []
+        for i in 0...6 {
+            onclick.append(ShowDays[i])
+        }
         let data = chartData[Int(index)]
         let key = onclick[Int(index)]
         
@@ -236,5 +169,73 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     func didDeselectBarChartView(barChartView: JBBarChartView!) {
         informationLabel.text = ""
     }
+    
+    func makeButtons(){
+        day = UIButton(frame: CGRectMake(self.view.frame.width*0.1, 30, 100, 30))
+        day.setTitle("day", forState: .Normal)
+        day.setTitleColor(UIColor.cyanColor(), forState: .Normal)
+        day.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+        day.backgroundColor = UIColor.whiteColor()
+        day.addTarget(self, action: "Change:", forControlEvents: .TouchUpInside)
+        day.layer.masksToBounds = true
+        day.layer.cornerRadius = 20
+        day.tag = 1
+        
+        month = UIButton(frame: CGRectMake(self.view.frame.width*0.5, 30, 100, 30))
+        month.setTitle("month", forState: .Normal)
+        month.setTitleColor(UIColor.cyanColor(), forState: .Normal)
+        month.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+        month.backgroundColor = UIColor.whiteColor()
+        month.addTarget(self, action: "Change:", forControlEvents: .TouchUpInside)
+        month.layer.masksToBounds = true
+        month.layer.cornerRadius = 20
+        month.tag = 2
+        
+        self.view.addSubview(day)
+        self.view.addSubview(month)
+    }
+    
+    func Change(sender: UIButton){
+        for i in 0...6 {
+            if sender.tag == 1 {
+                Days[i] = NSDate(timeInterval: -60*60*24*NSTimeInterval(i) ,sinceDate: Days[0])
+                chartData[i] = PresetData[i]
+            }else{
+                Days[i] = NSDate(timeInterval: -60*60*24*NSTimeInterval(i*7) ,sinceDate: Days[0])
+                chartData[i] = monthData[i]
+            }
+            ShowDays[i] = dateFormatter.stringFromDate(Days[i])
+            footers[6-i].text = ShowDays[i]
+        }
+        
+        var max = 0
+        total = 0
+        for data in chartData{
+            total += data
+            if max < data{
+                max = data
+            }
+        }
+        maketext(sender.tag)
+        
+        for i in 0...3{
+            data[i].text = texts[i]
+        }
+        
+        self.viewDidDisappear(true)
+        barChart.maximumValue = CGFloat(max)
+        self.viewDidAppear(true)
+    }
+    
+    func maketext(which: Int){
+        if which == 1{
+            header.text =  "日毎の記録"
+            texts = ["今日の消費カロリー：\(chartData[6]/55)カロリー","今日の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩","\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"]
+        }else if which == 2 {
+            header.text =  "週毎の記録"
+            texts = ["今週の消費カロリー：\(chartData[6]/55)カロリー","今週の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩","\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"]
+        }else{
+            texts = ["今日の消費カロリー：\(chartData[6]/55)カロリー","今日の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩","\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"]
+        }
+    }
 }
-
