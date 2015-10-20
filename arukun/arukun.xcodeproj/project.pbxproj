@@ -34,8 +34,6 @@
 		1DF13FE91BD09537003531F2 /* CustomLeftArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF13FE61BD09537003531F2 /* CustomLeftArrow.swift */; };
 		1DF13FEF1BD0969C003531F2 /* DIaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF13FEE1BD0969C003531F2 /* DIaryViewController.swift */; };
 		7B0E21BF1B3A4716006DD9EF /* RecAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */; };
-		7B281B8F1BD6047E00346792 /* SetFurnitureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B281B8E1BD6047E00346792 /* SetFurnitureViewController.swift */; };
-		7B281B911BD604DB00346792 /* SetFurnitureScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B281B901BD604DB00346792 /* SetFurnitureScene.swift */; };
 		7B2B24D119D7E73600A75413 /* Room.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B24D019D7E73600A75413 /* Room.plist */; };
 		7B2D369B1BB4EE2100DCFF38 /* Charapicture.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */; };
 		7B2D369D1BB4EFAC00DCFF38 /* Furniture.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D369C1BB4EFAC00DCFF38 /* Furniture.plist */; };
@@ -144,8 +142,6 @@
 		1DF13FE61BD09537003531F2 /* CustomLeftArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLeftArrow.swift; sourceTree = "<group>"; };
 		1DF13FEE1BD0969C003531F2 /* DIaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIaryViewController.swift; sourceTree = "<group>"; };
 		7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAbout.swift; sourceTree = "<group>"; };
-		7B281B8E1BD6047E00346792 /* SetFurnitureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFurnitureViewController.swift; sourceTree = "<group>"; };
-		7B281B901BD604DB00346792 /* SetFurnitureScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFurnitureScene.swift; sourceTree = "<group>"; };
 		7B2B24D019D7E73600A75413 /* Room.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Room.plist; sourceTree = "<group>"; };
 		7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Charapicture.plist; sourceTree = "<group>"; };
 		7B2D369C1BB4EFAC00DCFF38 /* Furniture.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Furniture.plist; sourceTree = "<group>"; };
@@ -347,8 +343,6 @@
 			children = (
 				7B313D0C1BD5FC13002A6782 /* FurnitureViewController.swift */,
 				7B313D0E1BD5FC9E002A6782 /* FurnitureScene.swift */,
-				7B281B8E1BD6047E00346792 /* SetFurnitureViewController.swift */,
-				7B281B901BD604DB00346792 /* SetFurnitureScene.swift */,
 			);
 			name = Furniture;
 			sourceTree = "<group>";
@@ -611,8 +605,6 @@
 				1D60AA581B27EF5D000D4D5A /* GameScene.swift in Sources */,
 				1D60AA5A1B27EF5D000D4D5A /* GameViewController.swift in Sources */,
 				1DF13FE91BD09537003531F2 /* CustomLeftArrow.swift in Sources */,
-				7B281B8F1BD6047E00346792 /* SetFurnitureViewController.swift in Sources */,
-				7B281B911BD604DB00346792 /* SetFurnitureScene.swift in Sources */,
 				7B313D0D1BD5FC13002A6782 /* FurnitureViewController.swift in Sources */,
 				1D6764B61BBE240D00FFB44A /* JBChartView.m in Sources */,
 				1DF13FEF1BD0969C003531F2 /* DIaryViewController.swift in Sources */,

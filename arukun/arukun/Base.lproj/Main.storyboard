@@ -65,37 +65,24 @@
         <!--Item-->
         <scene sceneID="m0g-en-tWd">
             <objects>
-                <viewController id="fGe-16-Fee" sceneMemberID="viewController">
+                <viewController id="fGe-16-Fee" customClass="FurnitureViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qfe-Rr-amo"/>
                         <viewControllerLayoutGuide type="bottom" id="9F9-Sq-kMZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="B9a-ZA-SbC">
+                    <view key="view" contentMode="scaleToFill" id="B9a-ZA-SbC" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7u-Q6-bhp">
-                                <rect key="frame" x="285" y="296" width="30" height="30"/>
-                                <state key="normal" title="購入">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BOC-pn-wkR" kind="presentation" modalPresentationStyle="fullScreen" id="EzL-eB-bIV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJ8-to-PX6">
-                                <rect key="frame" x="285" y="179" width="30" height="30"/>
-                                <state key="normal" title="設置">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="HSX-oW-Ko5" kind="popoverPresentation" popoverAnchorView="zJ8-to-PX6" id="zwP-rv-TgV">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="furniture_background" translatesAutoresizingMaskIntoConstraints="NO" id="Vy1-jt-F3K">
+                                <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Vy1-jt-F3K" secondAttribute="centerX" id="Iz1-EI-eXO"/>
+                            <constraint firstAttribute="centerY" secondItem="Vy1-jt-F3K" secondAttribute="centerY" id="UoK-X4-go7"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="8bD-yG-8eH"/>
                 </viewController>
@@ -124,119 +111,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbO-K3-MQK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="605" y="1418"/>
-        </scene>
-        <!--Furniture View Controller-->
-        <scene sceneID="jbT-Sn-Ayt">
-            <objects>
-                <viewController id="BOC-pn-wkR" userLabel="Furniture View Controller" customClass="FurnitureViewController" customModule="arukun" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1je-z7-gGH"/>
-                        <viewControllerLayoutGuide type="bottom" id="2oc-XR-1Bl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dW6-TI-6Nr" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="furniture_background" translatesAutoresizingMaskIntoConstraints="NO" id="gu2-D7-TXk">
-                                <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jo9-Pi-aOZ">
-                                <rect key="frame" x="25" y="110" width="550" height="324"/>
-                                <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USh-he-HCy">
-                                <rect key="frame" x="277" y="466" width="46" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="戻る">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="fGe-16-Fee" kind="show" id="dKA-I9-8X3"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="jo9-Pi-aOZ" firstAttribute="top" secondItem="1je-z7-gGH" secondAttribute="bottom" id="7ec-eo-OpQ"/>
-                            <constraint firstItem="jo9-Pi-aOZ" firstAttribute="leading" secondItem="dW6-TI-6Nr" secondAttribute="leadingMargin" constant="56" id="H6J-Ty-ziC"/>
-                            <constraint firstItem="jo9-Pi-aOZ" firstAttribute="centerX" secondItem="gu2-D7-TXk" secondAttribute="centerX" id="Kes-1p-FyS"/>
-                            <constraint firstAttribute="centerX" secondItem="jo9-Pi-aOZ" secondAttribute="centerX" id="PUr-nF-ghq"/>
-                            <constraint firstAttribute="centerY" secondItem="gu2-D7-TXk" secondAttribute="centerY" id="WQs-4B-MQ2"/>
-                            <constraint firstAttribute="centerX" secondItem="gu2-D7-TXk" secondAttribute="centerX" id="WmC-qJ-up0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jo9-Pi-aOZ" secondAttribute="trailing" constant="-38" id="nNP-aU-aLp"/>
-                            <constraint firstItem="jo9-Pi-aOZ" firstAttribute="top" secondItem="1je-z7-gGH" secondAttribute="bottom" constant="90" id="v7k-dK-u9z"/>
-                            <constraint firstItem="jo9-Pi-aOZ" firstAttribute="leading" secondItem="dW6-TI-6Nr" secondAttribute="leadingMargin" constant="9" id="xDT-ko-3ml"/>
-                            <constraint firstItem="2oc-XR-1Bl" firstAttribute="top" secondItem="jo9-Pi-aOZ" secondAttribute="bottom" constant="166" id="yVr-L9-XeE"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="7ec-eo-OpQ"/>
-                                <exclude reference="H6J-Ty-ziC"/>
-                                <exclude reference="PUr-nF-ghq"/>
-                                <exclude reference="nNP-aU-aLp"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="3if-vO-m4w" userLabel="家具"/>
-                    <connections>
-                        <outlet property="Scroll" destination="jo9-Pi-aOZ" id="5jL-pr-2yY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Emg-el-hDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2153" y="1674"/>
-        </scene>
-        <!--Set Furniture View Controller-->
-        <scene sceneID="j0s-Wo-pSL">
-            <objects>
-                <viewController id="HSX-oW-Ko5" customClass="SetFurnitureViewController" customModule="arukun" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2Sx-eT-rD8"/>
-                        <viewControllerLayoutGuide type="bottom" id="0mE-yS-smT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1qt-d4-xJ4" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="furniture_background" translatesAutoresizingMaskIntoConstraints="NO" id="NX4-AO-Fyc">
-                                <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fn-qQ-rL3">
-                                <rect key="frame" x="25" y="110" width="550" height="324"/>
-                                <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvG-E4-UR4">
-                                <rect key="frame" x="259" y="468" width="82" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="戻る">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="fGe-16-Fee" kind="popoverPresentation" popoverAnchorView="JvG-E4-UR4" id="6ZM-NC-i0P">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="9Fn-qQ-rL3" firstAttribute="leading" secondItem="1qt-d4-xJ4" secondAttribute="leadingMargin" constant="9" id="1lS-Rd-egJ"/>
-                            <constraint firstAttribute="centerY" secondItem="NX4-AO-Fyc" secondAttribute="centerY" id="4mf-hB-t4q"/>
-                            <constraint firstItem="9Fn-qQ-rL3" firstAttribute="top" secondItem="2Sx-eT-rD8" secondAttribute="bottom" constant="90" id="8rn-oz-EBK"/>
-                            <constraint firstAttribute="centerX" secondItem="NX4-AO-Fyc" secondAttribute="centerX" id="U0g-nK-HXg"/>
-                            <constraint firstItem="0mE-yS-smT" firstAttribute="top" secondItem="9Fn-qQ-rL3" secondAttribute="bottom" constant="166" id="l0c-KC-lI1"/>
-                            <constraint firstItem="9Fn-qQ-rL3" firstAttribute="centerX" secondItem="NX4-AO-Fyc" secondAttribute="centerX" id="wz5-oE-G1Q"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="Scroll" destination="9Fn-qQ-rL3" id="bjJ-Ip-zEK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FXk-TD-SaO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2029" y="986"/>
         </scene>
         <!--ゲーム-->
         <scene sceneID="Fk7-IQ-wG1">
@@ -307,7 +181,4 @@
         <image name="first" width="30" height="30"/>
         <image name="furniture_background" width="2048" height="2048"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="7BY-Xz-Ha9"/>
-    </inferredMetricsTieBreakers>
 </document>
