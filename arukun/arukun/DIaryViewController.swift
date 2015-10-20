@@ -32,7 +32,7 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
 //        background.size = self.size
 //        self.addChild(background)
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "main")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back1")!)
         
         
         
