@@ -30,6 +30,9 @@
 		1D67650B1BBE263600FFB44A /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6765051BBE263600FFB44A /* JBChartView.m */; };
 		1D67650C1BBE263600FFB44A /* JBLineChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6765061BBE263600FFB44A /* JBLineChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D67650D1BBE263600FFB44A /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6765071BBE263600FFB44A /* JBLineChartView.m */; };
+		1DF13FE81BD09537003531F2 /* CustomLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF13FE51BD09537003531F2 /* CustomLeftTableViewCell.swift */; };
+		1DF13FE91BD09537003531F2 /* CustomLeftArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF13FE61BD09537003531F2 /* CustomLeftArrow.swift */; };
+		1DF13FEF1BD0969C003531F2 /* DIaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF13FEE1BD0969C003531F2 /* DIaryViewController.swift */; };
 		7B0E21BF1B3A4716006DD9EF /* RecAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */; };
 		7B2B24D119D7E73600A75413 /* Room.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B24D019D7E73600A75413 /* Room.plist */; };
 		7B2D369B1BB4EE2100DCFF38 /* Charapicture.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */; };
@@ -43,7 +46,6 @@
 		7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D801B383EBF0056D886 /* FeedScene.swift */; };
 		7B9A6D831B3840290056D886 /* 1179.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D821B3840290056D886 /* 1179.png */; };
 		7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D841B3842460056D886 /* FeedViewController.swift */; };
-		7B9A6D891B3847CD0056D886 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D881B3847CD0056D886 /* DiaryViewController.swift */; };
 		7B9A6D8B1B38488E0056D886 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8A1B38488E0056D886 /* GameScene.sks */; };
 		7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */; };
 /* End PBXBuildFile section */
@@ -134,6 +136,9 @@
 		1D6765051BBE263600FFB44A /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
 		1D6765061BBE263600FFB44A /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
 		1D6765071BBE263600FFB44A /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
+		1DF13FE51BD09537003531F2 /* CustomLeftTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLeftTableViewCell.swift; sourceTree = "<group>"; };
+		1DF13FE61BD09537003531F2 /* CustomLeftArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLeftArrow.swift; sourceTree = "<group>"; };
+		1DF13FEE1BD0969C003531F2 /* DIaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIaryViewController.swift; sourceTree = "<group>"; };
 		7B0E21BE1B3A4716006DD9EF /* RecAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecAbout.swift; sourceTree = "<group>"; };
 		7B2B24D019D7E73600A75413 /* Room.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Room.plist; sourceTree = "<group>"; };
 		7B2D369A1BB4EE2100DCFF38 /* Charapicture.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Charapicture.plist; sourceTree = "<group>"; };
@@ -146,7 +151,6 @@
 		7B9A6D801B383EBF0056D886 /* FeedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedScene.swift; sourceTree = "<group>"; };
 		7B9A6D821B3840290056D886 /* 1179.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1179.png; sourceTree = "<group>"; };
 		7B9A6D841B3842460056D886 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		7B9A6D881B3847CD0056D886 /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		7B9A6D8A1B38488E0056D886 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,9 +223,8 @@
 		1D60AA501B27EF5D000D4D5A /* arukun */ = {
 			isa = PBXGroup;
 			children = (
-				1D6764A91BBE22D300FFB44A /* FirstViewController.swift */,
 				1D60AA531B27EF5D000D4D5A /* AppDelegate.swift */,
-				7B9A6D8A1B38488E0056D886 /* GameScene.sks */,
+				1D6764A91BBE22D300FFB44A /* FirstViewController.swift */,
 				7B9A6D861B3843990056D886 /* Game */,
 				7B9A6D871B38470E0056D886 /* Feed */,
 				7B36E0411B39A6D400A62CF3 /* Diary */,
@@ -333,8 +336,10 @@
 		7B36E0411B39A6D400A62CF3 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				7B9A6D881B3847CD0056D886 /* DiaryViewController.swift */,
+				1DF13FEE1BD0969C003531F2 /* DIaryViewController.swift */,
 				7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */,
+				1DF13FE51BD09537003531F2 /* CustomLeftTableViewCell.swift */,
+				1DF13FE61BD09537003531F2 /* CustomLeftArrow.swift */,
 			);
 			name = Diary;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 		7B9A6D861B3843990056D886 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				7B9A6D8A1B38488E0056D886 /* GameScene.sks */,
 				1D60AA571B27EF5D000D4D5A /* GameScene.swift */,
 				1D60AA591B27EF5D000D4D5A /* GameViewController.swift */,
 			);
@@ -584,7 +590,9 @@
 				7B0E21BF1B3A4716006DD9EF /* RecAbout.swift in Sources */,
 				1D60AA581B27EF5D000D4D5A /* GameScene.swift in Sources */,
 				1D60AA5A1B27EF5D000D4D5A /* GameViewController.swift in Sources */,
+				1DF13FE91BD09537003531F2 /* CustomLeftArrow.swift in Sources */,
 				1D6764B61BBE240D00FFB44A /* JBChartView.m in Sources */,
+				1DF13FEF1BD0969C003531F2 /* DIaryViewController.swift in Sources */,
 				1D6764AA1BBE22D300FFB44A /* FirstViewController.swift in Sources */,
 				7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */,
 				7B36E03E1B39A61600A62CF3 /* RecViewController.swift in Sources */,
@@ -593,8 +601,8 @@
 				1D60AA541B27EF5D000D4D5A /* AppDelegate.swift in Sources */,
 				1D6764B71BBE240D00FFB44A /* JBLineChartView.m in Sources */,
 				7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */,
-				7B9A6D891B3847CD0056D886 /* DiaryViewController.swift in Sources */,
 				7B93CD1F1B4F68AB00A6E701 /* Model.xcdatamodeld in Sources */,
+				1DF13FE81BD09537003531F2 /* CustomLeftTableViewCell.swift in Sources */,
 				7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

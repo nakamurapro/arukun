@@ -1,0 +1,23 @@
+//
+//  CustomCell.swift
+//  
+//
+//  Created by kenseikamii on 2015/09/24.
+//
+//
+
+import UIKit
+
+class CustomCell: UICollectionViewCell {
+    
+    @IBOutlet var title:UILabel!
+    @IBOutlet var image:UIImageView!
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+    }
+    required init(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+    }
+    
+}

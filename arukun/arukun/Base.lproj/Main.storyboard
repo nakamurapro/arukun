@@ -24,44 +24,6 @@
             </objects>
             <point key="canvasLocation" x="-1279" y="2207"/>
         </scene>
-        <!--エサ-->
-        <scene sceneID="1GZ-Nn-QD1">
-            <objects>
-                <viewController id="Xsq-bd-vs4" customClass="FeedViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qYx-5b-lD3"/>
-                        <viewControllerLayoutGuide type="bottom" id="0kk-i5-jsm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lpE-4Q-xaT" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="エサ" id="L38-1t-6rU"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O7m-G7-feg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-523" y="2207"/>
-        </scene>
-        <!--記録-->
-        <scene sceneID="1fo-mA-gvF">
-            <objects>
-                <viewController id="6Jv-dl-my9" customClass="RecViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="daz-rI-sKs"/>
-                        <viewControllerLayoutGuide type="bottom" id="s2F-wy-4Rb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yqf-IJ-EyS" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="記録" id="0Vf-Yb-KfN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nv4-el-hii" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="167" y="2207"/>
-        </scene>
         <!--日記-->
         <scene sceneID="7B3-vT-Qd7">
             <objects>
@@ -79,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHG-MO-OVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="829" y="2207"/>
+            <point key="canvasLocation" x="32" y="2207"/>
         </scene>
         <!--設定-->
         <scene sceneID="rlO-xf-Oye">
@@ -112,7 +74,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="5SG-hE-Hgd"/>
-                        <segue destination="6Jv-dl-my9" kind="relationship" relationship="viewControllers" id="psO-wg-TwM"/>
                         <segue destination="zuR-1p-Ggw" kind="relationship" relationship="viewControllers" id="bYH-Kz-K0U"/>
                         <segue destination="wmF-2A-4ZQ" kind="relationship" relationship="viewControllers" id="aDS-bs-9av"/>
                         <segue destination="G0h-1Q-sVL" kind="relationship" relationship="viewControllers" id="tkL-Wu-q07"/>
@@ -184,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZY-CM-P8r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-354" y="972"/>
+            <point key="canvasLocation" x="-626" y="2275"/>
         </scene>
     </scenes>
     <resources>
