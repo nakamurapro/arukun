@@ -57,14 +57,14 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let path = NSBundle.mainBundle().pathForResource("json2", ofType: "txt")
         let jsondata = NSData(contentsOfFile: path!)
         
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsondata!, options:NSJSONReadingOptions.MutableContainers, erroe: NSErrorPointer) as! NSArray
+        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsondata!, options:NSJSONReadingOptions.MutableContainers, error: NSErrorPointer()) as! NSArray
+       
         //テキストデータの受け渡し
         str = jsonArray[indexPath.row] as? String
         
         for dat in jsonArray{
             print("\(dat)")
         }
-        
         performSegueWithIdentifier("ViewController2",sender: nil)
     }
     
