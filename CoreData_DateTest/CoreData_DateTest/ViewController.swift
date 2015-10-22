@@ -31,10 +31,11 @@ class ViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         var String = dateFormatter.stringFromDate(Date)
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        Date = dateFormatter.dateFromString("\(String) 00:00:00")!
+        Date = dateFormatter.dateFromString("\(String) 09:00:00")!
         //返し終わり。でも現段階だと今日の15:00が返ってくるのであとで修正…
         
         Days.append(Date)
+        println(Days[0])
         for i in 1...6 {
             Days.append(NSDate(timeInterval: -60*60*24*NSTimeInterval(i), sinceDate: Days[0]))
         }
@@ -51,7 +52,7 @@ class ViewController: UIViewController {
         for result in results{
             var dataDay = result.valueForKey("date") as! NSDate
             var dataStep = result.valueForKey("step") as! Int
-            println("\(dataDay),\(dataStep)")
+            println("\(dataDay), Step:\(dataStep)")
             for i in 0...6 {
                 if (Days[i].compare(dataDay) == NSComparisonResult.OrderedAscending){
                     totalStep[i] += dataStep
@@ -59,7 +60,7 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
+        println("-----------")
         for step in totalStep{
             println(step)
         }
@@ -86,7 +87,6 @@ class ViewController: UIViewController {
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         
-        //Seed.plistを元にしてPersonというエンティティに値を入れていく
         for(var i = 0; i<=100; i++) {
             var day :NSDate = NSDate(timeInterval: -60*60*3*NSTimeInterval(i), sinceDate: Days[0])
             let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(

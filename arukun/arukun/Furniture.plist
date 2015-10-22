@@ -7,24 +7,63 @@
 		<key>kind</key>
 		<integer>1</integer>
 		<key>name</key>
-		<string>花の壁紙</string>
+		<string>普通の壁紙</string>
 		<key>point</key>
 		<integer>100</integer>
 		<key>image</key>
-		<string>hana.jpg</string>
+		<string>back1</string>
 		<key>haved</key>
-		<false/>
+		<true/>
 	</dict>
 	<key>Furniture2</key>
 	<dict>
 		<key>kind</key>
 		<integer>2</integer>
 		<key>name</key>
-		<string>木のタンス</string>
+		<string>普通のイス</string>
 		<key>point</key>
 		<integer>50</integer>
 		<key>image</key>
-		<string>tree.jpg</string>
+		<string>kagu1</string>
+		<key>haved</key>
+		<false/>
+	</dict>
+	<key>Furniture3</key>
+	<dict>
+		<key>kind</key>
+		<integer>2</integer>
+		<key>name</key>
+		<string>しゃれたイス</string>
+		<key>point</key>
+		<integer>100</integer>
+		<key>image</key>
+		<string>kagu2</string>
+		<key>haved</key>
+		<false/>
+	</dict>
+	<key>Furniture4</key>
+	<dict>
+		<key>kind</key>
+		<integer>2</integer>
+		<key>name</key>
+		<string>こさねぇ</string>
+		<key>point</key>
+		<integer>50</integer>
+		<key>image</key>
+		<string>kagu3</string>
+		<key>haved</key>
+		<false/>
+	</dict>
+	<key>Furniture5</key>
+	<dict>
+		<key>kind</key>
+		<integer>2</integer>
+		<key>name</key>
+		<string>観葉植物</string>
+		<key>point</key>
+		<integer>50</integer>
+		<key>image</key>
+		<string>kagu1</string>
 		<key>haved</key>
 		<false/>
 	</dict>

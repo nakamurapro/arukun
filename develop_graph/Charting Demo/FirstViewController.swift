@@ -152,7 +152,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         
         var onclick :Array<String> = []
         for i in 0...6 {
-            onclick.append(ShowDays[i])
+            onclick.append(ShowDays[6-i])
         }
         let data = chartData[Int(index)]
         let key = onclick[Int(index)]
