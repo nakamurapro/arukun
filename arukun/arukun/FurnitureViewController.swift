@@ -1,11 +1,3 @@
-//
-//  RecordViewController.swift
-//  arukun
-//
-//  Created by 坂本一 on 2015/06/23.
-//  Copyright (c) 2015年 chikaratada. All rights reserved.
-//
-
 import UIKit
 import SpriteKit
 
@@ -31,7 +23,7 @@ class FurnitureViewController: UIViewController {
         }
     }
     
-
+    
     override func shouldAutorotate() -> Bool {
         return true
     }
