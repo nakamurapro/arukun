@@ -65,7 +65,6 @@
 		7B9A6D8B1B38488E0056D886 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8A1B38488E0056D886 /* GameScene.sks */; };
 		7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */; };
 		7BB9CB851BDF3CB100712A4E /* FurnitureMaster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */; };
-		7BB9CB871BDF3D5A00712A4E /* Furniture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9CB861BDF3D5A00712A4E /* Furniture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,7 +184,6 @@
 		7B9A6D8A1B38488E0056D886 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryScene.swift; sourceTree = "<group>"; };
 		7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FurnitureMaster.plist; sourceTree = "<group>"; };
-		7BB9CB861BDF3D5A00712A4E /* Furniture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Furniture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +230,6 @@
 		1D60AA451B27EF5C000D4D5A = {
 			isa = PBXGroup;
 			children = (
-				7BB9CB861BDF3D5A00712A4E /* Furniture.swift */,
 				7B7F7F771BDE67EC00F1DEC7 /* Room.swift */,
 				1D6764AB1BBE240D00FFB44A /* JBChart */,
 				1D60AA501B27EF5D000D4D5A /* arukun */,
@@ -674,7 +671,6 @@
 				7B7F7F661BDE67AC00F1DEC7 /* FurnitureBuySnece.swift in Sources */,
 				1DF13FE81BD09537003531F2 /* CustomLeftTableViewCell.swift in Sources */,
 				7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */,
-				7BB9CB871BDF3D5A00712A4E /* Furniture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
