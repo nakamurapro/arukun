@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import SpriteKit
+import CoreData
 
 class FurnitureScene: SKScene {
     //まず家具購入に必要な物
@@ -11,6 +12,9 @@ class FurnitureScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         //まずScrollViewを2つ作るよ
+        if (readData().count == 0){
+            initMasters()
+        }
         FurnitureBuyButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
         FurnitureBuyButton.backgroundColor = UIColor.redColor()
         FurnitureBuyButton.addTarget(self, action: "FurnitureBuy:", forControlEvents: .TouchUpInside)
@@ -52,6 +56,44 @@ class FurnitureScene: SKScene {
         let newScene = FurnitureSetScene(size: self.scene!.size)
         newScene.scaleMode = SKSceneScaleMode.AspectFill
         self.scene!.view!.presentScene(newScene, transition: tr)
+    }
+    
+    func readData() -> NSArray{
+        println("readData ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Furniture")
+        
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results
+    }
+
+    func initMasters() {
+        println("initMasters ------------")
+        //plist読み込み
+        let path:NSString = NSBundle.mainBundle().pathForResource("FurnitureMaster", ofType: "plist")!
+        var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        
+        for(var i = 1; i<=masterDataDictionary.count; i++) {
+            let index_name: String = "item" + String(i)
+            var item: AnyObject = masterDataDictionary[index_name]!
+            
+            let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+                "Furniture", inManagedObjectContext: categoryContext)
+            var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+            new_data.setValue(item.valueForKey("name") as! String, forKey: "name")
+            new_data.setValue(item.valueForKey("kind") as! Int, forKey: "kind")
+            new_data.setValue(item.valueForKey("image") as! String, forKey: "image")
+            new_data.setValue(item.valueForKey("point") as! Int, forKey: "point")
+            new_data.setValue(item.valueForKey("haved"), forKey: "haved")
+            
+            var error: NSError?
+            categoryContext.save(&error)
+            
+        }
+        println("InitMasters OK!")
     }
     
 }

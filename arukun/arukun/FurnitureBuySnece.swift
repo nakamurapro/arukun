@@ -17,9 +17,10 @@ class FurnitureBuyScene: SKScene {
     private var price :UITextView! //値段
     var imageView :UIImageView! //これは商品
     var boughtImage = UIImage(named: "bought") //購入済み
-    var PlayerPoint :Int = 1000   //お金
+    var PlayerPoint :Int!   //お金
     var BuyFurniture :Dictionary<String,String>! //何を買おうとしてるのか
     var selected: AnyObject!  //選んだ商品
+    var selectedNumber: Int!
     var bought :Array<UIImageView> = [] //買ったのどうなの
     var results :NSArray!
     //最後にメニューに戻るボタン
@@ -34,7 +35,7 @@ class FurnitureBuyScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         results = readData()
-        
+        readPoint()
         var heightScroll = ceil(Double(results.count) / 2.0)
         Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         Scroll.scrollEnabled = true
@@ -182,20 +183,50 @@ class FurnitureBuyScene: SKScene {
     }
     
     internal func BuyFurniture(sender: UIButton){ //買う
-        PlayerPoint = PlayerPoint - BuyFurniture["point"]!.toInt()!
+        PlayerPoint = PlayerPoint - point
         BuyButton.removeFromSuperview()
         myWindow.addSubview(backButton)
         Text.text = "購入しました！"
-        BuyFurniture.updateValue("true", forKey: "have")
-        //ata[selected] = BuyFurniture
-        //bought[selected].hidden = false
+        setData(results[selectedNumber])
+        
+        //その１：買ったやつのhavedをYESに
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = app.managedObjectContext
+        var entityDiscription = NSEntityDescription.entityForName("Furniture", inManagedObjectContext: managedObjectContext!)
+        let fetchRequest = NSFetchRequest()
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        
+        fetchRequest.entity = entityDiscription;
+        let predicate = NSPredicate(format: "name = %@",Furniturename)
+        fetchRequest.predicate = predicate
+        
+        var error: NSError? = nil;
+        var result = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error)!
+        for data in result{
+            data.setValue(1, forKey: "haved")
+            var error: NSError?
+            categoryContext.save(&error)
+        }
+
+        //その２：Userのmoneyを減らす
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
+        var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
+        for data in resultPoint{
+            data.setValue(PlayerPoint, forKey: "money")
+            var error: NSError?
+            categoryContext.save(&error)
+        }
+
+        bought[selectedNumber].hidden = false
         PointView.text = "所持ポイント：\(toString(PlayerPoint))P"
+        
     }
     
     
     func makeWindow(recognizer: UIGestureRecognizer){ //ウィンドウ作成
         if let imageView = recognizer.view as? UIImageView {
             setData(results[imageView.tag])
+            selectedNumber = imageView.tag
             if(!(haved)){
                 //まずはウィンドウ作ろう
                 myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
@@ -250,6 +281,36 @@ class FurnitureBuyScene: SKScene {
         Furniturename = data.valueForKey("name")! as! String
         point = data.valueForKey("point")! as! Int
         haved = data.valueForKey("haved") as! Bool
+    }
+    
+    func readPoint(){
+        println("readData ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
+        
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        if(results.count == 0){
+            makeUser()
+            readPoint()
+        }else{
+            for data in results{
+                PlayerPoint = data.valueForKey("money") as! Int
+            }
+        }
+    }
+    
+    func makeUser(){
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+            "User", inManagedObjectContext: categoryContext)
+        var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+        new_data.setValue(300, forKey: "money")
+        new_data.setValue(160, forKey: "stature") //身長のことだからね
+        new_data.setValue(0, forKey: "stride")
+        
+        var error: NSError?
     }
 
 }

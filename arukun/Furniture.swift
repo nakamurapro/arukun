@@ -9,13 +9,3 @@
 import Foundation
 import CoreData
 
-@objc(Furniture)
-class Furniture: NSManagedObject {
-
-    @NSManaged var haved: NSNumber
-    @NSManaged var image: String
-    @NSManaged var kind: String
-    @NSManaged var name: String
-    @NSManaged var point: NSNumber
-
-}
