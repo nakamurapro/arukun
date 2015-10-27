@@ -20,25 +20,15 @@ class FurnitureSetScene: SKScene {
     var backSetButton :UIButton! //戻るボタン
     private var myWindow :UIWindow!
     var result :NSArray!
-    var data = [
-        ["name" :"木のイス", "point" :"100", "have" :"false", "pic" :"kagu1"],
-        ["name" :"しゃれたイス", "point" :"150", "have" :"false", "pic" :"kagu2"],
-        ["name" :"こさねぇ", "point" :"100" ,"have" :"true", "pic" :"kagu3"],
-        ["name" :"観葉植物", "point" :"80" ,"have" :"false", "pic" :"kagu4"],
-        ["name" :"素朴な背景", "point" : "700", "have" :"false", "pic" :"back1"]
-    ]    //場所
+        //場所
     //最後にメニューに戻るボタン
     var backtomenu :UIButton!
     
     
     override func didMoveToView(view: SKView) {
         result = readData()
-        if (result.count == 0){
-            initMasters()
-            result = readData()
-        }
-        
-        var heightScroll = ceil(Double(data.count) / 2.0)
+        var count = result.count
+        var heightScroll = ceil(Double(count) / 2.0)
         Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         Scroll.scrollEnabled = true
         Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
@@ -96,8 +86,19 @@ class FurnitureSetScene: SKScene {
             var WhereX :CGFloat = phoneSize.width * x[i%2]
             var WhereY :CGFloat = phoneSize.height * (x[y] + 0.1)//高さの間隔
             SetButtons[i].layer.position = CGPoint(x: WhereX,y: WhereY)
+            
+            var WhereA :CGFloat = phoneSize.width * x[i%2]
+            var WhereB :CGFloat = phoneSize.height * (x[y] + 0.05)
+            var HGH :CGFloat = 180
+            setFurniture.append(UIImageView(image: dammy))
+            setFurniture[i].frame = CGRectMake(150*WhereA, HGH*WhereB, 150, 150)
+            setFurniture[i].center = CGPointMake(75,90)
         }
-        for i in 0...3 { //メイン画面の用意
+        
+        var i = 0
+        for data in result {
+            var imagename = data.valueForKey("image")! as! String
+            var name = data.valueForKey("name")! as! String
             
             //コイツが1単位
             var View = UIView()
@@ -108,7 +109,7 @@ class FurnitureSetScene: SKScene {
             View.frame = CGRectMake(150*which, HGH*WhereY, 150, 150)
             
             //画像の用意
-            Images.append(UIImage(named: "kagu\(i+1)")!)
+            Images.append(UIImage(named: imagename)!)
             imageViews.append(UIImageView(image: Images[i]))
             imageViews[i].frame = CGRectMake(0, 0, 120, 120)
             imageViews[i].center = CGPointMake(75,90)
@@ -124,7 +125,7 @@ class FurnitureSetScene: SKScene {
             myTextView = UITextView(frame: CGRectMake(0, 0, 130, 30))
             myTextView.userInteractionEnabled = true
             myTextView.backgroundColor = UIColor(red: 0.0, green: 0.8, blue: 0.8, alpha: 1.0)
-            myTextView.text = names[i]
+            myTextView.text = name
             myTextView.font = UIFont.systemFontOfSize(CGFloat(15))
             myTextView.textColor = UIColor.whiteColor()
             myTextView.textAlignment = NSTextAlignment.Center
@@ -133,17 +134,7 @@ class FurnitureSetScene: SKScene {
             View.addSubview(myTextView)
             
             Scroll.addSubview(View)
-            
-            //部屋配置確認用
-            var x :Array<CGFloat> = [0.30,0.70]
-            var y = Int(floor(CGFloat(i/2)))
-            var WhereA :CGFloat = phoneSize.width * x[i%2]
-            var WhereB :CGFloat = phoneSize.height * (x[y] + 0.05)
-            setFurniture.append(UIImageView(image: dammy))
-            setFurniture[i].frame = CGRectMake(150*WhereA, HGH*WhereB, 150, 150)
-            setFurniture[i].center = CGPointMake(75,90)
-            //あとで表示する
-            
+            i++;
         }
         
         
@@ -223,12 +214,17 @@ class FurnitureSetScene: SKScene {
     }
     
     func readData() -> NSArray{
-        println("readData ------------")
-        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
-        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Furniture")
-        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
-        return results
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = app.managedObjectContext
+        let entityDiscription = NSEntityDescription.entityForName("Furniture", inManagedObjectContext: managedObjectContext!)
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = entityDiscription;
+        let predicate = NSPredicate(format: "haved == YES")
+        fetchRequest.predicate = predicate
+            
+        var error: NSError? = nil;
+        var results = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error)
+        return results!
     }
     
     func initMasters() {
@@ -250,15 +246,12 @@ class FurnitureSetScene: SKScene {
             new_data.setValue(item.valueForKey("kind") as! Int, forKey: "kind")
             new_data.setValue(item.valueForKey("image") as! String, forKey: "image")
             new_data.setValue(item.valueForKey("point") as! Int, forKey: "point")
-            new_data.setValue(item.valueForKey("haved") as! Bool, forKey: "haved")
+            new_data.setValue(item.valueForKey("haved"), forKey: "haved")
             
             var error: NSError?
             categoryContext.save(&error)
             
         }
-
-        
-        
         println("InitMasters OK!")
     }
     
