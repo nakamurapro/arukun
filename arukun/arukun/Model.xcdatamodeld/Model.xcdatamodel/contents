@@ -16,7 +16,7 @@
     <entity name="Furniture" representedClassName="PRODUCT_MODULE_NAME.Furniture" syncable="YES">
         <attribute name="haved" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="kind" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kind" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="point" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>

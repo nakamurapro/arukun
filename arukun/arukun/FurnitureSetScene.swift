@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import SpriteKit
+import CoreData
 
 class FurnitureSetScene: SKScene {
     var Scroll: UIScrollView!
@@ -18,6 +19,7 @@ class FurnitureSetScene: SKScene {
     private var SetNumber :Int! //何番の家具を置こうとしてるか
     var backSetButton :UIButton! //戻るボタン
     private var myWindow :UIWindow!
+    var result :NSArray!
     var data = [
         ["name" :"木のイス", "point" :"100", "have" :"false", "pic" :"kagu1"],
         ["name" :"しゃれたイス", "point" :"150", "have" :"false", "pic" :"kagu2"],
@@ -30,6 +32,12 @@ class FurnitureSetScene: SKScene {
     
     
     override func didMoveToView(view: SKView) {
+        result = readData()
+        if (result.count == 0){
+            initMasters()
+            result = readData()
+        }
+        
         var heightScroll = ceil(Double(data.count) / 2.0)
         Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         Scroll.scrollEnabled = true
@@ -213,6 +221,45 @@ class FurnitureSetScene: SKScene {
         Scroll.hidden = true
         backtomenu.hidden = true
     }
+    
+    func readData() -> NSArray{
+        println("readData ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Furniture")
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results
+    }
+    
+    func initMasters() {
+        println("initMasters ------------")
+        //plist読み込み
+        let path:NSString = NSBundle.mainBundle().pathForResource("FurnitureMaster", ofType: "plist")!
+        var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        
+        for(var i = 1; i<=masterDataDictionary.count; i++) {
+            let index_name: String = "item" + String(i)
+            var item: AnyObject = masterDataDictionary[index_name]!
+            
+            let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+                "Furniture", inManagedObjectContext: categoryContext)
+            var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+            new_data.setValue(item.valueForKey("name") as! String, forKey: "name")
+            new_data.setValue(item.valueForKey("kind") as! Int, forKey: "kind")
+            new_data.setValue(item.valueForKey("image") as! String, forKey: "image")
+            new_data.setValue(item.valueForKey("point") as! Int, forKey: "point")
+            new_data.setValue(item.valueForKey("haved") as! Bool, forKey: "haved")
+            
+            var error: NSError?
+            categoryContext.save(&error)
+            
+        }
+
+        
+        
+        println("InitMasters OK!")
+    }
+    
 }
-
-
