@@ -1,49 +1,70 @@
-//
-//  FirstViewController.swift
-//  Charting Demo
-//
-//  Created by Nikhil Kalra on 12/5/14.
-//  Copyright (c) 2014 Nikhil Kalra. All rights reserved.
-//
-
 import UIKit
 import JBChart
+import CoreData
+import Foundation
 
 class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
-
+    
     @IBOutlet weak var barChart: JBBarChartView!
     var informationLabel: UILabel!
     var data: Array<UILabel> = []
     var day: UIButton!
-    var month: UIButton!
+    var previousDay :UIButton!
+    var nextDay :UIButton!
+    
+    var week: UIButton!
+    var previousWeek :UIButton!
+    var nextWeek :UIButton!
+    
     var total :Int = 0
+    var max :Int = 0
+    var nowViewing :NSTimeInterval = 0 //何周目を見てる？　例)7：一週間前　14：二週間前
     
     //値
-    var PresetData = [5002, 8031, 14543, 620, 20175, 7579, 10003] //日付毎のデータです
-    var monthData = [40032, 37175, 50175, 38278, 10941, 34561, 44521] //週毎のデータです
-    var chartData = [5002, 8031, 14543, 620, 20175, 7579, 10003] //表示するためのデータです
+    var chartData = [0,0,0,0,0,0,0]  //ユーザに見せるのはコレ
+    var SetData = [5002, 8031, 14543, 620, 20175, 7579, 10003, 4813, 3175, 1759] //データベース登録用
     
     var Days :Array<NSDate> = [] //NSDate型の日付
     var ShowDays :Array<String> = [] //ユーザーに見せる日付
     var footers :Array<UILabel> = []
-    let dateFormatter = NSDateFormatter()
+    let dateFormatter = NSDateFormatter() //Date型用。
+    let ShowdayFormat = NSDateFormatter() //ユーザに見せる用。
     var texts :Array<String>!
     var header :UILabel!
+    var results :NSArray!
+    var today :NSDate! //今日の日付
+    var limit :NSDate! //ここから先の日付はいりませーん！
     
     override func viewDidLoad() {
         //日付のやつ
-        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")  // JPロケール
-        dateFormatter.dateFormat = "MM/dd"         // フォーマットの指定
-        for i in 0...6 {
-            if i == 0{
-                Days.append(NSDate())
-            }else{
-                Days.append( NSDate(timeInterval: -60*60*24*NSTimeInterval(i) ,sinceDate: Days[0]) )
-            }
-            
-            ShowDays.append(dateFormatter.stringFromDate(Days[i]))
+        //今日の日付の0時を返すには…？
+        let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+        today = NSDate()
+        dateFormatter.calendar = calendar
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var String = dateFormatter.stringFromDate(today)
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        today = dateFormatter.dateFromString("\(String) 09:00:00")!
+        limit = NSDate(timeInterval: 60*60*24, sinceDate: today)
+        
+        //返し終わり。でも現段階だと今日の15:00が返ってくるのであとで修正…
+        
+        ShowdayFormat.calendar = calendar
+        ShowdayFormat.dateFormat = "MM/dd"
+        
+        Days.append(today)
+        ShowDays.append(ShowdayFormat.stringFromDate(today))
+        for i in 1...6 {
+            Days.append(NSDate(timeInterval: -60*60*24*NSTimeInterval(i), sinceDate: today))
+            ShowDays.append(ShowdayFormat.stringFromDate(Days[i]))
         }
         super.viewDidLoad()
+        
+        results = readData()
+        if (results.count == 0){
+            initMasters()
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         //背景の色
@@ -55,14 +76,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         barChart.dataSource = self
         barChart.minimumValue = 0
         
-        var max :Int = PresetData[0]
-        
-        for i in 1...6{
-            if max < PresetData[i]{
-                max = PresetData[i]
-            }
-        }
-        barChart.maximumValue = CGFloat(max)
+        Aggregate() //集計しまーす！
         
         barChart.reloadData()
         
@@ -71,7 +85,8 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         for Data in chartData{
             total += Data
         }
-        maketext(3)
+        header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
+        maketext(1)
         for i in 0...3{
             var y = CGFloat(i*40)
             data.append(UILabel(frame: CGRectMake(barChart.frame.origin.x, self.view.frame.height*0.7+y, barChart.frame.width, 30)))
@@ -99,22 +114,52 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         for i in 0...6 {
             var x = barChart.frame.width/7 * CGFloat(i)
             footers.append(UILabel(frame: CGRectMake(x , 0, barChart.frame.width/2 - 8, 16)))
-            footers[i].textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
+            footers[i].textColor = UIColor(red: 190.0/255, green: 160.0/255, blue: 70.0/255, alpha: 1.0)
             footers[i].font = UIFont(name: "HiraKakuProN-W3", size: 10)
             footers[i].text = ShowDays[6-i]
             footers[i].textAlignment = NSTextAlignment.Left
             footerView.addSubview(footers[i])
         }
-        header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
+        //headerは1つ上で定義しています
         header.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
         header.font = UIFont(name: "HiraKakuProN-W3", size: 24)
-        header.text = "日毎の記録"
         header.textAlignment = NSTextAlignment.Center
         
         barChart.footerView = footerView
         barChart.headerView = header
     }
+    //ここからほとんどデータベース関連
+    func readData() -> NSArray{
+        println("readData ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Pedometer")
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results
+    }
     
+    func initMasters() {
+        println("initMasters ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        
+        for(var i = 0; i<=200; i++) {
+            var day :NSDate = NSDate(timeInterval: -60*60*3*NSTimeInterval(i), sinceDate: Days[0])
+            let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+                "Pedometer", inManagedObjectContext: categoryContext)
+            var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+            new_data.setValue(day, forKey: "date")
+            new_data.setValue(SetData[i%(SetData.count)], forKey: "step")
+            
+            var error: NSError?
+            categoryContext.save(&error)
+        }
+        
+        
+        println("InitMasters OK!")
+    }
+    
+    //ここからほとんどグラフ関連
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -155,8 +200,9 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         
         var onclick :Array<String> = []
         for i in 0...6 {
-            onclick.append(ShowDays[i])
+            onclick.append(ShowDays[6-i])
         }
+        // let data = chartData[Int(index)]　わざとやります
         let data = chartData[Int(index)]
         let key = onclick[Int(index)]
         
@@ -170,61 +216,73 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         informationLabel.text = ""
     }
     
+    //その他オリジナルメソッド
     func makeButtons(){
         day = UIButton(frame: CGRectMake(self.view.frame.width*0.1, 30, 100, 30))
         day.setTitle("day", forState: .Normal)
         day.setTitleColor(UIColor.cyanColor(), forState: .Normal)
         day.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
         day.backgroundColor = UIColor.whiteColor()
-        day.addTarget(self, action: "Change:", forControlEvents: .TouchUpInside)
+        day.addTarget(self, action: "DayButton:", forControlEvents: .TouchUpInside)
         day.layer.masksToBounds = true
         day.layer.cornerRadius = 20
-        day.tag = 1
         
-        month = UIButton(frame: CGRectMake(self.view.frame.width*0.5, 30, 100, 30))
-        month.setTitle("month", forState: .Normal)
-        month.setTitleColor(UIColor.cyanColor(), forState: .Normal)
-        month.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-        month.backgroundColor = UIColor.whiteColor()
-        month.addTarget(self, action: "Change:", forControlEvents: .TouchUpInside)
-        month.layer.masksToBounds = true
-        month.layer.cornerRadius = 20
-        month.tag = 2
+        previousDay = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.6, 50, 50))
+        previousDay.setTitle("Previous", forState: .Normal)
+        previousDay.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
+        previousDay.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
+        previousDay.backgroundColor = UIColor.clearColor()
+        previousDay.addTarget(self, action: "previousDay:", forControlEvents: .TouchUpInside)
+        previousDay.layer.masksToBounds = true
+        previousDay.sizeToFit()
+        self.view.addSubview(previousDay)
+        
+        nextDay = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.6, 50, 30))
+        nextDay.setTitle("Next", forState: .Normal)
+        nextDay.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
+        nextDay.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
+        nextDay.backgroundColor = UIColor.clearColor()
+        nextDay.addTarget(self, action: "nextDay:", forControlEvents: .TouchUpInside)
+        nextDay.layer.masksToBounds = true
+        nextDay.sizeToFit()
+        nextDay.hidden = true
+        self.view.addSubview(nextDay)
+        
+        previousWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.6, 50, 50))
+        previousWeek.setTitle("Previous", forState: .Normal)
+        previousWeek.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
+        previousWeek.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
+        previousWeek.backgroundColor = UIColor.clearColor()
+        previousWeek.addTarget(self, action: "previousWeek:", forControlEvents: .TouchUpInside)
+        previousWeek.layer.masksToBounds = true
+        previousWeek.sizeToFit()
+        previousWeek.hidden = true
+        self.view.addSubview(previousWeek)
+        
+        nextWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.6, 50, 30))
+        nextWeek.setTitle("Next", forState: .Normal)
+        nextWeek.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
+        nextWeek.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
+        nextWeek.backgroundColor = UIColor.clearColor()
+        nextWeek.addTarget(self, action: "nextWeek:", forControlEvents: .TouchUpInside)
+        nextWeek.layer.masksToBounds = true
+        nextWeek.sizeToFit()
+        nextWeek.hidden = true
+        self.view.addSubview(nextWeek)
+        
+        
+        week = UIButton(frame: CGRectMake(self.view.frame.width*0.5, 30, 100, 30))
+        week.setTitle("week", forState: .Normal)
+        week.setTitleColor(UIColor.cyanColor(), forState: .Normal)
+        week.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+        week.backgroundColor = UIColor.whiteColor()
+        week.addTarget(self, action: "weekButton:", forControlEvents: .TouchUpInside)
+        week.layer.masksToBounds = true
+        week.layer.cornerRadius = 20
+        week.tag = 2
         
         self.view.addSubview(day)
-        self.view.addSubview(month)
-    }
-    
-    func Change(sender: UIButton){
-        for i in 0...6 {
-            if sender.tag == 1 {
-                Days[i] = NSDate(timeInterval: -60*60*24*NSTimeInterval(i) ,sinceDate: Days[0])
-                chartData[i] = PresetData[i]
-            }else{
-                Days[i] = NSDate(timeInterval: -60*60*24*NSTimeInterval(i*7) ,sinceDate: Days[0])
-                chartData[i] = monthData[i]
-            }
-            ShowDays[i] = dateFormatter.stringFromDate(Days[i])
-            footers[6-i].text = ShowDays[i]
-        }
-        
-        var max = 0
-        total = 0
-        for data in chartData{
-            total += data
-            if max < data{
-                max = data
-            }
-        }
-        maketext(sender.tag)
-        
-        for i in 0...3{
-            data[i].text = texts[i]
-        }
-        
-        self.viewDidDisappear(true)
-        barChart.maximumValue = CGFloat(max)
-        self.viewDidAppear(true)
+        self.view.addSubview(week)
     }
     
     func maketext(which: Int){
@@ -232,10 +290,139 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
             header.text =  "日毎の記録"
             texts = ["今日の消費カロリー：\(chartData[6]/55)カロリー","今日の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩","\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"]
         }else if which == 2 {
+            var textLimit = NSDate(timeInterval: -60*60*24, sinceDate: limit)
+            var text = ShowdayFormat.stringFromDate(textLimit)
             header.text =  "週毎の記録"
-            texts = ["今週の消費カロリー：\(chartData[6]/55)カロリー","今週の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩","\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"]
-        }else{
-            texts = ["今日の消費カロリー：\(chartData[6]/55)カロリー","今日の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩","\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"]
+            texts = ["今週の消費カロリー：\(chartData[6]/55)カロリー","今週の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(text)の平均：\(total/7)歩","\(ShowDays[6])〜\(text)の燃焼カロリー：\(total/55)kcal"]
         }
+    }
+    //共通
+    
+    func Aggregate(){
+        for result in results{
+            var dataDay = result.valueForKey("date") as! NSDate
+            var dataStep = result.valueForKey("step") as! Int
+            for i in 0...6 {
+                if (limit.compare(dataDay) == NSComparisonResult.OrderedAscending){
+                    continue
+                }
+                if (Days[i].compare(dataDay) == NSComparisonResult.OrderedAscending){
+                    chartData[i] += dataStep
+                    break
+                }
+            }
+        }
+        
+        max = 0
+        total = 0
+        for data in chartData{
+            total += data
+            if max < data{
+                max = data
+            }
+        }
+        barChart.maximumValue = CGFloat(max)
+        chartData = chartData.reverse()
+    }
+    //日付関係
+    func DayButton(sender: UIButton){
+        nextWeek.hidden = true
+        previousWeek.hidden = true
+        previousDay.hidden = false
+        nowViewing = 0
+        resetDay()
+    }
+    
+    func weekButton(sender: UIButton){
+        previousDay.hidden = true
+        nextDay.hidden = true
+        previousWeek.hidden = false
+        nowViewing = 0
+        resetWeek()
+    }
+    
+    func previousDay(sender: UIButton){
+        nowViewing += 1
+        resetDay()
+    }
+    
+    func nextDay(sender: UIButton){
+        nowViewing += -1
+        resetDay()
+    }
+    
+    func previousWeek(sender: UIButton){
+        nowViewing += 1
+        resetWeek()
+    }
+    
+    func nextWeek(sender: UIButton){
+        nowViewing += -1
+        resetWeek()
+    }
+    
+    
+    func resetDay(){  //日付でやります
+        if (nowViewing != 0) {
+            nextDay.hidden = false
+        }else{
+            nextDay.hidden = true
+        }
+        chartData = [0,0,0,0,0,0,0]
+        Days.removeAll()
+        ShowDays.removeAll()
+        for i in 0...6 {
+            Days.append(NSDate(timeInterval: -60*60*24*(NSTimeInterval(i)+nowViewing*7), sinceDate: today))
+            ShowDays.append(ShowdayFormat.stringFromDate(Days[i]))
+            footers[6-i].text = ShowDays[i]
+        }
+        
+        limit = NSDate(timeInterval: 60*60*24, sinceDate: Days[0]) //これより新しいデータはいらない！！
+        Aggregate()
+        maketext(1)
+        if(chartData[0] == 0){
+            previousDay.hidden = true
+        }else{
+            previousDay.hidden = false
+        }
+        
+        for i in 0...3{
+            data[i].text = texts[i]
+        }
+        
+        self.viewDidDisappear(true)
+        self.viewDidAppear(true)
+    }
+    
+    func resetWeek(){  //今度は週毎！
+        if (nowViewing != 0) {
+            nextWeek.hidden = false
+        }else{
+            nextWeek.hidden = true
+        }
+        chartData = [0,0,0,0,0,0,0]
+        Days.removeAll()
+        ShowDays.removeAll()
+        limit = NSDate(timeInterval: 60*60*24*(1-(7*7*nowViewing)), sinceDate: today) //これより新しいデータはいらない！！
+        for i in 0...6 {
+            Days.append(NSDate(timeInterval: -60*60*24*NSTimeInterval(7*(i+1)), sinceDate: limit))
+            ShowDays.append(ShowdayFormat.stringFromDate(Days[i]))
+            footers[6-i].text = "\(ShowDays[i])~"
+        }
+        
+        Aggregate()
+        maketext(2)
+        
+        if(chartData[0] == 0){
+            previousWeek.hidden = true
+        }else{
+            previousWeek.hidden = false
+        }
+        for i in 0...3{
+            data[i].text = texts[i]
+        }
+        
+        self.viewDidDisappear(true)
+        self.viewDidAppear(true)
     }
 }
