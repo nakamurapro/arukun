@@ -19,15 +19,30 @@ class FurnitureSetScene: SKScene {
     private var SetNumber :Int! //何番の家具を置こうとしてるか
     var backSetButton :UIButton! //戻るボタン
     private var myWindow :UIWindow!
-    var result :NSArray!
+    var results :NSArray!
         //場所
     //最後にメニューに戻るボタン
     var backtomenu :UIButton!
     
+    var imageName :String!
+    var Furniturename :String!
+    var kind :Int!
+    var haved :Bool!
+    var id :String!
     
     override func didMoveToView(view: SKView) {
-        result = readData()
-        var count = result.count
+        results = readData()
+        var count = 0
+        for data in results{
+            setData(data)
+            if (haved == true){
+                count++
+            }
+        }
+        
+        if (readRoom().count == 0){
+            makeRoom()
+        }
         var heightScroll = ceil(Double(count) / 2.0)
         Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         Scroll.scrollEnabled = true
@@ -95,8 +110,14 @@ class FurnitureSetScene: SKScene {
             setFurniture[i].center = CGPointMake(75,90)
         }
         
-        var i = 0
-        for data in result {
+        var i = 0 //これはViewが何番目
+        var k = 1 //これは家具が何番目
+        for data in results {
+            setData(data)
+            if (haved == false){
+                k++
+                continue
+            }
             var imagename = data.valueForKey("image")! as! String
             var name = data.valueForKey("name")! as! String
             
@@ -113,7 +134,7 @@ class FurnitureSetScene: SKScene {
             imageViews.append(UIImageView(image: Images[i]))
             imageViews[i].frame = CGRectMake(0, 0, 120, 120)
             imageViews[i].center = CGPointMake(75,90)
-            imageViews[i].tag = i
+            imageViews[i].tag = 1
             imageViews[i].userInteractionEnabled = true
             
             //画像にアクション適用、表示
@@ -134,7 +155,8 @@ class FurnitureSetScene: SKScene {
             View.addSubview(myTextView)
             
             Scroll.addSubview(View)
-            i++;
+            k++
+            i++
         }
         
         
@@ -147,16 +169,16 @@ class FurnitureSetScene: SKScene {
     
     func TouchImage(recognizer: UIGestureRecognizer) {
         if let imageView = recognizer.view as? UIImageView {
+            setData(results[imageView.tag])
             if(imageView.tag != 10000 && SetFlug == false){  //さあ家具を置こう
                 //背景表示
-                SetNumber = imageView.tag
                 var back = UIImage(named: "back1")
                 backView = UIImageView(frame: CGRectMake(0, 0, phoneSize.width, phoneSize.height))
                 backView.image = back
                 self.view!.addSubview(backView)
                 
                 //テキスト表示
-                TextFurniture.text = "どこに\(names[SetNumber])を配置しますか？"
+                TextFurniture.text = "どこに\(Furniturename)を配置しますか？"
                 self.view!.addSubview(TextFurniture)
                 //戻るボタン配置
                 backSetButton.hidden = false
@@ -214,16 +236,48 @@ class FurnitureSetScene: SKScene {
     }
     
     func readData() -> NSArray{
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = app.managedObjectContext
-        let entityDiscription = NSEntityDescription.entityForName("Furniture", inManagedObjectContext: managedObjectContext!)
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = entityDiscription;
-        let predicate = NSPredicate(format: "haved == YES")
-        fetchRequest.predicate = predicate
-            
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Furniture")
         var error: NSError? = nil;
-        var results = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error)
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
         return results!
+    }
+    
+    func setData(data: AnyObject){
+        imageName = data.valueForKey("image")! as! String
+        Furniturename = data.valueForKey("name")! as! String
+        kind = data.valueForKey("kind")! as! Int
+        haved = data.valueForKey("haved") as! Bool
+        id = toString(data.objectID)
+    }
+    
+    func readRoom() -> NSArray{
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Room")
+        var error: NSError? = nil;
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results!
+    }
+    
+    func makeRoom() {
+        //plist読み込み
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        
+        let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+                "Furniture", inManagedObjectContext: categoryContext)
+        var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+        new_data.setValue(5, forKey: "background")
+        new_data.setValue(0, forKey: "fur1")
+        new_data.setValue(0, forKey: "fur2")
+        new_data.setValue(0, forKey: "fur3")
+        new_data.setValue(0, forKey: "fur4")
+
+        var error: NSError?
+        categoryContext.save(&error)
+    
+        println("InitMasters OK!")
     }
 }

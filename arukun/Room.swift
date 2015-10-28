@@ -87,7 +87,7 @@ class Charadata: NSManagedObject {
 
 @objc(Furniture)
 class Furniture: NSManagedObject {
-    
+    @NSManaged var id: NSNumber
     @NSManaged var haved: NSNumber
     @NSManaged var image: String
     @NSManaged var kind: String
