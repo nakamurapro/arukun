@@ -58,13 +58,13 @@
 		7B7F7F791BDE68F500F1DEC7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6764A91BBE22D300FFB44A /* FirstViewController.swift */; };
 		7B7F7F7A1BDE695700F1DEC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60AA531B27EF5D000D4D5A /* AppDelegate.swift */; };
 		7B7F7F7B1BDE695800F1DEC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60AA531B27EF5D000D4D5A /* AppDelegate.swift */; };
-		7B93CD1F1B4F68AB00A6E701 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B93CD1D1B4F68AB00A6E701 /* Model.xcdatamodeld */; };
 		7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D801B383EBF0056D886 /* FeedScene.swift */; };
 		7B9A6D831B3840290056D886 /* 1179.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D821B3840290056D886 /* 1179.png */; };
 		7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D841B3842460056D886 /* FeedViewController.swift */; };
 		7B9A6D8B1B38488E0056D886 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8A1B38488E0056D886 /* GameScene.sks */; };
 		7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */; };
 		7BB9CB851BDF3CB100712A4E /* FurnitureMaster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */; };
+		7BE33D361BE46D5000C3C1DF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BE33D341BE46D5000C3C1DF /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,13 +177,13 @@
 		7B7F7F631BDE679500F1DEC7 /* FurnitureSetScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FurnitureSetScene.swift; sourceTree = "<group>"; };
 		7B7F7F651BDE67AC00F1DEC7 /* FurnitureBuySnece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FurnitureBuySnece.swift; sourceTree = "<group>"; };
 		7B7F7F771BDE67EC00F1DEC7 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		7B93CD1E1B4F68AB00A6E701 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7B9A6D801B383EBF0056D886 /* FeedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedScene.swift; sourceTree = "<group>"; };
 		7B9A6D821B3840290056D886 /* 1179.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1179.png; sourceTree = "<group>"; };
 		7B9A6D841B3842460056D886 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		7B9A6D8A1B38488E0056D886 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryScene.swift; sourceTree = "<group>"; };
 		7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FurnitureMaster.plist; sourceTree = "<group>"; };
+		7BE33D351BE46D5000C3C1DF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +266,7 @@
 				1D60AA5E1B27EF5D000D4D5A /* Images.xcassets */,
 				1D60AA601B27EF5D000D4D5A /* LaunchScreen.xib */,
 				1D60AA5B1B27EF5D000D4D5A /* Main.storyboard */,
-				7B93CD1D1B4F68AB00A6E701 /* Model.xcdatamodeld */,
+				7BE33D341BE46D5000C3C1DF /* Model.xcdatamodeld */,
 				1D60AA511B27EF5D000D4D5A /* Supporting Files */,
 			);
 			path = arukun;
@@ -658,6 +658,7 @@
 				1D6764AA1BBE22D300FFB44A /* FirstViewController.swift in Sources */,
 				7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */,
 				1DF394831BD72FFD00027E08 /* CustomCell.swift in Sources */,
+				7BE33D361BE46D5000C3C1DF /* Model.xcdatamodeld in Sources */,
 				1D6764B51BBE240D00FFB44A /* JBBarChartView.m in Sources */,
 				1DF394811BD72FFD00027E08 /* ViewController.swift in Sources */,
 				7B7F7F781BDE67EC00F1DEC7 /* Room.swift in Sources */,
@@ -667,7 +668,6 @@
 				1D6764B71BBE240D00FFB44A /* JBLineChartView.m in Sources */,
 				7B313D0F1BD5FC9E002A6782 /* FurnitureScene.swift in Sources */,
 				7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */,
-				7B93CD1F1B4F68AB00A6E701 /* Model.xcdatamodeld in Sources */,
 				7B7F7F661BDE67AC00F1DEC7 /* FurnitureBuySnece.swift in Sources */,
 				1DF13FE81BD09537003531F2 /* CustomLeftTableViewCell.swift in Sources */,
 				7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */,
@@ -1072,12 +1072,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7B93CD1D1B4F68AB00A6E701 /* Model.xcdatamodeld */ = {
+		7BE33D341BE46D5000C3C1DF /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7B93CD1E1B4F68AB00A6E701 /* Model.xcdatamodel */,
+				7BE33D351BE46D5000C3C1DF /* Model.xcdatamodel */,
 			);
-			currentVersion = 7B93CD1E1B4F68AB00A6E701 /* Model.xcdatamodel */;
+			currentVersion = 7BE33D351BE46D5000C3C1DF /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

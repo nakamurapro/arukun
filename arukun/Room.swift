@@ -12,11 +12,11 @@ import CoreData
 @objc(Room)
 class Room: NSManagedObject {
 
-    @NSManaged var background: NSNumber
-    @NSManaged var fur1: NSNumber
-    @NSManaged var fur2: NSNumber
-    @NSManaged var fur3: NSNumber
-    @NSManaged var fur4: NSNumber
+    @NSManaged var background: String
+    @NSManaged var fur1: String
+    @NSManaged var fur2: String
+    @NSManaged var fur3: String
+    @NSManaged var fur4: String
 
 }
 

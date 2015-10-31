@@ -36,11 +36,11 @@
         <attribute name="totalstep" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Room" representedClassName="PRODUCT_MODULE_NAME.Room" syncable="YES">
-        <attribute name="background" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fur1" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fur2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fur3" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fur4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="background" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="fur1" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="fur2" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="fur3" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="fur4" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="PRODUCT_MODULE_NAME.User" syncable="YES">
         <attribute name="money" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
