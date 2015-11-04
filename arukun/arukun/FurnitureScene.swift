@@ -14,6 +14,8 @@ class FurnitureScene: SKScene {
         //まずScrollViewを2つ作るよ
         if (readData().count == 0){
             initMasters()
+        }else if (readData().count == 5){
+            addData()
         }
         FurnitureBuyButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
         FurnitureBuyButton.backgroundColor = UIColor.redColor()
@@ -93,6 +95,30 @@ class FurnitureScene: SKScene {
             categoryContext.save(&error)
             
         }
+        println("InitMasters OK!")
+    }
+    
+    func addData() {
+        println("initMasters ------------")
+        //plist読み込み
+        let path:NSString = NSBundle.mainBundle().pathForResource("FurnitureMaster", ofType: "plist")!
+        var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+
+            
+        let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+                "Furniture", inManagedObjectContext: categoryContext)
+        var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+        new_data.setValue("モノクロな背景", forKey: "name")
+        new_data.setValue(2, forKey: "kind")
+        new_data.setValue("back2", forKey: "image")
+        new_data.setValue(500, forKey: "point")
+        new_data.setValue(true, forKey: "haved")
+            
+        var error: NSError?
+        categoryContext.save(&error)
+
         println("InitMasters OK!")
     }
     
