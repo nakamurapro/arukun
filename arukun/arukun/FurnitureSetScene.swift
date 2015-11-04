@@ -359,6 +359,7 @@ class FurnitureSetScene: SKScene {
         backtomenu.hidden = false
         ShowRoomButton.hidden = false
         SetFlug = false
+        BackgroundSet.removeFromSuperview()
     }
     
     func backtomenu(sender: UIButton){

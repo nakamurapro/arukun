@@ -19,7 +19,6 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     var Pets :NSArray! //ペットのデータがここ
     var Pictures :NSArray! //写真データがここ
     
-    let imgArray: NSArray = ["photo1.png","photo2.png","photo3.png"]
     let nameArray : NSArray = ["あるくん","あるちゃん","あるお"]
     
     override func viewDidLoad() {
@@ -53,16 +52,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let cell:CustomCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as!CustomCell
         
         //cellの中身の画像処理
-        var data: AnyObject = Pets[indexPath.row]
-        var Charanumber = data.valueForKey("monsterid") as! Int
-        var photo = ""
-        for pict in Pictures{
-            var check = pict.valueForKey("charanumber") as! Int
-            if(Charanumber == check){
-                photo = pict.valueForKey("picturename") as! String
-                break
-            }
-        }
+        var photo = takePhoto(indexPath.row)
         cell.image.image = UIImage(named: photo)
         cell.image2.image = UIImage(named:"husen.png")
         cell.label.text = nameArray[indexPath.row] as? String
@@ -74,7 +64,8 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath:NSIndexPath) {
         // SubViewController へ遷移するために Segue を呼び出す
-        selectedImage = UIImage(named:"\(imgArray[indexPath.row])")
+        var photo = takePhoto(indexPath.row)
+        selectedImage = UIImage(named: photo)
 
         //テキストデータ読み込み
         let path = NSBundle.mainBundle().pathForResource("json2", ofType: "txt")
@@ -105,7 +96,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     //画像枚数分カウント
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imgArray.count
+        return Pets.count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -195,7 +186,18 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         }
         println("InitMasters OK!")
     }
-
-
-
+    
+    func takePhoto(i :Int) -> String{
+        var data: AnyObject = Pets[i]
+        var Charanumber = data.valueForKey("monsterid") as! Int
+        var photo = ""
+        for pict in Pictures{
+            var check = pict.valueForKey("charanumber") as! Int
+            if(Charanumber == check){
+                photo = pict.valueForKey("picturename") as! String
+                break
+            }
+        }
+        return photo
+    }
 }
