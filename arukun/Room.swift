@@ -12,11 +12,11 @@ import CoreData
 @objc(Room)
 class Room: NSManagedObject {
 
-    @NSManaged var background: NSNumber
-    @NSManaged var fur1: NSNumber
-    @NSManaged var fur2: NSNumber
-    @NSManaged var fur3: NSNumber
-    @NSManaged var fur4: NSNumber
+    @NSManaged var background: String
+    @NSManaged var fur1: String
+    @NSManaged var fur2: String
+    @NSManaged var fur3: String
+    @NSManaged var fur4: String
 
 }
 
@@ -40,17 +40,6 @@ class Pedometer: NSManagedObject {
 
     @NSManaged var date: NSDate
     @NSManaged var step: NSNumber
-    
-}
-
-@objc(Furniture)
-class Furniture: NSManagedObject {
-    
-    @NSManaged var haved: NSNumber
-    @NSManaged var image: String
-    @NSManaged var kind: String
-    @NSManaged var name: String
-    @NSManaged var point: NSNumber
     
 }
 
@@ -95,6 +84,18 @@ class Charadata: NSManagedObject {
     @NSManaged var rgb: String
     
 }
+
+@objc(Furniture)
+class Furniture: NSManagedObject {
+    @NSManaged var id: NSNumber
+    @NSManaged var haved: NSNumber
+    @NSManaged var image: String
+    @NSManaged var kind: String
+    @NSManaged var name: String
+    @NSManaged var point: NSNumber
+    
+}
+
 
 
 

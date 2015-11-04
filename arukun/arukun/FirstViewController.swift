@@ -63,6 +63,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         results = readData()
         if (results.count == 0){
             initMasters()
+            results = readData()
         }
         
         // Do any additional setup after loading the view, typically from a nib.

@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>data3</key>
+	<dict>
+		<key>level</key>
+		<integer>3</integer>
+		<key>rgb</key>
+		<string>rg</string>
+	</dict>
 	<key>data2</key>
 	<dict>
 		<key>level</key>

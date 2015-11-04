@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import SpriteKit
+import CoreData
 
 class FurnitureBuyScene: SKScene {
     var Scroll :UIScrollView! //0は家具購入、1は家具配置に使います
@@ -16,26 +17,26 @@ class FurnitureBuyScene: SKScene {
     private var price :UITextView! //値段
     var imageView :UIImageView! //これは商品
     var boughtImage = UIImage(named: "bought") //購入済み
-    var PlayerPoint :Int = 1000   //お金
+    var PlayerPoint :Int!   //お金
     var BuyFurniture :Dictionary<String,String>! //何を買おうとしてるのか
-    var selected: Int!  //選んだ番号
+    var selected: AnyObject!  //選んだ商品
+    var selectedNumber: Int!
     var bought :Array<UIImageView> = [] //買ったのどうなの
-    
-    var data = [
-        ["name" :"木のイス", "point" :"100", "have" :"false", "pic" :"kagu1"],
-        ["name" :"しゃれたイス", "point" :"150", "have" :"false", "pic" :"kagu2"],
-        ["name" :"こさねぇ", "point" :"100" ,"have" :"true", "pic" :"kagu3"],
-        ["name" :"観葉植物", "point" :"80" ,"have" :"false", "pic" :"kagu4"],
-        ["name" :"素朴な背景", "point" : "700", "have" :"false", "pic" :"back1"]
-    ]    //場所
-    
+    var results :NSArray!
     //最後にメニューに戻るボタン
     var backtomenu :UIButton!
     
     
+    var imageName :String!
+    var Furniturename :String!
+    var point :Int!
+    var haved :Bool!
+    
+    
     override func didMoveToView(view: SKView) {
-        //まずScrollViewを2つ作るよ
-        var heightScroll = ceil(Double(data.count) / 2.0)
+        results = readData()
+        readPoint()
+        var heightScroll = ceil(Double(results.count) / 2.0)
         Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         Scroll.scrollEnabled = true
         Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
@@ -109,9 +110,14 @@ class FurnitureBuyScene: SKScene {
         PointView.center = CGPointMake(self.view!.frame.width*0.5,self.view!.frame.height*0.25)
         self.view!.addSubview(PointView)
         
-        for i in 0...4 { //メイン画面の用意
-            var output = self.data[i]
-            //コイツが1単位
+        var i = 0
+        for data in results { //メイン画面の用意
+            setData(data)
+            //var imageName = data.valueForKey("image")! as! String
+            //var name = data.valueForKey("name")! as! String
+            //var point = data.valueForKey("point")! as! Int
+            //var haved = data.valueForKey("haved") as! Bool
+            
             var View = UIView()
             View.userInteractionEnabled = true
             var HGH :CGFloat = 180  //高さの間隔
@@ -120,7 +126,7 @@ class FurnitureBuyScene: SKScene {
             View.frame = CGRectMake(150*which, HGH*WhereY, 150, 150)
             
             //画像の用意
-            var Image = UIImage(named: output["pic"]!)
+            var Image = UIImage(named: imageName)
             imageView = UIImageView(image: Image)
             imageView.frame = CGRectMake(0, 0, 120, 120)
             imageView.center = CGPointMake(75,90)
@@ -136,7 +142,7 @@ class FurnitureBuyScene: SKScene {
             myTextView = UITextView(frame: CGRectMake(0, 0, 130, 30))
             myTextView.userInteractionEnabled = false
             myTextView.backgroundColor = UIColor(red: 0.0, green: 0.8, blue: 0.8, alpha: 1.0)
-            myTextView.text = output["name"]!
+            myTextView.text = Furniturename
             myTextView.font = UIFont.systemFontOfSize(CGFloat(15))
             myTextView.textColor = UIColor.whiteColor()
             myTextView.textAlignment = NSTextAlignment.Center
@@ -148,7 +154,7 @@ class FurnitureBuyScene: SKScene {
             price = UITextView(frame: CGRectMake(0, 0, 50, 30))
             price.userInteractionEnabled = false
             price.editable = false
-            price.text = output["point"]!
+            price.text = "\(point)"
             price.backgroundColor = UIColor.orangeColor()
             price.font = UIFont.systemFontOfSize(CGFloat(15))
             price.textColor = UIColor.whiteColor()
@@ -161,12 +167,13 @@ class FurnitureBuyScene: SKScene {
             bought[i].center = CGPointMake(75, 75)
             View.addSubview(bought[i])
             bought[i].tag = i
-            if(output["have"]! == "false"){
+            if(!(haved)){
                 bought[i].hidden = true
             }
             
             Scroll.addSubview(View)
             
+            i++
         }
         
     }//完成です
@@ -176,23 +183,51 @@ class FurnitureBuyScene: SKScene {
     }
     
     internal func BuyFurniture(sender: UIButton){ //買う
-        PlayerPoint = PlayerPoint - BuyFurniture["point"]!.toInt()!
+        PlayerPoint = PlayerPoint - point
         BuyButton.removeFromSuperview()
         myWindow.addSubview(backButton)
         Text.text = "購入しました！"
-        BuyFurniture.updateValue("true", forKey: "have")
-        data[selected] = BuyFurniture
-        bought[selected].hidden = false
+        setData(results[selectedNumber])
+        
+        //その１：買ったやつのhavedをYESに
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = app.managedObjectContext
+        var entityDiscription = NSEntityDescription.entityForName("Furniture", inManagedObjectContext: managedObjectContext!)
+        let fetchRequest = NSFetchRequest()
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        
+        fetchRequest.entity = entityDiscription;
+        let predicate = NSPredicate(format: "name = %@",Furniturename)
+        fetchRequest.predicate = predicate
+        
+        var error: NSError? = nil;
+        var result = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error)!
+        for data in result{
+            data.setValue(1, forKey: "haved")
+            var error: NSError?
+            categoryContext.save(&error)
+        }
+
+        //その２：Userのmoneyを減らす
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
+        var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
+        for data in resultPoint{
+            data.setValue(PlayerPoint, forKey: "money")
+            var error: NSError?
+            categoryContext.save(&error)
+        }
+
+        bought[selectedNumber].hidden = false
         PointView.text = "所持ポイント：\(toString(PlayerPoint))P"
+        
     }
     
     
     func makeWindow(recognizer: UIGestureRecognizer){ //ウィンドウ作成
         if let imageView = recognizer.view as? UIImageView {
-            selected = imageView.tag
-            BuyFurniture = data[selected]
-            var Flg = ( BuyFurniture["have"]! )
-            if(Flg == "false"){
+            setData(results[imageView.tag])
+            selectedNumber = imageView.tag
+            if(!(haved)){
                 //まずはウィンドウ作ろう
                 myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
                 myWindow.backgroundColor = UIColor.whiteColor()
@@ -203,15 +238,13 @@ class FurnitureBuyScene: SKScene {
                 self.view!.addSubview(myWindow)
                 self.myWindow.makeKeyAndVisible()
                 
-                var FurniturePoint = BuyFurniture["point"]!.toInt()!
-                if(PlayerPoint >= FurniturePoint){ //足りる！
-                    var name = BuyFurniture["name"]!
-                    Text.text = "\(name)を購入しますか？\n必要ポイント：\(FurniturePoint)P\n所持ポイント：\(PlayerPoint)P"
+                if(PlayerPoint >= point){ //足りる！
+                    Text.text = "\(Furniturename)を購入しますか？\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
                     myWindow.addSubview(Text)
                     myWindow.addSubview(BuyButton)
                     myWindow.addSubview(cancelButton)
                 }else { //足りない！
-                    Text.text = "ポイントが足りません！\n必要ポイント：\(FurniturePoint)P\n所持ポイント：\(PlayerPoint)P"
+                    Text.text = "ポイントが足りません！\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
                     myWindow.addSubview(Text)
                     myWindow.addSubview(backButton)
                 }
@@ -233,4 +266,51 @@ class FurnitureBuyScene: SKScene {
         PointView.hidden = true
     }
     
+    func readData() -> NSArray{
+        println("readData ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Furniture")
+        
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results
+    }
+    
+    func setData(data: AnyObject){
+        imageName = data.valueForKey("image")! as! String
+        Furniturename = data.valueForKey("name")! as! String
+        point = data.valueForKey("point")! as! Int
+        haved = data.valueForKey("haved") as! Bool
+    }
+    
+    func readPoint(){
+        println("readData ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
+        
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        if(results.count == 0){
+            makeUser()
+            readPoint()
+        }else{
+            for data in results{
+                PlayerPoint = data.valueForKey("money") as! Int
+            }
+        }
+    }
+    
+    func makeUser(){
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+            "User", inManagedObjectContext: categoryContext)
+        var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+        new_data.setValue(300, forKey: "money")
+        new_data.setValue(160, forKey: "stature") //身長のことだからね
+        new_data.setValue(0, forKey: "stride")
+        
+        var error: NSError?
+    }
+
 }
