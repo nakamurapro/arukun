@@ -2,33 +2,32 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Charapicture1</key>
+	<key>item3</key>
 	<dict>
+		<key>charanumber</key>
+		<integer>3</integer>
 		<key>picturenumber</key>
 		<integer>1</integer>
 		<key>image</key>
-		<string>chara_01_1</string>
+		<string>photo3</string>
 	</dict>
-	<key>Charapicture2</key>
+	<key>item2</key>
 	<dict>
-		<key>picturenumber</key>
+		<key>charanumber</key>
 		<integer>2</integer>
-		<key>image</key>
-		<string>chara_01_2</string>
-	</dict>
-	<key>Charapicture3</key>
-	<dict>
 		<key>picturenumber</key>
 		<integer>1</integer>
 		<key>image</key>
-		<string>chara_02_1</string>
+		<string>photo2</string>
 	</dict>
-	<key>Charapicture4</key>
+	<key>item1</key>
 	<dict>
+		<key>charanumber</key>
+		<integer>1</integer>
 		<key>picturenumber</key>
-		<integer>2</integer>
+		<integer>1</integer>
 		<key>image</key>
-		<string>chara_02_2</string>
+		<string>photo1</string>
 	</dict>
 </dict>
 </plist>
