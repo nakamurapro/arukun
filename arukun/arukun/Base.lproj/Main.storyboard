@@ -272,24 +272,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-yn-27g">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-yn-27g">
                                 <rect key="frame" x="29" y="96" width="30" height="30"/>
                                 <state key="normal" title="戻る"/>
                                 <connections>
                                     <segue destination="gKX-28-G21" kind="unwind" unwindAction="returnMenu:" id="GmF-oe-okF"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtn-Xz-Oe2">
-                                <rect key="frame" x="0.0" y="-2" width="375" height="669"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQY-T2-1qw">
-                                <rect key="frame" x="74" y="453" width="226" height="194"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQY-T2-1qw">
+                                <rect key="frame" x="37" y="473" width="300" height="194"/>
+                                <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="194" id="i4d-lG-CWp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rtn-Xz-Oe2">
+                                <rect key="frame" x="0.0" y="134" width="375" height="371"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="371" id="a2f-Sd-2uC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rtn-Xz-Oe2" firstAttribute="top" secondItem="wdh-yn-27g" secondAttribute="bottom" constant="8" symbolic="YES" id="89H-pz-kMH"/>
+                            <constraint firstItem="zQY-T2-1qw" firstAttribute="centerX" secondItem="24g-sM-kJ4" secondAttribute="centerX" id="FL8-fc-snR"/>
+                            <constraint firstItem="JJw-2r-POB" firstAttribute="top" secondItem="rtn-Xz-Oe2" secondAttribute="bottom" constant="162" id="GzY-ab-Ig9"/>
+                            <constraint firstItem="zQY-T2-1qw" firstAttribute="leading" secondItem="24g-sM-kJ4" secondAttribute="leadingMargin" constant="21" id="Woy-GF-9rF"/>
+                            <constraint firstItem="wdh-yn-27g" firstAttribute="leading" secondItem="24g-sM-kJ4" secondAttribute="leadingMargin" constant="13" id="aIO-ch-oxw"/>
+                            <constraint firstItem="zQY-T2-1qw" firstAttribute="bottom" secondItem="JJw-2r-POB" secondAttribute="top" id="d8S-Z6-2D5"/>
+                            <constraint firstItem="rtn-Xz-Oe2" firstAttribute="leading" secondItem="24g-sM-kJ4" secondAttribute="leading" id="n0f-y8-N85"/>
+                            <constraint firstItem="rtn-Xz-Oe2" firstAttribute="centerX" secondItem="zQY-T2-1qw" secondAttribute="centerX" id="paX-mV-Jk0"/>
+                        </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

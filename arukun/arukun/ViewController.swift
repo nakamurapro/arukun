@@ -18,6 +18,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     var str:String?
     var Pets :NSArray! //ペットのデータがここ
     var Pictures :NSArray! //写真データがここ
+    var CharaDatas :NSArray! //キャラデータがここ
     
     let nameArray : NSArray = ["あるくん","あるちゃん","あるお"]
     
@@ -33,6 +34,12 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         if(Pictures.count == 0){
             initPictureMasters()
             Pictures = readPictures()
+        }
+        
+        CharaDatas = readCharaData()
+        if(CharaDatas.count == 0){
+            initCharaMasters()
+            CharaDatas = readCharaData()
         }
         
         //背景
@@ -66,19 +73,14 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         // SubViewController へ遷移するために Segue を呼び出す
         var photo = takePhoto(indexPath.row)
         selectedImage = UIImage(named: photo)
+        
+        println(CharaDatas[indexPath.row])
 
-        //テキストデータ読み込み
-        let path = NSBundle.mainBundle().pathForResource("json2", ofType: "txt")
-        let jsondata = NSData(contentsOfFile: path!)
-        
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsondata!, options:NSJSONReadingOptions.MutableContainers, error: NSErrorPointer()) as! NSArray
-       
         //テキストデータの受け渡し
-        str = jsonArray[indexPath.row] as? String
-        
-        for dat in jsonArray{
-            print("\(dat)")
-        }
+        var text = CharaDatas[indexPath.row].valueForKey("text") as? String
+        var rgb = CharaDatas[indexPath.row].valueForKey("rgb") as? String
+        var rank = CharaDatas[indexPath.row].valueForKey("rank") as? Int
+        str = "・第\(rank!)段階\n・種類：\(rgb!)\n\(text!)"
         performSegueWithIdentifier("ViewController2",sender: nil)
     }
     
@@ -88,6 +90,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             let subVC: ViewController2 = (segue.destinationViewController as? ViewController2)!
             
             // SubViewControllerに選択された画像・文字を設定する
+            // ここで色々送ってるのね！！！わかったわ！！！！！！！
             subVC.selectedImg = selectedImage
             subVC.selectedlbl = str
 
@@ -106,6 +109,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     @IBAction func returnMenu(segue: UIStoryboardSegue){
     }
     
+    //もうここからデータベース関係ですよ
     func readPets() -> NSArray{
         println("readData ------------")
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -127,6 +131,18 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         return results
         
     }
+    
+    func readCharaData() -> NSArray{
+        println("readData ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Charadata")
+        
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results
+    
+    }
+
 
     func initPetMasters() {
         println("initMasters ------------")
@@ -153,6 +169,8 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             new_data.setValue(item.valueForKey("ended"), forKey: "ended")
             new_data.setValue(item.valueForKey("totaldistance"), forKey: "totaldistance")
             new_data.setValue(item.valueForKey("totalstep"), forKey: "totalstep")
+            new_data.setValue(item.valueForKey("efforts"), forKey: "efforts")
+            new_data.setValue(item.valueForKey("godpoint"), forKey: "godpoint")
             
             var error: NSError?
             categoryContext.save(&error)
@@ -187,6 +205,34 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         println("InitMasters OK!")
     }
     
+    func initCharaMasters() {
+        println("initMasters ------------")
+        //plist読み込み
+        let path:NSString = NSBundle.mainBundle().pathForResource("CharadataMaster", ofType: "plist")!
+        var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        
+        for(var i = 1; i<=masterDataDictionary.count; i++) {
+            let index_name: String = "data" + String(i)
+            var item: AnyObject = masterDataDictionary[index_name]!
+            
+            let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+                "Charadata", inManagedObjectContext: categoryContext)
+            var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+            new_data.setValue(item.valueForKey("text"), forKey: "text")
+            new_data.setValue(item.valueForKey("haved"), forKey: "haved")
+            new_data.setValue(item.valueForKey("rank"), forKey: "rank")
+            new_data.setValue(item.valueForKey("rgb"), forKey: "rgb")
+            
+            var error: NSError?
+            categoryContext.save(&error)
+            
+        }
+
+    }
+    
+    //それ以外
     func takePhoto(i :Int) -> String{
         var data: AnyObject = Pets[i]
         var Charanumber = data.valueForKey("monsterid") as! Int

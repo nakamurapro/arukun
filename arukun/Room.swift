@@ -32,6 +32,8 @@ class Pet: NSManagedObject {
     @NSManaged var started: NSDate
     @NSManaged var totaldistance: NSNumber
     @NSManaged var totalstep: NSNumber
+    @NSManaged var efforts: NSNumber
+    @NSManaged var godpoint: NSNumber
     
 }
 
@@ -70,7 +72,7 @@ class Diary: NSManagedObject {
 
 @objc(User)
 class User: NSManagedObject {
-    
+    @NSManaged var nowgrowing: NSNumber
     @NSManaged var money: NSNumber
     @NSManaged var stature: NSNumber
     @NSManaged var stride: NSNumber
@@ -82,6 +84,8 @@ class Charadata: NSManagedObject {
     
     @NSManaged var rank: NSNumber
     @NSManaged var rgb: String
+    @NSManaged var text: String
+    @NSManaged var haved :NSNumber
     
 }
 

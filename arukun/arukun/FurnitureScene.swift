@@ -14,7 +14,6 @@ class FurnitureScene: SKScene {
         //まずScrollViewを2つ作るよ
         if (readData().count == 0){
             initMasters()
-        }else if (readData().count == 5){
             addData()
         }
         FurnitureBuyButton = UIButton(frame: CGRectMake(0, 0, 100, 50))

@@ -13,6 +13,7 @@ class ViewController2: UIViewController {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    //送ったやつ受信ってことか！！！！！
     var selectedImg: UIImage?
     var selectedlbl: String?
     
@@ -20,6 +21,7 @@ class ViewController2: UIViewController {
         super.viewDidLoad()
         
         label.text = selectedlbl
+        label.textColor = UIColor.blackColor()
         
         //２画面目拡大画像
         imageView.image = selectedImg

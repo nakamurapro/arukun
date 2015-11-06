@@ -9,21 +9,44 @@
 import SpriteKit
 import Foundation
 import CoreMotion
+import CoreData
 
 class GameScene: SKScene {
-    //var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var phoneSize :CGSize = UIScreen.mainScreen().bounds.size //画面サイズ
     var pointLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
     var scoreSprite = SKSpriteNode(imageNamed: "score")
     var sprite = SKSpriteNode(imageNamed:"0")
+    
     var myMotionManager: CMMotionManager!
     var X:Double! = 1.0
     var Y:Double! = 1.0
     var Z:Double! = 1.0
     var Counter :Int = 0
     
+    var Rooms: NSArray!
+    var Furnitures: NSArray!
+    
+    var Flg :Bool = false
+    
+    var Furniture :Array<SKSpriteNode> = []
+    
     override func didMoveToView(view: SKView) {
         //        /* Setup your scene here */
+        Rooms = readRoom()
+        if(Rooms.count == 0){
+            makeRoom()
+            Rooms = readRoom()
+        }
+        
+        Furnitures = readData()
+        if(Furnitures.count == 0 ){
+            initMasters()
+            Furnitures = readData()
+
+        }
         layoutObject()
+        setFurniture()
         scoreLayout()
         //        self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -59,7 +82,7 @@ class GameScene: SKScene {
         })
         
     }
-    
+
     func scoreLayout(){
         //        scoreSprite.xScale = 1
         //        scoreSprite.yScale = 1
@@ -77,13 +100,48 @@ class GameScene: SKScene {
     override func update(currentTime: NSTimeInterval) {
         pointLabel.text = toString(Counter) + "歩"
     }
-    
+
     func layoutObject(){
-        let background = SKSpriteNode(imageNamed: "back1")
+        var text :String = ""
+        var backnumber :Int = 0
+        for data in Rooms{
+            backnumber = data.valueForKey("background") as! Int
+        }
+        
+        var i = 0
+        for fur in Furnitures{
+            if(backnumber == i){
+                text = fur.valueForKey("image") as! String
+                break
+            }
+            i++
+        }
+        let background = SKSpriteNode(imageNamed: text)
         background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
-        background.size = self.size
+        background.xScale = 0.5
+        background.yScale = 0.5
         self.addChild(background)
         
+    }
+    
+    func setFurniture(){
+        for data in Rooms{
+            for i in 0...3{
+                var x :Array<CGFloat> = [0.40,0.60]
+                var y :Array<CGFloat> = [0.3,0.6]
+                var imageNumber = data.valueForKey("fur\(i+1)") as! Int
+                if(imageNumber == -1){
+                    Furniture.append(SKSpriteNode(imageNamed: "nothing"))
+                }else{
+                    var imageName = Furnitures[imageNumber].valueForKey("image") as! String
+                    Furniture.append(SKSpriteNode(imageNamed: imageName))
+                    Furniture[i].xScale = 0.20
+                    Furniture[i].yScale = 0.20
+                }
+                Furniture[i].position = CGPoint(x: self.size.width*x[i%2], y: self.size.height*y[i%2])
+                self.addChild(Furniture[i])
+            }
+        }
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -91,17 +149,75 @@ class GameScene: SKScene {
         
         for touch in (touches as! Set<UITouch>) {
             let location = touch.locationInNode(self)
-            //            let sprite = SKSpriteNode(imageNamed:"0")
-            //            sprite.xScale = 0.05
-            //            sprite.yScale = 0.05
-            //            sprite.position = location
-            //            self.addChild(sprite)
             var move = SKAction.moveTo(CGPoint(x: location.x, y: location.y), duration: 1.5)
-            //            println((120 - location.y/10)/100)
-            //            var scale = SKAction.scaleTo((100 - location.y/10)/100, duration: 1.0)
-            //            sprite.runAction(scale)
             sprite.runAction(move)
         }
     }
     
+    
+    //ここらへんデータベースです
+    func readRoom() -> NSArray{
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Room")
+        var error: NSError? = nil;
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results!
+    }
+    
+    func makeRoom() {
+        //plist読み込み
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!        
+        let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+            "Room", inManagedObjectContext: categoryContext)
+        var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+        new_data.setValue(4, forKey: "background")
+        new_data.setValue(-1, forKey: "fur1")
+        new_data.setValue(-1, forKey: "fur2")
+        new_data.setValue(-1, forKey: "fur3")
+        new_data.setValue(-1, forKey: "fur4")
+        
+        var error: NSError?
+        categoryContext.save(&error)
+        
+        println("InitMasters OK!")
+    }
+    
+    func readData() -> NSArray{
+        println("readData ------------")
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Furniture")
+        
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results
+    }
+    
+    func initMasters() {
+        println("initMasters ------------")
+        //plist読み込み
+        let path:NSString = NSBundle.mainBundle().pathForResource("FurnitureMaster", ofType: "plist")!
+        var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        
+        for(var i = 1; i<=masterDataDictionary.count; i++) {
+            let index_name: String = "item" + String(i)
+            var item: AnyObject = masterDataDictionary[index_name]!
+            
+            let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+                "Furniture", inManagedObjectContext: categoryContext)
+            var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+            new_data.setValue(item.valueForKey("name") as! String, forKey: "name")
+            new_data.setValue(item.valueForKey("kind") as! Int, forKey: "kind")
+            new_data.setValue(item.valueForKey("image") as! String, forKey: "image")
+            new_data.setValue(item.valueForKey("point") as! Int, forKey: "point")
+            new_data.setValue(item.valueForKey("haved"), forKey: "haved")
+            
+            var error: NSError?
+            categoryContext.save(&error)
+            
+        }
+        println("InitMasters OK!")
+    }
+
 }

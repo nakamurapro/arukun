@@ -24,6 +24,10 @@
 		<real>42.1</real>
 		<key>totalstep</key>
 		<integer>10000</integer>
+		<key>efforts</key>
+		<integer>0</integer>
+		<key>godpoint</key>
+		<integer>0</integer>
 	</dict>
 	<key>item3</key>
 	<dict>
@@ -47,6 +51,10 @@
 		<real>30.3</real>
 		<key>totalstep</key>
 		<integer>10000</integer>
+		<key>efforts</key>
+		<integer>0</integer>
+		<key>godpoint</key>
+		<integer>0</integer>
 	</dict>
 	<key>item2</key>
 	<dict>
@@ -70,6 +78,10 @@
 		<real>50.3</real>
 		<key>totalstep</key>
 		<integer>20000</integer>
+		<key>efforts</key>
+		<integer>0</integer>
+		<key>godpoint</key>
+		<integer>0</integer>
 	</dict>
 </dict>
 </plist>

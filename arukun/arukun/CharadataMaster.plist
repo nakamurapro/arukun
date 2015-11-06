@@ -4,24 +4,36 @@
 <dict>
 	<key>data3</key>
 	<dict>
-		<key>level</key>
+		<key>rank</key>
 		<integer>3</integer>
 		<key>rgb</key>
 		<string>rg</string>
+		<key>haved</key>
+		<true/>
+		<key>text</key>
+		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
 	</dict>
 	<key>data2</key>
 	<dict>
-		<key>level</key>
+		<key>rank</key>
 		<integer>2</integer>
 		<key>rgb</key>
 		<string>r</string>
+		<key>haved</key>
+		<true/>
+		<key>text</key>
+		<string>体が大きくて怖がられるけど、実は優しい心の持ち主。</string>
 	</dict>
 	<key>data1</key>
 	<dict>
-		<key>level</key>
+		<key>rank</key>
 		<integer>1</integer>
 		<key>rgb</key>
-		<string>no</string>
+		<string>normal</string>
+		<key>haved</key>
+		<true/>
+		<key>text</key>
+		<string>サッカーをするのが大好き。情に厚い。</string>
 	</dict>
 </dict>
 </plist>

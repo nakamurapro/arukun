@@ -24,11 +24,12 @@ class GameScene: SKScene {
     var Counter :Int = 0
     
     override func didMoveToView(view: SKView) {
-//        /* Setup your scene here */
         layoutObject()
         scoreLayout()
         //self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        var point1 :CGPoint = CGPoint(x: 0, y: 0)
+        var point2 :CGPoint = CGPoint(x: self.frame.width, y: self.frame.height*0.6)
         self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         sprite.physicsBody = SKPhysicsBody(circleOfRadius: 1000)
         

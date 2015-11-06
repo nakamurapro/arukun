@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Charadata" representedClassName="PRODUCT_MODULE_NAME.Charadata" syncable="YES">
+        <attribute name="haved" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="rgb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Charapicture" representedClassName="PRODUCT_MODULE_NAME.Charapicture" syncable="YES">
         <attribute name="charanumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -26,9 +28,11 @@
     </entity>
     <entity name="Pet" representedClassName="PRODUCT_MODULE_NAME.Pet" syncable="YES">
         <attribute name="b" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="efforts" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="ended" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="g" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="generation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="godpoint" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="monsterid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="r" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -45,6 +49,7 @@
     </entity>
     <entity name="User" representedClassName="PRODUCT_MODULE_NAME.User" syncable="YES">
         <attribute name="money" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="nowgrowing" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="stature" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="stride" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
@@ -53,14 +58,14 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Charadata" positionX="-11" positionY="99" width="128" height="73"/>
+        <element name="Charadata" positionX="-11" positionY="99" width="128" height="105"/>
         <element name="Charapicture" positionX="196" positionY="-99" width="128" height="90"/>
         <element name="Diary" positionX="205" positionY="45" width="128" height="75"/>
         <element name="Furniture" positionX="-90" positionY="-99" width="128" height="120"/>
         <element name="Pedometer" positionX="88" positionY="-246" width="128" height="75"/>
-        <element name="Pet" positionX="-225" positionY="27" width="128" height="195"/>
+        <element name="Pet" positionX="-225" positionY="27" width="128" height="225"/>
         <element name="Room" positionX="-81" positionY="-90" width="128" height="120"/>
-        <element name="User" positionX="-153" positionY="-252" width="128" height="90"/>
+        <element name="User" positionX="-153" positionY="-252" width="128" height="105"/>
         <element name="Word" positionX="-297" positionY="-108" width="128" height="75"/>
     </elements>
 </model>
