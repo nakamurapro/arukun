@@ -25,7 +25,7 @@ class FurnitureBuyScene: SKScene {
     var results :NSArray!
     //最後にメニューに戻るボタン
     var backtomenu :UIButton!
-    
+    var Flg = false
     
     var imageName :String!
     var Furniturename :String!
@@ -37,11 +37,11 @@ class FurnitureBuyScene: SKScene {
         results = readData()
         readPoint()
         var heightScroll = ceil(Double(results.count) / 2.0)
-        Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 500))
         Scroll.scrollEnabled = true
         Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
         Scroll.indicatorStyle = UIScrollViewIndicatorStyle.Black
-        Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.5)
+        Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.4)
         Scroll.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         self.view!.addSubview(Scroll)
         
@@ -99,15 +99,15 @@ class FurnitureBuyScene: SKScene {
         Text.editable = false
         Text.center = CGPointMake(self.view!.frame.width/2,100)
         
-        PointView = UITextView(frame: CGRectMake(0, 0, 300, 100))
+        PointView = UITextView(frame: CGRectMake(0, 0, 200, 100))
         PointView.userInteractionEnabled = true
         PointView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         PointView.text = "所持ポイント：\(toString(PlayerPoint))P"
         PointView.font = UIFont.systemFontOfSize(CGFloat(20))
         PointView.textColor = UIColor.blackColor()
-        PointView.textAlignment = NSTextAlignment.Left
+        PointView.textAlignment = NSTextAlignment.Right
         PointView.editable = false
-        PointView.center = CGPointMake(self.view!.frame.width*0.5,self.view!.frame.height*0.25)
+        PointView.center = CGPointMake(self.view!.frame.width*0.7,self.view!.frame.height*0.9)
         self.view!.addSubview(PointView)
         
         var i = 0
@@ -179,6 +179,7 @@ class FurnitureBuyScene: SKScene {
     }//完成です
     
     internal func Goback(sender: UIButton){ //戻る
+        Flg = false
         myWindow.hidden = true
     }
     
@@ -223,35 +224,38 @@ class FurnitureBuyScene: SKScene {
     }
     
     
-    func makeWindow(recognizer: UIGestureRecognizer){ //ウィンドウ作成
-        if let imageView = recognizer.view as? UIImageView {
-            setData(results[imageView.tag])
-            selectedNumber = imageView.tag
-            if(!(haved)){
-                //まずはウィンドウ作ろう
-                myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
-                myWindow.backgroundColor = UIColor.whiteColor()
-                myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2)
-                myWindow.alpha = 1.0
-                // myWindowをkeyWindowにする.
-                myWindow.makeKeyWindow()
-                self.view!.addSubview(myWindow)
-                self.myWindow.makeKeyAndVisible()
-                
-                if(PlayerPoint >= point){ //足りる！
-                    Text.text = "\(Furniturename)を購入しますか？\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
-                    myWindow.addSubview(Text)
-                    myWindow.addSubview(BuyButton)
-                    myWindow.addSubview(cancelButton)
-                }else { //足りない！
-                    Text.text = "ポイントが足りません！\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
-                    myWindow.addSubview(Text)
-                    myWindow.addSubview(backButton)
-                }
-            }
+  func makeWindow(recognizer: UIGestureRecognizer){ //ウィンドウ作成
+    if (Flg == false){
+      if let imageView = recognizer.view as? UIImageView {
+        Flg = true
+        setData(results[imageView.tag])
+        selectedNumber = imageView.tag
+        if(!(haved)){
+          //まずはウィンドウ作ろう
+          myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
+          myWindow.backgroundColor = UIColor.whiteColor()
+          myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2)
+          myWindow.alpha = 1.0
+          // myWindowをkeyWindowにする.
+          myWindow.makeKeyWindow()
+          self.view!.addSubview(myWindow)
+          self.myWindow.makeKeyAndVisible()
+          
+          if(PlayerPoint >= point){ //足りる！
+            Text.text = "\(Furniturename)を購入しますか？\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
+            myWindow.addSubview(Text)
+            myWindow.addSubview(BuyButton)
+            myWindow.addSubview(cancelButton)
+          }else { //足りない！
+            Text.text = "ポイントが足りません！\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
+            myWindow.addSubview(Text)
+            myWindow.addSubview(backButton)
+          }
         }
+      }
     }
-    
+  }
+  
     func backtomenu(sender: UIButton){
         allHidden()
         let tr = SKTransition.fadeWithColor(UIColor.whiteColor(), duration: 0.0)
@@ -307,7 +311,7 @@ class FurnitureBuyScene: SKScene {
             "User", inManagedObjectContext: categoryContext)
         var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
         new_data.setValue(300, forKey: "money")
-        new_data.setValue(160, forKey: "stature") //身長のことだからね
+        new_data.setValue(160, forKey: "stature") //身長のこと
         new_data.setValue(0, forKey: "stride")
         
         var error: NSError?

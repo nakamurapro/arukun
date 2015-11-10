@@ -128,7 +128,7 @@ class GameScene: SKScene {
         for data in Rooms{
             for i in 0...3{
                 var x :Array<CGFloat> = [0.40,0.60]
-                var y :Array<CGFloat> = [0.3,0.6]
+                var y :Array<CGFloat> = [0.6,0.6,0.3,0.3]
                 var imageNumber = data.valueForKey("fur\(i+1)") as! Int
                 if(imageNumber == -1){
                     Furniture.append(SKSpriteNode(imageNamed: "nothing"))
@@ -138,7 +138,7 @@ class GameScene: SKScene {
                     Furniture[i].xScale = 0.20
                     Furniture[i].yScale = 0.20
                 }
-                Furniture[i].position = CGPoint(x: self.size.width*x[i%2], y: self.size.height*y[i%2])
+                Furniture[i].position = CGPoint(x: self.size.width*x[i%2], y: self.size.height*y[i])
                 self.addChild(Furniture[i])
             }
         }

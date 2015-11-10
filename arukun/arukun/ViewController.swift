@@ -20,7 +20,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     var Pictures :NSArray! //写真データがここ
     var CharaDatas :NSArray! //キャラデータがここ
     
-    let nameArray : NSArray = ["あるくん","あるちゃん","あるお"]
+    //let nameArray : NSArray = ["あるくん","あるちゃん","あるお"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,10 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         CharaDatas = readCharaData()
         if(CharaDatas.count == 0){
             initCharaMasters()
+            addCharaMasters()
             CharaDatas = readCharaData()
         }
+        println(CharaDatas.count)
         
         //背景
         let backgroundImage = UIImage(named:"con.jpg")!
@@ -62,8 +64,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         var photo = takePhoto(indexPath.row)
         cell.image.image = UIImage(named: photo)
         cell.image2.image = UIImage(named:"husen.png")
-        cell.label.text = nameArray[indexPath.row] as? String
-        
+        cell.label.text = ""
         return cell
     }
     
@@ -74,13 +75,16 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         var photo = takePhoto(indexPath.row)
         selectedImage = UIImage(named: photo)
         
-        println(CharaDatas[indexPath.row])
 
         //テキストデータの受け渡し
+      if(photo == "secret"){
+        str = "？？？"
+      }else{
         var text = CharaDatas[indexPath.row].valueForKey("text") as? String
         var rgb = CharaDatas[indexPath.row].valueForKey("rgb") as? String
         var rank = CharaDatas[indexPath.row].valueForKey("rank") as? Int
         str = "・第\(rank!)段階\n・種類：\(rgb!)\n\(text!)"
+      }
         performSegueWithIdentifier("ViewController2",sender: nil)
     }
     
@@ -99,7 +103,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     //画像枚数分カウント
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Pets.count
+        return CharaDatas.count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -231,19 +235,45 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         }
 
     }
+  
+  func addCharaMasters() {
+    println("initMasters ------------")
+    let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
     
-    //それ以外
-    func takePhoto(i :Int) -> String{
-        var data: AnyObject = Pets[i]
-        var Charanumber = data.valueForKey("monsterid") as! Int
-        var photo = ""
-        for pict in Pictures{
-            var check = pict.valueForKey("charanumber") as! Int
-            if(Charanumber == check){
-                photo = pict.valueForKey("picturename") as! String
-                break
-            }
-        }
-        return photo
+    for _ in 1...14{
+      let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+        "Charadata", inManagedObjectContext: categoryContext)
+      var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+      new_data.setValue("bla bla bla...", forKey: "text")
+      new_data.setValue(0, forKey: "haved")
+      new_data.setValue(2, forKey: "rank")
+      new_data.setValue("TEST", forKey: "rgb")
+      
+      var error: NSError?
+      categoryContext.save(&error)
+      
     }
+    
+  }
+    //それ以外
+  func takePhoto(i :Int) -> String{
+    var photo = ""
+    var CharaData: AnyObject = CharaDatas[i]
+    var haveFlug = CharaData.valueForKey("haved") as! Bool
+    if(haveFlug == false){
+      photo = "secret"
+    }else{
+      for pict in Pictures{
+        var check = pict.valueForKey("charanumber") as! Int
+        if(i+1 == check){
+          photo = pict.valueForKey("picturename") as! String
+          break
+        }
+      }
+    }
+    return photo
+    }
+  
+
 }

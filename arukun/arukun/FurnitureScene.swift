@@ -104,8 +104,6 @@ class FurnitureScene: SKScene {
         var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
-
-            
         let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
                 "Furniture", inManagedObjectContext: categoryContext)
         var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
