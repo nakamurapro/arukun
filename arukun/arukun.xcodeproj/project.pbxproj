@@ -68,6 +68,7 @@
 		7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */; };
 		7BB9CB851BDF3CB100712A4E /* FurnitureMaster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */; };
 		7BE33D361BE46D5000C3C1DF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BE33D341BE46D5000C3C1DF /* Model.xcdatamodeld */; };
+		7BE9B8D51BF18D05005E0248 /* foodScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9B8D41BF18D05005E0248 /* foodScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,7 @@
 		7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryScene.swift; sourceTree = "<group>"; };
 		7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FurnitureMaster.plist; sourceTree = "<group>"; };
 		7BE33D351BE46D5000C3C1DF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		7BE9B8D41BF18D05005E0248 /* foodScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +423,7 @@
 			children = (
 				7B9A6D8A1B38488E0056D886 /* GameScene.sks */,
 				1D60AA571B27EF5D000D4D5A /* GameScene.swift */,
+				7BE9B8D41BF18D05005E0248 /* foodScene.swift */,
 				1D60AA591B27EF5D000D4D5A /* GameViewController.swift */,
 			);
 			name = Game;
@@ -679,6 +682,7 @@
 				1D6764B51BBE240D00FFB44A /* JBBarChartView.m in Sources */,
 				1DF394811BD72FFD00027E08 /* ViewController.swift in Sources */,
 				7B7F7F781BDE67EC00F1DEC7 /* Room.swift in Sources */,
+				7BE9B8D51BF18D05005E0248 /* foodScene.swift in Sources */,
 				1D60AA541B27EF5D000D4D5A /* AppDelegate.swift in Sources */,
 				7B7F7F641BDE679500F1DEC7 /* FurnitureSetScene.swift in Sources */,
 				1DF394821BD72FFD00027E08 /* ViewController2.swift in Sources */,
