@@ -22,18 +22,11 @@ class ViewController: UIViewController {
         Label.layer.position = CGPoint(x: self.view.frame.width*0.5, y: self.view.frame.height*0.5)
         self.Label = Label
         self.view.addSubview(Label)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func update(){
-        
-    }
-
-
 }
 

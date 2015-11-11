@@ -273,7 +273,7 @@ class FurnitureSetScene: SKScene {
             }
             i++
           }
-          if(imageView.tag != 10000){  //さあ家具を置こう
+          if(imageView.tag != 10000 && SetFlug == false){  //さあ家具を置こう
             //背景表示
             var backData = Furnitures[back].valueForKey("image") as! String
             var backImage = UIImage(named: backData)
@@ -520,6 +520,7 @@ class FurnitureSetScene: SKScene {
     }
     back = id
     BackgroundSet.removeFromSuperview()
-    
   }
+  
+  
 }
