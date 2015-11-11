@@ -14,12 +14,10 @@ class foodScene: SKScene {
   var phoneSize :CGSize = UIScreen.mainScreen().bounds.size //画面サイズ
   var pointLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   var scoreSprite = SKSpriteNode(imageNamed: "score")
+  var Label = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   var sprite = SKSpriteNode(imageNamed:"0")
-
-  var Counter :Int = 0
   
-  var Rooms: NSArray!
-  var Furnitures: NSArray!
+  var Counter :Int = 0
   
   var Flg :Bool = false
   
@@ -36,9 +34,18 @@ class foodScene: SKScene {
     
     sprite.xScale = 0.05
     sprite.yScale = 0.05
-    sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
+    sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.2)
     
     self.addChild(sprite)
+    
+    Label.text = "戻る"
+    Label.fontSize = 50
+    Label.fontColor = UIColor(red:0 , green: 0, blue: 0, alpha: 1)//黒
+    Label.position = CGPoint(x: self.size.width*0.4, y: self.size.height*0.1)
+    Label.zPosition = 0
+    Label.name = "next"
+    
+    self.addChild(Label)
   }
   
   func scoreLayout(){
@@ -56,28 +63,18 @@ class foodScene: SKScene {
     
   }
   override func update(currentTime: NSTimeInterval) {
-   // pointLabel.text = toString(Counter) + "歩"
+    // pointLabel.text = toString(Counter) + "歩"
   }
   
   func layoutObject(){
-    var text :String = ""
+
     var backnumber :Int = 0
-    for data in Rooms{
-      backnumber = data.valueForKey("background") as! Int
-    }
-    
     var i = 0
-    for fur in Furnitures{
-      if(backnumber == i){
-        text = fur.valueForKey("image") as! String
-        break
-      }
-      i++
-    }
-    let background = SKSpriteNode(imageNamed: text)
+    
+    let background = SKSpriteNode(imageNamed: "con.jpg")
     background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
-    background.xScale = 0.5
-    background.yScale = 0.5
+    background.xScale = 1.5
+    background.yScale = 1.5
     self.addChild(background)
     
   }
@@ -87,9 +84,14 @@ class foodScene: SKScene {
     
     for touch in (touches as! Set<UITouch>) {
       let location = touch.locationInNode(self)
-      var move = SKAction.moveTo(CGPoint(x: location.x, y: location.y), duration: 1.5)
-      sprite.runAction(move)
+      let touchedNode = self.nodeAtPoint(location)
+      if(touchedNode.name == "next"){
+        let tr = SKTransition.crossFadeWithDuration(0.1)
+        let newScene = GameScene(size: self.scene!.size)
+        newScene.scaleMode = SKSceneScaleMode.AspectFill
+        self.scene!.view!.presentScene(newScene, transition: tr)
+      }
     }
   }
-
+  
 }
