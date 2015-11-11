@@ -54,6 +54,7 @@
 		7B71E3C51BBE296900B9EF03 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6764A91BBE22D300FFB44A /* FirstViewController.swift */; };
 		7B7553E01BE9830F004648C6 /* back2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7553DF1BE9830F004648C6 /* back2.png */; };
 		7B7553E21BE98C31004648C6 /* PetMaster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B7553E11BE98C31004648C6 /* PetMaster.plist */; };
+		7B7B928F1BF18336001F4B21 /* secret.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7B928E1BF18336001F4B21 /* secret.png */; };
 		7B7F7F641BDE679500F1DEC7 /* FurnitureSetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F7F631BDE679500F1DEC7 /* FurnitureSetScene.swift */; };
 		7B7F7F661BDE67AC00F1DEC7 /* FurnitureBuySnece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F7F651BDE67AC00F1DEC7 /* FurnitureBuySnece.swift */; };
 		7B7F7F781BDE67EC00F1DEC7 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7F7F771BDE67EC00F1DEC7 /* Room.swift */; };
@@ -67,6 +68,7 @@
 		7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */; };
 		7BB9CB851BDF3CB100712A4E /* FurnitureMaster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */; };
 		7BE33D361BE46D5000C3C1DF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BE33D341BE46D5000C3C1DF /* Model.xcdatamodeld */; };
+		7BE9B8D51BF18D05005E0248 /* foodScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9B8D41BF18D05005E0248 /* foodScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +180,7 @@
 		7B313D0E1BD5FC9E002A6782 /* FurnitureScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FurnitureScene.swift; sourceTree = "<group>"; };
 		7B7553DF1BE9830F004648C6 /* back2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back2.png; sourceTree = "<group>"; };
 		7B7553E11BE98C31004648C6 /* PetMaster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PetMaster.plist; sourceTree = "<group>"; };
+		7B7B928E1BF18336001F4B21 /* secret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secret.png; sourceTree = "<group>"; };
 		7B7F7F631BDE679500F1DEC7 /* FurnitureSetScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FurnitureSetScene.swift; sourceTree = "<group>"; };
 		7B7F7F651BDE67AC00F1DEC7 /* FurnitureBuySnece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FurnitureBuySnece.swift; sourceTree = "<group>"; };
 		7B7F7F771BDE67EC00F1DEC7 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
@@ -188,6 +191,7 @@
 		7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryScene.swift; sourceTree = "<group>"; };
 		7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FurnitureMaster.plist; sourceTree = "<group>"; };
 		7BE33D351BE46D5000C3C1DF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		7BE9B8D41BF18D05005E0248 /* foodScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +407,7 @@
 				1DF3948B1BD7301A00027E08 /* hai.jpg */,
 				1DF3948C1BD7301A00027E08 /* photo2.png */,
 				1DF3948D1BD7301A00027E08 /* photo1.png */,
+				7B7B928E1BF18336001F4B21 /* secret.png */,
 				1DF3948E1BD7301A00027E08 /* photo3.png */,
 				1DF394841BD7300800027E08 /* json.txt */,
 				1DF394851BD7300800027E08 /* json2.txt */,
@@ -418,6 +423,7 @@
 			children = (
 				7B9A6D8A1B38488E0056D886 /* GameScene.sks */,
 				1D60AA571B27EF5D000D4D5A /* GameScene.swift */,
+				7BE9B8D41BF18D05005E0248 /* foodScene.swift */,
 				1D60AA591B27EF5D000D4D5A /* GameViewController.swift */,
 			);
 			name = Game;
@@ -552,6 +558,11 @@
 				TargetAttributes = {
 					1D60AA4D1B27EF5D000D4D5A = {
 						CreatedOnToolsVersion = 6.3.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					1D60AA661B27EF5D000D4D5A = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -608,6 +619,7 @@
 				7B9A6D8B1B38488E0056D886 /* GameScene.sks in Resources */,
 				1DF394911BD7301A00027E08 /* con.jpg in Resources */,
 				1DF394861BD7300800027E08 /* json.txt in Resources */,
+				7B7B928F1BF18336001F4B21 /* secret.png in Resources */,
 				1D60AA5F1B27EF5D000D4D5A /* Images.xcassets in Resources */,
 				1DF394951BD7301A00027E08 /* photo3.png in Resources */,
 				7B2D369B1BB4EE2100DCFF38 /* CharapictureMaster.plist in Resources */,
@@ -670,6 +682,7 @@
 				1D6764B51BBE240D00FFB44A /* JBBarChartView.m in Sources */,
 				1DF394811BD72FFD00027E08 /* ViewController.swift in Sources */,
 				7B7F7F781BDE67EC00F1DEC7 /* Room.swift in Sources */,
+				7BE9B8D51BF18D05005E0248 /* foodScene.swift in Sources */,
 				1D60AA541B27EF5D000D4D5A /* AppDelegate.swift in Sources */,
 				7B7F7F641BDE679500F1DEC7 /* FurnitureSetScene.swift in Sources */,
 				1DF394821BD72FFD00027E08 /* ViewController2.swift in Sources */,
@@ -858,6 +871,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = arukun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -869,6 +883,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = arukun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

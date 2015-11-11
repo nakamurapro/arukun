@@ -67,4 +67,9 @@ class GameViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        viewDidLoad()
+    }
+
 }

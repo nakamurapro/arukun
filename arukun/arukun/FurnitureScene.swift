@@ -14,7 +14,6 @@ class FurnitureScene: SKScene {
         //まずScrollViewを2つ作るよ
         if (readData().count == 0){
             initMasters()
-        }else if (readData().count == 5){
             addData()
         }
         FurnitureBuyButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
@@ -105,8 +104,6 @@ class FurnitureScene: SKScene {
         var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
-
-            
         let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
                 "Furniture", inManagedObjectContext: categoryContext)
         var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
