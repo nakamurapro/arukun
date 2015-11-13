@@ -17,7 +17,7 @@ class GameScene: SKScene {
   var pointLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   var Label = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   var scoreSprite = SKSpriteNode(imageNamed: "score")
-  var sprite = SKSpriteNode(imageNamed:"0")
+  var sprite = SKSpriteNode(imageNamed:"01")
   
   var myMotionManager: CMMotionManager!
   var X:Double! = 1.0

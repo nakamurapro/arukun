@@ -75,21 +75,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="wood_back" translatesAutoresizingMaskIntoConstraints="NO" id="Vy1-jt-F3K">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="wood_back" translatesAutoresizingMaskIntoConstraints="NO" id="Vy1-jt-F3K">
                                 <rect key="frame" x="-724" y="-724" width="2048" height="2048"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Vy1-jt-F3K" secondAttribute="centerX" id="Iz1-EI-eXO"/>
-                            <constraint firstAttribute="centerY" secondItem="Vy1-jt-F3K" secondAttribute="centerY" id="UoK-X4-go7"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="8bD-yG-8eH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QpH-8Q-wdy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="1418"/>
+            <point key="canvasLocation" x="1304" y="1377"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2zg-vp-21O">
@@ -189,9 +185,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UjS-3S-K7K">
-                                <rect key="frame" x="85" y="0.0" width="205" height="57"/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-lD-96Q">
                                 <rect key="frame" x="0.0" y="56" width="375" height="611"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1000"/>
@@ -246,6 +239,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UjS-3S-K7K">
+                                <rect key="frame" x="85" y="0.0" width="205" height="57"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -273,6 +269,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" restorationIdentifier="back_image" image="wood_back" translatesAutoresizingMaskIntoConstraints="NO" id="3eh-Qy-fDa">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-yn-27g">
                                 <rect key="frame" x="29" y="96" width="30" height="30"/>
                                 <state key="normal" title="戻る"/>
@@ -299,15 +298,37 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3eh-Qy-fDa" firstAttribute="trailing" secondItem="24g-sM-kJ4" secondAttribute="trailingMargin" constant="-10" id="1QK-yc-Dqa"/>
+                            <constraint firstAttribute="centerX" secondItem="3eh-Qy-fDa" secondAttribute="centerX" id="2ll-kG-8rH"/>
                             <constraint firstItem="rtn-Xz-Oe2" firstAttribute="top" secondItem="wdh-yn-27g" secondAttribute="bottom" constant="8" symbolic="YES" id="89H-pz-kMH"/>
                             <constraint firstItem="zQY-T2-1qw" firstAttribute="centerX" secondItem="24g-sM-kJ4" secondAttribute="centerX" id="FL8-fc-snR"/>
                             <constraint firstItem="JJw-2r-POB" firstAttribute="top" secondItem="rtn-Xz-Oe2" secondAttribute="bottom" constant="162" id="GzY-ab-Ig9"/>
+                            <constraint firstItem="3eh-Qy-fDa" firstAttribute="top" secondItem="24g-sM-kJ4" secondAttribute="topMargin" id="H8g-6G-O8m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3eh-Qy-fDa" secondAttribute="trailing" id="WSY-Lz-ue7"/>
                             <constraint firstItem="zQY-T2-1qw" firstAttribute="leading" secondItem="24g-sM-kJ4" secondAttribute="leadingMargin" constant="21" id="Woy-GF-9rF"/>
                             <constraint firstItem="wdh-yn-27g" firstAttribute="leading" secondItem="24g-sM-kJ4" secondAttribute="leadingMargin" constant="13" id="aIO-ch-oxw"/>
                             <constraint firstItem="zQY-T2-1qw" firstAttribute="bottom" secondItem="JJw-2r-POB" secondAttribute="top" id="d8S-Z6-2D5"/>
+                            <constraint firstItem="3eh-Qy-fDa" firstAttribute="top" secondItem="24g-sM-kJ4" secondAttribute="topMargin" id="dKD-28-M31"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="3eh-Qy-fDa" secondAttribute="bottom" id="ely-UC-aDK"/>
+                            <constraint firstItem="3eh-Qy-fDa" firstAttribute="leading" secondItem="24g-sM-kJ4" secondAttribute="leadingMargin" id="gVZ-QS-gUf"/>
+                            <constraint firstAttribute="centerY" secondItem="3eh-Qy-fDa" secondAttribute="centerY" id="l7L-TE-3dz"/>
                             <constraint firstItem="rtn-Xz-Oe2" firstAttribute="leading" secondItem="24g-sM-kJ4" secondAttribute="leading" id="n0f-y8-N85"/>
                             <constraint firstItem="rtn-Xz-Oe2" firstAttribute="centerX" secondItem="zQY-T2-1qw" secondAttribute="centerX" id="paX-mV-Jk0"/>
+                            <constraint firstItem="3eh-Qy-fDa" firstAttribute="leading" secondItem="24g-sM-kJ4" secondAttribute="leadingMargin" constant="-10" id="sTv-tP-sfA"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1QK-yc-Dqa"/>
+                                <exclude reference="2ll-kG-8rH"/>
+                                <exclude reference="H8g-6G-O8m"/>
+                                <exclude reference="WSY-Lz-ue7"/>
+                                <exclude reference="dKD-28-M31"/>
+                                <exclude reference="ely-UC-aDK"/>
+                                <exclude reference="gVZ-QS-gUf"/>
+                                <exclude reference="l7L-TE-3dz"/>
+                                <exclude reference="sTv-tP-sfA"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -319,7 +340,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SS-Mh-k5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gKX-28-G21" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1869.5" y="2161.5"/>
+            <point key="canvasLocation" x="1856.5" y="2161.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3kg-nZ-mbY">
+            <objects>
+                <viewController id="cUR-io-0kA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5id-dc-xKb"/>
+                        <viewControllerLayoutGuide type="bottom" id="cfM-iQ-IGQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rQJ-WF-Rra">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1DG-hc-8JV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
