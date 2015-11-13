@@ -274,14 +274,14 @@ class foodScene: SKScene {
     PlayerPoint = PlayerPoint - foodData[selected][0]
     
     //Userのmoneyを減らす
-    /*let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
     let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
     var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
     for data in resultPoint{
       data.setValue(PlayerPoint, forKey: "money")
       var error: NSError?
       categoryContext.save(&error)
-    }*/
+    }
     
     let tr = SKTransition.crossFadeWithDuration(0.1)
     let newScene = GameScene(size: self.scene!.size)
