@@ -12,8 +12,9 @@ import CoreData
 
 class foodScene: SKScene {
   var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+  var sprite = SKSpriteNode(imageNamed:"0")
+  var Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 
-  var Scroll :UIScrollView!
   var PlayerPoint :Int!
   var selected :Int!
   var phoneSize :CGSize = UIScreen.mainScreen().bounds.size //画面サイズ
@@ -57,7 +58,7 @@ class foodScene: SKScene {
   }
   
   func scoreLayout(){
-    scoreSprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height-50)
+    scoreSprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height-100)
     pointLabel.text = "エサ"
     pointLabel.fontSize = 50
     pointLabel.fontColor = UIColor(red:0 , green: 0, blue: 0, alpha: 1)//黒
@@ -73,15 +74,23 @@ class foodScene: SKScene {
     self.addChild(scoreSprite)
     self.addChild(pointLabel)
     self.addChild(PlayerLabel)
+    
+    
+    sprite.xScale = 0.05
+    sprite.yScale = 0.05
+    sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.25)
+    
+    self.addChild(sprite)
+    
+    //エサを食べるテストです
   }
   
   func makeScroll(){
     var heightScroll = ceil(10.0 / 2.0)
-    Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
     Scroll.scrollEnabled = true
     Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
     Scroll.indicatorStyle = UIScrollViewIndicatorStyle.Black
-    Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.5)
+    Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.4)
     Scroll.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     self.view!.addSubview(Scroll)
     
@@ -94,7 +103,7 @@ class foodScene: SKScene {
       View.frame = CGRectMake(150*which, HGH*WhereY, 150, 150)
       
       //画像の用意
-      var Image = UIImage(named: "photo1")
+      var Image = UIImage(named: "burgar1")
       var imageView = UIImageView(image: Image)
       imageView.frame = CGRectMake(0, 0, 120, 120)
       imageView.center = CGPointMake(75,90)
@@ -110,7 +119,7 @@ class foodScene: SKScene {
       var myTextView = UITextView(frame: CGRectMake(0, 0, 130, 30))
       myTextView.userInteractionEnabled = false
       myTextView.backgroundColor = UIColor(red: 0.0, green: 0.8, blue: 0.8, alpha: 1.0)
-      myTextView.text = "おいしいよ"
+      myTextView.text = "ハンバーガー"
       myTextView.font = UIFont.systemFontOfSize(CGFloat(15))
       myTextView.textColor = UIColor.whiteColor()
       myTextView.textAlignment = NSTextAlignment.Center
@@ -138,7 +147,7 @@ class foodScene: SKScene {
   func makeButtons(){
     BuyButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
     BuyButton.backgroundColor = UIColor.redColor()
-    BuyButton.addTarget(self, action: "BuyFurniture:", forControlEvents: .TouchUpInside)
+    BuyButton.addTarget(self, action: "Buyfood:", forControlEvents: .TouchUpInside)
     BuyButton.setTitle("購入", forState: .Normal)
     BuyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     BuyButton.setTitle("購入", forState: .Highlighted)
@@ -161,7 +170,7 @@ class foodScene: SKScene {
     backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     backButton.setTitle("戻る", forState: .Highlighted)
     backButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    backButton.layer.position = CGPoint(x: 150, y: 250)
+    backButton.layer.position = CGPoint(x: 0, y: 0)
     
     Text = UITextView(frame: CGRectMake(0, 0, 300, 100))
     Text.userInteractionEnabled = true
@@ -223,7 +232,7 @@ class foodScene: SKScene {
         self.myWindow.makeKeyAndVisible()
         
         if(PlayerPoint >= point){ //足りる！
-          Text.text = "購入しますか？\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
+          Text.text = "購入してエサを与えますか？\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
           myWindow.addSubview(Text)
           myWindow.addSubview(BuyButton)
           myWindow.addSubview(cancelButton)
@@ -240,6 +249,7 @@ class foodScene: SKScene {
   internal func Goback(sender: UIButton){ //戻る
     Flg = false
     myWindow.hidden = true
+    Scroll.hidden = false
   }
   
   //ここからデータベースに関連するもの
@@ -257,21 +267,29 @@ class foodScene: SKScene {
     
   }
   
-  internal func BuyFurniture(sender: UIButton){ //買う
+  internal func Buyfood(sender: UIButton){ //買う
+    Scroll.hidden = true
+    myWindow.hidden = true
+    app.FoodFlg = true
     PlayerPoint = PlayerPoint - foodData[selected][0]
-    BuyButton.removeFromSuperview()
-    myWindow.addSubview(backButton)
-    Text.text = "購入しました！"
-    PlayerLabel.text = "所持ポイント：\(PlayerPoint)P"
     
     //Userのmoneyを減らす
-    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+    /*let categoryContext: NSManagedObjectContext = app.managedObjectContext!
     let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
     var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
     for data in resultPoint{
       data.setValue(PlayerPoint, forKey: "money")
       var error: NSError?
       categoryContext.save(&error)
-    }
+    }*/
+    
+    let tr = SKTransition.crossFadeWithDuration(0.1)
+    let newScene = GameScene(size: self.scene!.size)
+    newScene.scaleMode = SKSceneScaleMode.AspectFill
+    self.scene!.view!.presentScene(newScene, transition: tr)
+  }
+  
+  override func willMoveFromView(view: SKView) {
+    Scroll.removeFromSuperview()
   }
 }

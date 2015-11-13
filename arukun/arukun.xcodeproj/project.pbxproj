@@ -67,6 +67,9 @@
 		7B9A6D8B1B38488E0056D886 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8A1B38488E0056D886 /* GameScene.sks */; };
 		7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */; };
 		7BB9CB851BDF3CB100712A4E /* FurnitureMaster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */; };
+		7BE00E251BF4D1CA00334A45 /* burgar3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE00E221BF4D1CA00334A45 /* burgar3.png */; };
+		7BE00E261BF4D1CA00334A45 /* burgar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE00E231BF4D1CA00334A45 /* burgar1.png */; };
+		7BE00E271BF4D1CA00334A45 /* burgar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE00E241BF4D1CA00334A45 /* burgar2.png */; };
 		7BE33D361BE46D5000C3C1DF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BE33D341BE46D5000C3C1DF /* Model.xcdatamodeld */; };
 		7BE9B8D51BF18D05005E0248 /* foodScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE9B8D41BF18D05005E0248 /* foodScene.swift */; };
 /* End PBXBuildFile section */
@@ -190,6 +193,9 @@
 		7B9A6D8A1B38488E0056D886 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryScene.swift; sourceTree = "<group>"; };
 		7BB9CB841BDF3CB100712A4E /* FurnitureMaster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FurnitureMaster.plist; sourceTree = "<group>"; };
+		7BE00E221BF4D1CA00334A45 /* burgar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burgar3.png; sourceTree = "<group>"; };
+		7BE00E231BF4D1CA00334A45 /* burgar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burgar1.png; sourceTree = "<group>"; };
+		7BE00E241BF4D1CA00334A45 /* burgar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burgar2.png; sourceTree = "<group>"; };
 		7BE33D351BE46D5000C3C1DF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7BE9B8D41BF18D05005E0248 /* foodScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -272,6 +278,9 @@
 				7B313D0B1BD5FBEC002A6782 /* Furniture */,
 				7B9A6D821B3840290056D886 /* 1179.png */,
 				1D60AA5E1B27EF5D000D4D5A /* Images.xcassets */,
+				7BE00E221BF4D1CA00334A45 /* burgar3.png */,
+				7BE00E231BF4D1CA00334A45 /* burgar1.png */,
+				7BE00E241BF4D1CA00334A45 /* burgar2.png */,
 				7B7553DF1BE9830F004648C6 /* back2.png */,
 				1D60AA601B27EF5D000D4D5A /* LaunchScreen.xib */,
 				1D60AA5B1B27EF5D000D4D5A /* Main.storyboard */,
@@ -611,6 +620,7 @@
 				7B7553E21BE98C31004648C6 /* PetMaster.plist in Resources */,
 				7B2D36A51BB4F24100DCFF38 /* CharadataMaster.plist in Resources */,
 				7B2D36A31BB4F1AA00DCFF38 /* Word.plist in Resources */,
+				7BE00E261BF4D1CA00334A45 /* burgar1.png in Resources */,
 				1D60AA621B27EF5D000D4D5A /* LaunchScreen.xib in Resources */,
 				1DF394871BD7300800027E08 /* json2.txt in Resources */,
 				1DF394941BD7301A00027E08 /* photo1.png in Resources */,
@@ -620,6 +630,7 @@
 				1DF394911BD7301A00027E08 /* con.jpg in Resources */,
 				1DF394861BD7300800027E08 /* json.txt in Resources */,
 				7B7B928F1BF18336001F4B21 /* secret.png in Resources */,
+				7BE00E251BF4D1CA00334A45 /* burgar3.png in Resources */,
 				1D60AA5F1B27EF5D000D4D5A /* Images.xcassets in Resources */,
 				1DF394951BD7301A00027E08 /* photo3.png in Resources */,
 				7B2D369B1BB4EE2100DCFF38 /* CharapictureMaster.plist in Resources */,
@@ -627,6 +638,7 @@
 				1DF394931BD7301A00027E08 /* photo2.png in Resources */,
 				1D60AA5D1B27EF5D000D4D5A /* Main.storyboard in Resources */,
 				1D6764B41BBE240D00FFB44A /* Info.plist in Resources */,
+				7BE00E271BF4D1CA00334A45 /* burgar2.png in Resources */,
 				1DF394921BD7301A00027E08 /* hai.jpg in Resources */,
 				7BB9CB851BDF3CB100712A4E /* FurnitureMaster.plist in Resources */,
 				1DF3948F1BD7301A00027E08 /* kanban.png in Resources */,

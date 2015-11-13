@@ -82,6 +82,30 @@ class GameScene: SKScene {
       
     })
     
+    if(app.FoodFlg == true){
+      var spriteAction1 = SKAction.scaleYTo(0.06, duration: 0.3)
+      var spriteAction2 = SKAction.scaleYTo(0.05, duration: 0.3)
+      var Actions = SKAction.sequence([spriteAction1,spriteAction2])
+      var RepeatAction = SKAction.repeatAction(Actions, count: 3)
+      
+      
+      var images = [SKTexture]()
+      for image in ["burgar1","burgar2","burgar3","nothing"]{
+        var texture = SKTexture(imageNamed: image)
+        texture.filteringMode = .Linear
+        images.append(texture)     //テクスチャの追加
+      }
+      let Animate = SKAction.animateWithTextures(images, timePerFrame: 0.6)
+      sprite.runAction(RepeatAction)
+      
+      var food = SKSpriteNode(imageNamed:"burgar1")
+      food.position = CGPoint(x: sprite.position.x, y: sprite.position.y-100)
+      food.xScale = 0.3
+      food.yScale = 0.3
+      self.addChild(food)
+      food.runAction(Animate)
+      app.FoodFlg = false
+    }
   }
   
   func scoreLayout(){
