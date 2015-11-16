@@ -305,10 +305,10 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
       var dataDay = result.valueForKey("date") as! NSDate
       var dataStep = result.valueForKey("step") as! Int
       for i in 0...6 {
-        if (limit.compare(dataDay) == NSComparisonResult.OrderedAscending){
+        if (checkDay(limit,Day2: dataDay)){
           continue
         }
-        if (Days[i].compare(dataDay) == NSComparisonResult.OrderedAscending){
+        if (checkDay(Days[i],Day2: dataDay)){
           chartData[i] += dataStep
           break
         }
@@ -326,6 +326,16 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     barChart.maximumValue = CGFloat(max)
     chartData = chartData.reverse()
   }
+  
+  func checkDay(Day1 :NSDate,Day2 :NSDate) -> Bool{
+    if (Day1.compare(Day2) == NSComparisonResult.OrderedAscending ||
+      Day1.compare(Day2) == NSComparisonResult.OrderedSame){
+        return true
+    }else{
+      return false
+    }
+  }
+  
   //日付関係
   func DayButton(sender: UIButton){
     nextWeek.hidden = true
@@ -370,6 +380,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     }else{
       nextDay.hidden = true
     }
+    
     chartData = [0,0,0,0,0,0,0]
     Days.removeAll()
     ShowDays.removeAll()
@@ -382,11 +393,6 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     limit = NSDate(timeInterval: 60*60*24, sinceDate: Days[0]) //これより新しいデータはいらない！！
     Aggregate()
     maketext(1)
-    if(chartData[0] == 0){
-      previousDay.hidden = true
-    }else{
-      previousDay.hidden = false
-    }
     
     for i in 0...3{
       data[i].text = texts[i]
@@ -415,11 +421,6 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     Aggregate()
     maketext(2)
     
-    if(chartData[0] == 0){
-      previousWeek.hidden = true
-    }else{
-      previousWeek.hidden = false
-    }
     for i in 0...3{
       data[i].text = texts[i]
     }
