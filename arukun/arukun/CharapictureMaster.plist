@@ -2,6 +2,123 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>item16</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>16</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>RB+1</string>
+	</dict>
+	<key>item15</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>15</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>RB-1</string>
+	</dict>
+	<key>item14</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>14</integer>
+		<key>picturenumber</key>
+    <integer>1</integer>
+		<key>image</key>
+    <string>BB+1</string>
+	</dict>
+	<key>item13</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>13</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>BB-1</string>
+	</dict>
+	<key>item12</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>12</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>BG+1</string>
+	</dict>
+	<key>item11</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>11</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>BG-1</string>
+	</dict>
+	<key>item10</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>10</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>GG+1</string>
+	</dict>
+	<key>item9</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>9</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>GG-1</string>
+	</dict>
+	<key>item8</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>8</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>RG+1</string>
+	</dict>
+	<key>item7</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>7</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>RG-1</string>
+	</dict>
+	<key>item6</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>6</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>RR+1</string>
+	</dict>
+	<key>item5</key>
+	<dict>
+		<key>charanumber</key>
+    <integer>5</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+    <string>RR-1</string>
+	</dict>
+	<key>item4</key>
+	<dict>
+		<key>charanumber</key>
+		<integer>4</integer>
+		<key>picturenumber</key>
+		<integer>1</integer>
+		<key>image</key>
+		<string>G1</string>
+	</dict>
 	<key>item3</key>
 	<dict>
 		<key>charanumber</key>
@@ -9,7 +126,7 @@
 		<key>picturenumber</key>
 		<integer>1</integer>
 		<key>image</key>
-		<string>photo3</string>
+		<string>B1</string>
 	</dict>
 	<key>item2</key>
 	<dict>
@@ -18,7 +135,7 @@
 		<key>picturenumber</key>
 		<integer>1</integer>
 		<key>image</key>
-		<string>photo2</string>
+		<string>R1</string>
 	</dict>
 	<key>item1</key>
 	<dict>
@@ -27,7 +144,7 @@
 		<key>picturenumber</key>
 		<integer>1</integer>
 		<key>image</key>
-		<string>photo1</string>
+		<string>0</string>
 	</dict>
 </dict>
 </plist>
