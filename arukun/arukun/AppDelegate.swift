@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var step: Int = 0 //こっちがデータベース登録用のやつ
   var FoodFlg = false
   var backgroundFlg = false
+  var i :Int = 0 //これはポイント用
   
   var X:Double! = 1.0
   var Y:Double! = 1.0
@@ -52,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationDidEnterBackground(application: UIApplication) {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
     if(backgroundFlg == false){
       NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "UpdateCoredata:", userInfo: nil, repeats: true)
       backgroundFlg = true
@@ -61,8 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func UpdateCoredata(timer :NSTimer){
     //今日の日付
-    let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+    let categoryContext: NSManagedObjectContext = self.managedObjectContext!
     
     var day :NSDate = NSDate()
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
@@ -70,6 +69,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
     new_data.setValue(day, forKey: "date")
     new_data.setValue(step, forKey: "step")
+    
+    let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
+    var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
+    for data in resultPoint{
+      var money = data.valueForKey("money") as! Int
+      money = money + (counter - i)
+      data.setValue(money, forKey: "money")
+      var error: NSError?
+      categoryContext.save(&error)
+      i = counter
+    }
+
     
     self.step = 0
     var error: NSError?
@@ -106,6 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.counter = self.counter + step
     }
     
+    i = counter
     myMotionManager = CMMotionManager()
     
     // 更新周期を設定.
@@ -127,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
       self.X = x; self.Y = y; self.Z = z
       
-    })
+    }) //ここまで
   }
   
   func applicationWillTerminate(application: UIApplication) {

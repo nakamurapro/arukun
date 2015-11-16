@@ -288,7 +288,7 @@ class FurnitureBuyScene: SKScene {
   }
   
   func readPoint(){
-    println("readData ------------")
+    println("readPoint ------------")
     let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let categoryContext: NSManagedObjectContext = app.managedObjectContext!
     let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
@@ -316,5 +316,5 @@ class FurnitureBuyScene: SKScene {
     
     var error: NSError?
   }
-  
+
 }

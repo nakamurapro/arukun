@@ -12,7 +12,6 @@ import CoreData
 
 class foodScene: SKScene {
   var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-  var sprite = SKSpriteNode(imageNamed:"0")
   var Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 
   var PlayerPoint :Int!
@@ -23,7 +22,7 @@ class foodScene: SKScene {
   var Label = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   var PlayerLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   
-  var myWindow :UIWindow!
+  var myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
   var BuyButton :UIButton!
   var cancelButton :UIButton!
   var backButton :UIButton!
@@ -75,12 +74,6 @@ class foodScene: SKScene {
     self.addChild(pointLabel)
     self.addChild(PlayerLabel)
     
-    
-    sprite.xScale = 0.05
-    sprite.yScale = 0.05
-    sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.25)
-    
-    self.addChild(sprite)
     
     //エサを食べるテストです
   }
@@ -223,7 +216,6 @@ class foodScene: SKScene {
         //まずはウィンドウ作ろう
         selected = imageView.tag%3
         var point = foodData[selected][0]
-        myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
         myWindow.backgroundColor = UIColor.whiteColor()
         myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2)
         myWindow.alpha = 1.0

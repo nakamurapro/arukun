@@ -22,7 +22,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   //値
   var chartData = [0,0,0,0,0,0,0]  //ユーザに見せるのはコレ
-  var SetData = [5002, 8031, 14543, 620, 20175, 7579, 10003, 4813, 3175, 1759] //データベース登録用
+  var SetData = [1002, 2031, 643, 620, 1075, 1059, 1243, 812, 716, 1259] //データベース登録用
   
   var Days :Array<NSDate> = [] //NSDate型の日付
   var ShowDays :Array<String> = [] //ユーザーに見せる日付
@@ -381,6 +381,12 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
       nextDay.hidden = true
     }
     
+    if (nowViewing == 5) {
+      previousDay.hidden = true
+    }else{
+      previousDay.hidden = false
+    }
+    
     chartData = [0,0,0,0,0,0,0]
     Days.removeAll()
     ShowDays.removeAll()
@@ -408,6 +414,13 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     }else{
       nextWeek.hidden = true
     }
+    
+    if (nowViewing == 2) {
+      previousWeek.hidden = true
+    }else{
+      previousWeek.hidden = false
+    }
+    
     chartData = [0,0,0,0,0,0,0]
     Days.removeAll()
     ShowDays.removeAll()
@@ -428,4 +441,12 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.viewDidDisappear(true)
     self.viewDidAppear(true)
   }
+  
+  override func viewWillDisappear(animated: Bool) {
+    results = readData()
+    nowViewing = 0
+    resetDay()
+    maketext(1)
+  }
+
 }
