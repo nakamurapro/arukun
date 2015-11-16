@@ -19,7 +19,7 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let myImage: UIImage = UIImage(named: "0")!
+        let myImage: UIImage = UIImage(named: "01")!
         let myImageView: UIImageView = UIImageView()
         myImageView.image = myImage
         
