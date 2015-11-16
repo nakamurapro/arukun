@@ -170,7 +170,7 @@ class foodScene: SKScene {
     backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     backButton.setTitle("戻る", forState: .Highlighted)
     backButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    backButton.layer.position = CGPoint(x: 0, y: 0)
+    backButton.layer.position = CGPoint(x: 150, y: 250)
     
     Text = UITextView(frame: CGRectMake(0, 0, 300, 100))
     Text.userInteractionEnabled = true
@@ -207,6 +207,7 @@ class foodScene: SKScene {
       let touchedNode = self.nodeAtPoint(location)
       if(touchedNode.name == "next"){
         Scroll.hidden = true
+        myWindow.hidden = true
         let tr = SKTransition.crossFadeWithDuration(0.1)
         let newScene = GameScene(size: self.scene!.size)
         newScene.scaleMode = SKSceneScaleMode.AspectFill
