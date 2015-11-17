@@ -12,6 +12,7 @@ import CoreMotion
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+  
   var data:String!
   var myMotionManager: CMMotionManager!
   var window: UIWindow?
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var FoodFlg = false
   var backgroundFlg = false
   var i :Int = 0 //これはポイント用
+  
   
   var X:Double! = 1.0
   var Y:Double! = 1.0
@@ -54,22 +56,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     if(backgroundFlg == false){
-      NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "UpdateCoredata:", userInfo: nil, repeats: true)
+      NSTimer.scheduledTimerWithTimeInterval(60*60*5, target: self, selector: "UpdateCoredata:", userInfo: nil, repeats: true)
+      NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "UpdateMoney:", userInfo: nil, repeats: true)
       backgroundFlg = true
     }
   }
   
   func UpdateCoredata(timer :NSTimer){
     //今日の日付
-    let categoryContext: NSManagedObjectContext = self.managedObjectContext!
-    
+    let categoryContext: NSManagedObjectContext = managedObjectContext!
     var day :NSDate = NSDate()
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
       "Pedometer", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
     new_data.setValue(day, forKey: "date")
     new_data.setValue(step, forKey: "step")
+    self.step = 0
+    var error: NSError?
+    categoryContext.save(&error)
     
+  }
+  
+  func UpdateMoney(timer :NSTimer){
+    let categoryContext: NSManagedObjectContext = managedObjectContext!
     let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
     var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
     for data in resultPoint{
@@ -80,12 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       categoryContext.save(&error)
       i = counter
     }
-
-    
-    self.step = 0
-    var error: NSError?
-    categoryContext.save(&error)
-    
   }
   
   func applicationWillEnterForeground(application: UIApplication) {
@@ -129,11 +132,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       var x = accelerometerData.acceleration.x
       var y = accelerometerData.acceleration.y
       var z = accelerometerData.acceleration.z
-      var CheckX = self.X - x
-      var CheckY = self.Y - y
-      var CheckZ = self.Z - z
+      var CheckX = abs(self.X - x)
+      var CheckY = abs(self.Y - y)
+      var CheckZ = abs(self.Z - z)
       
-      if(CheckX > 0.7 || CheckY > 0.7 || CheckZ > 0.7){
+      if(CheckX > 0.65 || CheckY > 0.65 || CheckZ > 0.65){
         self.counter = self.counter + 1
         self.step = self.step + 1
       }

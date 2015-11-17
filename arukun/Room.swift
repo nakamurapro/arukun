@@ -39,7 +39,7 @@ class Pet: NSManagedObject {
 
 @objc(Pedometer)
 class Pedometer: NSManagedObject {
-
+  
     @NSManaged var date: NSDate
     @NSManaged var step: NSNumber
     
@@ -72,6 +72,7 @@ class Diary: NSManagedObject {
 
 @objc(User)
 class User: NSManagedObject {
+  
     @NSManaged var nowgrowing: NSNumber
     @NSManaged var money: NSNumber
     @NSManaged var stature: NSNumber
@@ -91,6 +92,7 @@ class Charadata: NSManagedObject {
 
 @objc(Furniture)
 class Furniture: NSManagedObject {
+  
     @NSManaged var id: NSNumber
     @NSManaged var haved: NSNumber
     @NSManaged var image: String
