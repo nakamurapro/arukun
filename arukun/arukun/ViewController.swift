@@ -137,12 +137,14 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     }
     
     func readCharaData() -> NSArray{
-        println("readData ------------")
+        println("readData ------------++++++++++++++++++++++++++@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Charadata")
         
         var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        println(results)
         return results
     
     }
