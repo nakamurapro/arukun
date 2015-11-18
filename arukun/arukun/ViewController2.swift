@@ -16,15 +16,21 @@ class ViewController2: UIViewController {
     //送ったやつ受信ってことか！！！！！
     var selectedImg: UIImage?
     var selectedlbl: String?
+    @IBOutlet weak var back_button: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        back_button.layer.cornerRadius = 10
+//        self.imageView.layer.cornerRadius = 30
+//        self.imageView.layer.masksToBounds = true
+
         
         label.text = selectedlbl
         label.textColor = UIColor.blackColor()
         
         //２画面目拡大画像
         imageView.image = selectedImg
+//        imageView.frame = CGRect(
         
         // 画像のアスペクト比を維持しUIImageViewサイズに収まるように表示
         imageView.contentMode = UIViewContentMode.ScaleAspectFit

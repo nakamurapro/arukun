@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -15,23 +17,28 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var tableData: [Dictionary<String,AnyObject>]!
     
     var heightLeftCell: CustomLeftTableViewCell = CustomLeftTableViewCell()
+    var Diary :NSArray!
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let myImage: UIImage = UIImage(named: "01")!
+        Diary = readData()
+        println("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        println(Diary)
+        let myImage: UIImage = UIImage(named: "wood_back")!
         let myImageView: UIImageView = UIImageView()
         myImageView.image = myImage
         
-        myImageView.frame = CGRectMake(-150, -10, myImage.size.width, myImage.size.height)
+        myImageView.frame = CGRectMake(0, 0, myImage.size.width, myImage.size.height)
         
         self.view.addSubview(myImageView)
         
-//        var background = patternImage: UIImage(named: "main")
-//        var background :UIImage? = UIImage(named:"my_image")
-//        background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
-//        background.size = self.size
-//        self.addChild(background)
+        //        var background = patternImage: UIImage(named: "main")
+        //        var background :UIImage? = UIImage(named:"my_image")
+        //        background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
+        //        background.size = self.size
+        //        self.addChild(background)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back1")!)
         
         
@@ -83,6 +90,15 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // cell内のcontentViewの背景を透過
         return cell
     }
+    func readData() -> NSArray{
+        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+        let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Word")
+        var error: NSError? = nil;
+        var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+        return results!
+    }
+    
     
     //・・・UITableViewに必要なメソッドとか
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

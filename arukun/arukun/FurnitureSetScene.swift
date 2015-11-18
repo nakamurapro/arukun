@@ -46,6 +46,8 @@ class FurnitureSetScene: SKScene {
     
     var count = 0
     for data in Furnitures{   //持ってるやつはどれ？
+    println("@@@@@@@@@@@@@@@@@@@@@@@@@")
+    println(data)
       setData(data)
       if (haved == true){
         count++
