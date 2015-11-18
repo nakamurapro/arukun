@@ -20,10 +20,6 @@ class GameScene: SKScene {
   var sprite = SKSpriteNode(imageNamed:"01")
   
   var myMotionManager: CMMotionManager!
-  var X:Double! = 1.0
-  var Y:Double! = 1.0
-  var Z:Double! = 1.0
-  var Counter :Int = 0
   
   var Rooms: NSArray!
   var Furnitures: NSArray!
@@ -34,6 +30,8 @@ class GameScene: SKScene {
   
   override func didMoveToView(view: SKView) {
     //        /* Setup your scene here */
+    
+    readPoint()
     Rooms = readRoom()
     if(Rooms.count == 0){
       makeRoom()
@@ -60,27 +58,6 @@ class GameScene: SKScene {
     
     self.addChild(sprite)
     
-    myMotionManager = CMMotionManager()
-    
-    // 更新周期を設定.
-    myMotionManager.accelerometerUpdateInterval = 1/5
-    
-    // 加速度の取得を開始.
-    myMotionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {(accelerometerData:CMAccelerometerData!, error:NSError!) -> Void in
-      
-      var x = accelerometerData.acceleration.x
-      var y = accelerometerData.acceleration.y
-      var z = accelerometerData.acceleration.z
-      var CheckX = self.X - x
-      var CheckY = self.Y - y
-      var CheckZ = self.Z - z
-      
-      if(CheckX > 0.7 || CheckY > 0.7 || CheckZ > 0.7){
-        self.Counter = self.Counter + 1
-      }
-      self.X = x; self.Y = y; self.Z = z
-      
-    })
     
     if(app.FoodFlg == true){
       var spriteAction1 = SKAction.scaleYTo(0.06, duration: 0.3)
@@ -133,7 +110,7 @@ class GameScene: SKScene {
     
   }
   override func update(currentTime: NSTimeInterval) {
-    pointLabel.text = toString(Counter) + "歩"
+    pointLabel.text = toString(app.counter) + "歩"
   }
   
   func layoutObject(){
@@ -263,4 +240,28 @@ class GameScene: SKScene {
     println("InitMasters OK!")
   }
   
+  func readPoint(){
+    println("readUser ------------")
+    let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+    let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
+    
+    var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+    if(results.count == 0){
+      makeUser()
+    }
+  }
+  
+  func makeUser(){
+    let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+    let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+      "User", inManagedObjectContext: categoryContext)
+    var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+    new_data.setValue(300, forKey: "money")
+    new_data.setValue(160, forKey: "stature") //身長のこと
+    new_data.setValue(0, forKey: "stride")
+    
+    var error: NSError?
+  }
 }

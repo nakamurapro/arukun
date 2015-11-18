@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B7BEF8C1B5DDC0B00DFD39C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7BEF8B1B5DDC0B00DFD39C /* Person.swift */; };
+		7B9F87BB1BFB6BD1002D7CBB /* random.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B9F87BA1BFB6BD1002D7CBB /* random.csv */; };
 		7BD1FF371B4F555700B77657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1FF361B4F555700B77657 /* AppDelegate.swift */; };
 		7BD1FF3A1B4F555700B77657 /* SeeddataTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1FF381B4F555700B77657 /* SeeddataTest.xcdatamodeld */; };
 		7BD1FF3C1B4F555700B77657 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1FF3B1B4F555700B77657 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		7B7BEF8B1B5DDC0B00DFD39C /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = ../Person.swift; sourceTree = "<group>"; };
+		7B9F87BA1BFB6BD1002D7CBB /* random.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = random.csv; sourceTree = "<group>"; };
 		7BD1FF311B4F555700B77657 /* SeeddataTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeddataTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD1FF351B4F555700B77657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BD1FF361B4F555700B77657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		7BD1FF341B4F555700B77657 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B9F87BA1BFB6BD1002D7CBB /* random.csv */,
 				7BD1FF351B4F555700B77657 /* Info.plist */,
 				7BD1FF591B4F55FD00B77657 /* Seed.plist */,
 			);
@@ -201,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B9F87BB1BFB6BD1002D7CBB /* random.csv in Resources */,
 				7BD1FF3F1B4F555700B77657 /* Main.storyboard in Resources */,
 				7BD1FF5A1B4F55FD00B77657 /* Seed.plist in Resources */,
 				7BD1FF441B4F555700B77657 /* LaunchScreen.xib in Resources */,
