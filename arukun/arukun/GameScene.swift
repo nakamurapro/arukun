@@ -50,18 +50,18 @@ class GameScene: SKScene {
     //        self.physicsWorld.contactDelegate = self
     self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-    sprite.physicsBody = SKPhysicsBody(circleOfRadius: 1000)
+    sprite.physicsBody = SKPhysicsBody(circleOfRadius: 500)
     
-    sprite.xScale = 0.05
-    sprite.yScale = 0.05
+    sprite.xScale = 0.3
+    sprite.yScale = 0.3
     sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
     
     self.addChild(sprite)
     
     
     if(app.FoodFlg == true){
-      var spriteAction1 = SKAction.scaleYTo(0.06, duration: 0.3)
-      var spriteAction2 = SKAction.scaleYTo(0.05, duration: 0.3)
+      var spriteAction1 = SKAction.scaleYTo(0.35, duration: 0.3)
+      var spriteAction2 = SKAction.scaleYTo(0.3, duration: 0.3)
       var Actions = SKAction.sequence([spriteAction1,spriteAction2])
       var RepeatAction = SKAction.repeatAction(Actions, count: 3)
       
@@ -258,7 +258,7 @@ class GameScene: SKScene {
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
       "User", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-    new_data.setValue(300, forKey: "money")
+    new_data.setValue(300000, forKey: "money")
     new_data.setValue(160, forKey: "stature") //身長のこと
     new_data.setValue(0, forKey: "stride")
     
