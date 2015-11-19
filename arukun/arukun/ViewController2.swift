@@ -6,8 +6,9 @@
 //  Copyright © 2015年 kenseikamii. All rights reserved.
 //
 import Foundation
-
+import SpriteKit
 import UIKit
+import AVFoundation
 
 class ViewController2: UIViewController {
 
@@ -23,8 +24,6 @@ class ViewController2: UIViewController {
         back_button.layer.cornerRadius = 10
 //        self.imageView.layer.cornerRadius = 30
 //        self.imageView.layer.masksToBounds = true
-
-        
         label.text = selectedlbl
         label.textColor = UIColor.blackColor()
         

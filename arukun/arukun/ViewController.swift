@@ -39,7 +39,6 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         CharaDatas = readCharaData()
         if(CharaDatas.count == 0){
             initCharaMasters()
-            addCharaMasters()
             CharaDatas = readCharaData()
         }
         println(CharaDatas.count)
@@ -238,27 +237,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
 
     }
   
-  func addCharaMasters() {
-    println("initMasters ------------")
-    let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
-    
-    for _ in 1...14{
-      let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
-        "Charadata", inManagedObjectContext: categoryContext)
-      var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-      new_data.setValue("bla bla bla...", forKey: "text")
-      new_data.setValue(0, forKey: "haved")
-      new_data.setValue(2, forKey: "rank")
-      new_data.setValue("TEST", forKey: "rgb")
-      
-      var error: NSError?
-      categoryContext.save(&error)
-      
-    }
-    
-  }
-    //それ以外
+  //それ以外
   func takePhoto(i :Int) -> String{
     var photo = ""
     var CharaData: AnyObject = CharaDatas[i]
