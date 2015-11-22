@@ -259,7 +259,7 @@ class GameScene: SKScene {
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
       "User", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-    new_data.setValue(10000, forKey: "money")
+    new_data.setValue(150, forKey: "money")
     new_data.setValue(160, forKey: "stature") //身長のこと
     new_data.setValue(0, forKey: "stride")
     

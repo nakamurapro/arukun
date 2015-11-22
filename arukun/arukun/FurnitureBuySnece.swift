@@ -7,12 +7,12 @@ class FurnitureBuyScene: SKScene {
     var Scroll :UIScrollView! //0は家具購入、1は家具配置に使います
     //まず家具購入に必要な物
     var phoneSize :CGSize = UIScreen.mainScreen().bounds.size //画面サイズ
-    private var myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
+    private var myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 400))
     var BuyButton :UIButton!
     var backButton :UIButton! //戻るボタン
     var cancelButton :UIButton! //キャンセルボタン
     private var myTextView :UITextView! //家具の名前
-    private var Text :UITextView! //テキスト
+    private var Text :Array<UITextView> = [] //テキスト
     private var PointView :UITextView! //所持ポイント表示
     private var price :UITextView! //値段
     var imageView :UIImageView! //これは商品
@@ -26,7 +26,8 @@ class FurnitureBuyScene: SKScene {
     //最後にメニューに戻るボタン
     var backtomenu :UIButton!
     var Flg = false
-    
+  
+    var FurnitureImage = UIImageView(frame: CGRectMake(0,0,150,150))
     var imageName :String!
     var Furniturename :String!
     var point :Int!
@@ -86,53 +87,70 @@ class FurnitureBuyScene: SKScene {
         backtomenu.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
         backtomenu.setTitle("もどる", forState: .Highlighted)
         backtomenu.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-        backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-10)
+      backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-10)
         backtomenu.layer.cornerRadius = 20
         self.view!.addSubview(backtomenu)
         
       
       
         //購入ボタン作成
-        BuyButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-        BuyButton.backgroundColor = UIColor.redColor()
+        BuyButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+        BuyButton.backgroundColor = UIColor(red: 1, green: 145/255, blue: 158/255, alpha: 1.0)
         BuyButton.addTarget(self, action: "BuyFurniture:", forControlEvents: .TouchUpInside)
-        BuyButton.setTitle("購入", forState: .Normal)
-        BuyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        BuyButton.setTitle("購入", forState: .Highlighted)
-        BuyButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-        BuyButton.layer.position = CGPoint(x: 150, y: 200)
+        BuyButton.setTitle("はい", forState: .Normal)
+        BuyButton.setTitleColor(UIColor(red: 141/255, green: 47/255, blue: 58/255, alpha: 1.0), forState: .Normal)
+        BuyButton.setTitle("はい", forState: .Highlighted)
+        BuyButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+        BuyButton.layer.cornerRadius = 40
+        BuyButton.layer.position = CGPoint(x: 100, y: 350)
         
         //キャンセルボタン作成
-        cancelButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-        cancelButton.backgroundColor = UIColor.blueColor()
+        cancelButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+        cancelButton.backgroundColor = UIColor(red: 157/255, green: 180/255, blue: 213/255, alpha: 1)
         cancelButton.addTarget(self, action: "Goback:", forControlEvents: .TouchUpInside)
-        cancelButton.setTitle("キャンセル", forState: .Normal)
-        cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        cancelButton.setTitle("キャンセル", forState: .Highlighted)
-        cancelButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-        cancelButton.layer.position = CGPoint(x: 150, y: 250)
+        cancelButton.setTitle("いいえ", forState: .Normal)
+        cancelButton.setTitleColor(UIColor(red: 64/255, green: 79/255, blue: 102/255, alpha: 1), forState: .Normal)
+        cancelButton.setTitle("いいえ", forState: .Highlighted)
+        cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+        cancelButton.layer.cornerRadius = 40
+
+        cancelButton.layer.position = CGPoint(x: 200, y: 350)
         
         //戻るボタン作成
-        backButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-        backButton.backgroundColor = UIColor.blueColor()
+        backButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+        backButton.backgroundColor = UIColor(red: 160/255, green: 219/255, blue: 128/255, alpha: 1)
         backButton.addTarget(self, action: "Goback:", forControlEvents: .TouchUpInside)
-        backButton.setTitle("戻る", forState: .Normal)
-        backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        backButton.setTitle("戻る", forState: .Highlighted)
+        backButton.setTitle("もどる", forState: .Normal)
+        backButton.setTitleColor(UIColor(red: 68/255, green: 117/255, blue: 42/255, alpha: 1), forState: .Normal)
+        backButton.setTitle("もどる", forState: .Highlighted)
         backButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-        backButton.layer.position = CGPoint(x: 150, y: 250)
+        backButton.layer.cornerRadius = 40
+        backButton.layer.position = CGPoint(x: 150, y: 350)
         
         
         //これはテキスト
-        Text = UITextView(frame: CGRectMake(0, 0, 300, 100))
-        Text.userInteractionEnabled = true
-        Text.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        Text.text = ""
-        Text.font = UIFont.systemFontOfSize(CGFloat(20))
-        Text.textColor = UIColor.blackColor()
-        Text.textAlignment = NSTextAlignment.Left
-        Text.editable = false
-        Text.center = CGPointMake(self.view!.frame.width/2,100)
+      var fontsize = [40,20,20,25]
+      var color = [UIColor.blackColor(), UIColor.blackColor(), UIColor(red: 30/255, green: 91/255, blue: 134/255, alpha: 1), UIColor(red: 185/255, green: 23/255, blue: 44/255, alpha: 1)]
+      var position  = [50,100,300,300]
+      for i in 0...3{
+        Text.append(UITextView(frame: CGRectMake(0, 0, 300, 100)))
+        Text[i].userInteractionEnabled = true
+        Text[i].backgroundColor = UIColor.clearColor()
+        Text[i].text = ""
+        Text[i].font = UIFont.systemFontOfSize(CGFloat(fontsize[i]))
+        Text[i].textColor = color[i]
+        Text[i].textAlignment = NSTextAlignment.Center
+        Text[i].editable = false
+        Text[i].center = CGPointMake(150,CGFloat(position[i]))
+      }
+        //windowに関して
+      myWindow.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+      myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2+50)
+      FurnitureImage.layer.position = CGPointMake(150,175)
+      myWindow.layer.cornerRadius = 30
+      // myWindowをkeyWindowにする.
+      myWindow.makeKeyWindow()
+      
       
         var i = 0
         for data in results { //メイン画面の用意
@@ -211,13 +229,22 @@ class FurnitureBuyScene: SKScene {
     internal func Goback(sender: UIButton){ //戻る
         Flg = false
         myWindow.hidden = true
+        backtomenu.hidden = false
+        Scroll.hidden = false
     }
     
     internal func BuyFurniture(sender: UIButton){ //買う
         PlayerPoint = PlayerPoint - point
         BuyButton.removeFromSuperview()
+        cancelButton.removeFromSuperview()
         myWindow.addSubview(backButton)
-        Text.text = "購入しました！"
+      for i in 0...2{
+        Text[i].removeFromSuperview()
+      }
+        Text[3].layer.position = CGPointMake(150,175)
+        Text[3].text = "購入しました！"
+        FurnitureImage.removeFromSuperview()
+        myWindow.addSubview(Text[3])
         setData(results[selectedNumber])
         
         //その１：買ったやつのhavedをYESに
@@ -257,27 +284,30 @@ class FurnitureBuyScene: SKScene {
     func makeWindow(recognizer: UIGestureRecognizer){ //ウィンドウ作成
         if (Flg == false){
             if let imageView = recognizer.view as? UIImageView {
-                Flg = true
                 setData(results[imageView.tag])
                 selectedNumber = imageView.tag
                 if(!(haved)){
-                    //まずはウィンドウ作ろう
-                    myWindow.backgroundColor = UIColor.whiteColor()
-                    myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2)
-                    myWindow.alpha = 1.0
-                    // myWindowをkeyWindowにする.
-                    myWindow.makeKeyWindow()
+                  Flg = true
+                  backtomenu.hidden = true
+                  Scroll.hidden = true
+                    FurnitureImage.image = UIImage(named: imageName)
+                    myWindow.addSubview(FurnitureImage)
                     self.view!.addSubview(myWindow)
                     self.myWindow.makeKeyAndVisible()
-                    
+                    Text[0].text = Furniturename
+                    Text[1].text = "必要ポイント：\(point)"
+                    for i in 0...1{
+                      myWindow.addSubview(Text[i])
+                    }
                     if(PlayerPoint >= point){ //足りる！
-                        Text.text = "\(Furniturename)を購入しますか？\n必要ポイント：\(point)\n所持ポイント：\(PlayerPoint)"
-                        myWindow.addSubview(Text)
+                        Text[2].text = "\(Furniturename)を購入しますか？"
+                        myWindow.addSubview(Text[2])
                         myWindow.addSubview(BuyButton)
                         myWindow.addSubview(cancelButton)
                     }else { //足りない！
-                        Text.text = "ポイントが足りません！\n必要ポイント：\(point)\n所持ポイント：\(PlayerPoint)"
-                        myWindow.addSubview(Text)
+                        Text[3].text = "ポイントが足りません！"
+                        Text[3].layer.position = CGPointMake(150, 300)
+                        myWindow.addSubview(Text[3])
                         myWindow.addSubview(backButton)
                     }
                 }

@@ -92,17 +92,21 @@ class FurnitureSetScene: SKScene {
     ShowRoomButton.setTitle("部屋を見る", forState: .Highlighted)
     ShowRoomButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
     ShowRoomButton.layer.position = CGPoint(x: phoneSize.width*0.7, y: phoneSize.height*0.9-10)
+    ShowRoomButton.layer.cornerRadius = 20
+
     self.view!.addSubview(ShowRoomButton)
     
     //メニューに戻るボタン
     backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    backtomenu.backgroundColor = UIColor.blueColor()
+    backtomenu.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
     backtomenu.addTarget(self, action: "backtomenu:", forControlEvents: .TouchUpInside)
-    backtomenu.setTitle("戻る", forState: .Normal)
-    backtomenu.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    backtomenu.setTitle("戻る", forState: .Highlighted)
+    backtomenu.setTitle("もどる", forState: .Normal)
+    backtomenu.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
+    backtomenu.setTitle("もどる", forState: .Highlighted)
     backtomenu.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
     backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-10)
+    backtomenu.layer.cornerRadius = 20
+
     self.view!.addSubview(backtomenu)
     
     //これはダミー用
