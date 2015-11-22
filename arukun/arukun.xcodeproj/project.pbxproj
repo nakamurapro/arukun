@@ -286,6 +286,7 @@
 				7B313D0B1BD5FBEC002A6782 /* Furniture */,
 				7B9A6D821B3840290056D886 /* 1179.png */,
 				1D60AA5E1B27EF5D000D4D5A /* Images.xcassets */,
+				1DF394881BD7301A00027E08 /* kanban.png */,
 				7BE00E221BF4D1CA00334A45 /* burgar3.png */,
 				7BE00E231BF4D1CA00334A45 /* burgar1.png */,
 				7BE00E241BF4D1CA00334A45 /* burgar2.png */,
@@ -424,7 +425,6 @@
 		7B36E0421B39A6E100A62CF3 /* Rec */ = {
 			isa = PBXGroup;
 			children = (
-				1DF394881BD7301A00027E08 /* kanban.png */,
 				1DF394891BD7301A00027E08 /* husen.png */,
 				1DF3948A1BD7301A00027E08 /* con.jpg */,
 				1DF3948B1BD7301A00027E08 /* hai.jpg */,

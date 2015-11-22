@@ -20,8 +20,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     var Pictures :NSArray! //写真データがここ
     var CharaDatas :NSArray! //キャラデータがここ
     
-    //let nameArray : NSArray = ["あるくん","あるちゃん","あるお"]
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         Pets = readPets()

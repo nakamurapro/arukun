@@ -42,6 +42,11 @@ class FurnitureSetScene: SKScene {
   var back :Int! //背景何？
   
   override func didMoveToView(view: SKView) {
+    var background = SKSpriteNode(imageNamed: "con.jpg")
+    background.xScale = 1.5
+    background.yScale = 1.5
+    background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
+    self.addChild(background)
     Furnitures = readData()   //家具情報読み込み
     
     var count = 0

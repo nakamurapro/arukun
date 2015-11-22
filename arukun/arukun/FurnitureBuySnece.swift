@@ -31,32 +31,67 @@ class FurnitureBuyScene: SKScene {
     var Furniturename :String!
     var point :Int!
     var haved :Bool!
-    
-    
+  
+  
+  
     override func didMoveToView(view: SKView) {
-        results = readData()
-        readPoint()
+      
+      results = readData()
+      readPoint()
+      
+      var background = SKSpriteNode(imageNamed: "con.jpg")
+      background.xScale = 1.5
+      background.yScale = 1.5
+      background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
+      self.addChild(background)
+      var kanban = SKSpriteNode(imageNamed:"kanban")
+      kanban.xScale = 0.6
+      kanban.yScale = 0.6
+      var height = kanban.frame.height*0.5
+      kanban.position = CGPoint(x: self.size.width*0.5, y: self.size.height-height)
+      self.addChild(kanban)
+      
+      var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
+
+      var title = SKLabelNode(text: "家具を購入")
+      title.fontColor = fontcolor
+      title.position = CGPoint(x: kanban.position.x, y: kanban.position.y-height+20)
+      self.addChild(title)
+      
+      PointView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+      PointView.layer.position = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.2)
+      PointView.backgroundColor = UIColor.yellowColor()
+      PointView.textColor = fontcolor
+      PointView.textAlignment = .Center
+      PointView.font = UIFont.systemFontOfSize(CGFloat(20))
+      PointView.text = "所持ポイント：\(toString(PlayerPoint))"
+      PointView.layer.cornerRadius = 20
+      self.view!.addSubview(PointView)
+      
+      
         var heightScroll = ceil(Double(results.count) / 2.0)
-        Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 500))
+        Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         Scroll.scrollEnabled = true
         Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
         Scroll.indicatorStyle = UIScrollViewIndicatorStyle.Black
-        Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.4)
-        Scroll.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.5)
+        Scroll.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         self.view!.addSubview(Scroll)
         
         //メニューに戻るボタン
         backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 50))
-        backtomenu.backgroundColor = UIColor.blueColor()
+        backtomenu.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
         backtomenu.addTarget(self, action: "backtomenu:", forControlEvents: .TouchUpInside)
-        backtomenu.setTitle("戻る", forState: .Normal)
-        backtomenu.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        backtomenu.setTitle("戻る", forState: .Highlighted)
+        backtomenu.setTitle("もどる", forState: .Normal)
+        backtomenu.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
+        backtomenu.setTitle("もどる", forState: .Highlighted)
         backtomenu.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
         backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-10)
+        backtomenu.layer.cornerRadius = 20
         self.view!.addSubview(backtomenu)
         
-        
+      
+      
         //購入ボタン作成
         BuyButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
         BuyButton.backgroundColor = UIColor.redColor()
@@ -98,18 +133,7 @@ class FurnitureBuyScene: SKScene {
         Text.textAlignment = NSTextAlignment.Left
         Text.editable = false
         Text.center = CGPointMake(self.view!.frame.width/2,100)
-        
-        PointView = UITextView(frame: CGRectMake(0, 0, 200, 100))
-        PointView.userInteractionEnabled = true
-        PointView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        PointView.text = "所持ポイント：\(toString(PlayerPoint))P"
-        PointView.font = UIFont.systemFontOfSize(CGFloat(20))
-        PointView.textColor = UIColor.blackColor()
-        PointView.textAlignment = NSTextAlignment.Right
-        PointView.editable = false
-        PointView.center = CGPointMake(self.view!.frame.width*0.7,self.view!.frame.height*0.9)
-        self.view!.addSubview(PointView)
-        
+      
         var i = 0
         for data in results { //メイン画面の用意
             setData(data)
@@ -124,7 +148,11 @@ class FurnitureBuyScene: SKScene {
             var WhereY = floor(CGFloat(i/2)) //何行目？
             var which :CGFloat = CGFloat(i%2)
             View.frame = CGRectMake(150*which, HGH*WhereY, 150, 150)
-            
+          
+            var husen = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+            husen.image  = UIImage(named: "husen")
+            View.addSubview(husen)
+          
             //画像の用意
             var Image = UIImage(named: imageName)
             imageView = UIImageView(image: Image)
@@ -139,25 +167,27 @@ class FurnitureBuyScene: SKScene {
             View.addSubview(imageView)
             
             //商品名
+          
+            var furnitureColor = UIColor(red: 120/255, green: 97/255, blue: 56/255, alpha: 1.0)
             myTextView = UITextView(frame: CGRectMake(0, 0, 130, 30))
             myTextView.userInteractionEnabled = false
-            myTextView.backgroundColor = UIColor(red: 0.0, green: 0.8, blue: 0.8, alpha: 1.0)
             myTextView.text = Furniturename
             myTextView.font = UIFont.systemFontOfSize(CGFloat(15))
-            myTextView.textColor = UIColor.whiteColor()
+            myTextView.textColor = furnitureColor
             myTextView.textAlignment = NSTextAlignment.Center
             myTextView.editable = false
             myTextView.center = CGPointMake(75,15)
+            myTextView.backgroundColor = UIColor.clearColor()
             View.addSubview(myTextView)
             
             //値段を入れる
-            price = UITextView(frame: CGRectMake(0, 0, 50, 30))
+            price = UITextView(frame: CGRectMake(0, 0, 40, 30))
             price.userInteractionEnabled = false
             price.editable = false
             price.text = "\(point)"
-            price.backgroundColor = UIColor.orangeColor()
+            price.textColor = furnitureColor
+            price.backgroundColor = UIColor.yellowColor()
             price.font = UIFont.systemFontOfSize(CGFloat(15))
-            price.textColor = UIColor.whiteColor()
             price.textAlignment = NSTextAlignment.Left
             price.center = CGPointMake(125,135)
             View.addSubview(price)
@@ -175,7 +205,7 @@ class FurnitureBuyScene: SKScene {
             
             i++
         }
-        
+    
     }//完成です
     
     internal func Goback(sender: UIButton){ //戻る
@@ -219,7 +249,7 @@ class FurnitureBuyScene: SKScene {
         }
         
         bought[selectedNumber].hidden = false
-        PointView.text = "所持ポイント：\(toString(PlayerPoint))P"
+        PointView.text = "所持ポイント：\(toString(PlayerPoint))"
         
     }
     
@@ -241,12 +271,12 @@ class FurnitureBuyScene: SKScene {
                     self.myWindow.makeKeyAndVisible()
                     
                     if(PlayerPoint >= point){ //足りる！
-                        Text.text = "\(Furniturename)を購入しますか？\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
+                        Text.text = "\(Furniturename)を購入しますか？\n必要ポイント：\(point)\n所持ポイント：\(PlayerPoint)"
                         myWindow.addSubview(Text)
                         myWindow.addSubview(BuyButton)
                         myWindow.addSubview(cancelButton)
                     }else { //足りない！
-                        Text.text = "ポイントが足りません！\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
+                        Text.text = "ポイントが足りません！\n必要ポイント：\(point)\n所持ポイント：\(PlayerPoint)"
                         myWindow.addSubview(Text)
                         myWindow.addSubview(backButton)
                     }
@@ -275,8 +305,12 @@ class FurnitureBuyScene: SKScene {
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Furniture")
-        
+      
+        let SortDescriptor = NSSortDescriptor(key: "point", ascending: true)
+        let sortDescriptors = [SortDescriptor]
+        categoryRequest.sortDescriptors = sortDescriptors
         var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+      
         return results
     }
     
