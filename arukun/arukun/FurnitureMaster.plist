@@ -65,7 +65,7 @@
 		<key>image</key>
 		<string>kagu3</string>
 		<key>haved</key>
-		<true/>
+		<false/>
 	</dict>
 </dict>
 </plist>

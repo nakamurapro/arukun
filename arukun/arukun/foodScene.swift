@@ -206,10 +206,6 @@ class foodScene: SKScene {
   }
   
   func backtomenu(sender: UIButton){
-    Scroll.hidden = true
-    myWindow.hidden = true
-    PointView.hidden = true
-    backtomenu.hidden = true
     let tr = SKTransition.crossFadeWithDuration(0.1)
     let newScene = GameScene(size: self.scene!.size)
     newScene.scaleMode = SKSceneScaleMode.AspectFill
@@ -268,8 +264,6 @@ class foodScene: SKScene {
   }
   
   internal func Buyfood(sender: UIButton){ //買う
-    Scroll.hidden = true
-    myWindow.hidden = true
     app.FoodFlg = true
     PlayerPoint = PlayerPoint - foodData[selected][0]
     
@@ -291,5 +285,10 @@ class foodScene: SKScene {
   
   override func willMoveFromView(view: SKView) {
     Scroll.removeFromSuperview()
+    myWindow.hidden = true
+    backtomenu.hidden = true
+    PointView.hidden = true
   }
+  
+  
 }

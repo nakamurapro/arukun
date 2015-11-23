@@ -47,6 +47,7 @@ class GameScene: SKScene {
     layoutObject()
     setFurniture()
     scoreLayout()
+    
     //        self.physicsWorld.contactDelegate = self
     self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
@@ -249,6 +250,17 @@ class GameScene: SKScene {
     var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
     if(results.count == 0){
       makeUser()
+    }else{
+      var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
+      for data in resultPoint{
+        var money = data.valueForKey("money") as! Int
+        money = money + (app.counter - app.i)
+        data.setValue(money, forKey: "money")
+        var error: NSError?
+        categoryContext.save(&error)
+        app.i = app.counter
+      }
+
     }
   }
   
