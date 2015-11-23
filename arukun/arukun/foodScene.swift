@@ -12,12 +12,12 @@ import CoreData
 
 class foodScene: SKScene {
   var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-  var Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+  var Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 350, height: 300))
 
   var PlayerPoint :Int!
   var selected :Int!
   var phoneSize :CGSize = UIScreen.mainScreen().bounds.size //画面サイズ
-  var pointLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
+  private var PointView :UITextView! //所持ポイント表示
   var scoreSprite = SKSpriteNode(imageNamed: "score")
   var Label = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   var PlayerLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
@@ -27,6 +27,7 @@ class foodScene: SKScene {
   var cancelButton :UIButton!
   var backButton :UIButton!
   var Text :UITextView!
+  var backtomenu  :UIButton!
   
   var Counter :Int = 0
   
@@ -34,72 +35,60 @@ class foodScene: SKScene {
   var Furniture :Array<SKSpriteNode> = []
   
   var foodData = [[50,30,0,0],[50,0,30,0],[70,0,10,40]] //まだ準備段階
-  
+  var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
+
   override func didMoveToView(view: SKView) {
     //        /* Setup your scene here */
     readPoint()
-    
     layoutObject()
     makeScroll()
     makeButtons()
-    scoreLayout()
     //        self.physicsWorld.contactDelegate = self
     self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-    Label.text = "戻る"
-    Label.fontSize = 50
-    Label.fontColor = UIColor(red:0 , green: 0, blue: 0, alpha: 1)//黒
-    Label.position = CGPoint(x: self.size.width*0.4, y: self.size.height*0.1)
-    Label.zPosition = 0
-    Label.name = "next"
-    
+    backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 50))
+    backtomenu.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
+    backtomenu.addTarget(self, action: "backtomenu:", forControlEvents: .TouchUpInside)
+    backtomenu.setTitle("もどる", forState: .Normal)
+    backtomenu.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
+    backtomenu.setTitle("もどる", forState: .Highlighted)
+    backtomenu.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+    backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-10)
+    backtomenu.layer.cornerRadius = 20
+    self.view!.addSubview(backtomenu)
+
     self.addChild(Label)
   }
   
-  func scoreLayout(){
-    scoreSprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height-100)
-    pointLabel.text = "エサ"
-    pointLabel.fontSize = 50
-    pointLabel.fontColor = UIColor(red:0 , green: 0, blue: 0, alpha: 1)//黒
-    pointLabel.position = CGPoint(x:scoreSprite.position.x, y:scoreSprite.position.y-5)
-    pointLabel.zPosition = 0
-    
-    PlayerLabel.text = "所持ポイント：\(PlayerPoint)P"
-    PlayerLabel.fontSize = 20
-    PlayerLabel.fontColor = UIColor(red:0 , green: 0, blue: 0, alpha: 1)//黒
-    PlayerLabel.position = CGPoint(x:self.size.width*0.6, y:self.size.width*0.1)
-    PlayerLabel.zPosition = 0
-    
-    self.addChild(scoreSprite)
-    self.addChild(pointLabel)
-    self.addChild(PlayerLabel)
-    
-    
-    //エサを食べるテストです
-  }
-  
   func makeScroll(){
-    var heightScroll = ceil(10.0 / 2.0)
+    var heightScroll = ceil(10.0 / 3.0)
     Scroll.scrollEnabled = true
     Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
     Scroll.indicatorStyle = UIScrollViewIndicatorStyle.Black
-    Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.4)
-    Scroll.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.5)
+    Scroll.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
     self.view!.addSubview(Scroll)
     
     for i in 0...9 {
       var View = UIView()
       View.userInteractionEnabled = true
-      var HGH :CGFloat = 180  //高さの間隔
-      var WhereY = floor(CGFloat(i/2)) //何行目？
-      var which :CGFloat = CGFloat(i%2)
-      View.frame = CGRectMake(150*which, HGH*WhereY, 150, 150)
+      var HGH :CGFloat = 120  //高さの間隔
+      var WhereY = floor(CGFloat(i/3)) //何行目？
+      var which :CGFloat = CGFloat(i%3)
+      View.frame = CGRectMake(120*which, HGH*WhereY, 120, 120)
       
       //画像の用意
+      var husenImage = UIImage(named: "husen.jpg")
+      var husenimageView = UIImageView(image: husenImage)
+      husenimageView.frame = CGRectMake(0, 0, 120, 120)
+      husenimageView.tag = i
+      husenimageView.userInteractionEnabled = true
+      View.addSubview(husenimageView)
+      
       var Image = UIImage(named: "burgar1")
       var imageView = UIImageView(image: Image)
-      imageView.frame = CGRectMake(0, 0, 120, 120)
-      imageView.center = CGPointMake(75,90)
+      imageView.frame = CGRectMake(0, 0, 60, 60)
+      imageView.center = CGPointMake(husenimageView.center.x, husenimageView.center.y+10)
       imageView.tag = i
       imageView.userInteractionEnabled = true
       
@@ -109,27 +98,27 @@ class foodScene: SKScene {
       View.addSubview(imageView)
       
       //商品名
-      var myTextView = UITextView(frame: CGRectMake(0, 0, 130, 30))
+      var myTextView = UITextView(frame: CGRectMake(0, 0, 110, 30))
       myTextView.userInteractionEnabled = false
-      myTextView.backgroundColor = UIColor(red: 0.0, green: 0.8, blue: 0.8, alpha: 1.0)
+      myTextView.backgroundColor = UIColor.clearColor()
       myTextView.text = "ハンバーガー"
       myTextView.font = UIFont.systemFontOfSize(CGFloat(15))
-      myTextView.textColor = UIColor.whiteColor()
+      myTextView.textColor = fontcolor
       myTextView.textAlignment = NSTextAlignment.Center
       myTextView.editable = false
-      myTextView.center = CGPointMake(75,15)
+      myTextView.center = CGPointMake(husenimageView.center.x,20)
       View.addSubview(myTextView)
       
       //値段を入れる
-      var price = UITextView(frame: CGRectMake(0, 0, 50, 30))
+      var price = UITextView(frame: CGRectMake(0, 0, 40, 30))
       price.userInteractionEnabled = false
       price.editable = false
       price.text = "\(foodData[i%3][0])"
-      price.backgroundColor = UIColor.orangeColor()
+      price.backgroundColor = UIColor.yellowColor()
       price.font = UIFont.systemFontOfSize(CGFloat(15))
-      price.textColor = UIColor.whiteColor()
+      price.textColor = fontcolor
       price.textAlignment = NSTextAlignment.Left
-      price.center = CGPointMake(125,135)
+      price.center = CGPointMake(95,95)
       View.addSubview(price)
       
       Scroll.addSubview(View)
@@ -175,8 +164,8 @@ class foodScene: SKScene {
     Text.editable = false
     Text.center = CGPointMake(self.view!.frame.width/2,100)
   }
+  
   override func update(currentTime: NSTimeInterval) {
-    // pointLabel.text = toString(Counter) + "歩"
   }
   
   func layoutObject(){
@@ -190,23 +179,41 @@ class foodScene: SKScene {
     background.yScale = 1.5
     self.addChild(background)
     
+    var kanban = SKSpriteNode(imageNamed:"kanban")
+    kanban.xScale = 0.6
+    kanban.yScale = 0.6
+    var height = kanban.frame.height*0.5
+    kanban.position = CGPoint(x: self.size.width*0.5, y: self.size.height-height)
+    self.addChild(kanban)
+    var title = SKLabelNode(text: "エサ")
+    title.fontColor = fontcolor
+    title.position = CGPoint(x: kanban.position.x, y: kanban.position.y-height+20)
+    self.addChild(title)
+    
+    PointView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+    PointView.layer.position = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.2)
+    PointView.backgroundColor = UIColor.yellowColor()
+    PointView.textColor = fontcolor
+    PointView.textAlignment = .Center
+    PointView.font = UIFont.systemFontOfSize(CGFloat(20))
+    PointView.text = "所持ポイント：\(toString(PlayerPoint))"
+    PointView.layer.cornerRadius = 20
+    self.view!.addSubview(PointView)
+    
   }
   
   override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-    /* Called when a touch begins */
-    
-    for touch in (touches as! Set<UITouch>) {
-      let location = touch.locationInNode(self)
-      let touchedNode = self.nodeAtPoint(location)
-      if(touchedNode.name == "next"){
-        Scroll.hidden = true
-        myWindow.hidden = true
-        let tr = SKTransition.crossFadeWithDuration(0.1)
-        let newScene = GameScene(size: self.scene!.size)
-        newScene.scaleMode = SKSceneScaleMode.AspectFill
-        self.scene!.view!.presentScene(newScene, transition: tr)
-      }
-    }
+  }
+  
+  func backtomenu(sender: UIButton){
+    Scroll.hidden = true
+    myWindow.hidden = true
+    PointView.hidden = true
+    backtomenu.hidden = true
+    let tr = SKTransition.crossFadeWithDuration(0.1)
+    let newScene = GameScene(size: self.scene!.size)
+    newScene.scaleMode = SKSceneScaleMode.AspectFill
+    self.scene!.view!.presentScene(newScene, transition: tr)
   }
   
   func makeWindow(recognizer: UIGestureRecognizer){ //ウィンドウ作成

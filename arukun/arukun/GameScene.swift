@@ -107,7 +107,6 @@ class GameScene: SKScene {
     self.addChild(pointLabel)
     self.addChild(Label)
     
-    
   }
   override func update(currentTime: NSTimeInterval) {
     pointLabel.text = toString(app.counter) + "歩"
