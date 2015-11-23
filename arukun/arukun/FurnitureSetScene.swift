@@ -41,7 +41,14 @@ class FurnitureSetScene: SKScene {
   var ids :Array<Int> = [-1,-1,-1,-1]
   var back :Int! //背景何？
   
+  var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
+  
   override func didMoveToView(view: SKView) {
+    var background = SKSpriteNode(imageNamed: "con.jpg")
+    background.xScale = 1.5
+    background.yScale = 1.5
+    background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
+    self.addChild(background)
     Furnitures = readData()   //家具情報読み込み
     
     var count = 0
@@ -69,13 +76,26 @@ class FurnitureSetScene: SKScene {
       }
     }
     
+    var kanban = SKSpriteNode(imageNamed:"kanban")
+    kanban.xScale = 0.6
+    kanban.yScale = 0.6
+    var height = kanban.frame.height*0.5
+    kanban.position = CGPoint(x: self.size.width*0.5, y: self.size.height-height)
+    self.addChild(kanban)
+    
+    
+    var title = SKLabelNode(text: "家具を配置")
+    title.fontColor = fontcolor
+    title.position = CGPoint(x: kanban.position.x, y: kanban.position.y-height+20)
+    self.addChild(title)
+    
     var heightScroll = ceil(Double(count) / 2.0)
-    Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 500))
+    Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
     Scroll.scrollEnabled = true
     Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
     Scroll.indicatorStyle = UIScrollViewIndicatorStyle.Black
-    Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.4)
-    Scroll.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.5)
+    Scroll.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
     self.view!.addSubview(Scroll)
     
     //お部屋を見る
@@ -86,18 +106,22 @@ class FurnitureSetScene: SKScene {
     ShowRoomButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     ShowRoomButton.setTitle("部屋を見る", forState: .Highlighted)
     ShowRoomButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    ShowRoomButton.layer.position = CGPoint(x: phoneSize.width*0.7, y: phoneSize.height*0.9-10)
+    ShowRoomButton.layer.position = CGPoint(x: phoneSize.width*0.7, y: phoneSize.height*0.9-20)
+    ShowRoomButton.layer.cornerRadius = 20
+
     self.view!.addSubview(ShowRoomButton)
     
     //メニューに戻るボタン
     backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    backtomenu.backgroundColor = UIColor.blueColor()
+    backtomenu.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
     backtomenu.addTarget(self, action: "backtomenu:", forControlEvents: .TouchUpInside)
-    backtomenu.setTitle("戻る", forState: .Normal)
-    backtomenu.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    backtomenu.setTitle("戻る", forState: .Highlighted)
+    backtomenu.setTitle("もどる", forState: .Normal)
+    backtomenu.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
+    backtomenu.setTitle("もどる", forState: .Highlighted)
     backtomenu.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-10)
+    backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-20)
+    backtomenu.layer.cornerRadius = 20
+
     self.view!.addSubview(backtomenu)
     
     //これはダミー用
@@ -105,13 +129,14 @@ class FurnitureSetScene: SKScene {
     
     //戻るボタン作成
     backSetButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    backSetButton.backgroundColor = UIColor.blueColor()
+    backSetButton.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
     backSetButton.addTarget(self, action: "GobackList:", forControlEvents: .TouchUpInside)
-    backSetButton.setTitle("戻る", forState: .Normal)
-    backSetButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    backSetButton.setTitle("戻る", forState: .Highlighted)
+    backSetButton.setTitle("もどる", forState: .Normal)
+    backSetButton.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
+    backSetButton.setTitle("もどる", forState: .Highlighted)
     backSetButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    backSetButton.layer.position = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.9)
+    backSetButton.layer.cornerRadius = 20
+    backSetButton.layer.position = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.9-20)
     
     BackgroundSet = UIButton(frame: CGRectMake(0, 0, 100, 50))
     BackgroundSet.backgroundColor = UIColor.redColor()
@@ -149,7 +174,7 @@ class FurnitureSetScene: SKScene {
       SetButtons.append(UIButton(frame: CGRectMake(0,0,100,100)))
       SetButtons[i].backgroundColor = UIColor(red: 1.0, green: 0.5, blue: 0, alpha: 0.5)
       SetButtons[i].layer.masksToBounds = true
-      SetButtons[i].layer.cornerRadius = 20.0
+      SetButtons[i].layer.cornerRadius = 50.0
       SetButtons[i].addTarget(self, action: "SetFurniture:", forControlEvents: .TouchUpInside)
       SetButtons[i].setTitle(places[i], forState: .Normal)
       SetButtons[i].setTitleColor(UIColor.whiteColor(), forState: .Normal)
@@ -190,10 +215,14 @@ class FurnitureSetScene: SKScene {
       var View = UIView()
       View.userInteractionEnabled = true
       var HGH :CGFloat = 180  //高さの間隔
-      var WhereY = floor(CGFloat(i/2))
+      var WhereY = floor(CGFloat(i/2)) //何行目？
       var which :CGFloat = CGFloat(i%2)
       View.frame = CGRectMake(150*which, HGH*WhereY, 150, 150)
       
+      var husen = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+      husen.image  = UIImage(named: "husen")
+      View.addSubview(husen)
+
       //画像の用意
       Images.append(UIImage(named: imagename)!)
       imageViews.append(UIImageView(image: Images[i]))
@@ -208,16 +237,18 @@ class FurnitureSetScene: SKScene {
       View.addSubview(imageViews[i])
       
       //商品名
+      var furnitureColor = UIColor(red: 120/255, green: 97/255, blue: 56/255, alpha: 1.0)
       myTextView = UITextView(frame: CGRectMake(0, 0, 130, 30))
-      myTextView.userInteractionEnabled = true
-      myTextView.backgroundColor = UIColor(red: 0.0, green: 0.8, blue: 0.8, alpha: 1.0)
-      myTextView.text = name
+      myTextView.userInteractionEnabled = false
+      myTextView.text = Furniturename
       myTextView.font = UIFont.systemFontOfSize(CGFloat(15))
-      myTextView.textColor = UIColor.whiteColor()
+      myTextView.textColor = furnitureColor
       myTextView.textAlignment = NSTextAlignment.Center
       myTextView.editable = false
       myTextView.center = CGPointMake(75,15)
+      myTextView.backgroundColor = UIColor.clearColor()
       View.addSubview(myTextView)
+
       
       Scroll.addSubview(View)
       k++
@@ -285,6 +316,7 @@ class FurnitureSetScene: SKScene {
             
             //テキスト表示
             TextFurniture.text = "どこに\(Furniturename)を配置しますか？"
+            TextFurniture.textColor = fontcolor
             self.view!.addSubview(TextFurniture)
             //戻るボタン配置
             backSetButton.hidden = false
@@ -334,7 +366,9 @@ class FurnitureSetScene: SKScene {
     RoomFurniture[OnePlace].image = UIImage(named: imageName)
     RoomFurniture[OnePlace].center = SetPoint
     self.view!.addSubview(RoomFurniture[OnePlace])
+    TextFurniture.textColor = UIColor(red: 185/255, green: 23/255, blue: 44/255, alpha: 1.0)
     TextFurniture.text = "配置しました！"
+    
     
     //そしてデータベースを書き換えるんだ
     var fur = "fur\(OnePlace+1)"
@@ -491,7 +525,6 @@ class FurnitureSetScene: SKScene {
   }
   
   func showRoom(){ //こうなります、みたいに部屋を見せる時
-    
     var backData = Furnitures[id].valueForKey("image") as! String
     var backImage = UIImage(named: backData)
     backView = UIImageView(frame: CGRectMake(0, 0, phoneSize.width, phoneSize.height))
@@ -502,6 +535,7 @@ class FurnitureSetScene: SKScene {
     for (var i=0; i<4; i++){ //今置いてる家具を表示
       self.view!.addSubview(RoomFurniture[i])
     }
+    TextFurniture.textColor = fontcolor
     TextFurniture.text = "\(Furniturename)にすると\nお部屋はこうなります。変更しますか？"
     self.view!.addSubview(TextFurniture)
     self.view!.addSubview(BackgroundSet)
@@ -510,6 +544,7 @@ class FurnitureSetScene: SKScene {
   }
   
   func SetBackground(sender: UIButton){
+    TextFurniture.textColor = UIColor(red: 185/255, green: 23/255, blue: 44/255, alpha: 1.0)
     TextFurniture.text = "壁紙を張り替えました！"
     let app = UIApplication.sharedApplication().delegate as! AppDelegate
     let categoryContext: NSManagedObjectContext = app.managedObjectContext!

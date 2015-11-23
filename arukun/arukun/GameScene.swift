@@ -50,18 +50,18 @@ class GameScene: SKScene {
     //        self.physicsWorld.contactDelegate = self
     self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-    sprite.physicsBody = SKPhysicsBody(circleOfRadius: 1000)
+    sprite.physicsBody = SKPhysicsBody(circleOfRadius: 500)
     
-    sprite.xScale = 0.05
-    sprite.yScale = 0.05
+    sprite.xScale = 0.35
+    sprite.yScale = 0.35
     sprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
     
     self.addChild(sprite)
     
     
     if(app.FoodFlg == true){
-      var spriteAction1 = SKAction.scaleYTo(0.06, duration: 0.3)
-      var spriteAction2 = SKAction.scaleYTo(0.05, duration: 0.3)
+      var spriteAction1 = SKAction.scaleYTo(0.40, duration: 0.3)
+      var spriteAction2 = SKAction.scaleYTo(0.35, duration: 0.3)
       var Actions = SKAction.sequence([spriteAction1,spriteAction2])
       var RepeatAction = SKAction.repeatAction(Actions, count: 3)
       
@@ -107,7 +107,6 @@ class GameScene: SKScene {
     self.addChild(pointLabel)
     self.addChild(Label)
     
-    
   }
   override func update(currentTime: NSTimeInterval) {
     pointLabel.text = toString(app.counter) + "歩"
@@ -139,18 +138,19 @@ class GameScene: SKScene {
   func setFurniture(){
     for data in Rooms{
       for i in 0...3{
-        var x :Array<CGFloat> = [0.40,0.60]
-        var y :Array<CGFloat> = [0.6,0.6,0.3,0.3]
+        var x :Array<CGFloat> = [0.42,0.58,0.37,0.63]
+        var y :Array<CGFloat> = [0.65,0.65,0.3,0.3]
+        var scale :Array<CGFloat> = [0.15,0.15,0.25,0.25]
         var imageNumber = data.valueForKey("fur\(i+1)") as! Int
         if(imageNumber == -1){
           Furniture.append(SKSpriteNode(imageNamed: "nothing"))
         }else{
           var imageName = Furnitures[imageNumber].valueForKey("image") as! String
           Furniture.append(SKSpriteNode(imageNamed: imageName))
-          Furniture[i].xScale = 0.20
-          Furniture[i].yScale = 0.20
+          Furniture[i].xScale = scale[i]
+          Furniture[i].yScale = scale[i]
         }
-        Furniture[i].position = CGPoint(x: self.size.width*x[i%2], y: self.size.height*y[i])
+        Furniture[i].position = CGPoint(x: self.size.width*x[i], y: self.size.height*y[i])
         self.addChild(Furniture[i])
       }
     }
@@ -258,7 +258,7 @@ class GameScene: SKScene {
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
       "User", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-    new_data.setValue(300, forKey: "money")
+    new_data.setValue(150, forKey: "money")
     new_data.setValue(160, forKey: "stature") //身長のこと
     new_data.setValue(0, forKey: "stride")
     

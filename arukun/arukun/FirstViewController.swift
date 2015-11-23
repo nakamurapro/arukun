@@ -38,6 +38,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   override func viewDidLoad() {
     //日付のやつ
     //今日の日付の0時を返すには…？
+
     let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
     today = NSDate()
     dateFormatter.calendar = calendar

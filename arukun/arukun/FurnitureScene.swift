@@ -12,6 +12,12 @@ class FurnitureScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         //まずScrollViewを2つ作るよ
+      var background = SKSpriteNode(imageNamed: "con.jpg")
+      background.xScale = 1.5
+      background.yScale = 1.5
+      background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
+      self.addChild(background)
+      
         if (readData().count == 0){
             initMasters()
             addData()
