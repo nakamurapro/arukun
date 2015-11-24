@@ -39,7 +39,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     //日付のやつ
     //今日の日付の0時を返すには
     data = UITextView(frame: CGRectMake(0, 0, barChart.frame.width-100, 80))
-    data.layer.position = CGPointMake(self.view.frame.width*0.5, self.view.frame.height*0.9)
+    data.layer.position = CGPointMake(self.view.frame.width*0.5, self.view.frame.height*0.85)
     data.backgroundColor = UIColor(red: 1, green: 227/255, blue: 178/255, alpha: 1.0)
     data.textColor = UIColor(red: 120/255, green: 97/255, blue: 56/255, alpha: 1.0)
     data.layer.cornerRadius = 20
@@ -90,9 +90,10 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     title.text = "記録"
     title.backgroundColor = UIColor.clearColor()
     title.textAlignment = .Center
+    title.font = UIFont(name: "TamilSangamMN", size: 30)
     title.sizeToFit()
     title.textColor = UIColor(red: 102/255, green: 53/255, blue: 19/255, alpha: 1.0)
-    title.layer.position = CGPointMake(self.view.frame.width*0.5, 70)
+    title.layer.position = CGPointMake(self.view.frame.width*0.5, 50)
     self.view.addSubview(title)
     
     var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
