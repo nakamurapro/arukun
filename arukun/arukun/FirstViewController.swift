@@ -7,7 +7,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   @IBOutlet weak var barChart: JBBarChartView!
   var informationLabel: UILabel!
-  var data: Array<UILabel> = []
+  var data:UITextView!
   var day: UIButton!
   var previousDay :UIButton!
   var nextDay :UIButton!
@@ -29,7 +29,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   var footers :Array<UILabel> = []
   let dateFormatter = NSDateFormatter() //Date型用。
   let ShowdayFormat = NSDateFormatter() //ユーザに見せる用。
-  var texts :Array<String>!
+  var text :String!
   var header :UILabel!
   var results :NSArray!
   var today :NSDate! //今日の日付
@@ -37,7 +37,14 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   override func viewDidLoad() {
     //日付のやつ
-    //今日の日付の0時を返すには…？
+    //今日の日付の0時を返すには
+    data = UITextView(frame: CGRectMake(0, 0, barChart.frame.width-100, 80))
+    data.layer.position = CGPointMake(self.view.frame.width*0.5, self.view.frame.height*0.9)
+    data.backgroundColor = UIColor(red: 1, green: 227/255, blue: 178/255, alpha: 1.0)
+    data.textColor = UIColor(red: 120/255, green: 97/255, blue: 56/255, alpha: 1.0)
+    data.layer.cornerRadius = 20
+    data.editable = false
+    self.view!.addSubview(data)
 
     let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
     today = NSDate()
@@ -73,6 +80,23 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     //背景の色
     view.backgroundColor = UIColor(red: 255.0/255, green: 230.0/255, blue: 210.0/255, alpha: 1.0)
     
+    var kanbanImage = UIImage(named: "kanban")
+    var kanban = UIImageView(frame: CGRect(x: 0, y: 0, width: kanbanImage!.size.width*0.4, height: kanbanImage!.size.height*0.4))
+    kanban.image = kanbanImage
+    kanban.layer.position = CGPoint(x: self.view.frame.width*0.5, y: kanbanImage!.size.height*0.2)
+    self.view.addSubview(kanban)
+    
+    var title = UITextView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    title.text = "記録"
+    title.backgroundColor = UIColor.clearColor()
+    title.textAlignment = .Center
+    title.sizeToFit()
+    title.textColor = UIColor(red: 102/255, green: 53/255, blue: 19/255, alpha: 1.0)
+    title.layer.position = CGPointMake(self.view.frame.width*0.5, 70)
+    self.view.addSubview(title)
+    
+    var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
+    
     // bar chart setup
     barChart.backgroundColor = UIColor(red: 255.0/255, green: 241.0/255, blue: 210.0/255, alpha: 1.0)
     barChart.delegate = self
@@ -90,18 +114,14 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     }
     header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
     maketext(1)
-    for i in 0...3{
-      var y = CGFloat(i*40)
-      data.append(UILabel(frame: CGRectMake(barChart.frame.origin.x, self.view.frame.height*0.7+y, barChart.frame.width, 30)))
-      data[i].font = UIFont(name: "HiraKakuProN-W3", size: 15)
-      data[i].text = texts[i]
-      data[i].textAlignment = NSTextAlignment.Left
-      self.view.addSubview(data[i])
-    }
+
+      data.font = UIFont(name: "HiraKakuProN-W3", size: 15)
+      data.text = text
+      data.textAlignment = NSTextAlignment.Left
     
     makeButtons()
     informationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: 60))
-    informationLabel.center = CGPointMake(self.view.frame.width*0.5, self.view.frame.height*0.65)
+    informationLabel.center = CGPointMake(self.view.frame.width*0.5, self.view.frame.height*0.75)
     informationLabel.textAlignment = NSTextAlignment.Center
     self.view.addSubview(informationLabel)
   }
@@ -117,14 +137,14 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     for i in 0...6 {
       var x = barChart.frame.width/7 * CGFloat(i)
       footers.append(UILabel(frame: CGRectMake(x , 0, barChart.frame.width/2 - 8, 16)))
-      footers[i].textColor = UIColor(red: 190.0/255, green: 160.0/255, blue: 70.0/255, alpha: 1.0)
+      footers[i].textColor = UIColor(red: 120.0/255, green: 97.0/255, blue: 56.0/255, alpha: 1.0)
       footers[i].font = UIFont(name: "HiraKakuProN-W3", size: 10)
       footers[i].text = ShowDays[6-i]
       footers[i].textAlignment = NSTextAlignment.Left
       footerView.addSubview(footers[i])
     }
     //headerは1つ上で定義しています
-    header.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
+    header.textColor = UIColor(red: 120.0/255, green: 97.0/255, blue: 56.0/255, alpha: 1.0)
     header.font = UIFont(name: "HiraKakuProN-W3", size: 24)
     header.textAlignment = NSTextAlignment.Center
     
@@ -196,7 +216,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   }
   
   func barChartView(barChartView: JBBarChartView!, colorForBarViewAtIndex index: UInt) -> UIColor! {
-    return (index % 2 == 0) ? UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0) : UIColor(red: 244.0/255, green: 205.0/255, blue: 146.0/255, alpha: 1.0)
+    return (index % 2 == 0) ? UIColor(red: 186/255, green: 160.0/255, blue: 113.0/255, alpha: 1.0) : UIColor(red: 159.0/255, green: 137.0/255, blue: 97.0/255, alpha: 1.0)
   }
   
   func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt) {
@@ -209,7 +229,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     let data = chartData[Int(index)]
     let key = onclick[Int(index)]
     
-    informationLabel.textColor = UIColor(red: 244.0/255, green: 205.0/255, blue: 119.0/255, alpha: 1.0)
+    informationLabel.textColor = UIColor(red: 66/255, green: 32/255, blue: 16/255, alpha: 1.0)
     informationLabel.font = UIFont.systemFontOfSize(24)
     informationLabel.font = UIFont(name: "HiraKakuProN-W3", size: 24)
     informationLabel.text = "\(key) \(data)歩"
@@ -221,16 +241,16 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   //その他オリジナルメソッド
   func makeButtons(){
-    day = UIButton(frame: CGRectMake(self.view.frame.width*0.1, 30, 100, 30))
+    day = UIButton(frame: CGRectMake(barChart.frame.origin.x, 100, 100, 30))
     day.setTitle("day", forState: .Normal)
-    day.setTitleColor(UIColor.cyanColor(), forState: .Normal)
+    day.setTitleColor(UIColor(red: 156/255, green: 146/255, blue: 130/255, alpha: 1.0), forState: .Normal)
     day.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
     day.backgroundColor = UIColor.whiteColor()
     day.addTarget(self, action: "DayButton:", forControlEvents: .TouchUpInside)
     day.layer.masksToBounds = true
     day.layer.cornerRadius = 20
     
-    previousDay = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.6, 50, 50))
+    previousDay = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.7, 50, 50))
     previousDay.setTitle("Previous", forState: .Normal)
     previousDay.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
     previousDay.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
@@ -240,7 +260,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     previousDay.sizeToFit()
     self.view.addSubview(previousDay)
     
-    nextDay = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.6, 50, 30))
+    nextDay = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.7, 50, 30))
     nextDay.setTitle("Next", forState: .Normal)
     nextDay.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
     nextDay.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
@@ -251,7 +271,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     nextDay.hidden = true
     self.view.addSubview(nextDay)
     
-    previousWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.6, 50, 50))
+    previousWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.7, 50, 50))
     previousWeek.setTitle("Previous", forState: .Normal)
     previousWeek.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
     previousWeek.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
@@ -262,7 +282,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     previousWeek.hidden = true
     self.view.addSubview(previousWeek)
     
-    nextWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.6, 50, 30))
+    nextWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.7, 50, 30))
     nextWeek.setTitle("Next", forState: .Normal)
     nextWeek.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
     nextWeek.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
@@ -274,9 +294,9 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.view.addSubview(nextWeek)
     
     
-    week = UIButton(frame: CGRectMake(self.view.frame.width*0.5, 30, 100, 30))
+    week = UIButton(frame: CGRectMake(barChart.frame.width - 200, 100, 100, 30))
     week.setTitle("week", forState: .Normal)
-    week.setTitleColor(UIColor.cyanColor(), forState: .Normal)
+    week.setTitleColor(UIColor(red: 156/255, green: 146/255, blue: 130/255, alpha: 1.0), forState: .Normal)
     week.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
     week.backgroundColor = UIColor.whiteColor()
     week.addTarget(self, action: "weekButton:", forControlEvents: .TouchUpInside)
@@ -291,12 +311,14 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   func maketext(which: Int){
     if which == 1{
       header.text =  "日毎の記録"
-      texts = ["今日の消費カロリー：\(chartData[6]/55)カロリー","今日の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩","\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"]
+      //text = "今日の消費カロリー：\(chartData[6]/55)カロリー\n今日の歩数：\(chartData[6])歩\n\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩\n\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"
+      text = "今日の消費カロリー：\(chartData[6]/55)カロリー\n今日の歩数：\(chartData[6])歩"
     }else if which == 2 {
       var textLimit = NSDate(timeInterval: -60*60*24, sinceDate: limit)
       var text = ShowdayFormat.stringFromDate(textLimit)
       header.text =  "週毎の記録"
-      texts = ["今週の消費カロリー：\(chartData[6]/55)カロリー","今週の歩数：\(chartData[6])歩","\(ShowDays[6])〜\(text)の平均：\(total/7)歩","\(ShowDays[6])〜\(text)の燃焼カロリー：\(total/55)kcal"]
+      //text = "今週の消費カロリー：\(chartData[6]/55)カロリー\n今週の歩数：\(chartData[6])歩\n\(ShowDays[6])〜\(text)の平均：\(total/7)歩\n\(ShowDays[6])〜\(text)の燃焼カロリー：\(total/55)kcal"
+      text = "今週の消費カロリー：\(chartData[6]/55)カロリー\n今週の歩数：\(chartData[6])歩"
     }
   }
   //共通
@@ -400,11 +422,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     limit = NSDate(timeInterval: 60*60*24, sinceDate: Days[0]) //これより新しいデータはいらない！！
     Aggregate()
     maketext(1)
-    
-    for i in 0...3{
-      data[i].text = texts[i]
-    }
-    
+    data.text = text
     self.viewDidDisappear(true)
     self.viewDidAppear(true)
   }
@@ -435,9 +453,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     Aggregate()
     maketext(2)
     
-    for i in 0...3{
-      data[i].text = texts[i]
-    }
+    data.text = text
     
     self.viewDidDisappear(true)
     self.viewDidAppear(true)
@@ -449,5 +465,5 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     resetDay()
     maketext(1)
   }
-
+  
 }

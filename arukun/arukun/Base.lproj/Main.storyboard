@@ -137,18 +137,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hG2-wp-mfa" customClass="JBBarChartView">
-                                <rect key="frame" x="16" y="79" width="382" height="388"/>
+                                <rect key="frame" x="16" y="135" width="382" height="388"/>
                                 <color key="backgroundColor" red="0.78870738636363635" green="0.78870738636363635" blue="0.78870738636363635" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rSo-PJ-ise" firstAttribute="top" secondItem="hG2-wp-mfa" secondAttribute="bottom" constant="220" id="6eN-XW-Ffh"/>
-                            <constraint firstItem="hG2-wp-mfa" firstAttribute="leading" secondItem="Av8-4D-tTk" secondAttribute="leadingMargin" id="CQJ-Hg-z76"/>
+                            <constraint firstItem="rSo-PJ-ise" firstAttribute="top" secondItem="hG2-wp-mfa" secondAttribute="bottom" constant="164" id="1vl-tx-1lo"/>
                             <constraint firstAttribute="centerY" secondItem="hG2-wp-mfa" secondAttribute="centerY" id="CcG-he-QKa"/>
-                            <constraint firstItem="hG2-wp-mfa" firstAttribute="trailing" secondItem="Av8-4D-tTk" secondAttribute="trailingMargin" id="ReH-75-JDn"/>
+                            <constraint firstItem="hG2-wp-mfa" firstAttribute="leading" secondItem="Av8-4D-tTk" secondAttribute="leadingMargin" id="FDa-JY-aak"/>
                             <constraint firstItem="rSo-PJ-ise" firstAttribute="top" secondItem="hG2-wp-mfa" secondAttribute="bottom" constant="233" id="Tu8-dP-vVK"/>
-                            <constraint firstItem="hG2-wp-mfa" firstAttribute="top" secondItem="Qmp-G1-Z9B" secondAttribute="bottom" constant="59" id="iDy-Q3-As3"/>
+                            <constraint firstItem="hG2-wp-mfa" firstAttribute="trailing" secondItem="Av8-4D-tTk" secondAttribute="trailingMargin" id="aEs-lV-ia9"/>
+                            <constraint firstItem="hG2-wp-mfa" firstAttribute="top" secondItem="Qmp-G1-Z9B" secondAttribute="bottom" constant="115" id="wQB-5o-Cvg"/>
                             <constraint firstItem="hG2-wp-mfa" firstAttribute="top" secondItem="Qmp-G1-Z9B" secondAttribute="bottom" constant="46" id="yxe-Xt-WUa"/>
                         </constraints>
                         <variation key="default">
