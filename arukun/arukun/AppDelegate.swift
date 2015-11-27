@@ -124,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     myMotionManager = CMMotionManager()
     
     // 更新周期を設定.
-    myMotionManager.accelerometerUpdateInterval = 1/5
+    myMotionManager.accelerometerUpdateInterval = 1/2
     
     // 加速度の取得を開始.
     myMotionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {(accelerometerData:CMAccelerometerData!, error:NSError!) -> Void in

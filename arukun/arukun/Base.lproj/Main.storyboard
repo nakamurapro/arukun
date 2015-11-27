@@ -136,19 +136,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="con" translatesAutoresizingMaskIntoConstraints="NO" id="Swc-iI-rhY">
+                                <rect key="frame" x="-56" y="18" width="525" height="700"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hG2-wp-mfa" customClass="JBBarChartView">
-                                <rect key="frame" x="16" y="79" width="382" height="388"/>
-                                <color key="backgroundColor" red="0.78870738636363635" green="0.78870738636363635" blue="0.78870738636363635" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="135" width="382" height="388"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="husen" translatesAutoresizingMaskIntoConstraints="NO" id="qjB-VV-fnE">
+                                        <rect key="frame" x="-6" y="-7" width="420" height="401"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.47000000000000003" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rSo-PJ-ise" firstAttribute="top" secondItem="hG2-wp-mfa" secondAttribute="bottom" constant="220" id="6eN-XW-Ffh"/>
-                            <constraint firstItem="hG2-wp-mfa" firstAttribute="leading" secondItem="Av8-4D-tTk" secondAttribute="leadingMargin" id="CQJ-Hg-z76"/>
+                            <constraint firstItem="rSo-PJ-ise" firstAttribute="top" secondItem="hG2-wp-mfa" secondAttribute="bottom" constant="164" id="1vl-tx-1lo"/>
                             <constraint firstAttribute="centerY" secondItem="hG2-wp-mfa" secondAttribute="centerY" id="CcG-he-QKa"/>
-                            <constraint firstItem="hG2-wp-mfa" firstAttribute="trailing" secondItem="Av8-4D-tTk" secondAttribute="trailingMargin" id="ReH-75-JDn"/>
+                            <constraint firstItem="hG2-wp-mfa" firstAttribute="leading" secondItem="Av8-4D-tTk" secondAttribute="leadingMargin" id="FDa-JY-aak"/>
                             <constraint firstItem="rSo-PJ-ise" firstAttribute="top" secondItem="hG2-wp-mfa" secondAttribute="bottom" constant="233" id="Tu8-dP-vVK"/>
-                            <constraint firstItem="hG2-wp-mfa" firstAttribute="top" secondItem="Qmp-G1-Z9B" secondAttribute="bottom" constant="59" id="iDy-Q3-As3"/>
+                            <constraint firstItem="hG2-wp-mfa" firstAttribute="trailing" secondItem="Av8-4D-tTk" secondAttribute="trailingMargin" id="aEs-lV-ia9"/>
+                            <constraint firstItem="hG2-wp-mfa" firstAttribute="top" secondItem="Qmp-G1-Z9B" secondAttribute="bottom" constant="115" id="wQB-5o-Cvg"/>
                             <constraint firstItem="hG2-wp-mfa" firstAttribute="top" secondItem="Qmp-G1-Z9B" secondAttribute="bottom" constant="46" id="yxe-Xt-WUa"/>
                         </constraints>
                         <variation key="default">
@@ -385,6 +393,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="con" width="525" height="700"/>
         <image name="first" width="30" height="30"/>
         <image name="husen" width="420" height="370"/>
         <image name="wood_back" width="480" height="640"/>

@@ -18,7 +18,7 @@ class GameScene: SKScene {
   var Label = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   var scoreSprite = SKSpriteNode(imageNamed: "score")
   var sprite = SKSpriteNode(imageNamed:"01")
-  
+  var backtomenu :UIButton!
   var myMotionManager: CMMotionManager!
   
   var Rooms: NSArray!
@@ -47,6 +47,7 @@ class GameScene: SKScene {
     layoutObject()
     setFurniture()
     scoreLayout()
+    
     //        self.physicsWorld.contactDelegate = self
     self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
@@ -98,6 +99,7 @@ class GameScene: SKScene {
     
     Label.text = "エサ"
     Label.fontSize = 50
+    Label.color = UIColor.whiteColor()
     Label.fontColor = UIColor(red:0 , green: 0, blue: 0, alpha: 1)//黒
     Label.position = CGPoint(x: self.size.width*0.4, y: self.size.height*0.1)
     Label.zPosition = 0
@@ -249,6 +251,17 @@ class GameScene: SKScene {
     var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
     if(results.count == 0){
       makeUser()
+    }else{
+      var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
+      for data in resultPoint{
+        var money = data.valueForKey("money") as! Int
+        money = money + (app.counter - app.i)
+        data.setValue(money, forKey: "money")
+        var error: NSError?
+        categoryContext.save(&error)
+        app.i = app.counter
+      }
+
     }
   }
   
@@ -258,9 +271,10 @@ class GameScene: SKScene {
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
       "User", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-    new_data.setValue(150, forKey: "money")
+    new_data.setValue(1000, forKey: "money")
     new_data.setValue(160, forKey: "stature") //身長のこと
     new_data.setValue(0, forKey: "stride")
+    new_data.setValue(1, forKey: "nowgrowing")
     
     var error: NSError?
   }

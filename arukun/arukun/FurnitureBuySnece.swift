@@ -45,7 +45,7 @@ class FurnitureBuyScene: SKScene {
       background.yScale = 1.5
       background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
       self.addChild(background)
-      var kanban = SKSpriteNode(imageNamed:"kanban")
+      var kanban = SKSpriteNode(imageNamed:"kanban6")
       kanban.xScale = 0.6
       kanban.yScale = 0.6
       var height = kanban.frame.height*0.5
@@ -53,11 +53,6 @@ class FurnitureBuyScene: SKScene {
       self.addChild(kanban)
       
       var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
-
-      var title = SKLabelNode(text: "家具を購入")
-      title.fontColor = fontcolor
-      title.position = CGPoint(x: kanban.position.x, y: kanban.position.y-height+20)
-      self.addChild(title)
       
       PointView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
       PointView.layer.position = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.2)
@@ -67,6 +62,7 @@ class FurnitureBuyScene: SKScene {
       PointView.font = UIFont.systemFontOfSize(CGFloat(20))
       PointView.text = "所持ポイント：\(toString(PlayerPoint))"
       PointView.layer.cornerRadius = 20
+      PointView.editable = false
       self.view!.addSubview(PointView)
       
       

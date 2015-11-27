@@ -18,6 +18,13 @@ class FurnitureScene: SKScene {
       background.position = CGPoint(x: self.size.width*0.5, y: self.size.height*0.5)
       self.addChild(background)
       
+      var kanban = SKSpriteNode(imageNamed:"kanban7")
+      kanban.xScale = 0.6
+      kanban.yScale = 0.6
+      var height = kanban.frame.height*0.5
+      kanban.position = CGPoint(x: self.size.width*0.5, y: self.size.height-height)
+      self.addChild(kanban)
+      
         if (readData().count == 0){
             initMasters()
             addData()
