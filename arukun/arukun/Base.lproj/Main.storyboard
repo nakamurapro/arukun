@@ -136,9 +136,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="con" translatesAutoresizingMaskIntoConstraints="NO" id="Swc-iI-rhY">
+                                <rect key="frame" x="-56" y="18" width="525" height="700"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hG2-wp-mfa" customClass="JBBarChartView">
                                 <rect key="frame" x="16" y="135" width="382" height="388"/>
-                                <color key="backgroundColor" red="0.78870738636363635" green="0.78870738636363635" blue="0.78870738636363635" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="husen" translatesAutoresizingMaskIntoConstraints="NO" id="qjB-VV-fnE">
+                                        <rect key="frame" x="-6" y="-7" width="420" height="401"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.47000000000000003" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -385,6 +393,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="con" width="525" height="700"/>
         <image name="first" width="30" height="30"/>
         <image name="husen" width="420" height="370"/>
         <image name="wood_back" width="480" height="640"/>

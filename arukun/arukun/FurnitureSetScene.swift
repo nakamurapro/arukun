@@ -15,6 +15,7 @@ class FurnitureSetScene: SKScene {
   var backSetButton :UIButton! //戻るボタン
   var removeButton :UIButton! //家具取り除く！
   var cancelButton :UIButton! //やっぱり取り除かない。
+  var Backgroundcancel :UIButton!
   var backButton :UIButton!
   var ShowRoomButton :UIButton!
   var BackgroundSet :UIButton! //背景を設定します１
@@ -25,7 +26,7 @@ class FurnitureSetScene: SKScene {
   var places = ["左上","右上","左下","右下"]
   var OnePlace :Int!  //場所を1つ。家具をどかす時に使う。
   var SetFlug :Bool = false //家具置いてるところかどうか
-  private var myWindow :UIWindow!
+  private var myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 400))
   var Furnitures :NSArray! //家具一覧
   //場所
   //最後にメニューに戻るボタン
@@ -76,21 +77,15 @@ class FurnitureSetScene: SKScene {
       }
     }
     
-    var kanban = SKSpriteNode(imageNamed:"kanban")
+    var kanban = SKSpriteNode(imageNamed:"kanban5")
     kanban.xScale = 0.6
     kanban.yScale = 0.6
     var height = kanban.frame.height*0.5
     kanban.position = CGPoint(x: self.size.width*0.5, y: self.size.height-height)
     self.addChild(kanban)
     
-    
-    var title = SKLabelNode(text: "家具を配置")
-    title.fontColor = fontcolor
-    title.position = CGPoint(x: kanban.position.x, y: kanban.position.y-height+20)
-    self.addChild(title)
-    
     var heightScroll = ceil(Double(count) / 2.0)
-    Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+    Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 300, height: 350))
     Scroll.scrollEnabled = true
     Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
     Scroll.indicatorStyle = UIScrollViewIndicatorStyle.Black
@@ -112,7 +107,7 @@ class FurnitureSetScene: SKScene {
     self.view!.addSubview(ShowRoomButton)
     
     //メニューに戻るボタン
-    backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 50))
+    backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 40))
     backtomenu.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
     backtomenu.addTarget(self, action: "backtomenu:", forControlEvents: .TouchUpInside)
     backtomenu.setTitle("もどる", forState: .Normal)
@@ -128,24 +123,38 @@ class FurnitureSetScene: SKScene {
     dammy = UIImage(named: "nothing")
     
     //戻るボタン作成
-    backSetButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
+    backSetButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
     backSetButton.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
     backSetButton.addTarget(self, action: "GobackList:", forControlEvents: .TouchUpInside)
     backSetButton.setTitle("もどる", forState: .Normal)
     backSetButton.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
     backSetButton.setTitle("もどる", forState: .Highlighted)
     backSetButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    backSetButton.layer.cornerRadius = 20
-    backSetButton.layer.position = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.9-20)
+    backSetButton.layer.cornerRadius = 40
+    backSetButton.layer.position = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.85)
     
-    BackgroundSet = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    BackgroundSet.backgroundColor = UIColor.redColor()
+    BackgroundSet = UIButton(frame: CGRectMake(0, 0, 100, 100))
+    BackgroundSet.backgroundColor = UIColor(red: 1, green: 145/255, blue: 158/255, alpha: 1.0)
     BackgroundSet.addTarget(self, action: "SetBackground:", forControlEvents: .TouchUpInside)
     BackgroundSet.setTitle("はい", forState: .Normal)
-    BackgroundSet.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+    BackgroundSet.setTitleColor(UIColor(red: 141/255, green: 47/255, blue: 58/255, alpha: 1.0), forState: .Normal)
     BackgroundSet.setTitle("はい", forState: .Highlighted)
-    BackgroundSet.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    BackgroundSet.layer.position = CGPoint(x: phoneSize.width*0.2, y: phoneSize.height*0.9)
+    BackgroundSet.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+    BackgroundSet.layer.cornerRadius = 50
+    BackgroundSet.layer.position = CGPoint(x: phoneSize.width*0.3, y: phoneSize.height*0.8)
+    
+    Backgroundcancel = UIButton(frame: CGRectMake(0, 0, 100, 100))
+    Backgroundcancel.backgroundColor = UIColor(red: 157/255, green: 180/255, blue: 213/255, alpha: 1)
+    Backgroundcancel.addTarget(self, action: "GobackList:", forControlEvents: .TouchUpInside)
+    Backgroundcancel.setTitle("いいえ", forState: .Normal)
+    Backgroundcancel.setTitleColor(UIColor(red: 64/255, green: 79/255, blue: 102/255, alpha: 1), forState: .Normal)
+    Backgroundcancel.setTitle("いいえ", forState: .Highlighted)
+    Backgroundcancel.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+    Backgroundcancel.layer.cornerRadius = 50
+    Backgroundcancel.layer.position = CGPoint(x: phoneSize.width*0.7, y: phoneSize.height*0.8)
+
+    
+    
     
     
     //家具配置時のテキスト作成
@@ -158,6 +167,12 @@ class FurnitureSetScene: SKScene {
     TextFurniture.textAlignment = NSTextAlignment.Center
     TextFurniture.editable = false
     TextFurniture.center = CGPointMake(phoneSize.width*0.5,100)
+    
+    //Window作成
+    myWindow.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+    myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2+50)
+    myWindow.layer.cornerRadius = 30         // myWindowをkeyWindowにする.
+    myWindow.makeKeyWindow()
     
     //Windowでのテキスト作成
     WindowText = UITextView(frame: CGRectMake(0, 0, 300, 100))
@@ -182,9 +197,10 @@ class FurnitureSetScene: SKScene {
       SetButtons[i].setTitleColor(UIColor.blackColor(), forState: .Highlighted)
       SetButtons[i].tag = i
       var x :Array<CGFloat> = [0.30,0.70]
-      var y = Int(floor(CGFloat(i/2)))
+      var y :Array<CGFloat> = [0.30,0.60]
+      var whichy = Int(floor(CGFloat(i/2)))
       var WhereX :CGFloat = phoneSize.width * x[i%2]
-      var WhereY :CGFloat = phoneSize.height * (x[y] + 0.1)//高さの間隔
+      var WhereY :CGFloat = phoneSize.height * (y[whichy] + 0.1)//高さの間隔
       SetButtons[i].layer.position = CGPoint(x: WhereX,y: WhereY)
       
       //さて既に何か置いているだろうか？
@@ -256,32 +272,35 @@ class FurnitureSetScene: SKScene {
     }
     
     
-    removeButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    removeButton.backgroundColor = UIColor.redColor()
+    removeButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+    removeButton.backgroundColor = UIColor(red: 1, green: 145/255, blue: 158/255, alpha: 1.0)
     removeButton.addTarget(self, action: "removeFurniture:", forControlEvents: .TouchUpInside)
-    removeButton.setTitle("取り除く", forState: .Normal)
-    removeButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    removeButton.setTitle("取り除く", forState: .Highlighted)
-    removeButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    removeButton.layer.position = CGPoint(x: 150, y: 200)
+    removeButton.setTitle("はい", forState: .Normal)
+    removeButton.setTitleColor(UIColor(red: 141/255, green: 47/255, blue: 58/255, alpha: 1.0), forState: .Normal)
+    removeButton.setTitle("はい", forState: .Highlighted)
+    removeButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+    removeButton.layer.cornerRadius = 40
+    removeButton.layer.position = CGPoint(x: 100, y: 250)
     
     //キャンセルボタン作成
-    cancelButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    cancelButton.backgroundColor = UIColor.blueColor()
+    cancelButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+    cancelButton.backgroundColor = UIColor(red: 157/255, green: 180/255, blue: 213/255, alpha: 1)
     cancelButton.addTarget(self, action: "Goback:", forControlEvents: .TouchUpInside)
-    cancelButton.setTitle("キャンセル", forState: .Normal)
-    cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    cancelButton.setTitle("キャンセル", forState: .Highlighted)
-    cancelButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    cancelButton.layer.position = CGPoint(x: 150, y: 250)
+    cancelButton.setTitle("いいえ", forState: .Normal)
+    cancelButton.setTitleColor(UIColor(red: 64/255, green: 79/255, blue: 102/255, alpha: 1), forState: .Normal)
+    cancelButton.setTitle("いいえ", forState: .Highlighted)
+    cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+    cancelButton.layer.cornerRadius = 40
+    cancelButton.layer.position = CGPoint(x: 200, y: 250)
     
-    backButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    backButton.backgroundColor = UIColor.blueColor()
+    backButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+    backButton.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
     backButton.addTarget(self, action: "Goback:", forControlEvents: .TouchUpInside)
-    backButton.setTitle("戻る", forState: .Normal)
-    backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    backButton.setTitle("戻る", forState: .Highlighted)
+    backButton.setTitle("もどる", forState: .Normal)
+    backButton.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
+    backButton.setTitle("もどる", forState: .Highlighted)
     backButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+    backButton.layer.cornerRadius = 40
     backButton.layer.position = CGPoint(x: 150, y: 250)
     
     
@@ -337,18 +356,14 @@ class FurnitureSetScene: SKScene {
             SetFlug = true
           }else{
             backtomenu.hidden = true
-            myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
-            myWindow.backgroundColor = UIColor.whiteColor()
-            myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2)
-            myWindow.alpha = 1.0
-            // myWindowをkeyWindowにする.
-            myWindow.makeKeyWindow()
+            ShowRoomButton.hidden = true
             self.view!.addSubview(myWindow)
             self.myWindow.makeKeyAndVisible()
             
             WindowText.text = "\(Furniturename)は今の壁紙です。"
+            Scroll.hidden = true
             myWindow.addSubview(WindowText)
-            myWindow.addSubview(cancelButton)
+            myWindow.addSubview(backButton)
             SetFlug = true
           }
         } //kind == 2
@@ -399,6 +414,7 @@ class FurnitureSetScene: SKScene {
     ShowRoomButton.hidden = false
     SetFlug = false
     BackgroundSet.removeFromSuperview()
+    Backgroundcancel.removeFromSuperview()
   }
   
   func backtomenu(sender: UIButton){
@@ -461,12 +477,9 @@ class FurnitureSetScene: SKScene {
   }
   
   func MakeWindow(){
+    Scroll.hidden = true
     backtomenu.hidden = true
     ShowRoomButton.hidden = true
-    myWindow = UIWindow(frame: CGRectMake(0, 0, 300, 300))
-    myWindow.backgroundColor = UIColor.whiteColor()
-    myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2)
-    myWindow.alpha = 1.0
     // myWindowをkeyWindowにする.
     myWindow.makeKeyWindow()
     self.view!.addSubview(myWindow)
@@ -505,6 +518,9 @@ class FurnitureSetScene: SKScene {
     backtomenu.hidden = false
     ShowRoomButton.hidden = false
     SetFlug = false
+    Scroll.hidden = false
+    backButton.removeFromSuperview()
+    removeButton.removeFromSuperview()
   }
   
   func showRoom(sender: UIButton){ //ボタンでただ単純に部屋だけ見せる時
@@ -521,7 +537,6 @@ class FurnitureSetScene: SKScene {
       
     }
     self.view!.addSubview(backSetButton)
-    
   }
   
   func showRoom(){ //こうなります、みたいに部屋を見せる時
@@ -539,7 +554,7 @@ class FurnitureSetScene: SKScene {
     TextFurniture.text = "\(Furniturename)にすると\nお部屋はこうなります。変更しますか？"
     self.view!.addSubview(TextFurniture)
     self.view!.addSubview(BackgroundSet)
-    self.view!.addSubview(backSetButton)
+    self.view!.addSubview(Backgroundcancel)
     
   }
   
@@ -557,6 +572,8 @@ class FurnitureSetScene: SKScene {
     }
     back = id
     BackgroundSet.removeFromSuperview()
+    Backgroundcancel.removeFromSuperview()
+    self.view!.addSubview(backSetButton)
   }
   
   

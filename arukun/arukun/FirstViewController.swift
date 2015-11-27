@@ -78,28 +78,17 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     // Do any additional setup after loading the view, typically from a nib.
     
     //背景の色
-    view.backgroundColor = UIColor(red: 255.0/255, green: 230.0/255, blue: 210.0/255, alpha: 1.0)
-    
-    var kanbanImage = UIImage(named: "kanban")
-    var kanban = UIImageView(frame: CGRect(x: 0, y: 0, width: kanbanImage!.size.width*0.4, height: kanbanImage!.size.height*0.4))
+    var kanbanImage = UIImage(named: "kanban1")
+    var kanban = UIImageView(frame: CGRect(x: 0, y: 0, width: kanbanImage!.size.width*0.6, height: kanbanImage!.size.height*0.6))
     kanban.image = kanbanImage
-    kanban.layer.position = CGPoint(x: self.view.frame.width*0.5, y: kanbanImage!.size.height*0.2)
+    kanban.layer.position = CGPoint(x: self.view.frame.width*0.5, y: kanbanImage!.size.height*0.3)
     self.view.addSubview(kanban)
     
-    var title = UITextView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-    title.text = "記録"
-    title.backgroundColor = UIColor.clearColor()
-    title.textAlignment = .Center
-    title.font = UIFont(name: "TamilSangamMN", size: 30)
-    title.sizeToFit()
-    title.textColor = UIColor(red: 102/255, green: 53/255, blue: 19/255, alpha: 1.0)
-    title.layer.position = CGPointMake(self.view.frame.width*0.5, 50)
-    self.view.addSubview(title)
     
     var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
     
     // bar chart setup
-    barChart.backgroundColor = UIColor(red: 255.0/255, green: 241.0/255, blue: 210.0/255, alpha: 1.0)
+    barChart.backgroundColor = UIColor.clearColor()
     barChart.delegate = self
     barChart.dataSource = self
     barChart.minimumValue = 0
@@ -242,7 +231,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   //その他オリジナルメソッド
   func makeButtons(){
-    day = UIButton(frame: CGRectMake(barChart.frame.origin.x, 100, 100, 30))
+    day = UIButton(frame: CGRectMake(self.view.frame.width*0.3, 100, 100, 30))
     day.setTitle("day", forState: .Normal)
     day.setTitleColor(UIColor(red: 156/255, green: 146/255, blue: 130/255, alpha: 1.0), forState: .Normal)
     day.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
@@ -295,7 +284,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.view.addSubview(nextWeek)
     
     
-    week = UIButton(frame: CGRectMake(barChart.frame.width - 200, 100, 100, 30))
+    week = UIButton(frame: CGRectMake(self.view.frame.width*0.6, 100, 100, 30))
     week.setTitle("week", forState: .Normal)
     week.setTitleColor(UIColor(red: 156/255, green: 146/255, blue: 130/255, alpha: 1.0), forState: .Normal)
     week.setTitleColor(UIColor.blackColor(), forState: .Highlighted)

@@ -45,7 +45,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         //背景
         let backgroundImage = UIImage(named:"con.jpg")!
         self.view.backgroundColor = UIColor(patternImage: backgroundImage)
-        image3.image = UIImage(named:"kanban.png")
+        image3.image = UIImage(named:"kanban3")
     
     }
     
@@ -128,7 +128,8 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Charapicture")
-        
+        let predicate = NSPredicate(format: "picturenumber = %d", 1)
+        categoryRequest.predicate = predicate
         var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
         return results
         
@@ -187,24 +188,26 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         println("initMasters ------------")
         //plist読み込み
         let path:NSString = NSBundle.mainBundle().pathForResource("CharapictureMaster", ofType: "plist")!
-        var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
+        var masterDataDictionary :NSDictionary = NSDictionary(contentsOfFile: path as String)!
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         
-        for(var i = 1; i<=masterDataDictionary.count; i++) {
+        for(var i = 0; i<=masterDataDictionary.count; i++) {
             let index_name: String = "item" + String(i)
             var item: AnyObject = masterDataDictionary[index_name]!
             
             let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
                 "Charapicture", inManagedObjectContext: categoryContext)
             var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+          
+          
             new_data.setValue(item.valueForKey("charanumber"), forKey: "charanumber")
             new_data.setValue(item.valueForKey("picturenumber"), forKey: "picturenumber")
             new_data.setValue(item.valueForKey("image"), forKey: "picturename")
             
             var error: NSError?
             categoryContext.save(&error)
-            
+          
         }
         println("InitMasters OK!")
     }

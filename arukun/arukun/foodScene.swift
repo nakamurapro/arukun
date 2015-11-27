@@ -61,15 +61,15 @@ class foodScene: SKScene {
   }
   
   func makeScroll(){
-    var heightScroll = ceil(10.0 / 3.0)
     Scroll.scrollEnabled = true
-    Scroll.contentSize = CGSize(width:0 , height: 180*heightScroll)
+    Scroll.contentSize = CGSize(width:0 , height: 540)
     Scroll.indicatorStyle = UIScrollViewIndicatorStyle.Black
     Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.5)
     Scroll.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
     self.view!.addSubview(Scroll)
     
-    for i in 0...9 {
+    var husenImages = ["rhusen","ghusen","bhusen"]
+    for i in 0...8 {
       var View = UIView()
       View.userInteractionEnabled = true
       var HGH :CGFloat = 120  //高さの間隔
@@ -78,7 +78,7 @@ class foodScene: SKScene {
       View.frame = CGRectMake(120*which, HGH*WhereY, 120, 120)
       
       //画像の用意
-      var husenImage = UIImage(named: "husen.jpg")
+      var husenImage = UIImage(named: husenImages[i%3])
       var husenimageView = UIImageView(image: husenImage)
       husenimageView.frame = CGRectMake(0, 0, 120, 120)
       husenimageView.tag = i
@@ -179,16 +179,12 @@ class foodScene: SKScene {
     background.yScale = 1.5
     self.addChild(background)
     
-    var kanban = SKSpriteNode(imageNamed:"kanban")
+    var kanban = SKSpriteNode(imageNamed:"kanban8")
     kanban.xScale = 0.6
     kanban.yScale = 0.6
     var height = kanban.frame.height*0.5
     kanban.position = CGPoint(x: self.size.width*0.5, y: self.size.height-height)
     self.addChild(kanban)
-    var title = SKLabelNode(text: "エサ")
-    title.fontColor = fontcolor
-    title.position = CGPoint(x: kanban.position.x, y: kanban.position.y-height+20)
-    self.addChild(title)
     
     PointView = UITextView(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
     PointView.layer.position = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.2)
@@ -198,6 +194,7 @@ class foodScene: SKScene {
     PointView.font = UIFont.systemFontOfSize(CGFloat(20))
     PointView.text = "所持ポイント：\(toString(PlayerPoint))"
     PointView.layer.cornerRadius = 20
+    PointView.editable = false
     self.view!.addSubview(PointView)
     
   }

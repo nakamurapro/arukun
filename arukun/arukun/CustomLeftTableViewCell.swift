@@ -34,7 +34,7 @@ class CustomLeftTableViewCell: UITableViewCell{
         self.viewMessage.backgroundColor = UIColor.whiteColor()
         
         //self.message.font = UIFont.systemFontOfSize(14)
-        self.message.font = UIFont (name: "HiraKakuProN-W6" ,size:20);
+        self.message.font = UIFont (name: "HiraKakuProN-W6" ,size:18);
         self.message.numberOfLines = 0
         //self.message.backgroundColor = UIColor.clearColor()
         
@@ -45,9 +45,9 @@ class CustomLeftTableViewCell: UITableViewCell{
         //self.arrow.backgroundColor = UIColor.clearColor()
         self.addSubview(self.arrow)
         
-        self.icon.layer.borderColor = UIColor.blackColor().CGColor
-        self.icon.layer.borderWidth = 0.5
-        
+        self.icon.layer.borderColor = UIColor.clearColor().CGColor
+        self.icon.backgroundColor = UIColor.whiteColor()
+      
         self.addSubview(self.icon)
         
         //self.name.font = UIFont.boldSystemFontOfSize(13)
@@ -57,25 +57,26 @@ class CustomLeftTableViewCell: UITableViewCell{
         
         //self.created.font = UIFont.systemFontOfSize(13)
         self.created.font = UIFont (name: "HiraKakuProN-W6" ,size:20);
-        self.created.textAlignment = NSTextAlignment.Right
+        self.created.textAlignment = NSTextAlignment.Center
+        self.created.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         self.addSubview(self.created)
     }
     
     func setData(widthMax: CGFloat,data: Dictionary<String,AnyObject>) -> CGFloat
     {
-        var marginLeft: CGFloat = 60
+        var marginLeft: CGFloat = 70
         var marginRight: CGFloat = 0
-        var marginVertical: CGFloat = 30
+        var marginVertical: CGFloat = 20
 
 // アイコン
 
         var xIcon: CGFloat = 3
-        var yIcon: CGFloat = 3
-        var widthIcon: CGFloat = 45
-        var heightIcon: CGFloat = 55
+        var yIcon: CGFloat = 40
+        var widthIcon: CGFloat = 60
+        var heightIcon: CGFloat = 60
         self.icon.frame = CGRectMake(xIcon, yIcon, widthIcon, heightIcon)
         self.icon.image = UIImage(named: (data["image"] as? String)!)
-        self.icon.layer.cornerRadius = self.icon.frame.size.width * 0.5
+        self.icon.layer.cornerRadius = 30
         self.icon.clipsToBounds = true
         
         // 名前
@@ -83,27 +84,28 @@ class CustomLeftTableViewCell: UITableViewCell{
         var yName: CGFloat = self.icon.frame.origin.y
         var widthName: CGFloat = widthMax - (self.icon.frame.origin.x + self.icon.frame.size.width + 3)
         var heightName: CGFloat = 30
-        self.name.text = data["name"] as? String
-        self.name.frame = CGRectMake(xName, yName, widthName, heightName)
+        //self.name.text = data["name"] as? String
+        //self.name.frame = CGRectMake(xName, yName, widthName, heightName)
         
         // 投稿日時
-        var xCreated: CGFloat = self.icon.frame.origin.x + self.icon.frame.size.width + 3
+        var xCreated: CGFloat = self.icon.frame.origin.x + self.message.frame.size.width
         var yCreated: CGFloat = self.icon.frame.origin.y
         var widthCreated: CGFloat = widthMax - (self.icon.frame.origin.x + self.icon.frame.size.width + 10)
         var heightCreated: CGFloat = 30
         self.created.text = data["created"] as? String
-        self.created.frame = CGRectMake(xCreated, yCreated, widthCreated, heightCreated)
-        var paddingHorizon: CGFloat = 10
-        var paddingVertical: CGFloat = 10
-        
+        self.created.frame = CGRectMake(0, 0, widthCreated, heightCreated)
+        self.created.layer.position = CGPointMake(self.frame.width*0.9, self.icon.center.y)
+        var paddingHorizon: CGFloat = 20
+        var paddingVertical: CGFloat = 20
+      
         var widthLabelMax: CGFloat = widthMax - (marginLeft + marginRight + paddingHorizon * 2)
         
         var xMessageLabel: CGFloat = paddingHorizon
         var yMessageLabel: CGFloat = paddingVertical
         
-        self.message.frame = CGRectMake(xMessageLabel, yMessageLabel, widthLabelMax, 0)
+        self.message.frame = CGRectMake(xMessageLabel, yMessageLabel, widthLabelMax, 50)
         self.message.text = data["message"] as? String
-        self.message.sizeToFit()
+        self.message.textColor = UIColor(red: 120/255, green: 97/255, blue: 56/255, alpha: 1)
         
         var xMessageView: CGFloat = marginLeft
         var yMessageView: CGFloat = marginVertical
