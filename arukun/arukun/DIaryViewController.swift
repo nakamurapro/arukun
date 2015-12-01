@@ -13,7 +13,7 @@ import CoreData
 class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
   var tableView: UITableView!
   
-  var tableData: [Dictionary<String,AnyObject>]!
+  var tableData: [Dictionary<String,AnyObject>] = []
   
   var heightLeftCell: CustomLeftTableViewCell = CustomLeftTableViewCell()
   
@@ -27,10 +27,6 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
       Diary = readData()
     }
 
-    for text in Diary{
-      println(text.valueForKey("text"))
-    }
-    
     let myImage: UIImage = UIImage(named: "wood_back")!
     let myImageView: UIImageView = UIImageView()
     myImageView.image = myImage
@@ -46,15 +42,15 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     self.view.addSubview(kanban)
     
     // データを初期化します
-    tableData = [
-      ["name": "にゃんこ1", "image": "23.jpg", "created": "昨日", "message": "おはようございます\nねむいにゃん"],
-      ["name": "にゃんこ2", "image": "23.jpg", "created": "今日", "message": "おはよー\nさむくなってきたね"],
-      ["name": "にゃんこ3", "image": "23.jpg", "created": "今日", "message": "おはよー\n今日も頑張ろう！"],
-      ["name": "にゃんこ4", "image": "23.jpg", "created": "今日", "message": "こんちゃーす\nさむくなってきたね"],
-      ["name": "にゃんこ5", "image": "23.jpg", "created": "今日", "message": "どーも\nさむくなってきたね"],
-      ["name": "にゃんこ6", "image": "23.jpg", "created": "今日", "message": "おはよー\nさむくなってきたね"],
-      ["name": "にゃんこ7", "image": "23.jpg", "created": "今日", "message": "おはよー\nさむくなってきたね"],
-    ]
+    var dateFormatter = NSDateFormatter()
+    let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+    dateFormatter.calendar = calendar
+    dateFormatter.dateFormat = "MM/dd"
+    
+    for data in Diary{
+      var writeAt = dateFormatter.stringFromDate(data.valueForKey("writeat")! as! NSDate)
+      tableData.append(["name": "にゃんこ","image": "23.jpg","created": writeAt,"message": data.valueForKey("text")!])
+    }
     
     setView()
   }
