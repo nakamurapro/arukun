@@ -34,7 +34,8 @@ class foodScene: SKScene {
   var Flg :Bool = false
   var Furniture :Array<SKSpriteNode> = []
   
-  var foodData = [[50,30,0,0],[50,0,30,0],[70,0,10,40]] //まだ準備段階
+  var points = [50,300,1000]
+  var RGB = ["r","g","b"]
   var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
 
   override func didMoveToView(view: SKView) {
@@ -69,6 +70,8 @@ class foodScene: SKScene {
     self.view!.addSubview(Scroll)
     
     var husenImages = ["rhusen","ghusen","bhusen"]
+    var esaNames = ["太陽の欠片","地球の息吹","月の雫"]
+    var esaSize = ["小" ,"中","大"]
     for i in 0...8 {
       var View = UIView()
       View.userInteractionEnabled = true
@@ -85,9 +88,11 @@ class foodScene: SKScene {
       husenimageView.userInteractionEnabled = true
       View.addSubview(husenimageView)
       
-      var Image = UIImage(named: "burgar1")
+      var esaName = "\(RGB[i%3])esa\(i/3 + 1)-1"
+      var Image = UIImage(named: esaName)
       var imageView = UIImageView(image: Image)
-      imageView.frame = CGRectMake(0, 0, 60, 60)
+      var scale = Image!.size.width/590
+      imageView.frame = CGRectMake(0, 0, 100*scale, 100*scale)
       imageView.center = CGPointMake(husenimageView.center.x, husenimageView.center.y+10)
       imageView.tag = i
       imageView.userInteractionEnabled = true
@@ -101,7 +106,7 @@ class foodScene: SKScene {
       var myTextView = UITextView(frame: CGRectMake(0, 0, 110, 30))
       myTextView.userInteractionEnabled = false
       myTextView.backgroundColor = UIColor.clearColor()
-      myTextView.text = "ハンバーガー"
+      myTextView.text = "\(esaNames[i%3]) \(esaSize[i/3])"
       myTextView.font = UIFont.systemFontOfSize(CGFloat(15))
       myTextView.textColor = fontcolor
       myTextView.textAlignment = NSTextAlignment.Center
@@ -113,7 +118,7 @@ class foodScene: SKScene {
       var price = UITextView(frame: CGRectMake(0, 0, 40, 30))
       price.userInteractionEnabled = false
       price.editable = false
-      price.text = "\(foodData[i%3][0])"
+      price.text = "\(points[i/3])"
       price.backgroundColor = UIColor.yellowColor()
       price.font = UIFont.systemFontOfSize(CGFloat(15))
       price.textColor = fontcolor
@@ -214,8 +219,8 @@ class foodScene: SKScene {
       if let imageView = recognizer.view as? UIImageView {
         Flg = true
         //まずはウィンドウ作ろう
-        selected = imageView.tag%3
-        var point = foodData[selected][0]
+        selected = imageView.tag
+        var point = points[selected/3]
         myWindow.backgroundColor = UIColor.whiteColor()
         myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2)
         myWindow.alpha = 1.0
@@ -262,7 +267,9 @@ class foodScene: SKScene {
   
   internal func Buyfood(sender: UIButton){ //買う
     app.FoodFlg = true
-    PlayerPoint = PlayerPoint - foodData[selected][0]
+    app.esaName = RGB[selected%3]
+    app.esaNumber = selected/3 + 1
+    PlayerPoint = PlayerPoint - points[selected/3]
     
     //Userのmoneyを減らす
     let categoryContext: NSManagedObjectContext = app.managedObjectContext!

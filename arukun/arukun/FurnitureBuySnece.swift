@@ -227,6 +227,8 @@ class FurnitureBuyScene: SKScene {
         myWindow.hidden = true
         backtomenu.hidden = false
         Scroll.hidden = false
+        backButton.removeFromSuperview()
+        Text[3].removeFromSuperview()
     }
     
     internal func BuyFurniture(sender: UIButton){ //買う

@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var backgroundFlg = false
   var i :Int = 0 //これはポイント用
   
+  //ここはエサ関係
+  var esaNumber :Int!
+  var esaName :String!
   
   var X:Double! = 1.0
   var Y:Double! = 1.0

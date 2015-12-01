@@ -52,7 +52,6 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
             ["name": "にゃんこ7", "image": "23.jpg", "created": "今日", "message": "おはよー\nさむくなってきたね"],
         ]
         
-        // VIEWをセットします
       var result: [[String]] = []
       if let csvPath = NSBundle.mainBundle().pathForResource("random", ofType: "csv") {
         let csvString = NSString(contentsOfFile: csvPath, encoding: NSUTF8StringEncoding, error: nil) as! String

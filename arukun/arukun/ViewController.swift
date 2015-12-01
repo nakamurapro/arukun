@@ -63,6 +63,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         cell.image.image = UIImage(named: photo)
         cell.image2.image = UIImage(named:"husen.png")
         cell.label.text = ""
+
         return cell
     }
     
@@ -192,7 +193,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         
-        for(var i = 0; i<=masterDataDictionary.count; i++) {
+        for(var i = 0; i<masterDataDictionary.count; i++) {
             let index_name: String = "item" + String(i)
             var item: AnyObject = masterDataDictionary[index_name]!
             
@@ -220,7 +221,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         
-        for(var i = 1; i<=masterDataDictionary.count; i++) {
+        for(var i = 1; i<masterDataDictionary.count; i++) {
             let index_name: String = "data" + String(i)
             var item: AnyObject = masterDataDictionary[index_name]!
             

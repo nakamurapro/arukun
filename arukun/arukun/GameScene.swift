@@ -68,7 +68,9 @@ class GameScene: SKScene {
       
       
       var images = [SKTexture]()
-      for image in ["burgar1","burgar2","burgar3","nothing"]{
+      var Name = app.esaName
+      var Number = app.esaNumber
+      for image in ["\(Name)esa\(Number)-1","\(Name)esa\(Number)-2","\(Name)esa\(Number)-3","nothing"]{
         var texture = SKTexture(imageNamed: image)
         texture.filteringMode = .Linear
         images.append(texture)     //テクスチャの追加
@@ -76,7 +78,7 @@ class GameScene: SKScene {
       let Animate = SKAction.animateWithTextures(images, timePerFrame: 0.6)
       sprite.runAction(RepeatAction)
       
-      var food = SKSpriteNode(imageNamed:"burgar1")
+      var food = SKSpriteNode(imageNamed: "\(Name)esa\(Number)-1")
       food.position = CGPoint(x: sprite.position.x, y: sprite.position.y-100)
       food.xScale = 0.3
       food.yScale = 0.3
@@ -192,7 +194,7 @@ class GameScene: SKScene {
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
       "Room", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-    new_data.setValue(4, forKey: "background")
+    new_data.setValue(20, forKey: "background")
     new_data.setValue(-1, forKey: "fur1")
     new_data.setValue(-1, forKey: "fur2")
     new_data.setValue(-1, forKey: "fur3")
@@ -218,28 +220,25 @@ class GameScene: SKScene {
     println("initMasters ------------")
     //plist読み込み
     let path:NSString = NSBundle.mainBundle().pathForResource("FurnitureMaster", ofType: "plist")!
-    var masterDataDictionary:NSDictionary = NSDictionary(contentsOfFile: path as String)!
-    let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var masterDataDictionary:NSArray = NSArray(contentsOfFile: path as String)!
     let categoryContext: NSManagedObjectContext = app.managedObjectContext!
-    
-    for(var i = 1; i<=masterDataDictionary.count; i++) {
-      let index_name: String = "item" + String(i)
-      var item: AnyObject = masterDataDictionary[index_name]!
-      
+
+    for item in masterDataDictionary{
       let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
         "Furniture", inManagedObjectContext: categoryContext)
       var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-      new_data.setValue(item.valueForKey("name") as! String, forKey: "name")
-      new_data.setValue(item.valueForKey("kind") as! Int, forKey: "kind")
-      new_data.setValue(item.valueForKey("image") as! String, forKey: "image")
-      new_data.setValue(item.valueForKey("point") as! Int, forKey: "point")
-      new_data.setValue(item.valueForKey("haved"), forKey: "haved")
       
+      new_data.setValue(item.valueForKey("name"), forKey: "name")
+      new_data.setValue(item.valueForKey("kind"), forKey: "kind")
+      new_data.setValue(item.valueForKey("image"), forKey: "image")
+      new_data.setValue(item.valueForKey("point"), forKey: "point")
+      new_data.setValue(item.valueForKey("haved"), forKey: "haved")
       var error: NSError?
       categoryContext.save(&error)
       
     }
     println("InitMasters OK!")
+
   }
   
   func readPoint(){
@@ -271,7 +270,7 @@ class GameScene: SKScene {
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
       "User", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-    new_data.setValue(1000, forKey: "money")
+    new_data.setValue(10000, forKey: "money")
     new_data.setValue(160, forKey: "stature") //身長のこと
     new_data.setValue(0, forKey: "stride")
     new_data.setValue(1, forKey: "nowgrowing")
