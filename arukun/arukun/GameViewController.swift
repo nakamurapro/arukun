@@ -69,7 +69,6 @@ class GameViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        viewDidLoad()
     }
 
 }

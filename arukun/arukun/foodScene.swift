@@ -13,7 +13,7 @@ import CoreData
 class foodScene: SKScene {
   var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
   var Scroll = UIScrollView(frame: CGRect(x: 0, y: 0, width: 350, height: 300))
-
+  
   var PlayerPoint :Int!
   var selected :Int!
   var phoneSize :CGSize = UIScreen.mainScreen().bounds.size //画面サイズ
@@ -37,7 +37,7 @@ class foodScene: SKScene {
   var points = [50,300,1000]
   var RGB = ["r","g","b"]
   var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
-
+  
   override func didMoveToView(view: SKView) {
     //        /* Setup your scene here */
     readPoint()
@@ -57,7 +57,7 @@ class foodScene: SKScene {
     backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-10)
     backtomenu.layer.cornerRadius = 20
     self.view!.addSubview(backtomenu)
-
+    
     self.addChild(Label)
   }
   
@@ -132,23 +132,26 @@ class foodScene: SKScene {
   }
   
   func makeButtons(){
-    BuyButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    BuyButton.backgroundColor = UIColor.redColor()
-    BuyButton.addTarget(self, action: "Buyfood:", forControlEvents: .TouchUpInside)
-    BuyButton.setTitle("購入", forState: .Normal)
-    BuyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    BuyButton.setTitle("購入", forState: .Highlighted)
-    BuyButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    BuyButton.layer.position = CGPoint(x: 150, y: 200)
+    BuyButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+    BuyButton.backgroundColor = UIColor(red: 1, green: 145/255, blue: 158/255, alpha: 1.0)
+    BuyButton.addTarget(self, action: "BuyFood:", forControlEvents: .TouchUpInside)
+    BuyButton.setTitle("はい", forState: .Normal)
+    BuyButton.setTitleColor(UIColor(red: 141/255, green: 47/255, blue: 58/255, alpha: 1.0), forState: .Normal)
+    BuyButton.setTitle("はい", forState: .Highlighted)
+    BuyButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+    BuyButton.layer.cornerRadius = 40
+    BuyButton.layer.position = CGPoint(x: 100, y: 200)
     
-    cancelButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    cancelButton.backgroundColor = UIColor.blueColor()
+    cancelButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+    cancelButton.backgroundColor = UIColor(red: 157/255, green: 180/255, blue: 213/255, alpha: 1)
     cancelButton.addTarget(self, action: "Goback:", forControlEvents: .TouchUpInside)
-    cancelButton.setTitle("キャンセル", forState: .Normal)
-    cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    cancelButton.setTitle("キャンセル", forState: .Highlighted)
-    cancelButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    cancelButton.layer.position = CGPoint(x: 150, y: 250)
+    cancelButton.setTitle("いいえ", forState: .Normal)
+    cancelButton.setTitleColor(UIColor(red: 64/255, green: 79/255, blue: 102/255, alpha: 1), forState: .Normal)
+    cancelButton.setTitle("いいえ", forState: .Highlighted)
+    cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+    cancelButton.layer.cornerRadius = 40
+    
+    cancelButton.layer.position = CGPoint(x: 200, y: 200)
     
     backButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
     backButton.backgroundColor = UIColor.blueColor()
@@ -174,7 +177,7 @@ class foodScene: SKScene {
   }
   
   func layoutObject(){
-
+    
     var backnumber :Int = 0
     var i = 0
     
@@ -217,13 +220,15 @@ class foodScene: SKScene {
   func makeWindow(recognizer: UIGestureRecognizer){ //ウィンドウ作成
     if (Flg == false){
       if let imageView = recognizer.view as? UIImageView {
+        Scroll.hidden = true
         Flg = true
         //まずはウィンドウ作ろう
         selected = imageView.tag
         var point = points[selected/3]
-        myWindow.backgroundColor = UIColor.whiteColor()
+        myWindow.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         myWindow.layer.position = CGPointMake(self.view!.frame.width/2, self.view!.frame.height/2)
         myWindow.alpha = 1.0
+        myWindow.layer.cornerRadius = 20
         // myWindowをkeyWindowにする.
         myWindow.makeKeyWindow()
         self.view!.addSubview(myWindow)
@@ -265,7 +270,7 @@ class foodScene: SKScene {
     
   }
   
-  internal func Buyfood(sender: UIButton){ //買う
+  internal func BuyFood(sender: UIButton){ //買う
     app.FoodFlg = true
     app.esaName = RGB[selected%3]
     app.esaNumber = selected/3 + 1

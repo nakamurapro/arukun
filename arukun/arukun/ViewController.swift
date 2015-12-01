@@ -201,14 +201,12 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
                 "Charapicture", inManagedObjectContext: categoryContext)
             var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
           
-          
             new_data.setValue(item.valueForKey("charanumber"), forKey: "charanumber")
             new_data.setValue(item.valueForKey("picturenumber"), forKey: "picturenumber")
             new_data.setValue(item.valueForKey("image"), forKey: "picturename")
-            
+          
             var error: NSError?
             categoryContext.save(&error)
-          
         }
         println("InitMasters OK!")
     }
