@@ -47,14 +47,14 @@ class foodScene: SKScene {
     //        self.physicsWorld.contactDelegate = self
     self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-    backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 50))
+    backtomenu = UIButton(frame: CGRectMake(0, 0, 80, 80))
     backtomenu.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
     backtomenu.addTarget(self, action: "backtomenu:", forControlEvents: .TouchUpInside)
     backtomenu.setTitle("もどる", forState: .Normal)
     backtomenu.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
     backtomenu.setTitle("もどる", forState: .Highlighted)
     backtomenu.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-10)
+    backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-30)
     backtomenu.layer.cornerRadius = 20
     self.view!.addSubview(backtomenu)
     
@@ -120,7 +120,7 @@ class foodScene: SKScene {
       price.editable = false
       price.text = "\(points[i/3])"
       price.backgroundColor = UIColor.yellowColor()
-      price.font = UIFont.systemFontOfSize(CGFloat(15))
+      price.font = UIFont.systemFontOfSize(CGFloat(13))
       price.textColor = fontcolor
       price.textAlignment = NSTextAlignment.Left
       price.center = CGPointMake(95,95)

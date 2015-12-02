@@ -23,6 +23,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         Pets = readPets()
         if(Pets.count == 0){
             initPetMasters()
@@ -129,7 +130,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Charapicture")
-        let predicate = NSPredicate(format: "picturenumber = %d", 1)
+        let predicate = NSPredicate(format: "picturenumber = %d",1)
         categoryRequest.predicate = predicate
         var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
         return results
@@ -219,7 +220,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let categoryContext: NSManagedObjectContext = app.managedObjectContext!
         
-        for(var i = 1; i<masterDataDictionary.count; i++) {
+        for(var i = 1; i<=masterDataDictionary.count; i++) {
             let index_name: String = "data" + String(i)
             var item: AnyObject = masterDataDictionary[index_name]!
             

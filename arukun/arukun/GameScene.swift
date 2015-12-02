@@ -94,28 +94,30 @@ class GameScene: SKScene {
 
     
     if(app.FoodFlg == true){
-      var spriteAction1 = SKAction.scaleYTo(0.40, duration: 0.3)
-      var spriteAction2 = SKAction.scaleYTo(0.35, duration: 0.3)
-      var Actions = SKAction.sequence([spriteAction1,spriteAction2])
-      var RepeatAction = SKAction.repeatAction(Actions, count: 3)
-      
-      var images = [SKTexture]()
       var Name = app.esaName
       var Number = app.esaNumber
-      for image in ["\(Name)esa\(Number)-1","\(Name)esa\(Number)-2","\(Name)esa\(Number)-3","nothing"]{
+      var food = SKSpriteNode(imageNamed: "\(Name)esa\(Number)-1")
+      food.position = CGPoint(x: sprite.position.x, y: sprite.position.y-180)
+      food.xScale = 0.3
+      food.yScale = 0.3
+      self.addChild(food)
+      var images = [SKTexture]()
+      var esaNames = ["\(Name)esa\(Number)-1" , "\(Name)esa\(Number)-2" , "\(Name)esa\(Number)-3" , "nothing"]
+      for image in esaNames{
         var texture = SKTexture(imageNamed: image)
         texture.filteringMode = .Linear
         images.append(texture)     //テクスチャの追加
       }
+      println(images)
       let Animate = SKAction.animateWithTextures(images, timePerFrame: 0.6)
-      sprite.runAction(RepeatAction)
-      
-      var food = SKSpriteNode(imageNamed: "\(Name)esa\(Number)-1")
-      food.position = CGPoint(x: sprite.position.x, y: sprite.position.y-100)
-      food.xScale = 0.3
-      food.yScale = 0.3
-      self.addChild(food)
       food.runAction(Animate)
+
+      var spriteAction1 = SKAction.scaleYTo(0.40, duration: 0.3)
+      var spriteAction2 = SKAction.scaleYTo(0.35, duration: 0.3)
+      var Actions = SKAction.sequence([spriteAction1,spriteAction2])
+      var RepeatAction = SKAction.repeatAction(Actions, count: 3)
+      sprite.runAction(RepeatAction)
+  
       app.FoodFlg = false
     }
     
@@ -168,7 +170,7 @@ class GameScene: SKScene {
       for i in 0...3{
         var x :Array<CGFloat> = [0.42,0.58,0.37,0.63]
         var y :Array<CGFloat> = [0.65,0.65,0.3,0.3]
-        var scale :Array<CGFloat> = [0.35,0.35,0.4,0.4]
+        var scale :Array<CGFloat> = [0.325,0.325,0.4,0.4]
         var imageNumber = data.valueForKey("fur\(i+1)") as! Int
         if(imageNumber == -1){
           Furniture.append(SKSpriteNode(imageNamed: "nothing"))

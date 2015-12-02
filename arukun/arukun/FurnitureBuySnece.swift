@@ -201,7 +201,7 @@ class FurnitureBuyScene: SKScene {
             price.text = "\(point)"
             price.textColor = furnitureColor
             price.backgroundColor = UIColor.yellowColor()
-            price.font = UIFont.systemFontOfSize(CGFloat(15))
+            price.font = UIFont.systemFontOfSize(CGFloat(13))
             price.textAlignment = NSTextAlignment.Left
             price.center = CGPointMake(125,135)
             View.addSubview(price)
