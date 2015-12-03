@@ -82,8 +82,8 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
       }else{
         var text = CharaDatas[indexPath.row].valueForKey("text") as? String
         var rgb = CharaDatas[indexPath.row].valueForKey("rgb") as? String
-        var rank = CharaDatas[indexPath.row].valueForKey("rank") as? Int
-        str = "・第\(rank!)段階\n・種類：\(rgb!)\n\(text!)"
+        var name = CharaDatas[indexPath.row].valueForKey("name") as? String
+        str = "・名前：\(name!)\n・種類：\(rgb!)\n\(text!)"
       }
         performSegueWithIdentifier("ViewController2",sender: nil)
     }
@@ -229,7 +229,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
             new_data.setValue(item.valueForKey("text"), forKey: "text")
             new_data.setValue(item.valueForKey("haved"), forKey: "haved")
-            new_data.setValue(item.valueForKey("rank"), forKey: "rank")
+            new_data.setValue(item.valueForKey("name"), forKey: "name")
             new_data.setValue(item.valueForKey("rgb"), forKey: "rgb")
             
             var error: NSError?

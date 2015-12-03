@@ -76,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.step = 0
     var error: NSError?
     categoryContext.save(&error)
-    
   }
   
   

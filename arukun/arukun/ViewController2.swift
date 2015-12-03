@@ -12,7 +12,8 @@ import AVFoundation
 
 class ViewController2: UIViewController {
 
-    @IBOutlet weak var label: UILabel!
+
+  @IBOutlet var label: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     //送ったやつ受信ってことか！！！！！
     var selectedImg: UIImage?
@@ -24,7 +25,7 @@ class ViewController2: UIViewController {
         back_button.layer.cornerRadius = 10
 //        self.imageView.layer.cornerRadius = 30
 //        self.imageView.layer.masksToBounds = true
-        label.text = selectedlbl
+        label.text = selectedlbl!
         label.textColor = UIColor.blackColor()
         
         //２画面目拡大画像
