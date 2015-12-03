@@ -41,8 +41,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             initCharaMasters()
             CharaDatas = readCharaData()
         }
-        println(CharaDatas.count)
-        
+      
         //背景
         let backgroundImage = UIImage(named:"con.jpg")!
         self.view.backgroundColor = UIColor(patternImage: backgroundImage)
@@ -60,10 +59,13 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let cell:CustomCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as!CustomCell
         
         //cellの中身の画像処理
-        var photo = takePhoto(indexPath.row)
-        cell.image.image = UIImage(named: photo)
+        var photo = UIImage(named: (takePhoto(indexPath.row)) )
+        var height = photo!.size.height
+        cell.image.image = photo
+        cell.image.layer.frame = CGRect(x: 0, y: 0, width: 80, height: 80*(height/480))
+        cell.image.layer.position = CGPoint(x: cell.image2.center.x, y: cell.image2.center.y)
         cell.image2.image = UIImage(named:"husen.png")
-        cell.label.text = ""
+        cell.label.text = CharaDatas[indexPath.row].valueForKey("name")! as? String
 
         return cell
     }
@@ -83,7 +85,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         var text = CharaDatas[indexPath.row].valueForKey("text") as? String
         var rgb = CharaDatas[indexPath.row].valueForKey("rgb") as? String
         var name = CharaDatas[indexPath.row].valueForKey("name") as? String
-        str = "・名前：\(name!)\n・種類：\(rgb!)\n\(text!)"
+        str = "\(name!) (属性:\(rgb!))\n\n\(text!)"
       }
         performSegueWithIdentifier("ViewController2",sender: nil)
     }
