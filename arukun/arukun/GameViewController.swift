@@ -81,7 +81,7 @@ class GameViewController: UIViewController {
         categoryContext.save(&error)
         app.i = app.counter
       }
-      viewDidLoad()
+      //viewDidLoad()
     }
 
 }

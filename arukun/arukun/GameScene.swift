@@ -57,7 +57,7 @@ class GameScene: SKScene {
     let foodimage = UIImage(named: "esa") as UIImage?
     foodButton = UIButton(frame: CGRectMake(0, 0, 50, 50))
     foodButton.addTarget(self, action: "Buyfood:", forControlEvents: .TouchUpInside)
-    foodButton.layer.position = CGPoint(x: 50, y: self.frame.height-200)
+    foodButton.layer.position = CGPoint(x: 50, y: phoneSize.height*0.85)
     foodButton.setImage(foodimage, forState: .Normal)
     self.view!.addSubview(foodButton)
     
@@ -97,18 +97,18 @@ class GameScene: SKScene {
       var Name = app.esaName
       var Number = app.esaNumber
       var food = SKSpriteNode(imageNamed: "\(Name)esa\(Number)-1")
-      food.position = CGPoint(x: sprite.position.x, y: sprite.position.y-180)
+      food.position = CGPoint(x: sprite.position.x, y: sprite.position.y-150)
       food.xScale = 0.3
       food.yScale = 0.3
       self.addChild(food)
       var images = [SKTexture]()
       var esaNames = ["\(Name)esa\(Number)-1" , "\(Name)esa\(Number)-2" , "\(Name)esa\(Number)-3" , "nothing"]
+      //var esaNames = ["resa3-1","resa3-2","resa3-3","nothing"]
       for image in esaNames{
         var texture = SKTexture(imageNamed: image)
         texture.filteringMode = .Linear
         images.append(texture)     //テクスチャの追加
       }
-      println(images)
       let Animate = SKAction.animateWithTextures(images, timePerFrame: 0.6)
       food.runAction(Animate)
 
