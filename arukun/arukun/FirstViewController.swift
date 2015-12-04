@@ -34,6 +34,8 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   var results :NSArray!
   var today :NSDate! //今日の日付
   var limit :NSDate! //ここから先の日付はいりませーん！
+  var playerHeight = 165.1
+  var playerWeight = 58.2
   
   override func viewDidLoad() {
     //日付のやつ
@@ -223,10 +225,14 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     informationLabel.font = UIFont.systemFontOfSize(24)
     informationLabel.font = UIFont(name: "HiraKakuProN-W3", size: 24)
     informationLabel.text = "\(key) \(data)歩"
+    var kcal = ( (playerHeight*0.40*Double(data))/100000.0 * playerWeight * 1.05)
+
+    var text = "\(key)の消費カロリー：\(kcal)カロリー\n今日の歩数：\(data)歩"
+    self.data.text = text
   }
   
   func didDeselectBarChartView(barChartView: JBBarChartView!) {
-    informationLabel.text = ""
+    //informationLabel.text = ""
   }
   
   //その他オリジナルメソッド
@@ -299,16 +305,14 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   }
   
   func maketext(which: Int){
+    var kcal = ( (playerHeight*0.40*Double(chartData[6]))/100000.0 * playerWeight * 1.05)
     if which == 1{
       header.text =  "日毎の記録"
-      //text = "今日の消費カロリー：\(chartData[6]/55)カロリー\n今日の歩数：\(chartData[6])歩\n\(ShowDays[6])〜\(ShowDays[0])の平均：\(total/7)歩\n\(ShowDays[6])〜\(ShowDays[0])の燃焼カロリー：\(total/55)kcal"
-      text = "今日の消費カロリー：\(chartData[6]/55)カロリー\n今日の歩数：\(chartData[6])歩"
+      text = "今日の消費カロリー：\(kcal)カロリー\n今日の歩数：\(chartData[6])歩"
     }else if which == 2 {
       var textLimit = NSDate(timeInterval: -60*60*24, sinceDate: limit)
-      var text = ShowdayFormat.stringFromDate(textLimit)
+      text = "今週の消費カロリー：\(kcal)カロリー\n今週の歩数：\(chartData[6])歩"
       header.text =  "週毎の記録"
-      //text = "今週の消費カロリー：\(chartData[6]/55)カロリー\n今週の歩数：\(chartData[6])歩\n\(ShowDays[6])〜\(text)の平均：\(total/7)歩\n\(ShowDays[6])〜\(text)の燃焼カロリー：\(total/55)kcal"
-      text = "今週の消費カロリー：\(chartData[6]/55)カロリー\n今週の歩数：\(chartData[6])歩"
     }
   }
   //共通

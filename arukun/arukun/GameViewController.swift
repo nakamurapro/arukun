@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import CoreData
 
 extension SKNode {
     class func unarchiveFromFile(file : String) -> SKNode? {
@@ -26,7 +27,7 @@ extension SKNode {
 }
 
 class GameViewController: UIViewController {
-
+    var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,7 +70,18 @@ class GameViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        viewDidLoad()
+      let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+      let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
+      var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
+      for data in resultPoint{
+        var money = data.valueForKey("money") as! Int
+        money = money + (app.counter - app.i)
+        data.setValue(money, forKey: "money")
+        var error: NSError?
+        categoryContext.save(&error)
+        app.i = app.counter
+      }
+      //viewDidLoad()
     }
 
 }

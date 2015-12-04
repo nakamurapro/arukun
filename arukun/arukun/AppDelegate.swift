@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var backgroundFlg = false
   var i :Int = 0 //これはポイント用
   
+  //ここはエサ関係
+  var esaNumber :Int!
+  var esaName :String!
   
   var X:Double! = 1.0
   var Y:Double! = 1.0
@@ -57,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     if(backgroundFlg == false){
       NSTimer.scheduledTimerWithTimeInterval(60*60*5, target: self, selector: "UpdateCoredata:", userInfo: nil, repeats: true)
-      NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "UpdateMoney:", userInfo: nil, repeats: true)
       backgroundFlg = true
     }
   }
@@ -74,22 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.step = 0
     var error: NSError?
     categoryContext.save(&error)
-    
   }
   
-  func UpdateMoney(timer :NSTimer){
-    let categoryContext: NSManagedObjectContext = managedObjectContext!
-    let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
-    var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
-    for data in resultPoint{
-      var money = data.valueForKey("money") as! Int
-      money = money + (counter - i)
-      data.setValue(money, forKey: "money")
-      var error: NSError?
-      categoryContext.save(&error)
-      i = counter
-    }
-  }
   
   func applicationWillEnterForeground(application: UIApplication) {
   }
@@ -124,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     myMotionManager = CMMotionManager()
     
     // 更新周期を設定.
-    myMotionManager.accelerometerUpdateInterval = 1/2
+    myMotionManager.accelerometerUpdateInterval = 1/3
     
     // 加速度の取得を開始.
     myMotionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {(accelerometerData:CMAccelerometerData!, error:NSError!) -> Void in

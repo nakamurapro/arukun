@@ -521,6 +521,7 @@ class FurnitureSetScene: SKScene {
     Scroll.hidden = false
     backButton.removeFromSuperview()
     removeButton.removeFromSuperview()
+    cancelButton.removeFromSuperview()
   }
   
   func showRoom(sender: UIButton){ //ボタンでただ単純に部屋だけ見せる時

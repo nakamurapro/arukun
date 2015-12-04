@@ -2,7 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Charadata" representedClassName="PRODUCT_MODULE_NAME.Charadata" syncable="YES">
         <attribute name="haved" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rgb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -65,7 +65,7 @@
         <element name="Pedometer" positionX="88" positionY="-246" width="128" height="75"/>
         <element name="Pet" positionX="-225" positionY="27" width="128" height="225"/>
         <element name="Room" positionX="-81" positionY="-90" width="128" height="120"/>
-        <element name="User" positionX="-153" positionY="-252" width="128" height="30"/>
+        <element name="User" positionX="-153" positionY="-252" width="128" height="105"/>
         <element name="Word" positionX="-297" positionY="-108" width="128" height="75"/>
     </elements>
 </model>

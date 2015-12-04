@@ -83,7 +83,7 @@ class User: NSManagedObject {
 @objc(Charadata)
 class Charadata: NSManagedObject {
     
-    @NSManaged var rank: NSNumber
+    @NSManaged var name: String
     @NSManaged var rgb: String
     @NSManaged var text: String
     @NSManaged var haved :NSNumber

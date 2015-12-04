@@ -4,10 +4,10 @@
 <dict>
 	<key>data16</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>クレイベリー</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>RB+</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -15,10 +15,10 @@
 	</dict>
 	<key>data15</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>めろたん</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>RB-</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -26,10 +26,10 @@
 	</dict>
 	<key>data14</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>ミオ</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>BB+</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -37,10 +37,10 @@
 	</dict>
 	<key>data13</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>みみー</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>BB-</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -48,10 +48,10 @@
 	</dict>
 	<key>data12</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>パティナ</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>BG+</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -59,21 +59,21 @@
 	</dict>
 	<key>data11</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>みくり</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>BG-</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
 		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
-  </dict>
-  <key>data10</key>
+	</dict>
+	<key>data10</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>リッシュ</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>GG+</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -81,10 +81,10 @@
 	</dict>
 	<key>data9</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>もじゃり</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>GG-</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -92,10 +92,10 @@
 	</dict>
 	<key>data8</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>メープル</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>RG+</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -103,10 +103,10 @@
 	</dict>
 	<key>data7</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>もこ</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>RG-</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -114,10 +114,10 @@
 	</dict>
 	<key>data6</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>マッグル</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>RR+</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -125,10 +125,10 @@
 	</dict>
 	<key>data5</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>あかどん</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>RR-</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -136,10 +136,10 @@
 	</dict>
 	<key>data4</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>のーむん</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>G</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -147,10 +147,10 @@
 	</dict>
 	<key>data3</key>
 	<dict>
-		<key>rank</key>
-		<integer>3</integer>
+		<key>name</key>
+		<string>ぴちょん</string>
 		<key>rgb</key>
-		<string>rg</string>
+		<string>B</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -158,10 +158,10 @@
 	</dict>
 	<key>data2</key>
 	<dict>
-		<key>rank</key>
-		<integer>2</integer>
+		<key>name</key>
+		<string>もえるん</string>
 		<key>rgb</key>
-		<string>r</string>
+		<string>R</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
@@ -169,10 +169,10 @@
 	</dict>
 	<key>data1</key>
 	<dict>
-		<key>rank</key>
-		<integer>1</integer>
+		<key>name</key>
+		<string>もちりん</string>
 		<key>rgb</key>
-		<string>normal</string>
+		<string>NORMAL</string>
 		<key>haved</key>
 		<true/>
 		<key>text</key>
