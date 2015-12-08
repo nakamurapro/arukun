@@ -20,13 +20,15 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
   
   override func viewDidLoad(){
     super.viewDidLoad()
-    
+    //今日の分の日記があるのかを確認します
+    checkTodayDiary()
+    //その後にデータベース読み込み
     var Diary = readData()
-    if(Diary.count == 0){
+    /*if(Diary.count == 0){
       addData()
       Diary = readData()
-    }
-
+    }*/
+    
     let myImage: UIImage = UIImage(named: "wood_back")!
     let myImageView: UIImageView = UIImageView()
     myImageView.image = myImage
@@ -132,6 +134,64 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     println("InitMasters OK!")
     
+  }
+  
+  func makeTodayDiary(){
+    let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+    
+    
+    var result: [[String]] = []
+    if let csvPath = NSBundle.mainBundle().pathForResource("random", ofType: "csv") {
+      let csvString = NSString(contentsOfFile: csvPath, encoding: NSUTF8StringEncoding, error: nil) as! String
+      csvString.enumerateLines { (line, stop) -> () in
+        result.append(line.componentsSeparatedByString(","))
+      }
+    }
+    
+    
+    var line = result.count
+    var text: [NSString] = []
+    for j in 0...2{
+      var a = Int(arc4random() )
+      text.append(result[a % line][j])
+    }
+    
+    let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+      "Diary", inManagedObjectContext: categoryContext)
+    var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+    
+    var day = NSDate()
+    new_data.setValue("\(text[0])\(text[1])\(text[2])", forKey: "text")
+    new_data.setValue(day, forKey: "writeat")
+    
+    var error: NSError?
+    categoryContext.save(&error)
+    
+    println("NEW DIARY CREATED")
+  }
+  
+  func checkTodayDiary() {
+    let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+    var today = NSDate()
+    var dateFormatter = NSDateFormatter()
+    dateFormatter.calendar = calendar
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    var String = dateFormatter.stringFromDate(today)
+    dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+    today = dateFormatter.dateFromString("\(String) 09:00:00")!
+    var limit = NSDate(timeInterval: 60*60*24-1, sinceDate: today)
+    
+    let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let categoryContext: NSManagedObjectContext = app.managedObjectContext!
+    let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Diary")
+    let predicate = NSPredicate(format: "SELF.writeat BETWEEN {%@, %@}", today, limit)
+    categoryRequest.predicate = predicate
+    
+    var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
+    if(results.count == 0){
+      makeTodayDiary()
+    }
   }
   
   //・・・UITableViewに必要なメソッドとか
