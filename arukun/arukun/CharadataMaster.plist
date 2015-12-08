@@ -9,7 +9,7 @@
 		<key>rgb</key>
 		<string>RB+</string>
 		<key>haved</key>
-		<true/>
+		<false/>
 		<key>text</key>
 		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
 	</dict>
@@ -75,7 +75,7 @@
 		<key>rgb</key>
 		<string>GG+</string>
 		<key>haved</key>
-		<true/>
+		<false/>
 		<key>text</key>
 		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
 	</dict>

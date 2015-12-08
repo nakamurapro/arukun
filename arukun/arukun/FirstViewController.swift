@@ -2,6 +2,7 @@ import UIKit
 import JBChart
 import CoreData
 import Foundation
+import AVFoundation
 
 class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
   
@@ -37,6 +38,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   var playerHeight = 165.1
   var playerWeight = 58.2
   var whichViewing = false //falseなら日付毎、trueなら週毎
+  var audioPlayer :AVAudioPlayer?
   
   override func viewDidLoad() {
     //日付のやつ
@@ -121,6 +123,20 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    
+    results = readData()
+    nowViewing = 0
+    resetDay()
+    header.text =  "日毎の記録"
+    
+    if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
+
     var footerView = UIView(frame: CGRectMake(0, 0, barChart.frame.width, 16))
     
     //グラフの横幅を表示
@@ -309,18 +325,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.view.addSubview(week)
   }
   
-  /*func maketext(which: Int){
-    var kcal = ( (playerHeight*0.40*Double(chartData[6]))/100000.0 * playerWeight * 1.05)
-    kcal = Double(Int(kcal * 100.0)) / 100.0
-    if which == 1{
-      header.text =  "日毎の記録"
-      text = "今日の消費カロリー：\(kcal)カロリー\n今日の歩数：\(chartData[6])歩"
-    }else if which == 2 {
-      var textLimit = NSDate(timeInterval: -60*60*24, sinceDate: limit)
-      text = "今週の消費カロリー：\(kcal)カロリー\n今週の歩数：\(chartData[6])歩"
-      header.text =  "週毎の記録"
-    }
-  }*/
+
   //共通
   
   func Aggregate(){
@@ -458,12 +463,4 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.viewDidAppear(true)
   }
   
-  
-  override func viewWillDisappear(animated: Bool) {
-    results = readData()
-    nowViewing = 0
-    resetDay()
-    header.text =  "日毎の記録"
-  }
-
 }

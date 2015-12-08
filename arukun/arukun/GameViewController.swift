@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import CoreData
+import AVFoundation
 
 extension SKNode {
     class func unarchiveFromFile(file : String) -> SKNode? {
@@ -28,6 +29,7 @@ extension SKNode {
 
 class GameViewController: UIViewController {
     var app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var audioPlayer :AVAudioPlayer?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,7 +83,17 @@ class GameViewController: UIViewController {
         categoryContext.save(&error)
         app.i = app.counter
       }
-      //viewDidLoad()
     }
-
+  
+  override func viewDidAppear(animated: Bool) {
+    if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
+  }
+  
+  
 }

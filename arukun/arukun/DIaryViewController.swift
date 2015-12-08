@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 
 class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
@@ -17,17 +18,13 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
   
   var heightLeftCell: CustomLeftTableViewCell = CustomLeftTableViewCell()
   
-  
+  var audioPlayer :AVAudioPlayer?
   override func viewDidLoad(){
     super.viewDidLoad()
     //今日の分の日記があるのかを確認します
     checkTodayDiary()
     //その後にデータベース読み込み
     var Diary = readData()
-    /*if(Diary.count == 0){
-      addData()
-      Diary = readData()
-    }*/
     
     let myImage: UIImage = UIImage(named: "wood_back")!
     let myImageView: UIImageView = UIImageView()
@@ -205,4 +202,15 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
       return 0
     }
   }
+  
+  override func viewWillAppear(animated: Bool) {
+    if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
+  }
+
 }

@@ -19,7 +19,9 @@ class ViewController2: UIViewController {
     var selectedImg: UIImage?
     var selectedlbl: String?
     @IBOutlet weak var back_button: UIButton!
-    
+  var audioPlayer :AVAudioPlayer?
+
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         back_button.layer.cornerRadius = 10
@@ -39,5 +41,15 @@ class ViewController2: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+  
+  override func viewWillDisappear(animated: Bool) {
+    if let path = NSBundle.mainBundle().pathForResource("scroll_down", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
+  }
 
 }
