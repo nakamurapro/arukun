@@ -123,20 +123,6 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    
-    results = readData()
-    nowViewing = 0
-    resetDay()
-    header.text =  "日毎の記録"
-    
-    if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
-      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
-      if let sound = audioPlayer {
-        sound.prepareToPlay()
-        sound.play()
-      }
-    }
-
     var footerView = UIView(frame: CGRectMake(0, 0, barChart.frame.width, 16))
     
     //グラフの横幅を表示
@@ -463,4 +449,20 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.viewDidAppear(true)
   }
   
+  override func viewWillDisappear(animated: Bool) {
+    if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
+    results = readData()
+    nowViewing = 0
+    resetDay()
+    header.text =  "日毎の記録"
+  }
+  
+  
+
 }

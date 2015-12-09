@@ -33,10 +33,13 @@ class FurnitureBuyScene: SKScene {
     var point :Int!
     var haved :Bool!
   
-  
+    var decide = SKAction.playSoundFileNamed("decide.mp3", waitForCompletion: true)
+    var choose = SKAction.playSoundFileNamed("choose.mp3", waitForCompletion: true)
+    var click = SKAction.playSoundFileNamed("click.mp3", waitForCompletion: true)
+    var NG = SKAction.playSoundFileNamed("NG.mp3", waitForCompletion: true)
   
     override func didMoveToView(view: SKView) {
-      
+      self.runAction(click)
       results = readData()
       readPoint()
       
@@ -223,6 +226,7 @@ class FurnitureBuyScene: SKScene {
     }//完成です
     
     internal func Goback(sender: UIButton){ //戻る
+        self.runAction(click)
         Flg = false
         myWindow.hidden = true
         backtomenu.hidden = false
@@ -232,6 +236,7 @@ class FurnitureBuyScene: SKScene {
     }
     
     internal func BuyFurniture(sender: UIButton){ //買う
+        self.runAction(decide)
         PlayerPoint = PlayerPoint - point
         BuyButton.removeFromSuperview()
         cancelButton.removeFromSuperview()
@@ -298,11 +303,13 @@ class FurnitureBuyScene: SKScene {
                       myWindow.addSubview(Text[i])
                     }
                     if(PlayerPoint >= point){ //足りる！
+                        self.runAction(choose)
                         Text[2].text = "\(Furniturename)を購入しますか？"
                         myWindow.addSubview(Text[2])
                         myWindow.addSubview(BuyButton)
                         myWindow.addSubview(cancelButton)
                     }else { //足りない！
+                        self.runAction(NG)
                         Text[3].text = "ポイントが足りません！"
                         Text[3].layer.position = CGPointMake(150, 300)
                         myWindow.addSubview(Text[3])
@@ -314,6 +321,7 @@ class FurnitureBuyScene: SKScene {
     }
     
     func backtomenu(sender: UIButton){
+        self.runAction(click)
         allHidden()
         let tr = SKTransition.fadeWithColor(UIColor.whiteColor(), duration: 0.0)
         let newScene = FurnitureScene(size: self.scene!.size)
@@ -378,5 +386,4 @@ class FurnitureBuyScene: SKScene {
         
         var error: NSError?
     }
-    
 }

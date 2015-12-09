@@ -53,7 +53,8 @@ class FeedViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-  override func viewWillAppear(animated: Bool) {
+  
+  override func viewWillDisappear (animated: Bool) {
     if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
       audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
       if let sound = audioPlayer {
@@ -62,5 +63,4 @@ class FeedViewController: UIViewController {
       }
     }
   }
-
 }

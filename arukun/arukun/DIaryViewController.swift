@@ -176,7 +176,7 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     dateFormatter.dateFormat = "yyyy-MM-dd"
     var String = dateFormatter.stringFromDate(today)
     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-    today = dateFormatter.dateFromString("\(String) 09:00:00")!
+    today = dateFormatter.dateFromString("\(String) 00:00:00")!
     var limit = NSDate(timeInterval: 60*60*24-1, sinceDate: today)
     
     let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -203,7 +203,7 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillDisappear (animated: Bool) {
     if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
       audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
       if let sound = audioPlayer {

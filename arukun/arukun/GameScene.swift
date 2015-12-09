@@ -29,6 +29,8 @@ class GameScene: SKScene {
   
   var Furniture :Array<SKSpriteNode> = []
   
+  var click = SKAction.playSoundFileNamed("click.mp3", waitForCompletion: true)
+  
   override func didMoveToView(view: SKView) {
     //        /* Setup your scene here */
     
@@ -119,6 +121,8 @@ class GameScene: SKScene {
       sprite.runAction(RepeatAction)
   
       app.FoodFlg = false
+      
+      self.runAction(SKAction.playSoundFileNamed("eating.mp3", waitForCompletion: true))
     }
     
   }
@@ -199,6 +203,8 @@ class GameScene: SKScene {
   
   func Buyfood(sender: UIButton){
     foodButton.hidden = true
+
+    self.runAction(SKAction.playSoundFileNamed("click.mp3", waitForCompletion: true))
     
     let tr = SKTransition.fadeWithColor(UIColor.whiteColor(), duration: 0.0)
     let newScene = foodScene(size: self.scene!.size)
@@ -344,6 +350,5 @@ class GameScene: SKScene {
       
     }
   }
-  
 
 }

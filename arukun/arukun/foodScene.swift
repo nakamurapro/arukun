@@ -153,13 +153,15 @@ class foodScene: SKScene {
     
     cancelButton.layer.position = CGPoint(x: 200, y: 200)
     
-    backButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
-    backButton.backgroundColor = UIColor.blueColor()
+    
+    backButton = UIButton(frame: CGRectMake(0, 0, 80, 80))
+    backButton.backgroundColor = UIColor(red: 160/255, green: 219/255, blue: 128/255, alpha: 1)
     backButton.addTarget(self, action: "Goback:", forControlEvents: .TouchUpInside)
-    backButton.setTitle("戻る", forState: .Normal)
-    backButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    backButton.setTitle("戻る", forState: .Highlighted)
+    backButton.setTitle("もどる", forState: .Normal)
+    backButton.setTitleColor(UIColor(red: 68/255, green: 117/255, blue: 42/255, alpha: 1), forState: .Normal)
+    backButton.setTitle("もどる", forState: .Highlighted)
     backButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+    backButton.layer.cornerRadius = 40
     backButton.layer.position = CGPoint(x: 150, y: 250)
     
     Text = UITextView(frame: CGRectMake(0, 0, 300, 100))
@@ -211,6 +213,8 @@ class foodScene: SKScene {
   }
   
   func backtomenu(sender: UIButton){
+    self.runAction(SKAction.playSoundFileNamed("click.mp3", waitForCompletion: true))
+
     let tr = SKTransition.crossFadeWithDuration(0.1)
     let newScene = GameScene(size: self.scene!.size)
     newScene.scaleMode = SKSceneScaleMode.AspectFill
@@ -221,6 +225,7 @@ class foodScene: SKScene {
     if (Flg == false){
       if let imageView = recognizer.view as? UIImageView {
         Scroll.hidden = true
+        backtomenu.hidden = true
         Flg = true
         //まずはウィンドウ作ろう
         selected = imageView.tag
@@ -235,11 +240,13 @@ class foodScene: SKScene {
         self.myWindow.makeKeyAndVisible()
         
         if(PlayerPoint >= point){ //足りる！
+          self.runAction(SKAction.playSoundFileNamed("choose.mp3", waitForCompletion: true))
           Text.text = "購入してエサを与えますか？\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
           myWindow.addSubview(Text)
           myWindow.addSubview(BuyButton)
           myWindow.addSubview(cancelButton)
         }else { //足りない！
+          self.runAction(SKAction.playSoundFileNamed("NG.mp3", waitForCompletion: true))
           Text.text = "ポイントが足りません！\n必要ポイント：\(point)P\n所持ポイント：\(PlayerPoint)P"
           myWindow.addSubview(Text)
           myWindow.addSubview(backButton)
@@ -253,6 +260,10 @@ class foodScene: SKScene {
     Flg = false
     myWindow.hidden = true
     Scroll.hidden = false
+    backtomenu.hidden = false
+    BuyButton.removeFromSuperview()
+    cancelButton.removeFromSuperview()
+    backButton.removeFromSuperview()
   }
   
   //ここからデータベースに関連するもの
@@ -293,11 +304,11 @@ class foodScene: SKScene {
   }
   
   override func willMoveFromView(view: SKView) {
+    self.runAction(SKAction.playSoundFileNamed("click.mp3", waitForCompletion: true))
     Scroll.removeFromSuperview()
     myWindow.hidden = true
     backtomenu.hidden = true
     PointView.hidden = true
   }
-  
   
 }

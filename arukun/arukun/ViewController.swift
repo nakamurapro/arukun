@@ -67,7 +67,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         cell.image.layer.frame = CGRect(x: 0, y: 0, width: 80, height: 80*(height/480))
         cell.image.layer.position = CGPoint(x: cell.image2.center.x, y: cell.image2.center.y)
         cell.image2.image = UIImage(named:"husen.png")
-        cell.label.text = photo == "secret" ?  "？？？" : CharaDatas[indexPath.row].valueForKey("name")! as? String
+        cell.label.text = takePhoto(indexPath.row) == "secret" ?  "？？？" : CharaDatas[indexPath.row].valueForKey("name")! as? String
 
         return cell
     }
@@ -100,7 +100,6 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
           
             if let path = NSBundle.mainBundle().pathForResource("scroll_up", ofType: "mp3") {
             audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
-            audioPlayer?.numberOfLoops = -1
             if let sound = audioPlayer {
               sound.prepareToPlay()
               sound.play()
@@ -268,7 +267,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     return photo
     }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillDisappear(animated: Bool) {
     if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
       audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
       if let sound = audioPlayer {

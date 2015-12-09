@@ -44,7 +44,13 @@ class FurnitureSetScene: SKScene {
   
   var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
   
+  //ここから効果音
+  var decide = SKAction.playSoundFileNamed("decide.mp3", waitForCompletion: true)
+  var choose = SKAction.playSoundFileNamed("choose.mp3", waitForCompletion: true)
+  var click = SKAction.playSoundFileNamed("click.mp3", waitForCompletion: true)
+  
   override func didMoveToView(view: SKView) {
+    self.runAction(click)
     var background = SKSpriteNode(imageNamed: "con.jpg")
     background.xScale = 1.5
     background.yScale = 1.5
@@ -326,6 +332,7 @@ class FurnitureSetScene: SKScene {
             i++
           }
           if(imageView.tag != 10000 && SetFlug == false){  //さあ家具を置こう
+            self.runAction(choose)
             //背景表示
             var backData = Furnitures[back].valueForKey("image") as! String
             var backImage = UIImage(named: backData)
@@ -351,6 +358,7 @@ class FurnitureSetScene: SKScene {
             backSetButton.hidden = false
           }
         }else if(kind == 2){ //背景だった場合
+          self.runAction(choose)
           if(back != id){//これは違う壁紙ですね……
             showRoom()
             SetFlug = true
@@ -372,6 +380,7 @@ class FurnitureSetScene: SKScene {
   } //func touchimage
   
   internal func SetFurniture(sender: UIButton){ //家具を置く
+    self.runAction(decide)
     //sender.tag0,1,2,3 = "左上","右上","左下","右下"
     //idにはもう家具のID入ってます
     //じゃあまず表面上だけ変えよう
@@ -403,6 +412,7 @@ class FurnitureSetScene: SKScene {
   }
   
   internal func GobackList(sender: UIButton){ //配置画面から家具一覧に戻る
+    self.runAction(click)
     for (var i=0; i<4; i++){
       SetButtons[i].removeFromSuperview()
       RoomFurniture[i].removeFromSuperview()
@@ -418,6 +428,7 @@ class FurnitureSetScene: SKScene {
   }
   
   func backtomenu(sender: UIButton){
+    self.runAction(click)
     allHidden()
     let tr = SKTransition.fadeWithColor(UIColor.whiteColor(), duration: 0.0)
     let newScene = FurnitureScene(size: self.scene!.size)
@@ -477,6 +488,7 @@ class FurnitureSetScene: SKScene {
   }
   
   func MakeWindow(){
+    self.runAction(choose)
     Scroll.hidden = true
     backtomenu.hidden = true
     ShowRoomButton.hidden = true
@@ -493,6 +505,7 @@ class FurnitureSetScene: SKScene {
   
   func removeFurniture(sender: UIButton){ //家具を置く
     //データベースを書き換えるんだ
+    self.runAction(decide)
     removeButton.removeFromSuperview()
     cancelButton.removeFromSuperview()
     myWindow.addSubview(backButton)
@@ -514,6 +527,7 @@ class FurnitureSetScene: SKScene {
   }
   
   func Goback(sender: UIButton){
+    self.runAction(click)
     myWindow.hidden = true
     backtomenu.hidden = false
     ShowRoomButton.hidden = false
@@ -525,7 +539,7 @@ class FurnitureSetScene: SKScene {
   }
   
   func showRoom(sender: UIButton){ //ボタンでただ単純に部屋だけ見せる時
-    
+    self.runAction(click)
     var backData = Furnitures[back].valueForKey("image") as! String
     var backImage = UIImage(named: backData)
     backView = UIImageView(frame: CGRectMake(0, 0, phoneSize.width, phoneSize.height))
@@ -541,6 +555,7 @@ class FurnitureSetScene: SKScene {
   }
   
   func showRoom(){ //こうなります、みたいに部屋を見せる時
+    self.runAction(choose)
     var backData = Furnitures[id].valueForKey("image") as! String
     var backImage = UIImage(named: backData)
     backView = UIImageView(frame: CGRectMake(0, 0, phoneSize.width, phoneSize.height))
@@ -560,6 +575,7 @@ class FurnitureSetScene: SKScene {
   }
   
   func SetBackground(sender: UIButton){
+    self.runAction(decide)
     TextFurniture.textColor = UIColor(red: 185/255, green: 23/255, blue: 44/255, alpha: 1.0)
     TextFurniture.text = "壁紙を張り替えました！"
     let app = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -576,6 +592,5 @@ class FurnitureSetScene: SKScene {
     Backgroundcancel.removeFromSuperview()
     self.view!.addSubview(backSetButton)
   }
-  
   
 }
