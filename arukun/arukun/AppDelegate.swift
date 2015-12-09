@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CoreMotion
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,10 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var myMotionManager: CMMotionManager!
   var window: UIWindow?
   var counter: Int = 0 //こっちが見せるやつ
-  var step: Int = 0 //こっちがデータベース登録用のやつ
+  var playerStep: Int = 0 //こっちがデータベース登録用のやつ
   var FoodFlg = false
   var backgroundFlg = false
   var i :Int = 0 //これはポイント用
+  var audioPlayer: AVAudioPlayer?
   
   //ここはエサ関係
   var esaNumber :Int!
@@ -59,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     if(backgroundFlg == false){
-      NSTimer.scheduledTimerWithTimeInterval(60*60*5, target: self, selector: "UpdateCoredata:", userInfo: nil, repeats: true)
+      NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: "UpdateCoredata:", userInfo: nil, repeats: true)
       backgroundFlg = true
     }
   }
@@ -72,20 +74,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       "Pedometer", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
     new_data.setValue(day, forKey: "date")
-    new_data.setValue(step, forKey: "step")
-    self.step = 0
+    new_data.setValue(playerStep, forKey: "step")
+    playerStep = 0
     var error: NSError?
     categoryContext.save(&error)
   }
-  
-  
+
   func applicationWillEnterForeground(application: UIApplication) {
   }
   
   func applicationDidBecomeActive(application: UIApplication) {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if let path = NSBundle.mainBundle().pathForResource("bgm1", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      audioPlayer!.numberOfLoops = -1
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
     
-    self.counter = 0
+    counter = playerStep
     let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
     var today = NSDate()
     var dateFormatter = NSDateFormatter()
@@ -105,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var results: NSArray! = PedometerContext.executeFetchRequest(PedometerRequest, error: nil)
     for data in results {
       var step :Int = data.valueForKey("step") as! Int
-      self.counter = self.counter + step
+      counter = counter + step
     }
     
     i = counter
@@ -124,9 +133,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       var CheckY = abs(self.Y - y)
       var CheckZ = abs(self.Z - z)
       
-      if(CheckX > 0.65 || CheckY > 0.65 || CheckZ > 0.65){
+      if(CheckX > 0.5 || CheckY > 0.5 || CheckZ > 0.5){
         self.counter = self.counter + 1
-        self.step = self.step + 1
+        self.playerStep = self.playerStep + 1
       }
       self.X = x; self.Y = y; self.Z = z
       

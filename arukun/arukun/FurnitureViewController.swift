@@ -1,9 +1,12 @@
 import UIKit
 import SpriteKit
+import AVFoundation
 
 
 class FurnitureViewController: UIViewController {
-    
+  
+  var audioPlayer :AVAudioPlayer?
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,4 +47,15 @@ class FurnitureViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+  
+  override func viewWillDisappear (animated: Bool) {
+    if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
+  }
+  
 }

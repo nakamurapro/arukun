@@ -2,6 +2,7 @@ import UIKit
 import JBChart
 import CoreData
 import Foundation
+import AVFoundation
 
 class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
   
@@ -36,6 +37,8 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   var limit :NSDate! //ここから先の日付はいりませーん！
   var playerHeight = 165.1
   var playerWeight = 58.2
+  var whichViewing = false //falseなら日付毎、trueなら週毎
+  var audioPlayer :AVAudioPlayer?
   
   override func viewDidLoad() {
     //日付のやつ
@@ -105,7 +108,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
       total += Data
     }
     header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
-    maketext(1)
+    header.text =  "日毎の記録"
 
       data.font = UIFont(name: "HiraKakuProN-W3", size: 15)
       data.text = text
@@ -226,9 +229,13 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     informationLabel.font = UIFont(name: "HiraKakuProN-W3", size: 24)
     informationLabel.text = "\(key) \(data)歩"
     var kcal = ( (playerHeight*0.40*Double(data))/100000.0 * playerWeight * 1.05)
-
-    var text = "\(key)の消費カロリー：\(kcal)カロリー\n今日の歩数：\(data)歩"
-    self.data.text = text
+    kcal = Double(Int(kcal * 100.0)) / 100.0
+    
+    if(whichViewing == false){
+      self.data.text =  "\(key)の消費カロリー：\(kcal)kcal\n\(key)の歩数：\(data)歩"
+    }else{
+      self.data.text =  "\(key)から1週間の消費カロリー：\(kcal)kcal\n\(key)から1週間の歩数：\(data)歩"
+    }
   }
   
   func didDeselectBarChartView(barChartView: JBBarChartView!) {
@@ -304,17 +311,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.view.addSubview(week)
   }
   
-  func maketext(which: Int){
-    var kcal = ( (playerHeight*0.40*Double(chartData[6]))/100000.0 * playerWeight * 1.05)
-    if which == 1{
-      header.text =  "日毎の記録"
-      text = "今日の消費カロリー：\(kcal)カロリー\n今日の歩数：\(chartData[6])歩"
-    }else if which == 2 {
-      var textLimit = NSDate(timeInterval: -60*60*24, sinceDate: limit)
-      text = "今週の消費カロリー：\(kcal)カロリー\n今週の歩数：\(chartData[6])歩"
-      header.text =  "週毎の記録"
-    }
-  }
+
   //共通
   
   func Aggregate(){
@@ -358,6 +355,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     nextWeek.hidden = true
     previousWeek.hidden = true
     previousDay.hidden = false
+    whichViewing = false
     nowViewing = 0
     resetDay()
   }
@@ -366,6 +364,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     previousDay.hidden = true
     nextDay.hidden = true
     previousWeek.hidden = false
+    whichViewing = true
     nowViewing = 0
     resetWeek()
   }
@@ -415,8 +414,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     
     limit = NSDate(timeInterval: 60*60*24, sinceDate: Days[0]) //これより新しいデータはいらない！！
     Aggregate()
-    maketext(1)
-    data.text = text
+    header.text =  "日毎の記録"
     self.viewDidDisappear(true)
     self.viewDidAppear(true)
   }
@@ -445,19 +443,26 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     }
     
     Aggregate()
-    maketext(2)
-    
-    data.text = text
+    header.text =  "週毎の記録"
     
     self.viewDidDisappear(true)
     self.viewDidAppear(true)
   }
   
   override func viewWillDisappear(animated: Bool) {
+    if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
     results = readData()
     nowViewing = 0
     resetDay()
-    maketext(1)
+    header.text =  "日毎の記録"
   }
   
+  
+
 }
