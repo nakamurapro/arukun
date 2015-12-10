@@ -24,6 +24,13 @@ class ViewController2: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let path = NSBundle.mainBundle().pathForResource("scroll_up", ofType: "mp3") {
+        audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+        if let sound = audioPlayer {
+          sound.prepareToPlay()
+          sound.play()
+        }
+        }
         back_button.layer.cornerRadius = 10
 //        self.imageView.layer.cornerRadius = 30
 //        self.imageView.layer.masksToBounds = true

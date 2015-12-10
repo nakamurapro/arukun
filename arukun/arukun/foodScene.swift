@@ -37,9 +37,11 @@ class foodScene: SKScene {
   var points = [50,300,1000]
   var RGB = ["r","g","b"]
   var fontcolor = UIColor(red: 102.0/255.0, green: 53.0/255.0, blue: 19.0/255, alpha: 1.0)
+  var click = SKAction.playSoundFileNamed("click.mp3", waitForCompletion: true)
   
   override func didMoveToView(view: SKView) {
     //        /* Setup your scene here */
+    self.runAction(click)
     readPoint()
     layoutObject()
     makeScroll()
@@ -257,6 +259,7 @@ class foodScene: SKScene {
   }
   
   internal func Goback(sender: UIButton){ //戻る
+    self.runAction(click)
     Flg = false
     myWindow.hidden = true
     Scroll.hidden = false

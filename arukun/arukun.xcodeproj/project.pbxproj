@@ -75,6 +75,7 @@
 		7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D841B3842460056D886 /* FeedViewController.swift */; };
 		7B9A6D8B1B38488E0056D886 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8A1B38488E0056D886 /* GameScene.sks */; };
 		7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */; };
+		7BCDAF3A1C17D35C00E745BC /* graph.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BCDAF391C17D35C00E745BC /* graph.mp3 */; };
 		7BE00E251BF4D1CA00334A45 /* burgar3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE00E221BF4D1CA00334A45 /* burgar3.png */; };
 		7BE00E261BF4D1CA00334A45 /* burgar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE00E231BF4D1CA00334A45 /* burgar1.png */; };
 		7BE00E271BF4D1CA00334A45 /* burgar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE00E241BF4D1CA00334A45 /* burgar2.png */; };
@@ -209,6 +210,7 @@
 		7B9A6D841B3842460056D886 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		7B9A6D8A1B38488E0056D886 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryScene.swift; sourceTree = "<group>"; };
+		7BCDAF391C17D35C00E745BC /* graph.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = graph.mp3; sourceTree = "<group>"; };
 		7BE00E221BF4D1CA00334A45 /* burgar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burgar3.png; sourceTree = "<group>"; };
 		7BE00E231BF4D1CA00334A45 /* burgar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burgar1.png; sourceTree = "<group>"; };
 		7BE00E241BF4D1CA00334A45 /* burgar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burgar2.png; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				7B6326A21C17AC0A00787665 /* bgm1.mp3 */,
 				7B2CF24E1BFE1C1A00959ECB /* choose.mp3 */,
 				7B2CF2501BFE1C1A00959ECB /* decide.mp3 */,
+				7BCDAF391C17D35C00E745BC /* graph.mp3 */,
 				7B63269C1C171C8200787665 /* click.mp3 */,
 				7B63269D1C171C8200787665 /* eating.mp3 */,
 				7B63269E1C171C8200787665 /* up.mp3 */,
@@ -676,6 +679,7 @@
 				1DF394921BD7301A00027E08 /* hai.jpg in Resources */,
 				1DF3948F1BD7301A00027E08 /* kanban.png in Resources */,
 				7B2B24D119D7E73600A75413 /* Room.plist in Resources */,
+				7BCDAF3A1C17D35C00E745BC /* graph.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,7 +921,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = arukun/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -932,7 +936,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = arukun/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
