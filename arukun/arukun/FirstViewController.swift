@@ -44,6 +44,10 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   override func viewDidLoad() {
     //日付のやつ
     //今日の日付の0時を返すには
+    header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
+    header.layer.position = CGPoint(x: self.view.center.x, y: self.view.frame.height*0.3)
+    self.view.addSubview(header)
+    
     data = UITextView(frame: CGRectMake(0, 0, barChart.frame.width-100, 80))
     data.layer.position = CGPointMake(self.view.frame.width*0.5, self.view.frame.height*0.85)
     data.backgroundColor = UIColor(red: 1, green: 227/255, blue: 178/255, alpha: 1.0)
@@ -51,7 +55,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     data.layer.cornerRadius = 20
     data.editable = false
     self.view!.addSubview(data)
-
+    
     let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
     today = NSDate()
     dateFormatter.calendar = calendar
@@ -108,12 +112,11 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     for Data in chartData{
       total += Data
     }
-    header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
     header.text =  "日毎の記録"
-
-      data.font = UIFont(name: "HiraKakuProN-W3", size: 15)
-      data.text = text
-      data.textAlignment = NSTextAlignment.Left
+    
+    data.font = UIFont(name: "HiraKakuProN-W3", size: 15)
+    data.text = text
+    data.textAlignment = NSTextAlignment.Left
     
     makeButtons()
     informationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: 60))
@@ -145,7 +148,6 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     header.textAlignment = NSTextAlignment.Center
     
     barChart.footerView = footerView
-    barChart.headerView = header
   }
   //ここからほとんどデータベース関連
   func readData() -> NSArray{
@@ -228,22 +230,22 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     informationLabel.textColor = UIColor(red: 66/255, green: 32/255, blue: 16/255, alpha: 1.0)
     informationLabel.font = UIFont.systemFontOfSize(24)
     informationLabel.font = UIFont(name: "HiraKakuProN-W3", size: 24)
-    informationLabel.text = "\(key) \(data)歩"
     var kcal = ( (playerHeight*0.40*Double(data))/100000.0 * playerWeight * 1.05)
     kcal = Double(Int(kcal * 100.0)) / 100.0
     
     playGraph()
     
     if(whichViewing == false){
+      informationLabel.text = "\(key) \(data)歩"
       self.data.text =  "\(key)の消費カロリー：\(kcal)kcal\n\(key)の歩数：\(data)歩"
     }else{
+      informationLabel.text = "\(key)~ \(data)歩"
       self.data.text =  "\(key)から1週間の消費カロリー：\(kcal)kcal\n\(key)から1週間の歩数：\(data)歩"
     }
   }
   
-  func didDeselectBarChartView(barChartView: JBBarChartView!) {
-    //informationLabel.text = ""
-  }
+  /*func didDeselectBarChartView(barChartView: JBBarChartView!) {
+  }*/
   
   //その他オリジナルメソッド
   func makeButtons(){
@@ -317,7 +319,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.view.addSubview(week)
   }
   
-
+  
   //共通
   
   func Aggregate(){
@@ -344,7 +346,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
       }
     }
     
-    max = Int(Double(max)*1.2)
+    max = Int(Double(max)*1.5)
     barChart.maximumValue = CGFloat(max)
     chartData = chartData.reverse()
   }
@@ -413,6 +415,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   
   func resetDay(){  //日付でやります
+    resetText()
     if (nowViewing != 0) {
       nextDay.hidden = false
     }else{
@@ -442,6 +445,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   }
   
   func resetWeek(){  //今度は週毎！
+    resetText()
     if (nowViewing != 0) {
       nextWeek.hidden = false
     }else{
@@ -469,6 +473,11 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     
     self.viewDidDisappear(true)
     self.viewDidAppear(true)
+  }
+  
+  func resetText(){
+    self.data.text = ""
+    informationLabel.text = ""
   }
   
   override func viewWillDisappear(animated: Bool) {
@@ -513,5 +522,5 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     }
   }
   
-
+  
 }

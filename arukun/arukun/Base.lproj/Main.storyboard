@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ゲーム" id="vQT-Ya-Ikx"/>
+                    <tabBarItem key="tabBarItem" title="ゲーム" image="test_star" id="vQT-Ya-Ikx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
@@ -37,32 +37,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="日記" id="VoJ-80-gUT"/>
+                    <tabBarItem key="tabBarItem" title="日記" image="test_star" id="VoJ-80-gUT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHG-MO-OVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32" y="2207"/>
         </scene>
-        <!--設定-->
-        <scene sceneID="rlO-xf-Oye">
-            <objects>
-                <viewController id="G0h-1Q-sVL" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3ET-Tp-uMI"/>
-                        <viewControllerLayoutGuide type="bottom" id="23z-Do-kBL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aZK-6h-YdZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="設定" id="FHj-hG-AvP"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bap-Mq-iOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="762" y="2195"/>
-        </scene>
-        <!--Item-->
+        <!--家具-->
         <scene sceneID="m0g-en-tWd">
             <objects>
                 <viewController id="fGe-16-Fee" customClass="FurnitureViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="8bD-yG-8eH"/>
+                    <tabBarItem key="tabBarItem" title="家具" image="test_star" id="8bD-yG-8eH"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QpH-8Q-wdy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="-1279" y="2207"/>
         </scene>
-        <!--Bar Graphs-->
+        <!--グラフ-->
         <scene sceneID="8nO-l2-jA6">
             <objects>
                 <viewController id="zuR-1p-Ggw" customClass="FirstViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
@@ -166,7 +147,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Bar Graphs" image="first" id="eQy-3A-gR9"/>
+                    <tabBarItem key="tabBarItem" title="グラフ" image="test_star" id="eQy-3A-gR9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="barChart" destination="hG2-wp-mfa" id="azR-ol-cKN"/>
@@ -176,7 +157,7 @@
             </objects>
             <point key="canvasLocation" x="-626" y="2275"/>
         </scene>
-        <!--Item-->
+        <!--ずかん-->
         <scene sceneID="T4z-ER-p5Y">
             <objects>
                 <viewController id="DhN-M5-dmj" customClass="ViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
@@ -248,7 +229,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="urM-RL-K4Z"/>
+                    <tabBarItem key="tabBarItem" title="ずかん" image="test_star" id="urM-RL-K4Z"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -390,8 +371,8 @@
     </scenes>
     <resources>
         <image name="con" width="525" height="700"/>
-        <image name="first" width="30" height="30"/>
         <image name="husen" width="420" height="370"/>
+        <image name="test_star" width="40" height="40"/>
         <image name="wood_back" width="480" height="640"/>
     </resources>
 </document>
