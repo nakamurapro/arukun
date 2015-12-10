@@ -70,9 +70,7 @@
 		7B7F7F7A1BDE695700F1DEC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60AA531B27EF5D000D4D5A /* AppDelegate.swift */; };
 		7B7F7F7B1BDE695800F1DEC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60AA531B27EF5D000D4D5A /* AppDelegate.swift */; };
 		7B87C4351C0D3FE5006503FA /* FurnitureMaster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B87C4341C0D3FE5006503FA /* FurnitureMaster.plist */; };
-		7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D801B383EBF0056D886 /* FeedScene.swift */; };
 		7B9A6D831B3840290056D886 /* 1179.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D821B3840290056D886 /* 1179.png */; };
-		7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D841B3842460056D886 /* FeedViewController.swift */; };
 		7B9A6D8B1B38488E0056D886 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8A1B38488E0056D886 /* GameScene.sks */; };
 		7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */; };
 		7BCDAF3A1C17D35C00E745BC /* graph.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BCDAF391C17D35C00E745BC /* graph.mp3 */; };
@@ -205,9 +203,7 @@
 		7B7F7F651BDE67AC00F1DEC7 /* FurnitureBuySnece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FurnitureBuySnece.swift; sourceTree = "<group>"; };
 		7B7F7F771BDE67EC00F1DEC7 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		7B87C4341C0D3FE5006503FA /* FurnitureMaster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FurnitureMaster.plist; sourceTree = "<group>"; };
-		7B9A6D801B383EBF0056D886 /* FeedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedScene.swift; sourceTree = "<group>"; };
 		7B9A6D821B3840290056D886 /* 1179.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1179.png; sourceTree = "<group>"; };
-		7B9A6D841B3842460056D886 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		7B9A6D8A1B38488E0056D886 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		7B9A6D8C1B3849C90056D886 /* DiaryScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryScene.swift; sourceTree = "<group>"; };
 		7BCDAF391C17D35C00E745BC /* graph.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = graph.mp3; sourceTree = "<group>"; };
@@ -290,7 +286,6 @@
 				1D60AA531B27EF5D000D4D5A /* AppDelegate.swift */,
 				1D6764A91BBE22D300FFB44A /* FirstViewController.swift */,
 				7B9A6D861B3843990056D886 /* Game */,
-				7B9A6D871B38470E0056D886 /* Feed */,
 				7B36E0411B39A6D400A62CF3 /* Diary */,
 				7B36E0421B39A6E100A62CF3 /* Rec */,
 				7B313D0B1BD5FBEC002A6782 /* Furniture */,
@@ -463,15 +458,6 @@
 				1D60AA591B27EF5D000D4D5A /* GameViewController.swift */,
 			);
 			name = Game;
-			sourceTree = "<group>";
-		};
-		7B9A6D871B38470E0056D886 /* Feed */ = {
-			isa = PBXGroup;
-			children = (
-				7B9A6D841B3842460056D886 /* FeedViewController.swift */,
-				7B9A6D801B383EBF0056D886 /* FeedScene.swift */,
-			);
-			name = Feed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -725,7 +711,6 @@
 				1D6764B61BBE240D00FFB44A /* JBChartView.m in Sources */,
 				1DF13FEF1BD0969C003531F2 /* DIaryViewController.swift in Sources */,
 				1D6764AA1BBE22D300FFB44A /* FirstViewController.swift in Sources */,
-				7B9A6D851B3842460056D886 /* FeedViewController.swift in Sources */,
 				1DF394831BD72FFD00027E08 /* CustomCell.swift in Sources */,
 				7BE33D361BE46D5000C3C1DF /* Model.xcdatamodeld in Sources */,
 				1D6764B51BBE240D00FFB44A /* JBBarChartView.m in Sources */,
@@ -740,7 +725,6 @@
 				7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */,
 				7B7F7F661BDE67AC00F1DEC7 /* FurnitureBuySnece.swift in Sources */,
 				1DF13FE81BD09537003531F2 /* CustomLeftTableViewCell.swift in Sources */,
-				7B9A6D811B383EBF0056D886 /* FeedScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

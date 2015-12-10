@@ -247,14 +247,16 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   //その他オリジナルメソッド
   func makeButtons(){
-    day = UIButton(frame: CGRectMake(self.view.frame.width*0.3, 100, 100, 30))
+    day = UIButton(frame: CGRectMake(0,0, 100, 30))
     day.setTitle("day", forState: .Normal)
     day.setTitleColor(mainColor, forState: .Normal)
-    day.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+    day.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
     day.backgroundColor = UIColor.whiteColor()
     day.addTarget(self, action: "DayButton:", forControlEvents: .TouchUpInside)
+    day.layer.position = CGPoint(x: self.view.frame.width*0.3, y: 130)
     day.layer.masksToBounds = true
     day.layer.cornerRadius = 20
+    day.enabled = false
     
     previousDay = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.7, 50, 50))
     previousDay.setTitle("Previous", forState: .Normal)
@@ -300,12 +302,13 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.view.addSubview(nextWeek)
     
     
-    week = UIButton(frame: CGRectMake(self.view.frame.width*0.6, 100, 100, 30))
+    week = UIButton(frame: CGRectMake(0,0, 100, 30))
     week.setTitle("week", forState: .Normal)
     week.setTitleColor(mainColor, forState: .Normal)
-    week.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+    week.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
     week.backgroundColor = UIColor.grayColor()
     week.addTarget(self, action: "weekButton:", forControlEvents: .TouchUpInside)
+    week.layer.position = CGPoint(x: self.view.frame.width*0.7, y: 130)
     week.layer.masksToBounds = true
     week.layer.cornerRadius = 20
     week.tag = 2
@@ -340,6 +343,8 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         max = data
       }
     }
+    
+    max = Int(Double(max)*1.2)
     barChart.maximumValue = CGFloat(max)
     chartData = chartData.reverse()
   }
@@ -357,7 +362,9 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   func DayButton(sender: UIButton){
     playChoose()
     day.backgroundColor = UIColor.whiteColor()
+    day.enabled = false
     week.backgroundColor = UIColor.grayColor()
+    week.enabled = true
     nextWeek.hidden = true
     previousWeek.hidden = true
     previousDay.hidden = false
@@ -369,7 +376,9 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   func weekButton(sender: UIButton){
     playChoose()
     day.backgroundColor = UIColor.grayColor()
+    day.enabled = true
     week.backgroundColor = UIColor.whiteColor()
+    week.enabled = false
     previousDay.hidden = true
     nextDay.hidden = true
     previousWeek.hidden = false
@@ -464,6 +473,10 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   override func viewWillDisappear(animated: Bool) {
     playClick()
+    day.backgroundColor = UIColor.whiteColor()
+    day.enabled = false
+    week.backgroundColor = UIColor.grayColor()
+    week.enabled = true
     results = readData()
     nowViewing = 0
     resetDay()
