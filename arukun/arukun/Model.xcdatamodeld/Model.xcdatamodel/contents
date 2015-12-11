@@ -12,6 +12,7 @@
         <attribute name="picturenumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Diary" representedClassName="PRODUCT_MODULE_NAME.Diary" syncable="YES">
+        <attribute name="charaimage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="writeat" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
@@ -60,7 +61,7 @@
     <elements>
         <element name="Charadata" positionX="-11" positionY="99" width="128" height="105"/>
         <element name="Charapicture" positionX="196" positionY="-99" width="128" height="90"/>
-        <element name="Diary" positionX="205" positionY="45" width="128" height="75"/>
+        <element name="Diary" positionX="205" positionY="45" width="128" height="90"/>
         <element name="Furniture" positionX="-90" positionY="-99" width="128" height="120"/>
         <element name="Pedometer" positionX="88" positionY="-246" width="128" height="75"/>
         <element name="Pet" positionX="-225" positionY="27" width="128" height="225"/>

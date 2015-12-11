@@ -20,6 +20,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   var total :Int = 0
   var max :Int = 0
   var nowViewing :NSTimeInterval = 0 //何周目を見てる？　例)7：一週間前　14：二週間前
+  var mainColor = UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0)
   
   //値
   var chartData = [0,0,0,0,0,0,0]  //ユーザに見せるのはコレ
@@ -43,6 +44,10 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   override func viewDidLoad() {
     //日付のやつ
     //今日の日付の0時を返すには
+    header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
+    header.layer.position = CGPoint(x: self.view.center.x, y: self.view.frame.height*0.3)
+    self.view.addSubview(header)
+    
     data = UITextView(frame: CGRectMake(0, 0, barChart.frame.width-100, 80))
     data.layer.position = CGPointMake(self.view.frame.width*0.5, self.view.frame.height*0.85)
     data.backgroundColor = UIColor(red: 1, green: 227/255, blue: 178/255, alpha: 1.0)
@@ -50,7 +55,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     data.layer.cornerRadius = 20
     data.editable = false
     self.view!.addSubview(data)
-
+    
     let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
     today = NSDate()
     dateFormatter.calendar = calendar
@@ -107,12 +112,11 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     for Data in chartData{
       total += Data
     }
-    header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
     header.text =  "日毎の記録"
-
-      data.font = UIFont(name: "HiraKakuProN-W3", size: 15)
-      data.text = text
-      data.textAlignment = NSTextAlignment.Left
+    
+    data.font = UIFont(name: "HiraKakuProN-W3", size: 15)
+    data.text = text
+    data.textAlignment = NSTextAlignment.Left
     
     makeButtons()
     informationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: 60))
@@ -144,7 +148,6 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     header.textAlignment = NSTextAlignment.Center
     
     barChart.footerView = footerView
-    barChart.headerView = header
   }
   //ここからほとんどデータベース関連
   func readData() -> NSArray{
@@ -227,35 +230,39 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     informationLabel.textColor = UIColor(red: 66/255, green: 32/255, blue: 16/255, alpha: 1.0)
     informationLabel.font = UIFont.systemFontOfSize(24)
     informationLabel.font = UIFont(name: "HiraKakuProN-W3", size: 24)
-    informationLabel.text = "\(key) \(data)歩"
     var kcal = ( (playerHeight*0.40*Double(data))/100000.0 * playerWeight * 1.05)
     kcal = Double(Int(kcal * 100.0)) / 100.0
     
+    playGraph()
+    
     if(whichViewing == false){
+      informationLabel.text = "\(key) \(data)歩"
       self.data.text =  "\(key)の消費カロリー：\(kcal)kcal\n\(key)の歩数：\(data)歩"
     }else{
+      informationLabel.text = "\(key)~ \(data)歩"
       self.data.text =  "\(key)から1週間の消費カロリー：\(kcal)kcal\n\(key)から1週間の歩数：\(data)歩"
     }
   }
   
-  func didDeselectBarChartView(barChartView: JBBarChartView!) {
-    //informationLabel.text = ""
-  }
+  /*func didDeselectBarChartView(barChartView: JBBarChartView!) {
+  }*/
   
   //その他オリジナルメソッド
   func makeButtons(){
-    day = UIButton(frame: CGRectMake(self.view.frame.width*0.3, 100, 100, 30))
+    day = UIButton(frame: CGRectMake(0,0, 100, 30))
     day.setTitle("day", forState: .Normal)
-    day.setTitleColor(UIColor(red: 156/255, green: 146/255, blue: 130/255, alpha: 1.0), forState: .Normal)
-    day.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
+    day.setTitleColor(mainColor, forState: .Normal)
+    day.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
     day.backgroundColor = UIColor.whiteColor()
     day.addTarget(self, action: "DayButton:", forControlEvents: .TouchUpInside)
+    day.layer.position = CGPoint(x: self.view.frame.width*0.3, y: 130)
     day.layer.masksToBounds = true
     day.layer.cornerRadius = 20
+    day.enabled = false
     
     previousDay = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.7, 50, 50))
     previousDay.setTitle("Previous", forState: .Normal)
-    previousDay.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
+    previousDay.setTitleColor(mainColor, forState: .Normal)
     previousDay.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
     previousDay.backgroundColor = UIColor.clearColor()
     previousDay.addTarget(self, action: "previousDay:", forControlEvents: .TouchUpInside)
@@ -265,7 +272,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     
     nextDay = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.7, 50, 30))
     nextDay.setTitle("Next", forState: .Normal)
-    nextDay.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
+    nextDay.setTitleColor(mainColor, forState: .Normal)
     nextDay.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
     nextDay.backgroundColor = UIColor.clearColor()
     nextDay.addTarget(self, action: "nextDay:", forControlEvents: .TouchUpInside)
@@ -276,7 +283,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     
     previousWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.7, 50, 50))
     previousWeek.setTitle("Previous", forState: .Normal)
-    previousWeek.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
+    previousWeek.setTitleColor(mainColor, forState: .Normal)
     previousWeek.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
     previousWeek.backgroundColor = UIColor.clearColor()
     previousWeek.addTarget(self, action: "previousWeek:", forControlEvents: .TouchUpInside)
@@ -287,7 +294,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     
     nextWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.7, 50, 30))
     nextWeek.setTitle("Next", forState: .Normal)
-    nextWeek.setTitleColor(UIColor(red: 100/255, green: 50/255, blue: 0, alpha: 1.0), forState: .Normal)
+    nextWeek.setTitleColor(mainColor, forState: .Normal)
     nextWeek.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
     nextWeek.backgroundColor = UIColor.clearColor()
     nextWeek.addTarget(self, action: "nextWeek:", forControlEvents: .TouchUpInside)
@@ -297,12 +304,13 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.view.addSubview(nextWeek)
     
     
-    week = UIButton(frame: CGRectMake(self.view.frame.width*0.6, 100, 100, 30))
+    week = UIButton(frame: CGRectMake(0,0, 100, 30))
     week.setTitle("week", forState: .Normal)
-    week.setTitleColor(UIColor(red: 156/255, green: 146/255, blue: 130/255, alpha: 1.0), forState: .Normal)
-    week.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    week.backgroundColor = UIColor.whiteColor()
+    week.setTitleColor(mainColor, forState: .Normal)
+    week.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
+    week.backgroundColor = UIColor.grayColor()
     week.addTarget(self, action: "weekButton:", forControlEvents: .TouchUpInside)
+    week.layer.position = CGPoint(x: self.view.frame.width*0.7, y: 130)
     week.layer.masksToBounds = true
     week.layer.cornerRadius = 20
     week.tag = 2
@@ -311,7 +319,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.view.addSubview(week)
   }
   
-
+  
   //共通
   
   func Aggregate(){
@@ -337,6 +345,8 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         max = data
       }
     }
+    
+    max = Int(Double(max)*1.5)
     barChart.maximumValue = CGFloat(max)
     chartData = chartData.reverse()
   }
@@ -352,6 +362,11 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   //日付関係
   func DayButton(sender: UIButton){
+    playChoose()
+    day.backgroundColor = UIColor.whiteColor()
+    day.enabled = false
+    week.backgroundColor = UIColor.grayColor()
+    week.enabled = true
     nextWeek.hidden = true
     previousWeek.hidden = true
     previousDay.hidden = false
@@ -361,6 +376,11 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   }
   
   func weekButton(sender: UIButton){
+    playChoose()
+    day.backgroundColor = UIColor.grayColor()
+    day.enabled = true
+    week.backgroundColor = UIColor.whiteColor()
+    week.enabled = false
     previousDay.hidden = true
     nextDay.hidden = true
     previousWeek.hidden = false
@@ -370,27 +390,32 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   }
   
   func previousDay(sender: UIButton){
+    playClick()
     nowViewing += 1
     resetDay()
   }
   
   func nextDay(sender: UIButton){
+    playClick()
     nowViewing += -1
     resetDay()
   }
   
   func previousWeek(sender: UIButton){
+    playClick()
     nowViewing += 1
     resetWeek()
   }
   
   func nextWeek(sender: UIButton){
+    playClick()
     nowViewing += -1
     resetWeek()
   }
   
   
   func resetDay(){  //日付でやります
+    resetText()
     if (nowViewing != 0) {
       nextDay.hidden = false
     }else{
@@ -420,6 +445,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   }
   
   func resetWeek(){  //今度は週毎！
+    resetText()
     if (nowViewing != 0) {
       nextWeek.hidden = false
     }else{
@@ -449,7 +475,24 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     self.viewDidAppear(true)
   }
   
+  func resetText(){
+    self.data.text = ""
+    informationLabel.text = ""
+  }
+  
   override func viewWillDisappear(animated: Bool) {
+    playClick()
+    day.backgroundColor = UIColor.whiteColor()
+    day.enabled = false
+    week.backgroundColor = UIColor.grayColor()
+    week.enabled = true
+    results = readData()
+    nowViewing = 0
+    resetDay()
+    header.text =  "日毎の記録"
+  }
+  
+  func playClick(){
     if let path = NSBundle.mainBundle().pathForResource("click", ofType: "mp3") {
       audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
       if let sound = audioPlayer {
@@ -457,12 +500,27 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
         sound.play()
       }
     }
-    results = readData()
-    nowViewing = 0
-    resetDay()
-    header.text =  "日毎の記録"
+  }
+  
+  func playChoose(){
+    if let path = NSBundle.mainBundle().pathForResource("choose", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
+  }
+  
+  func playGraph(){
+    if let path = NSBundle.mainBundle().pathForResource("graph", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      if let sound = audioPlayer {
+        sound.prepareToPlay()
+        sound.play()
+      }
+    }
   }
   
   
-
 }

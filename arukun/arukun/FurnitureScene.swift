@@ -14,6 +14,7 @@ class FurnitureScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         //まずScrollViewを2つ作るよ
+      self.runAction(click)
       var background = SKSpriteNode(imageNamed: "con.jpg")
       background.xScale = 1.5
       background.yScale = 1.5

@@ -98,13 +98,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             subVC.selectedImg = selectedImage
             subVC.selectedlbl = str
           
-            if let path = NSBundle.mainBundle().pathForResource("scroll_up", ofType: "mp3") {
-            audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
-            if let sound = audioPlayer {
-              sound.prepareToPlay()
-              sound.play()
-            }
-          }
+            
 
 
         }

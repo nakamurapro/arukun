@@ -212,5 +212,5 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
       }
     }
   }
-
+  
 }
