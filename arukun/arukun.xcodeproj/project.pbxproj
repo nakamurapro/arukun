@@ -43,6 +43,7 @@
 		1DF394911BD7301A00027E08 /* con.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3948A1BD7301A00027E08 /* con.jpg */; };
 		1DF394921BD7301A00027E08 /* hai.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3948B1BD7301A00027E08 /* hai.jpg */; };
 		1DF394941BD7301A00027E08 /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3948D1BD7301A00027E08 /* photo1.png */; };
+		7B2601861C1A62C900FEC4C5 /* TabDesignController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2601851C1A62C900FEC4C5 /* TabDesignController.swift */; };
 		7B2B24D119D7E73600A75413 /* Room.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B24D019D7E73600A75413 /* Room.plist */; };
 		7B2C60291C04AAAE0064FC2A /* random.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C60281C04AAAE0064FC2A /* random.csv */; };
 		7B2CF2521BFE1C1A00959ECB /* scroll_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B2CF24C1BFE1C1A00959ECB /* scroll_down.mp3 */; };
@@ -180,6 +181,7 @@
 		1DF3948A1BD7301A00027E08 /* con.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = con.jpg; path = "../../kamii_picturebook/kore test/img/con.jpg"; sourceTree = "<group>"; };
 		1DF3948B1BD7301A00027E08 /* hai.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hai.jpg; path = "../../kamii_picturebook/kore test/img/hai.jpg"; sourceTree = "<group>"; };
 		1DF3948D1BD7301A00027E08 /* photo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photo1.png; path = "../../kamii_picturebook/kore test/img/photo1.png"; sourceTree = "<group>"; };
+		7B2601851C1A62C900FEC4C5 /* TabDesignController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDesignController.swift; sourceTree = "<group>"; };
 		7B2B24D019D7E73600A75413 /* Room.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Room.plist; sourceTree = "<group>"; };
 		7B2C60281C04AAAE0064FC2A /* random.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = random.csv; sourceTree = "<group>"; };
 		7B2CF24C1BFE1C1A00959ECB /* scroll_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scroll_down.mp3; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				1D60AA531B27EF5D000D4D5A /* AppDelegate.swift */,
+				7B2601851C1A62C900FEC4C5 /* TabDesignController.swift */,
 				1D6764A91BBE22D300FFB44A /* FirstViewController.swift */,
 				7B9A6D861B3843990056D886 /* Game */,
 				7B36E0411B39A6D400A62CF3 /* Diary */,
@@ -721,6 +724,7 @@
 				7B7F7F641BDE679500F1DEC7 /* FurnitureSetScene.swift in Sources */,
 				1DF394821BD72FFD00027E08 /* ViewController2.swift in Sources */,
 				1D6764B71BBE240D00FFB44A /* JBLineChartView.m in Sources */,
+				7B2601861C1A62C900FEC4C5 /* TabDesignController.swift in Sources */,
 				7B313D0F1BD5FC9E002A6782 /* FurnitureScene.swift in Sources */,
 				7B9A6D8D1B3849C90056D886 /* DiaryScene.swift in Sources */,
 				7B7F7F661BDE67AC00F1DEC7 /* FurnitureBuySnece.swift in Sources */,
