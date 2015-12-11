@@ -231,6 +231,8 @@ class FurnitureBuyScene: SKScene {
         myWindow.hidden = true
         backtomenu.hidden = false
         Scroll.hidden = false
+        BuyButton.removeFromSuperview()
+        cancelButton.removeFromSuperview()
         backButton.removeFromSuperview()
         Text[3].removeFromSuperview()
     }
