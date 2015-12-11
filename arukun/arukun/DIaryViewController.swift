@@ -48,7 +48,7 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     for data in Diary{
       var writeAt = dateFormatter.stringFromDate(data.valueForKey("writeat")! as! NSDate)
-      tableData.append(["name": "にゃんこ","image": "23.jpg","created": writeAt,"message": data.valueForKey("text")!])
+      tableData.append(["name": "にゃんこ","image": "01.png","created": writeAt,"message": data.valueForKey("text")!])
     }
     
     setView()

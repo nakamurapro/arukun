@@ -488,6 +488,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     week.enabled = true
     results = readData()
     nowViewing = 0
+    whichViewing = false
     resetDay()
     header.text =  "日毎の記録"
   }
