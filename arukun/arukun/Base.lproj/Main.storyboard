@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--ゲーム-->
+        <!--ホーム-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ゲーム" image="test_star" id="vQT-Ya-Ikx"/>
+                    <tabBarItem key="tabBarItem" title="ホーム" image="icon1" id="vQT-Ya-Ikx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="日記" image="test_star" id="VoJ-80-gUT"/>
+                    <tabBarItem key="tabBarItem" title="日記" image="icon4" id="VoJ-80-gUT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHG-MO-OVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,17 +56,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="家具" image="test_star" id="8bD-yG-8eH"/>
+                    <tabBarItem key="tabBarItem" title="家具" image="icon5" id="8bD-yG-8eH"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QpH-8Q-wdy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1303.5" y="1376.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Design Controller-->
         <scene sceneID="2zg-vp-21O">
             <objects>
-                <tabBarController id="j3o-3f-oeB" sceneMemberID="viewController">
+                <tabBarController id="j3o-3f-oeB" customClass="TabDesignController" customModule="arukun" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="wmE-Ct-H7s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -147,7 +147,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="グラフ" image="test_star" id="eQy-3A-gR9"/>
+                    <tabBarItem key="tabBarItem" title="グラフ" image="icon2" id="eQy-3A-gR9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="barChart" destination="hG2-wp-mfa" id="azR-ol-cKN"/>
@@ -229,7 +229,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ずかん" image="test_star" id="urM-RL-K4Z"/>
+                    <tabBarItem key="tabBarItem" title="ずかん" image="icon3" id="urM-RL-K4Z"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -282,7 +282,7 @@
                                     <constraint firstAttribute="height" constant="263" id="au8-NY-s40"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-mj-uz3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-mj-uz3">
                                 <rect key="frame" x="69" y="428" width="218" height="169"/>
                                 <color key="backgroundColor" red="1" green="0.8901960784313725" blue="0.69803921568627447" alpha="0.89000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -372,7 +372,11 @@
     <resources>
         <image name="con" width="525" height="700"/>
         <image name="husen" width="420" height="370"/>
-        <image name="test_star" width="40" height="40"/>
+        <image name="icon1" width="40" height="40"/>
+        <image name="icon2" width="40" height="40"/>
+        <image name="icon3" width="40" height="40"/>
+        <image name="icon4" width="40" height="40"/>
+        <image name="icon5" width="40" height="40"/>
         <image name="wood_back" width="480" height="640"/>
     </resources>
 </document>
