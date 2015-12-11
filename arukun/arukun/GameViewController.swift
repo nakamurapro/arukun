@@ -72,6 +72,7 @@ class GameViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+      viewDidLoad()
       let categoryContext: NSManagedObjectContext = app.managedObjectContext!
       let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
       var resultPoint = categoryContext.executeFetchRequest(categoryRequest, error: nil)!
