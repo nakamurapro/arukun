@@ -63,10 +63,9 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     var String = dateFormatter.stringFromDate(today)
     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
     today = dateFormatter.dateFromString("\(String) 09:00:00")!
+    println(today)
     limit = NSDate(timeInterval: 60*60*24, sinceDate: today)
-    
-    //返し終わり。でも現段階だと今日の15:00が返ってくるのであとで修正…
-    
+        
     ShowdayFormat.calendar = calendar
     ShowdayFormat.dateFormat = "MM/dd"
     

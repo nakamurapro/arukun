@@ -366,27 +366,10 @@ class FurnitureBuyScene: SKScene {
         let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
         
         var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
-        if(results.count == 0){
-            makeUser()
-            readPoint()
-        }else{
-            for data in results{
-                PlayerPoint = data.valueForKey("money") as! Int
-            }
+        for data in results{
+            PlayerPoint = data.valueForKey("money") as! Int
         }
     }
-    
-    func makeUser(){
-        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
-        let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
-            "User", inManagedObjectContext: categoryContext)
-        var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-        new_data.setValue(300, forKey: "money")
-        new_data.setValue(160, forKey: "stature") //身長のこと
-        new_data.setValue(0, forKey: "stride")
-        
-        var error: NSError?
-    }
+  
   
 }

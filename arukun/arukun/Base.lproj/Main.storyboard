@@ -263,19 +263,6 @@
                                     <constraint firstAttribute="width" constant="345" id="gDu-Lf-4pb"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-yn-27g">
-                                <rect key="frame" x="16" y="28" width="80" height="30"/>
-                                <color key="backgroundColor" red="0.70588235294117652" green="1" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="wI7-No-zeV"/>
-                                </constraints>
-                                <state key="normal" title="もどる">
-                                    <color key="titleColor" red="0.43137254901960786" green="0.51764705882352935" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gKX-28-G21" kind="unwind" unwindAction="returnMenu:" id="GmF-oe-okF"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rtn-Xz-Oe2">
                                 <rect key="frame" x="51" y="112" width="255" height="263"/>
                                 <constraints>
@@ -294,6 +281,19 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-yn-27g">
+                                <rect key="frame" x="15" y="27" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.70588235294117652" green="1" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="wI7-No-zeV"/>
+                                </constraints>
+                                <state key="normal" title="もどる">
+                                    <color key="titleColor" red="0.43137254901960786" green="0.51764705882352935" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="gKX-28-G21" kind="unwind" unwindAction="returnMenu:" id="GmF-oe-okF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

@@ -9,7 +9,7 @@
 		<key>rgb</key>
 		<string>RB+</string>
 		<key>haved</key>
-		<false/>
+		<true/>
 		<key>text</key>
 		<string>頭が良く非常に活発的。ただ人への愛が打算的で、愛したらもう誰にも止められない。</string>
 	</dict>
@@ -75,7 +75,7 @@
 		<key>rgb</key>
 		<string>GG+</string>
 		<key>haved</key>
-		<false/>
+		<true/>
 		<key>text</key>
 		<string>クールで情熱的な性格をしていて、大人気である。そして走るスピードが非常に早い。</string>
 	</dict>
