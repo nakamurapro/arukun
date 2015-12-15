@@ -46,7 +46,6 @@ class foodScene: SKScene {
     layoutObject()
     makeScroll()
     makeButtons()
-    //        self.physicsWorld.contactDelegate = self
     self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
     backtomenu = UIButton(frame: CGRectMake(0, 0, 80, 80))
@@ -227,7 +226,6 @@ class foodScene: SKScene {
     if (Flg == false){
       if let imageView = recognizer.view as? UIImageView {
         Scroll.hidden = true
-        backtomenu.hidden = true
         Flg = true
         //まずはウィンドウ作ろう
         selected = imageView.tag
@@ -263,7 +261,6 @@ class foodScene: SKScene {
     Flg = false
     myWindow.hidden = true
     Scroll.hidden = false
-    backtomenu.hidden = false
     BuyButton.removeFromSuperview()
     cancelButton.removeFromSuperview()
     backButton.removeFromSuperview()

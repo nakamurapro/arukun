@@ -69,13 +69,13 @@ class CustomLeftTableViewCell: UITableViewCell{
         var marginVertical: CGFloat = 20
 
 // アイコン
-
+        var Image = UIImage(named: (data["image"] as? String)!)
         var xIcon: CGFloat = 3
         var yIcon: CGFloat = 40
         var widthIcon: CGFloat = 60
         var heightIcon: CGFloat = 60
         self.icon.frame = CGRectMake(xIcon, yIcon, widthIcon, heightIcon)
-        self.icon.image = UIImage(named: (data["image"] as? String)!)
+        self.icon.image = Image
         self.icon.layer.cornerRadius = 30
         self.icon.clipsToBounds = true
         

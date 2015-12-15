@@ -79,7 +79,7 @@ class FurnitureBuyScene: SKScene {
         self.view!.addSubview(Scroll)
         
         //メニューに戻るボタン
-        backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 50))
+        backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 40))
         backtomenu.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
         backtomenu.addTarget(self, action: "backtomenu:", forControlEvents: .TouchUpInside)
         backtomenu.setTitle("もどる", forState: .Normal)

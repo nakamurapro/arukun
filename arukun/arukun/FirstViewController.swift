@@ -249,57 +249,66 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   //その他オリジナルメソッド
   func makeButtons(){
+    
+    var viewFrame = CGPoint(x: self.view.frame.width, y: self.view.frame.height)
     day = UIButton(frame: CGRectMake(0,0, 100, 30))
     day.setTitle("day", forState: .Normal)
     day.setTitleColor(mainColor, forState: .Normal)
     day.setTitleColor(UIColor.whiteColor(), forState: .Highlighted)
     day.backgroundColor = UIColor.whiteColor()
     day.addTarget(self, action: "DayButton:", forControlEvents: .TouchUpInside)
-    day.layer.position = CGPoint(x: self.view.frame.width*0.3, y: 130)
+    day.layer.position = CGPoint(x: viewFrame.x*0.3, y: 130)
     day.layer.masksToBounds = true
     day.layer.cornerRadius = 20
     day.enabled = false
     
-    previousDay = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.7, 50, 50))
-    previousDay.setTitle("Previous", forState: .Normal)
+    
+    previousDay = UIButton(frame: CGRectMake(0, 0, 50, 40))
+    previousDay.layer.position = CGPoint(x: viewFrame.x*0.15, y: viewFrame.y*0.75)
+    previousDay.backgroundColor = UIColor.whiteColor()
+    previousDay.setTitle("Prev", forState: .Normal)
     previousDay.setTitleColor(mainColor, forState: .Normal)
     previousDay.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
-    previousDay.backgroundColor = UIColor.clearColor()
     previousDay.addTarget(self, action: "previousDay:", forControlEvents: .TouchUpInside)
     previousDay.layer.masksToBounds = true
-    previousDay.sizeToFit()
+    previousDay.layer.cornerRadius = 20
+    previousDay.contentHorizontalAlignment = .Center
+    
     self.view.addSubview(previousDay)
     
-    nextDay = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.7, 50, 30))
+    nextDay = UIButton(frame: CGRectMake(0, 0, 50, 40))
+    nextDay.layer.position = CGPoint(x: viewFrame.x*0.85, y: viewFrame.y*0.75)
+    nextDay.backgroundColor = UIColor.whiteColor()
     nextDay.setTitle("Next", forState: .Normal)
     nextDay.setTitleColor(mainColor, forState: .Normal)
     nextDay.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
-    nextDay.backgroundColor = UIColor.clearColor()
     nextDay.addTarget(self, action: "nextDay:", forControlEvents: .TouchUpInside)
     nextDay.layer.masksToBounds = true
-    nextDay.sizeToFit()
+    nextDay.layer.cornerRadius = 20
     nextDay.hidden = true
     self.view.addSubview(nextDay)
     
-    previousWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.05, self.view.frame.height*0.7, 50, 50))
-    previousWeek.setTitle("Previous", forState: .Normal)
+    previousWeek = UIButton(frame: CGRectMake(0, 0, 50, 40))
+    previousWeek.layer.position = CGPoint(x: viewFrame.x*0.15, y: viewFrame.y*0.75)
+    previousWeek.backgroundColor = UIColor.whiteColor()
+    previousWeek.setTitle("Prev", forState: .Normal)
     previousWeek.setTitleColor(mainColor, forState: .Normal)
     previousWeek.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
-    previousWeek.backgroundColor = UIColor.clearColor()
     previousWeek.addTarget(self, action: "previousWeek:", forControlEvents: .TouchUpInside)
     previousWeek.layer.masksToBounds = true
-    previousWeek.sizeToFit()
+    previousWeek.layer.cornerRadius = 20
     previousWeek.hidden = true
     self.view.addSubview(previousWeek)
     
-    nextWeek = UIButton(frame: CGRectMake(self.view.frame.width*0.75, self.view.frame.height*0.7, 50, 30))
+    nextWeek = UIButton(frame: CGRectMake(0, 0, 50, 40))
+    nextWeek.layer.position = CGPoint(x: viewFrame.x*0.85, y: viewFrame.y*0.75)
+    nextWeek.backgroundColor = UIColor.whiteColor()
     nextWeek.setTitle("Next", forState: .Normal)
     nextWeek.setTitleColor(mainColor, forState: .Normal)
     nextWeek.setTitleColor(UIColor.orangeColor(), forState: .Highlighted)
-    nextWeek.backgroundColor = UIColor.clearColor()
     nextWeek.addTarget(self, action: "nextWeek:", forControlEvents: .TouchUpInside)
     nextWeek.layer.masksToBounds = true
-    nextWeek.sizeToFit()
+    nextWeek.layer.cornerRadius = 20
     nextWeek.hidden = true
     self.view.addSubview(nextWeek)
     
