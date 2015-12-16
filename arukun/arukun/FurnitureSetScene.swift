@@ -100,7 +100,7 @@ class FurnitureSetScene: SKScene {
     self.view!.addSubview(Scroll)
     
     //お部屋を見る
-    ShowRoomButton = UIButton(frame: CGRectMake(0, 0, 100, 50))
+    ShowRoomButton = UIButton(frame: CGRectMake(0, 0, 100, 40))
     ShowRoomButton.backgroundColor = UIColor.orangeColor()
     ShowRoomButton.addTarget(self, action: "showRoom:", forControlEvents: .TouchUpInside)
     ShowRoomButton.setTitle("部屋を見る", forState: .Normal)
@@ -120,7 +120,7 @@ class FurnitureSetScene: SKScene {
     backtomenu.setTitleColor(UIColor(red: 110/255, green: 132/255, blue: 94/255, alpha: 1), forState: .Normal)
     backtomenu.setTitle("もどる", forState: .Highlighted)
     backtomenu.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-    backtomenu.layer.position = CGPoint(x: 60, y: phoneSize.height*0.9-20)
+    backtomenu.layer.position = CGPoint(x: phoneSize.width*0.3, y: phoneSize.height*0.9-20)
     backtomenu.layer.cornerRadius = 20
 
     self.view!.addSubview(backtomenu)

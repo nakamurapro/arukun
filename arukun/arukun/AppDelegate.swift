@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var myMotionManager: CMMotionManager!
   var window: UIWindow?
   var counter: Int = 0 //こっちが見せるやつ
-  var playerStep: Int = 0 //こっちがデータベース登録用のやつ
   var FoodFlg = false
   var backgroundFlg = false
   var i :Int = 0 //これはポイント用
@@ -67,34 +66,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func UpdateCoredata(timer :NSTimer){
-    //今日の日付
+    UpdatePedometer()
+  }
+  
+  func UpdatePedometer(){
+    var today = makeToday()
+    let PedometerContext: NSManagedObjectContext = managedObjectContext!
+    let PedometerRequest: NSFetchRequest = NSFetchRequest(entityName: "Pedometer")
+    PedometerRequest.returnsObjectsAsFaults = false
+    let predicate = NSPredicate(format: "SELF.date BETWEEN {%@, %@}", today,
+      NSDate(timeInterval: 60*60*24-1, sinceDate: today))
+    PedometerRequest.returnsObjectsAsFaults = false
+    PedometerRequest.predicate = predicate
+    var results: NSArray! = PedometerContext.executeFetchRequest(PedometerRequest, error: nil)
+    for data in results{
+      data.setValue(counter, forKey: "step")
+      var error: NSError?
+      PedometerContext.save(&error)
+    }
+  }
+  
+  func makeNewRecord(){
+    var today = makeToday()
     let categoryContext: NSManagedObjectContext = managedObjectContext!
-    var day :NSDate = NSDate()
     let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
       "Pedometer", inManagedObjectContext: categoryContext)
     var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-    new_data.setValue(day, forKey: "date")
-    new_data.setValue(playerStep, forKey: "step")
-    playerStep = 0
+    new_data.setValue(today, forKey: "date")
+    new_data.setValue(0, forKey: "step")
     var error: NSError?
     categoryContext.save(&error)
   }
-
-  func applicationWillEnterForeground(application: UIApplication) {
-  }
   
-  func applicationDidBecomeActive(application: UIApplication) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    if let path = NSBundle.mainBundle().pathForResource("bgm1", ofType: "mp3") {
-      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
-      audioPlayer!.numberOfLoops = -1
-      if let sound = audioPlayer {
-        sound.prepareToPlay()
-        sound.play()
-      }
-    }
-    
-    counter = playerStep
+  func makeToday() -> NSDate{
     let calendar :NSCalendar! = NSCalendar(identifier: NSCalendarIdentifierGregorian)
     var today = NSDate()
     var dateFormatter = NSDateFormatter()
@@ -102,7 +106,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     dateFormatter.dateFormat = "yyyy-MM-dd"
     var String = dateFormatter.stringFromDate(today)
     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-    today = dateFormatter.dateFromString("\(String) 09:00:00")!
+    return dateFormatter.dateFromString("\(String) 00:00:00")!
+  }
+
+  func applicationWillEnterForeground(application: UIApplication) {
+    UpdatePedometer()
+  }
+  
+  func applicationDidBecomeActive(application: UIApplication) {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if let path = NSBundle.mainBundle().pathForResource("bgm1", ofType: "mp3") {
+      audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
+      audioPlayer!.numberOfLoops = -1
+      audioPlayer!.prepareToPlay()
+      audioPlayer!.play()
+    }
+    counter = 0
+
+    var today = makeToday()
     
     let PedometerContext: NSManagedObjectContext = managedObjectContext!
     let PedometerRequest: NSFetchRequest = NSFetchRequest(entityName: "Pedometer")
@@ -112,12 +133,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     PedometerRequest.returnsObjectsAsFaults = false
     PedometerRequest.predicate = predicate
     var results: NSArray! = PedometerContext.executeFetchRequest(PedometerRequest, error: nil)
-    for data in results {
-      var step :Int = data.valueForKey("step") as! Int
-      counter = counter + step
+    if(results.count == 0){
+      makeNewRecord()
+    }else{
+      for data in results {
+        var step :Int = data.valueForKey("step") as! Int
+        counter = counter + step
+      }
     }
     
-    i = counter
     myMotionManager = CMMotionManager()
     
     // 更新周期を設定.
@@ -133,9 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       var CheckY = abs(self.Y - y)
       var CheckZ = abs(self.Z - z)
       
-      if(CheckX > 0.5 || CheckY > 0.5 || CheckZ > 0.5){
+      if(CheckX > 0.45 || CheckY > 0.45 || CheckZ > 0.45){
         self.counter = self.counter + 1
-        self.playerStep = self.playerStep + 1
       }
       self.X = x; self.Y = y; self.Z = z
       

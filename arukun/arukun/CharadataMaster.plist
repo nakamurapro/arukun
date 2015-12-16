@@ -9,9 +9,9 @@
 		<key>rgb</key>
 		<string>RB+</string>
 		<key>haved</key>
-		<false/>
+		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>頭が良く非常に活発的。ただ人への愛が打算的で、愛したらもう誰にも止められない。</string>
 	</dict>
 	<key>data15</key>
 	<dict>
@@ -22,7 +22,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>甘いものをこよなく愛する。人懐っこいけれど、何だか見る目がおかしい。</string>
 	</dict>
 	<key>data14</key>
 	<dict>
@@ -33,7 +33,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>みんなの頼れるリーダー。頭についている2つの球体は、感情に合わせて動く。</string>
 	</dict>
 	<key>data13</key>
 	<dict>
@@ -44,7 +44,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>歩いた場所に水たまりを作ったりする。小心者で流されやすく、体もどこかに流れてる…？</string>
 	</dict>
 	<key>data12</key>
 	<dict>
@@ -55,7 +55,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>のんびりした性格。不思議な力で空を飛ぶことができる。</string>
 	</dict>
 	<key>data11</key>
 	<dict>
@@ -66,7 +66,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>穏やかで基本的には無表情で、その時は三日月のようなアンテナで月との伝達をしている。</string>
 	</dict>
 	<key>data10</key>
 	<dict>
@@ -75,9 +75,9 @@
 		<key>rgb</key>
 		<string>GG+</string>
 		<key>haved</key>
-		<false/>
+		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>クールで情熱的な性格をしていて、大人気である。そして走るスピードが非常に早い。</string>
 	</dict>
 	<key>data9</key>
 	<dict>
@@ -88,7 +88,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>恥ずかしがり屋で少し消極的な性格。その反面、誰かと遊ぶことがとても大好き。</string>
 	</dict>
 	<key>data8</key>
 	<dict>
@@ -99,7 +99,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>困ったことは放っておけない明るい性格だが、怒らせるととても怖く大変なことに。</string>
 	</dict>
 	<key>data7</key>
 	<dict>
@@ -110,7 +110,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>素直な性格で、いつも微笑んでいる。普段から、あまり目立とうとはしない。</string>
 	</dict>
 	<key>data6</key>
 	<dict>
@@ -121,7 +121,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>大きい体で怖がられることもあるが、実は心優しく非常に熱血な性格。</string>
 	</dict>
 	<key>data5</key>
 	<dict>
@@ -132,7 +132,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>マイペースな性格で、よく食べてよく寝る。力がとても強い。</string>
 	</dict>
 	<key>data4</key>
 	<dict>
@@ -143,7 +143,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>気まぐれな性格で、ちょっと反抗的。自然が大好きで、よくハイキングをしている。</string>
 	</dict>
 	<key>data3</key>
 	<dict>
@@ -154,7 +154,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>「10年に1人の人材」と噂される天才プログラマー。</string>
+		<string>雨の日のおさんぽが大好き。ちょっぴりやんちゃだけれど、実は真面目。</string>
 	</dict>
 	<key>data2</key>
 	<dict>
@@ -165,7 +165,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>体が大きくて怖がられるけど、実は優しい心の持ち主。</string>
+		<string>陽気な性格で、テンションが高い。いつもみんなを引っ張っている。</string>
 	</dict>
 	<key>data1</key>
 	<dict>
@@ -176,7 +176,7 @@
 		<key>haved</key>
 		<true/>
 		<key>text</key>
-		<string>穏やかな性格。\n色んな可能性を秘めている？</string>
+		<string>穏やかな性格。何を考えているのかわからないが、色んな可能性を秘めている…かも。</string>
 	</dict>
 </dict>
 </plist>

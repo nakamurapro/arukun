@@ -48,7 +48,7 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     for data in Diary{
       var writeAt = dateFormatter.stringFromDate(data.valueForKey("writeat")! as! NSDate)
-      tableData.append(["name": "にゃんこ","image": "23.jpg","created": writeAt,"message": data.valueForKey("text")!])
+      tableData.append(["name": "にゃんこ","image": "01","created": writeAt,"message": data.valueForKey("text")!])
     }
     
     setView()
@@ -161,6 +161,7 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var day = NSDate()
     new_data.setValue("\(text[0])\(text[1])\(text[2])", forKey: "text")
     new_data.setValue(day, forKey: "writeat")
+    new_data.setValue("01", forKey: "charaimage")
     
     var error: NSError?
     categoryContext.save(&error)

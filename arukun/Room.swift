@@ -67,7 +67,7 @@ class Diary: NSManagedObject {
     
     @NSManaged var text: String
     @NSManaged var writeat: NSDate
-    
+    @NSManaged var charaimage: String
 }
 
 @objc(User)

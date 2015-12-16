@@ -79,7 +79,7 @@ class FurnitureBuyScene: SKScene {
         self.view!.addSubview(Scroll)
         
         //メニューに戻るボタン
-        backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 50))
+        backtomenu = UIButton(frame: CGRectMake(0, 0, 100, 40))
         backtomenu.backgroundColor = UIColor(red: 180/255, green: 1, blue: 127/255, alpha: 1)
         backtomenu.addTarget(self, action: "backtomenu:", forControlEvents: .TouchUpInside)
         backtomenu.setTitle("もどる", forState: .Normal)
@@ -231,6 +231,8 @@ class FurnitureBuyScene: SKScene {
         myWindow.hidden = true
         backtomenu.hidden = false
         Scroll.hidden = false
+        BuyButton.removeFromSuperview()
+        cancelButton.removeFromSuperview()
         backButton.removeFromSuperview()
         Text[3].removeFromSuperview()
     }
@@ -364,27 +366,10 @@ class FurnitureBuyScene: SKScene {
         let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "User")
         
         var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
-        if(results.count == 0){
-            makeUser()
-            readPoint()
-        }else{
-            for data in results{
-                PlayerPoint = data.valueForKey("money") as! Int
-            }
+        for data in results{
+            PlayerPoint = data.valueForKey("money") as! Int
         }
     }
-    
-    func makeUser(){
-        let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let categoryContext: NSManagedObjectContext = app.managedObjectContext!
-        let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
-            "User", inManagedObjectContext: categoryContext)
-        var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-        new_data.setValue(300, forKey: "money")
-        new_data.setValue(160, forKey: "stature") //身長のこと
-        new_data.setValue(0, forKey: "stride")
-        
-        var error: NSError?
-    }
+  
   
 }

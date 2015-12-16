@@ -32,7 +32,6 @@ class GameScene: SKScene {
   var click = SKAction.playSoundFileNamed("click.mp3", waitForCompletion: true)
   
   override func didMoveToView(view: SKView) {
-    //        /* Setup your scene here */
     
     readPoint()
     var charaImages = readPictures()
@@ -128,8 +127,6 @@ class GameScene: SKScene {
   }
   
   func scoreLayout(){
-    //        scoreSprite.xScale = 1
-    //        scoreSprite.yScale = 1
     scoreSprite.position = CGPoint(x: self.size.width*0.5, y: self.size.height-50)
     pointLabel.text = "0歩"
     pointLabel.fontSize = 20
