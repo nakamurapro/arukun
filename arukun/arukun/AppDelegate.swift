@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       audioPlayer!.prepareToPlay()
       audioPlayer!.play()
     }
-    
+    counter = 0
 
     var today = makeToday()
     
