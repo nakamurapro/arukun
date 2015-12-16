@@ -148,25 +148,27 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     var line = result.count
-    var text: [NSString] = []
-    for j in 0...2{
-      var a = Int(arc4random() )
-      text.append(result[a % line][j])
+    for i in 0...9{
+      var text: [NSString] = []
+      for j in 0...2{
+        var a = Int(arc4random() )
+        text.append(result[a % line][j])
+      }
+      
+      let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
+        "Diary", inManagedObjectContext: categoryContext)
+      var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
+      
+      var day = NSDate()
+      new_data.setValue("\(text[0])\(text[1])\(text[2])", forKey: "text")
+      new_data.setValue(NSDate(timeInterval: -24*60*60*NSTimeInterval(i), sinceDate: day), forKey: "writeat")
+      new_data.setValue("01", forKey: "charaimage")
+      
+      var error: NSError?
+      categoryContext.save(&error)
+      
+      println("NEW DIARY CREATED")
     }
-    
-    let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
-      "Diary", inManagedObjectContext: categoryContext)
-    var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)
-    
-    var day = NSDate()
-    new_data.setValue("\(text[0])\(text[1])\(text[2])", forKey: "text")
-    new_data.setValue(day, forKey: "writeat")
-    new_data.setValue("01", forKey: "charaimage")
-    
-    var error: NSError?
-    categoryContext.save(&error)
-    
-    println("NEW DIARY CREATED")
   }
   
   func checkTodayDiary() {

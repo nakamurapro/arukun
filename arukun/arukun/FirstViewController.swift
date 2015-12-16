@@ -24,7 +24,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   
   //値
   var chartData = [0,0,0,0,0,0,0]  //ユーザに見せるのはコレ
-  var SetData = [1002, 2031, 643, 620, 1075, 1059, 1243, 812, 716, 1259] //データベース登録用
+  var SetData = [6002, 5031, 6643, 8620, 4075, 6059, 7243, 5812, 9716, 5259, 6013] //データベース登録用
   
   var Days :Array<NSDate> = [] //NSDate型の日付
   var ShowDays :Array<String> = [] //ユーザーに見せる日付
@@ -76,7 +76,6 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
       ShowDays.append(ShowdayFormat.stringFromDate(Days[i]))
     }
     super.viewDidLoad()
-    
     results = readData()
     if (results.count == 0){
       initMasters()
@@ -163,8 +162,8 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let categoryContext: NSManagedObjectContext = app.managedObjectContext!
     
-    for(var i = 0; i<=200; i++) {
-      var day :NSDate = NSDate(timeInterval: -60*60*3*NSTimeInterval(i), sinceDate: Days[0])
+    for(var i = 0; i<=30; i++) {
+      var day :NSDate = NSDate(timeInterval: -60*60*24*NSTimeInterval(i), sinceDate: Days[0])
       let categoryEntity: NSEntityDescription! = NSEntityDescription.entityForName(
         "Pedometer", inManagedObjectContext: categoryContext)
       var new_data  = NSManagedObject(entity: categoryEntity, insertIntoManagedObjectContext: categoryContext)

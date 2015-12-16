@@ -108,13 +108,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
     return dateFormatter.dateFromString("\(String) 00:00:00")!
   }
-
+  
   func applicationWillEnterForeground(application: UIApplication) {
     UpdatePedometer()
   }
   
   func applicationDidBecomeActive(application: UIApplication) {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    counter = 0
     if let path = NSBundle.mainBundle().pathForResource("bgm1", ofType: "mp3") {
       audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path), fileTypeHint: "mp3", error: nil)
       audioPlayer!.numberOfLoops = -1
@@ -122,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       audioPlayer!.play()
     }
     
-
+    
     var today = makeToday()
     
     let PedometerContext: NSManagedObjectContext = managedObjectContext!
@@ -134,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     PedometerRequest.predicate = predicate
     var results: NSArray! = PedometerContext.executeFetchRequest(PedometerRequest, error: nil)
     if(results.count == 0){
-      makeNewRecord()
+      
     }else{
       for data in results {
         var step :Int = data.valueForKey("step") as! Int
