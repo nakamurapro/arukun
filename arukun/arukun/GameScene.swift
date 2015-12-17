@@ -16,7 +16,7 @@ class GameScene: SKScene {
   var phoneSize :CGSize = UIScreen.mainScreen().bounds.size //画面サイズ
   var pointLabel = SKLabelNode(fontNamed:"Hiragino Kaku Gothic ProN")
   var scoreSprite = SKSpriteNode(imageNamed: "score")
-  var sprite = SKSpriteNode(imageNamed:"01")
+  var sprite :SKSpriteNode!
   var backtomenu :UIButton!
   var myMotionManager: CMMotionManager!
   var foodButton: UIButton!
@@ -39,6 +39,7 @@ class GameScene: SKScene {
       initCharaMasters()
       charaImages  = readPictures()
     }
+    
     Rooms = readRoom()
     if(Rooms.count == 0){
       makeRoom()
@@ -65,6 +66,8 @@ class GameScene: SKScene {
     //        self.physicsWorld.contactDelegate = self
     self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+    sprite = SKSpriteNode(imageNamed: charaImages[0].valueForKey("picturename")! as! String)
+
     sprite.physicsBody = SKPhysicsBody(circleOfRadius: 500)
     
     sprite.xScale = 0.35
@@ -82,9 +85,9 @@ class GameScene: SKScene {
     sprite.runAction(RepeatAnime)
     
     //続いてパラパラ
-    
     for image in charaImages{
-      var texture = SKTexture(imageNamed: image.valueForKey("picturename")! as! String)
+      var name = image.valueForKey("picturename")! as! String
+      var texture = SKTexture(imageNamed: name)
       texture.filteringMode = .Linear
       Animation.append(texture)
     }
@@ -300,7 +303,7 @@ class GameScene: SKScene {
     let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let categoryContext: NSManagedObjectContext = app.managedObjectContext!
     let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Charapicture")
-    let predicate = NSPredicate(format: "charanumber = %d", 1)
+    let predicate = NSPredicate(format: "charanumber = %d", 10)
     categoryRequest.predicate = predicate
     var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
     return results

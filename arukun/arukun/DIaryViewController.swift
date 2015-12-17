@@ -89,6 +89,11 @@ class DiaryViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let categoryContext: NSManagedObjectContext = app.managedObjectContext!
     let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Diary")
+    
+    let SortDescriptor = NSSortDescriptor(key: "writeat", ascending: false)
+    let sortDescriptors = [SortDescriptor]
+    categoryRequest.sortDescriptors = sortDescriptors
+    
     var error: NSError? = nil;
     var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
     return results!

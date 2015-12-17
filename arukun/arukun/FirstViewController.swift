@@ -42,6 +42,8 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   var audioPlayer :AVAudioPlayer?
   
   override func viewDidLoad() {
+    let backgroundImage = UIImage(named:"con.jpg")!
+    self.view.backgroundColor = UIColor(patternImage: backgroundImage)
     //日付のやつ
     //今日の日付の0時を返すには
     header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
