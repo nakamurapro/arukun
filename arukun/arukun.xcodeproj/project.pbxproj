@@ -54,6 +54,7 @@
 		7B31108E1C049F32005F69ED /* CharapictureMaster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B31108D1C049F32005F69ED /* CharapictureMaster.plist */; };
 		7B313D0D1BD5FC13002A6782 /* FurnitureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B313D0C1BD5FC13002A6782 /* FurnitureViewController.swift */; };
 		7B313D0F1BD5FC9E002A6782 /* FurnitureScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B313D0E1BD5FC9E002A6782 /* FurnitureScene.swift */; };
+		7B4ADA361C23A56200070A79 /* bgm2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4ADA351C23A56200070A79 /* bgm2.mp3 */; };
 		7B63269F1C171C8200787665 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B63269C1C171C8200787665 /* click.mp3 */; };
 		7B6326A01C171C8200787665 /* eating.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B63269D1C171C8200787665 /* eating.mp3 */; };
 		7B6326A11C171C8200787665 /* up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B63269E1C171C8200787665 /* up.mp3 */; };
@@ -189,6 +190,7 @@
 		7B31108D1C049F32005F69ED /* CharapictureMaster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharapictureMaster.plist; sourceTree = "<group>"; };
 		7B313D0C1BD5FC13002A6782 /* FurnitureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FurnitureViewController.swift; sourceTree = "<group>"; };
 		7B313D0E1BD5FC9E002A6782 /* FurnitureScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FurnitureScene.swift; sourceTree = "<group>"; };
+		7B4ADA351C23A56200070A79 /* bgm2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm2.mp3; sourceTree = "<group>"; };
 		7B63269C1C171C8200787665 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		7B63269D1C171C8200787665 /* eating.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eating.mp3; sourceTree = "<group>"; };
 		7B63269E1C171C8200787665 /* up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = up.mp3; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				7B2CF24C1BFE1C1A00959ECB /* scroll_down.mp3 */,
 				7B2CF24D1BFE1C1A00959ECB /* scroll_up.mp3 */,
 				7B6326A21C17AC0A00787665 /* bgm1.mp3 */,
+				7B4ADA351C23A56200070A79 /* bgm2.mp3 */,
 				7B2CF24E1BFE1C1A00959ECB /* choose.mp3 */,
 				7B2CF2501BFE1C1A00959ECB /* decide.mp3 */,
 				7BCDAF391C17D35C00E745BC /* graph.mp3 */,
@@ -627,6 +630,7 @@
 			files = (
 				7B7553E21BE98C31004648C6 /* PetMaster.plist in Resources */,
 				7B2D36A51BB4F24100DCFF38 /* CharadataMaster.plist in Resources */,
+				7B4ADA361C23A56200070A79 /* bgm2.mp3 in Resources */,
 				7B31108E1C049F32005F69ED /* CharapictureMaster.plist in Resources */,
 				7BE00E261BF4D1CA00334A45 /* burgar1.png in Resources */,
 				1D60AA621B27EF5D000D4D5A /* LaunchScreen.xib in Resources */,
