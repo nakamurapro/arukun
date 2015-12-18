@@ -64,7 +64,7 @@ class foodScene: SKScene {
   
   func makeScroll(){
     Scroll.scrollEnabled = true
-    Scroll.contentSize = CGSize(width:0 , height: 540)
+    Scroll.contentSize = CGSize(width:0 , height: 360)
     Scroll.indicatorStyle = UIScrollViewIndicatorStyle.Black
     Scroll.center = CGPoint(x: phoneSize.width*0.5, y: phoneSize.height*0.5)
     Scroll.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
