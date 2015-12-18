@@ -303,7 +303,7 @@ class GameScene: SKScene {
     let app: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let categoryContext: NSManagedObjectContext = app.managedObjectContext!
     let categoryRequest: NSFetchRequest = NSFetchRequest(entityName: "Charapicture")
-    let predicate = NSPredicate(format: "charanumber = %d", 10)
+    let predicate = NSPredicate(format: "charanumber = %d", 7)
     categoryRequest.predicate = predicate
     var results: NSArray! = categoryContext.executeFetchRequest(categoryRequest, error: nil)
     return results

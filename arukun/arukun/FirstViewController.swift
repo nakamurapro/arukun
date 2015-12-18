@@ -64,7 +64,7 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
     dateFormatter.dateFormat = "yyyy-MM-dd"
     var String = dateFormatter.stringFromDate(today)
     dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-    today = dateFormatter.dateFromString("\(String) 09:00:00")!
+    today = dateFormatter.dateFromString("\(String) 00:00:00")!
     println(today)
     limit = NSDate(timeInterval: 60*60*24, sinceDate: today)
         
