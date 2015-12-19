@@ -143,6 +143,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     }
     
+    i = counter
+    
     myMotionManager = CMMotionManager()
     
     // 更新周期を設定.
