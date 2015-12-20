@@ -44,6 +44,9 @@ class FirstViewController: UIViewController, JBBarChartViewDelegate, JBBarChartV
   override func viewDidLoad() {
     //日付のやつ
     //今日の日付の0時を返すには
+    let backgroundImage = UIImage(named:"con.jpg")!
+    self.view.backgroundColor = UIColor(patternImage: backgroundImage)
+    
     header = UILabel(frame: CGRectMake(0, 0, barChart.frame.width, 50))
     header.layer.position = CGPoint(x: self.view.center.x, y: self.view.frame.height*0.3)
     self.view.addSubview(header)
